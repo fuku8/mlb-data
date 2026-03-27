@@ -1,30 +1,13 @@
 import Link from "next/link";
 import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, getStandings, parseNumber } from "@/lib/data/loaders";
 import { mergePlayerStatsBySeason, seasonOrDefault } from "@/lib/data/normalizers";
+import { fixed, ipToOuts, sum } from "@/lib/utils";
 
 type Props = {
   searchParams: Promise<{ season?: string; alDiv?: string; nlDiv?: string }>;
 };
 
 type DivisionTab = "east" | "central" | "west";
-
-function sum(values: Array<number | null | undefined>): number {
-  return values.reduce<number>((acc, v) => acc + (typeof v === "number" && Number.isFinite(v) ? v : 0), 0);
-}
-
-function fixed(value: number | null, digits: number): string {
-  if (value === null || !Number.isFinite(value)) return "N/A";
-  return value.toFixed(digits);
-}
-
-function ipToOuts(ip: string | null | undefined): number {
-  if (!ip) return 0;
-  const [whole, part] = ip.split(".");
-  const innings = Number(whole || "0");
-  const partial = Number(part || "0");
-  if (!Number.isFinite(innings) || !Number.isFinite(partial)) return 0;
-  return innings * 3 + partial;
-}
 
 function wl(wins?: string, losses?: string): string {
   if (!wins && !losses) return "N/A";

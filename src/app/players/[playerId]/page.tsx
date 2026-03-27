@@ -2,16 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers } from "@/lib/data/loaders";
 import { formatAvg, formatEra, formatObp, formatOps, formatSlg, formatWhip, mergePlayerStatsBySeason } from "@/lib/data/normalizers";
+import { n } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ playerId: string }>;
   searchParams: Promise<{ season?: string }>;
 };
-
-function n(value: string | number | null | undefined): string {
-  if (value === null || value === undefined || value === "") return "N/A";
-  return String(value);
-}
 
 export default async function PlayerDetailPage({ params, searchParams }: Props) {
   const { playerId } = await params;

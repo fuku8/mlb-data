@@ -8,6 +8,8 @@ import type {
   StringRecord,
 } from "@/lib/types";
 import { parseNumber } from "@/lib/data/loaders";
+import { ipToOuts } from "@/lib/utils";
+export { ipToOuts };
 
 export function currentSeason(): string {
   return String(new Date().getUTCFullYear());
@@ -133,14 +135,6 @@ export function filterBySeason<T extends { season: string }>(rows: T[], season?:
 
 export function isQualifiedHitter(pa: number | null): boolean {
   return (pa ?? 0) >= 30;
-}
-
-function ipToOuts(ip: string): number {
-  if (!ip) return 0;
-  const [whole, part] = ip.split(".");
-  const innings = Number(whole || "0");
-  const partial = Number(part || "0");
-  return innings * 3 + partial;
 }
 
 export function isQualifiedPitcher(ip: string | null | undefined): boolean {

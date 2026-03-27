@@ -1,5 +1,16 @@
 import Link from "next/link";
-import { getPlayerHitting, getPlayerPitching, getPlayers } from "@/lib/data/loaders";
+import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers } from "@/lib/data/loaders";
+import {
+  formatAvg,
+  formatEra,
+  formatObp,
+  formatOps,
+  formatSlg,
+  formatWhip,
+  mergePlayerStatsBySeason,
+  seasonOrDefault,
+} from "@/lib/data/normalizers";
+import { n } from "@/lib/utils";
 
 type ComparePageProps = {
   searchParams: Promise<{
@@ -8,37 +19,26 @@ type ComparePageProps = {
   }>;
 };
 
-function fmt(value: string | null | undefined): string {
-  if (!value) return "N/A";
-  return value;
-}
-
 export default async function ComparePage({ searchParams }: ComparePageProps) {
   const params = await searchParams;
-  const season = (params.season ?? "").trim();
+  const season = seasonOrDefault(params.season);
   const ids = (params.players ?? "")
     .split(",")
     .map((id) => id.trim())
     .filter(Boolean)
     .slice(0, 4);
 
-  const [players, hittingRows, pitchingRows] = await Promise.all([
+  const [players, hitting, pitching, fielding] = await Promise.all([
     getPlayers(),
     getPlayerHitting(),
     getPlayerPitching(),
+    getPlayerFielding(),
   ]);
 
-  const playerById = new Map(players.map((p) => [p.player_id, p]));
-  const hittingById = new Map<string, Record<string, string>>();
-  for (const row of hittingRows) {
-    if (season && row.season !== season) continue;
-    if (!hittingById.has(row.player_id)) hittingById.set(row.player_id, row);
-  }
-  const pitchingById = new Map<string, Record<string, string>>();
-  for (const row of pitchingRows) {
-    if (season && row.season !== season) continue;
-    if (!pitchingById.has(row.player_id)) pitchingById.set(row.player_id, row);
-  }
+  const merged = mergePlayerStatsBySeason({ players, hitting, pitching, fielding, season });
+  const selected = ids
+    .map((id) => merged.find((row) => String(row.player_id) === id))
+    .filter((row) => row !== undefined);
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
@@ -85,24 +85,28 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
                 </tr>
               </thead>
               <tbody>
-                {ids.map((id) => {
-                  const player = playerById.get(id);
-                  const row = hittingById.get(id);
-                  return (
-                    <tr key={`h-${id}`}>
-                      <td>
-                        {player?.full_name ?? "Unknown"} ({id})
-                      </td>
-                      <td>{fmt(row?.avg)}</td>
-                      <td>{fmt(row?.obp)}</td>
-                      <td>{fmt(row?.slg)}</td>
-                      <td>{fmt(row?.ops)}</td>
-                      <td>{fmt(row?.homeRuns)}</td>
-                      <td>{fmt(row?.rbi)}</td>
-                      <td>{fmt(row?.plateAppearances)}</td>
-                    </tr>
-                  );
-                })}
+                {selected.map((row) => (
+                  <tr key={`h-${row.player_id}`}>
+                    <td>
+                      <Link href={`/players/${row.player_id}?season=${season}`}>
+                        {row.full_name}
+                      </Link>
+                    </td>
+                    <td>{formatAvg(row.hitting?.avg)}</td>
+                    <td>{formatObp(row.hitting?.obp)}</td>
+                    <td>{formatSlg(row.hitting?.slg)}</td>
+                    <td>{formatOps(row.hitting?.ops)}</td>
+                    <td>{n(row.hitting?.homeRuns)}</td>
+                    <td>{n(row.hitting?.rbi)}</td>
+                    <td>{n(row.hitting?.plateAppearances)}</td>
+                  </tr>
+                ))}
+                {ids.filter((id) => !selected.some((r) => String(r.player_id) === id)).map((id) => (
+                  <tr key={`h-${id}`}>
+                    <td>Unknown ({id})</td>
+                    <td colSpan={7}>N/A</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </section>
@@ -113,6 +117,9 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
               <thead>
                 <tr>
                   <th>Player</th>
+                  <th>W</th>
+                  <th>L</th>
+                  <th>SV</th>
                   <th>ERA</th>
                   <th>WHIP</th>
                   <th>IP</th>
@@ -121,22 +128,29 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
                 </tr>
               </thead>
               <tbody>
-                {ids.map((id) => {
-                  const player = playerById.get(id);
-                  const row = pitchingById.get(id);
-                  return (
-                    <tr key={`p-${id}`}>
-                      <td>
-                        {player?.full_name ?? "Unknown"} ({id})
-                      </td>
-                      <td>{fmt(row?.era)}</td>
-                      <td>{fmt(row?.whip)}</td>
-                      <td>{fmt(row?.inningsPitched)}</td>
-                      <td>{fmt(row?.strikeOuts)}</td>
-                      <td>{fmt(row?.baseOnBalls)}</td>
-                    </tr>
-                  );
-                })}
+                {selected.map((row) => (
+                  <tr key={`p-${row.player_id}`}>
+                    <td>
+                      <Link href={`/players/${row.player_id}?season=${season}`}>
+                        {row.full_name}
+                      </Link>
+                    </td>
+                    <td>{n(row.pitching?.wins)}</td>
+                    <td>{n(row.pitching?.losses)}</td>
+                    <td>{n(row.pitching?.saves)}</td>
+                    <td>{formatEra(row.pitching?.era)}</td>
+                    <td>{formatWhip(row.pitching?.whip)}</td>
+                    <td>{n(row.pitching?.inningsPitched)}</td>
+                    <td>{n(row.pitching?.strikeOuts)}</td>
+                    <td>{n(row.pitching?.baseOnBalls)}</td>
+                  </tr>
+                ))}
+                {ids.filter((id) => !selected.some((r) => String(r.player_id) === id)).map((id) => (
+                  <tr key={`p-${id}`}>
+                    <td>Unknown ({id})</td>
+                    <td colSpan={8}>N/A</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </section>

@@ -19,6 +19,12 @@ export interface Standing {
   runs_scored: number | null;
   runs_allowed: number | null;
   run_differential: number | null;
+  home_wins: string;
+  home_losses: string;
+  away_wins: string;
+  away_losses: string;
+  last10_wins: string;
+  last10_losses: string;
   streak_code: string;
 }
 

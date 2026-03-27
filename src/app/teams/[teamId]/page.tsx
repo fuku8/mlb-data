@@ -2,34 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, getStandings, getTeams, parseNumber } from "@/lib/data/loaders";
 import { formatAvg, formatEra, formatObp, formatOps, formatWhip, isQualifiedHitter, isQualifiedPitcher, mergePlayerStatsBySeason, seasonOrDefault } from "@/lib/data/normalizers";
+import { fixed, ipToOuts, n, sum } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ teamId: string }>;
   searchParams: Promise<{ season?: string; group?: string }>;
 };
-
-function n(value: string | number | null | undefined): string {
-  if (value === null || value === undefined || value === "") return "N/A";
-  return String(value);
-}
-
-function sum(values: Array<number | null | undefined>): number {
-  return values.reduce<number>((acc, v) => acc + (typeof v === "number" && Number.isFinite(v) ? v : 0), 0);
-}
-
-function fixed(value: number | null, digits: number): string {
-  if (value === null || !Number.isFinite(value)) return "N/A";
-  return value.toFixed(digits);
-}
-
-function ipToOuts(ip: string | null | undefined): number {
-  if (!ip) return 0;
-  const [whole, part] = ip.split(".");
-  const innings = Number(whole || "0");
-  const partial = Number(part || "0");
-  if (!Number.isFinite(innings) || !Number.isFinite(partial)) return 0;
-  return innings * 3 + partial;
-}
 
 export default async function TeamDetailPage({ params, searchParams }: Props) {
   const { teamId } = await params;
@@ -218,6 +196,9 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
                 </>
               ) : (
                 <>
+                  <th>W</th>
+                  <th>L</th>
+                  <th>SV</th>
                   <th>IP</th>
                   <th>ERA</th>
                   <th>WHIP</th>
@@ -230,7 +211,7 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
           <tbody>
             {sorted.length === 0 ? (
               <tr>
-                <td colSpan={statGroup === "hitting" ? 8 : 7}>No players found for this team/season.</td>
+                <td colSpan={statGroup === "hitting" ? 8 : 10}>No players found for this team/season.</td>
               </tr>
             ) : (
               sorted.map((row) => {
@@ -254,6 +235,9 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
                       </>
                     ) : (
                       <>
+                        <td>{n(row.pitching?.wins)}</td>
+                        <td>{n(row.pitching?.losses)}</td>
+                        <td>{n(row.pitching?.saves)}</td>
                         <td>{n(row.pitching?.inningsPitched)}</td>
                         <td>{formatEra(row.pitching?.era)}</td>
                         <td>{formatWhip(row.pitching?.whip)}</td>

@@ -11,6 +11,7 @@ import {
   isQualifiedPitcher,
   mergePlayerStatsBySeason,
 } from "@/lib/data/normalizers";
+import { n } from "@/lib/utils";
 
 type Props = {
   searchParams: Promise<{ season?: string; group?: string; q?: string; page?: string; perPage?: string; sortBy?: string; sortDir?: string }>;
@@ -19,11 +20,6 @@ type Props = {
 function contains(base: string, q: string): boolean {
   if (!q) return true;
   return base.toLowerCase().includes(q.toLowerCase());
-}
-
-function n(value: string | number | null | undefined): string {
-  if (value === null || value === undefined || value === "") return "N/A";
-  return String(value);
 }
 
 export default async function PlayersPage({ searchParams }: Props) {
@@ -212,12 +208,16 @@ export default async function PlayersPage({ searchParams }: Props) {
           {total} players / Page {currentPage} of {totalPages}
         </span>
         <div style={{ display: "flex", gap: 8 }}>
-          <Link href={`/players?${prevQuery.toString()}`} aria-disabled={currentPage <= 1} style={{ opacity: currentPage <= 1 ? 0.5 : 1 }}>
-            Prev
-          </Link>
-          <Link href={`/players?${nextQuery.toString()}`} aria-disabled={currentPage >= totalPages} style={{ opacity: currentPage >= totalPages ? 0.5 : 1 }}>
-            Next
-          </Link>
+          {currentPage <= 1 ? (
+            <span style={{ opacity: 0.5 }}>Prev</span>
+          ) : (
+            <Link href={`/players?${prevQuery.toString()}`}>Prev</Link>
+          )}
+          {currentPage >= totalPages ? (
+            <span style={{ opacity: 0.5 }}>Next</span>
+          ) : (
+            <Link href={`/players?${nextQuery.toString()}`}>Next</Link>
+          )}
         </div>
       </section>
 
@@ -357,12 +357,16 @@ export default async function PlayersPage({ searchParams }: Props) {
       </section>
 
       <section className="card" style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}>
-        <Link href={`/players?${prevQuery.toString()}`} aria-disabled={currentPage <= 1} style={{ opacity: currentPage <= 1 ? 0.5 : 1 }}>
-          Prev
-        </Link>
-        <Link href={`/players?${nextQuery.toString()}`} aria-disabled={currentPage >= totalPages} style={{ opacity: currentPage >= totalPages ? 0.5 : 1 }}>
-          Next
-        </Link>
+        {currentPage <= 1 ? (
+          <span style={{ opacity: 0.5 }}>Prev</span>
+        ) : (
+          <Link href={`/players?${prevQuery.toString()}`}>Prev</Link>
+        )}
+        {currentPage >= totalPages ? (
+          <span style={{ opacity: 0.5 }}>Next</span>
+        ) : (
+          <Link href={`/players?${nextQuery.toString()}`}>Next</Link>
+        )}
       </section>
     </div>
   );
