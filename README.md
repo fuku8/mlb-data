@@ -4,7 +4,7 @@
 
 ## デプロイURL（Vercel）
 
-- Production: （ここにVercel本番URLを記載）
+- Production: https://mlb-data.vercel.app/
 
 ## 対象データ
 
