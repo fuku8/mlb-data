@@ -1,0 +1,9 @@
+away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk,home_score,home_team_id,home_team_name,official_date,series_description,status,status_code,venue_id,venue_name
+,147,New York Yankees,day,N,2026-03-27T20:35:00Z,823243,,137,San Francisco Giants,2026-03-27,Regular Season,Scheduled,S,2395,Oracle Park
+,133,Athletics,night,N,2026-03-27T23:07:00Z,822839,,141,Toronto Blue Jays,2026-03-27,Regular Season,Scheduled,S,14,Rogers Centre
+,115,Colorado Rockies,night,N,2026-03-27T23:10:00Z,823893,,146,Miami Marlins,2026-03-27,Regular Season,Scheduled,S,4169,loanDepot park
+,118,Kansas City Royals,night,N,2026-03-27T23:15:00Z,824946,,144,Atlanta Braves,2026-03-27,Regular Season,Scheduled,S,4705,Truist Park
+,108,Los Angeles Angels,night,N,2026-03-28T00:15:00Z,824216,,117,Houston Astros,2026-03-27,Regular Season,Scheduled,S,2392,Daikin Park
+,116,Detroit Tigers,night,N,2026-03-28T01:40:00Z,823324,,135,San Diego Padres,2026-03-27,Regular Season,Scheduled,S,2680,Petco Park
+,114,Cleveland Guardians,night,N,2026-03-28T01:45:00Z,823162,,136,Seattle Mariners,2026-03-27,Regular Season,Scheduled,S,680,T-Mobile Park
+,109,Arizona Diamondbacks,night,N,2026-03-28T02:10:00Z,823971,,119,Los Angeles Dodgers,2026-03-27,Regular Season,Scheduled,S,22,UNIQLO FIELD AT DODGER STADIUM

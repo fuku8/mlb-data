@@ -1,0 +1,60 @@
+name: Fetch MLB Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      season:
+        description: "Season year (e.g. 2026)"
+        required: false
+        type: string
+      date:
+        description: "Schedule date (YYYY-MM-DD)"
+        required: false
+        type: string
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch data
+        env:
+          MLB_SEASON: ${{ inputs.season }}
+          MLB_DATE: ${{ inputs.date }}
+          MLB_REQUEST_DELAY_SEC: "1.0"
+        run: |
+          if [ -z "$MLB_SEASON" ]; then
+            unset MLB_SEASON
+          fi
+          if [ -z "$MLB_DATE" ]; then
+            unset MLB_DATE
+          fi
+          python scripts/fetch-mlb-data.py
+
+      - name: Commit and push when changed
+        run: |
+          if git diff --quiet data; then
+            echo "No data changes"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "chore(data): update mlb data"
+          git push

@@ -1,0 +1,31 @@
+abbreviation,active,club_name,division_id,division_name,file_code,first_year_of_play,franchise_name,league_id,league_name,location_name,name,season,short_name,team_code,team_id,venue_id,venue_name
+ATH,True,Athletics,200,American League West,ath,1901,Athletics,103,American League,Sacramento,Athletics,2026,Athletics,ath,133,2529,Sutter Health Park
+PIT,True,Pirates,205,National League Central,pit,1882,Pittsburgh,104,National League,Pittsburgh,Pittsburgh Pirates,2026,Pittsburgh,pit,134,31,PNC Park
+SD,True,Padres,203,National League West,sd,1968,San Diego,104,National League,San Diego,San Diego Padres,2026,San Diego,sdn,135,2680,Petco Park
+SEA,True,Mariners,200,American League West,sea,1977,Seattle,103,American League,Seattle,Seattle Mariners,2026,Seattle,sea,136,680,T-Mobile Park
+SF,True,Giants,203,National League West,sf,1883,San Francisco,104,National League,San Francisco,San Francisco Giants,2026,San Francisco,sfn,137,2395,Oracle Park
+STL,True,Cardinals,205,National League Central,stl,1892,St. Louis,104,National League,St. Louis,St. Louis Cardinals,2026,St. Louis,sln,138,2889,Busch Stadium
+TB,True,Rays,201,American League East,tb,1996,Tampa Bay,103,American League,St. Petersburg,Tampa Bay Rays,2026,Tampa Bay,tba,139,12,Tropicana Field
+TEX,True,Rangers,200,American League West,tex,1961,Texas,103,American League,Arlington,Texas Rangers,2026,Texas,tex,140,5325,Globe Life Field
+TOR,True,Blue Jays,201,American League East,tor,1977,Toronto,103,American League,Toronto,Toronto Blue Jays,2026,Toronto,tor,141,14,Rogers Centre
+MIN,True,Twins,202,American League Central,min,1901,Minnesota,103,American League,Minneapolis,Minnesota Twins,2026,Minnesota,min,142,3312,Target Field
+PHI,True,Phillies,204,National League East,phi,1883,Philadelphia,104,National League,Philadelphia,Philadelphia Phillies,2026,Philadelphia,phi,143,2681,Citizens Bank Park
+ATL,True,Braves,204,National League East,atl,1871,Atlanta,104,National League,Atlanta,Atlanta Braves,2026,Atlanta,atl,144,4705,Truist Park
+CWS,True,White Sox,202,American League Central,cws,1901,Chicago,103,American League,Chicago,Chicago White Sox,2026,Chi White Sox,cha,145,4,Rate Field
+MIA,True,Marlins,204,National League East,mia,1991,Miami,104,National League,Miami,Miami Marlins,2026,Miami,mia,146,4169,loanDepot park
+NYY,True,Yankees,201,American League East,nyy,1903,New York,103,American League,Bronx,New York Yankees,2026,NY Yankees,nya,147,3313,Yankee Stadium
+MIL,True,Brewers,205,National League Central,mil,1968,Milwaukee,104,National League,Milwaukee,Milwaukee Brewers,2026,Milwaukee,mil,158,32,American Family Field
+LAA,True,Angels,200,American League West,ana,1961,Los Angeles,103,American League,Anaheim,Los Angeles Angels,2026,LA Angels,ana,108,1,Angel Stadium
+AZ,True,Diamondbacks,203,National League West,ari,1996,Arizona,104,National League,Phoenix,Arizona Diamondbacks,2026,Arizona,ari,109,15,Chase Field
+BAL,True,Orioles,201,American League East,bal,1901,Baltimore,103,American League,Baltimore,Baltimore Orioles,2026,Baltimore,bal,110,2,Oriole Park at Camden Yards
+BOS,True,Red Sox,201,American League East,bos,1901,Boston,103,American League,Boston,Boston Red Sox,2026,Boston,bos,111,3,Fenway Park
+CHC,True,Cubs,205,National League Central,chc,1874,Chicago,104,National League,Chicago,Chicago Cubs,2026,Chi Cubs,chn,112,17,Wrigley Field
+CIN,True,Reds,205,National League Central,cin,1882,Cincinnati,104,National League,Cincinnati,Cincinnati Reds,2026,Cincinnati,cin,113,2602,Great American Ball Park
+CLE,True,Guardians,202,American League Central,cle,1901,Cleveland,103,American League,Cleveland,Cleveland Guardians,2026,Cleveland,cle,114,5,Progressive Field
+COL,True,Rockies,203,National League West,col,1992,Colorado,104,National League,Denver,Colorado Rockies,2026,Colorado,col,115,19,Coors Field
+DET,True,Tigers,202,American League Central,det,1901,Detroit,103,American League,Detroit,Detroit Tigers,2026,Detroit,det,116,2394,Comerica Park
+HOU,True,Astros,200,American League West,hou,1962,Houston,103,American League,Houston,Houston Astros,2026,Houston,hou,117,2392,Daikin Park
+KC,True,Royals,202,American League Central,kc,1968,Kansas City,103,American League,Kansas City,Kansas City Royals,2026,Kansas City,kca,118,7,Kauffman Stadium
+LAD,True,Dodgers,203,National League West,la,1884,Los Angeles,104,National League,Los Angeles,Los Angeles Dodgers,2026,LA Dodgers,lan,119,22,UNIQLO FIELD AT DODGER STADIUM
+WSH,True,Nationals,204,National League East,was,1968,Washington,104,National League,Washington,Washington Nationals,2026,Washington,was,120,3309,Nationals Park
+NYM,True,Mets,204,National League East,nym,1962,New York,104,National League,Flushing,New York Mets,2026,NY Mets,nyn,121,3289,Citi Field
