@@ -69,23 +69,22 @@ MLBデータのレスポンスには以下の利用条件参照が含まれる:
   - 同リーグのワイルドカード上位3チーム（ディビジョン1位を除く）
 - ポストシーズンはレギュラーシーズン順位表とは別枠で扱う
 
-### 3.2 画面要件の再定義（最優先）
+### 3.2 画面要件
 
-- `standings` は **ディビジョン別表示が必須**
-  - AL East / AL Central / AL West
-  - NL East / NL Central / NL West
-- 「全体勝率順のみ」の表示は補助情報で、主表示にしない
-- トップページの順位サマリもディビジョン単位で表示する
+| ページ | パス | 状態 | 説明 |
+|--------|------|------|------|
+| ホーム | `/` | **実装済** | 最新試合結果 + Team Quick Links + ディビジョン別順位スナップショット |
+| 順位表 | `/standings` | **実装済** | リーグ→ディビジョンの6ブロック表示 |
+| 試合結果 | `/games` | **実装済** | 日付セレクター + カード型グリッド表示 |
+| 選手一覧 | `/players` | **実装済** | 打撃/投球タブ切替、ソート、ページネーション、小サンプル警告 |
+| 選手詳細 | `/players/[playerId]` | **実装済** | スタッツカードグリッド表示（打者/投手/二刀流で条件分岐） |
+| チーム詳細 | `/teams/[teamId]` | **実装済** | ロスター + スタッツ |
+| 選手比較 | `/compare` | **実装済** | 最大4選手の比較テーブル + チャート |
 
-### 3.3 今回のスコープ / 次フェーズ
+### 3.3 今後のスコープ
 
-- 今回（必須）:
-  - ディビジョン順位表
-  - チーム個別ページ（ロスター+スタッツ）
-  - 選手検索・比較
-- 次フェーズ（後で追加）:
-  - ワイルドカード順位表
-  - ポストシーズンブラケット
+- ワイルドカード順位表
+- ポストシーズンブラケット
 
 ---
 
@@ -93,137 +92,61 @@ MLBデータのレスポンスには以下の利用条件参照が含まれる:
 
 ### 4.1 方針
 
-- 主要データは MLB Stats API から日次更新
+- 主要データは MLB Stats API から定期更新（GitHub Actions で6時間ごと）
 - 追加分析用に必要な場合のみ Baseball Savant/Retrosheet を併用
 - 取得結果は `data/*.csv` に保存し、Next.js 側で読み込む
 
-### 4.2 初期CSVマッピング
+### 4.2 CSVマッピング
 
-- `data/schedule.csv` : 試合日程（`schedule`）
-- `data/standings.csv` : 順位（`standings`）
-- `data/teams.csv` : チーム情報（`teams`）
-- `data/players.csv` : 選手基本情報（`people` など）
-- `data/player_hitting.csv` : 選手打撃スタッツ（`group=hitting`）
-- `data/player_pitching.csv` : 選手投球スタッツ（`group=pitching`）
-- `data/player_fielding.csv` : 選手守備スタッツ（`group=fielding`）
-- `data/game_live_<gamePk>.json` : ライブ詳細（必要試合のみ）
-- `data/last_updated.txt` : 取得時刻
+| ファイル | 内容 | API |
+|----------|------|-----|
+| `data/schedule.csv` | シーズン全試合日程・結果 | `schedule` (season全体、差分取得) |
+| `data/standings.csv` | 順位 | `standings` |
+| `data/teams.csv` | チーム情報 | `teams` |
+| `data/players.csv` | 選手基本情報 | `sports/1/players` |
+| `data/player_hitting.csv` | 選手打撃スタッツ | `stats?group=hitting` |
+| `data/player_pitching.csv` | 選手投球スタッツ | `stats?group=pitching` |
+| `data/player_fielding.csv` | 選手守備スタッツ | `stats?group=fielding` |
+| `data/game_live_<gamePk>.json` | 当日のライブ詳細（Final/InProgress のみ） | `game/{gamePk}/feed/live` |
+| `data/last_updated.txt` | 取得時刻 | - |
 
-### 4.3 選手スタッツ取得戦略
+### 4.3 スケジュール差分取得（実装済）
 
-- リーグ横断の集計取得（初期実装）:
-  - `GET /api/v1/stats?stats=season&group=hitting&season={year}&sportIds=1`
-  - `GET /api/v1/stats?stats=season&group=pitching&season={year}&sportIds=1`
-  - `GET /api/v1/stats?stats=season&group=fielding&season={year}&sportIds=1`
-- 個別選手詳細（必要時）:
-  - `GET /api/v1/people/{personId}/stats?stats=season&group=hitting&season={year}`
-  - `GET /api/v1/people/{personId}/stats?stats=season&group=pitching&season={year}`
-- 画面要件:
-  - 選手一覧で打撃/投球タブを切り替え
-  - 選手詳細でシーズン成績（主要指標）を表示
+- 既存 `schedule.csv` の最新Final日付を検出
+- その日以降のみAPIから取得（当日分はスコア更新のため再取得）
+- 既存データとマージし、`game_pk` で重複排除（新しい方を優先）
+- 初回はシーズン全体（3月〜12月末）をフル取得
+- 取得範囲: `startDate` 〜 `endDate`（12月末まで、ポストシーズン対応）
 
-### 4.4 検索・比較機能（nba-data互換）
+### 4.4 選手スタッツ取得戦略
 
-- 選手検索:
-  - 名前のインクリメンタル検索（2文字以上）
-  - チーム/ポジション/最低出場試合数フィルター
-  - 打撃・投球それぞれでソート可能
-- 選手比較:
-  - 最大4選手を同時選択
-  - 打撃指標比較（例: AVG/OBP/SLG/OPS/HR/RBI）
-  - 投球指標比較（例: ERA/WHIP/SO/BB/IP）
-  - 表形式 + チャート表示（バーチャート中心）
-- URL構成:
-  - `/players` : 選手一覧 + フィルター + ソート
-  - `/players/[playerId]` : 選手詳細
-  - `/search` : グローバル検索
-  - `/compare` : 選手比較
+- リーグ横断の集計取得:
+  - `GET /api/v1/stats?stats=season&group=hitting&season={year}&sportIds=1&limit=5000`
+  - `GET /api/v1/stats?stats=season&group=pitching&season={year}&sportIds=1&limit=5000`
+  - `GET /api/v1/stats?stats=season&group=fielding&season={year}&sportIds=1&limit=5000`
+
+### 4.5 選手詳細の表示制御（実装済）
+
+- 表示セクション（Hitting / Pitching / Fielding）は **実データの有無** で判定
+  - `player.hitting` が存在 → Hitting セクション表示
+  - `player.pitching` が存在 → Pitching セクション表示
+  - `player.fielding` が存在 → Fielding セクション表示
+- 二刀流選手（大谷 = `position_abbr: "TWP"`）は打撃・投球両方のデータがあるため両方表示
 
 ---
 
-## 5. ディレクトリ構成（初期）
+## 5. アーキテクチャ
 
-```
-mlb-data/
-├── data/
-│   └── .gitkeep
-├── scripts/
-│   └── .gitkeep
-├── src/
-│   └── .gitkeep
-└── plan.md
-```
+### 5.1 技術構成
 
----
-
-## 6. 実装フェーズ（改訂）
-
-### Phase 1: API検証
-
-1. `schedule`, `standings`, `teams`, `stats(group=hitting/pitching/fielding)` を curl で取得
-2. `standings` の `league/division/divisionRank/sportRank/wildCard*` 系フィールドを優先的に固定
-3. 失敗時リトライと待機（レート対策）を実装
-
-### Phase 2: 収集スクリプト作成
-
-1. `scripts/fetch-mlb-data.py` を作成
-2. CSV/JSON 出力を `data/` に保存
-3. `last_updated.txt` 更新
-
-### Phase 3: ダッシュボード基盤
-
-1. `src/` に Next.js アプリ骨組み作成
-2. `data/` 読み込みユーティリティ作成
-3. 最低限のページ（ホーム/順位表/チーム詳細/選手一覧/選手詳細/検索/比較）を作成
-4. `順位表` は「リーグ→ディビジョン」の6ブロック表示で実装
-
-### Phase 3.5: 検索・比較UI実装
-
-1. 選手名検索コンポーネント（debounce付き）を作成
-2. 比較対象選択UI（最大4名）を作成
-3. 比較テーブルとチャートを実装
-4. クエリパラメータで状態共有（`/compare?players=...`）
-
-### Phase 3.8: レギュレーション整合UI
-
-1. トップページの順位スナップショットをディビジョン別に修正
-2. `standings` を divisionRank 優先で表示
-3. 同率時の補助ソート（勝率→得失点差）を定義
-4. 「この表示はRS順位基準」という注記を追加
-
-### Phase 4: 運用
-
-1. GitHub Actions で定期実行（6時間ごと）+ 手動実行
-2. `data/` に差分がある時のみ自動コミット
-3. 失敗時は手動再実行（workflow_dispatch）で復旧
-4. 変更があればAPIラッパー側で吸収
-
----
-
-## 7. 開幕直後（データ不足時）の運用方針
-
-- 欠損値は `N/A` を表示し、0として扱わない
-- 小サンプル警告をUI上に表示（「開幕直後のため参考値」）
-- 最低サンプル条件を適用:
-  - 打者: 最低PA（例: 30）
-  - 投手: 最低IP（例: 10）
-- 条件未満はランキング対象外（比較画面では表示のみ可）
-- `2026` と `2025` の切替を用意し、データが薄い時は前年成績を参照可能にする
-- 検索機能は常時有効（成績が空でも選手プロフィールは表示）
-
----
-
-## 8. Next.js + Vercel 前提の実装プラン
-
-### 7.1 技術構成
-
-- Framework: Next.js (App Router, TypeScript)
-- UI: Tailwind CSS + shadcn/ui
+- Framework: Next.js 16 (App Router, TypeScript)
+- UI: Tailwind CSS v4
 - Chart: Recharts
+- Icons: Lucide React
 - Data Layer: `data/*.csv` + `lib/data/*` パーサ
 - Deploy: Vercel（Git連携自動デプロイ）
 
-### 7.2 ディレクトリ設計（実装版）
+### 5.2 ディレクトリ構成（現在）
 
 ```text
 mlb-data/
@@ -240,61 +163,135 @@ mlb-data/
 │   └── fetch-mlb-data.py
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx
-│   │   ├── standings/page.tsx
-│   │   ├── players/page.tsx
-│   │   ├── players/[playerId]/page.tsx
-│   │   ├── search/page.tsx
-│   │   └── compare/page.tsx
+│   │   ├── page.tsx                    # ホーム（最新試合結果 + 順位スナップショット）
+│   │   ├── layout.tsx
+│   │   ├── globals.css
+│   │   ├── standings/page.tsx          # 順位表
+│   │   ├── games/page.tsx              # 試合結果
+│   │   ├── players/page.tsx            # 選手一覧
+│   │   ├── players/[playerId]/page.tsx # 選手詳細
+│   │   ├── compare/page.tsx            # 選手比較
+│   │   └── teams/[teamId]/page.tsx     # チーム詳細
 │   ├── components/
-│   │   ├── players/player-search.tsx
-│   │   ├── players/player-compare-table.tsx
-│   │   └── charts/player-compare-chart.tsx
+│   │   ├── layout/
+│   │   │   ├── navigation.tsx          # ナビゲーション
+│   │   │   └── footer.tsx              # フッター
+│   │   └── game-card.tsx               # 試合カードコンポーネント（共通）
 │   └── lib/
-│       ├── data/loaders.ts
-│       ├── data/normalizers.ts
-│       └── types.ts
+│       ├── data/
+│       │   ├── loaders.ts              # CSV読み込み
+│       │   └── normalizers.ts          # 型変換・フォーマット
+│       ├── types.ts                    # 型定義
+│       └── utils.ts                    # ユーティリティ
 ├── package.json
 └── plan.md
 ```
 
-### 8.3 実装ステップ（順序固定）
+### 5.3 共通コンポーネント
 
-1. Next.js プロジェクト初期化（`nba-data` と同等構成）
-2. `scripts/fetch-mlb-data.py` 実装
-3. `data/*.csv` 生成確認
-4. `lib/data` にCSVローダー実装
-5. `/standings` をディビジョン別で実装（最優先）
-6. `/teams/[teamId]` 実装（ロスター+スタッツ）
-7. `/players` と `/players/[playerId]` 実装
-8. `/search` 実装（debounce + フィルター）
-9. `/compare` 実装（最大4選手）
-10. 開幕直後ルール（最低PA/IP・N/A・小サンプル警告）をUIへ反映
-11. Vercelへデプロイ
+| コンポーネント | ファイル | 用途 |
+|----------------|----------|------|
+| `GameCard` | `components/game-card.tsx` | 試合結果カード（ホーム: compact, 試合ページ: 通常サイズ） |
+| `StatCell` / `StatGrid` | `players/[playerId]/page.tsx` 内 | スタッツカードグリッド |
+| `Navigation` | `components/layout/navigation.tsx` | ヘッダーナビ（ホーム/順位表/試合/選手/比較） |
 
-### 8.4 Vercel運用
+### 5.4 データパイプライン
 
-- GitHub連携で `main` push時に自動デプロイ
-- 環境変数は原則不要（公開API + CSV運用）
-- 再取得トリガー:
-  - ローカル実行でCSV更新→push
-  - 必要ならVercel Cronまたは外部CIで定期更新
-- ISR/キャッシュ:
-  - サーバーコンポーネントでCSVを読み込み
-  - `revalidate` を設定して表示を安定化
-
-### 8.5 完了条件
-
-- Web公開URLでホーム/ディビジョン順位/チーム詳細/検索/比較が閲覧可能
-- 順位表がMLBレギュレーション（ディビジョン基準）に整合している
-- 開幕直後でも画面崩れ・`NaN` 表示がない
-- 4選手比較が動作し、欠損項目は `N/A` 表示
-- データ更新後、Vercel上の表示に反映される
+```
+MLB Stats API
+    ↓
+Python fetch-mlb-data.py（差分取得 + リトライ）
+    ↓
+CSV files in /data/
+    ↓
+TypeScript Loaders (readCsv, parseNumber)
+    ↓
+Normalizers (toGameResult, mergePlayerStatsBySeason, etc.)
+    ↓
+Next.js Server Components
+    ↓
+Vercel → Public website
+```
 
 ---
 
-## 9. 現時点の結論
+## 6. 実装フェーズ
 
-- MLB の無料データ取得手段はある（最有力: MLB Stats API）。
-- ただし利用条件と将来の互換性リスクがあるため、`scripts/` で吸収する設計が安全。
-- 次の最優先は、`standings` とトップページをディビジョン順位基準に修正すること。
+### Phase 1: API検証 ✅
+
+1. `schedule`, `standings`, `teams`, `stats(group=hitting/pitching/fielding)` を確認
+2. `standings` の `league/division/divisionRank/sportRank/wildCard*` 系フィールドを確定
+3. 失敗時リトライと待機（レート対策）を実装
+
+### Phase 2: 収集スクリプト作成 ✅
+
+1. `scripts/fetch-mlb-data.py` を実装
+2. CSV/JSON 出力を `data/` に保存
+3. `last_updated.txt` 更新
+4. スケジュール差分取得を実装
+
+### Phase 3: ダッシュボード基盤 ✅
+
+1. Next.js アプリ骨組み作成
+2. `data/` 読み込みユーティリティ作成
+3. 全ページ実装済（ホーム/順位表/試合結果/チーム詳細/選手一覧/選手詳細/比較）
+4. 順位表は「リーグ→ディビジョン」の6ブロック表示
+
+### Phase 3.5: 検索・比較UI実装 ✅
+
+1. 選手名検索（フィルタリング）
+2. 比較対象選択UI（最大4名）
+3. 比較テーブルとチャートを実装
+4. クエリパラメータで状態共有
+
+### Phase 3.8: 試合結果ページ追加 ✅
+
+1. `/games` ページを新規作成（日付セレクター + カード型グリッド）
+2. ホームページに最新試合結果セクションを追加
+3. `GameCard` 共通コンポーネントに抽出
+4. ナビゲーションに「試合」を追加
+
+### Phase 4: 運用 ✅
+
+1. GitHub Actions で定期実行（6時間ごと）+ 手動実行
+2. `data/` に差分がある時のみ自動コミット
+3. 失敗時は手動再実行（workflow_dispatch）で復旧
+4. 変更があればAPIラッパー側で吸収
+
+---
+
+## 7. 開幕直後（データ不足時）の運用方針
+
+- 欠損値は `N/A` を表示し、0として扱わない
+- 小サンプル警告をUI上に表示（「⚠」マーク）
+- 最低サンプル条件を適用:
+  - 打者: 最低PA 30
+  - 投手: 最低IP 10
+- 条件未満はランキングで ⚠ 表示（比較画面では表示のみ可）
+- シーズン切替可能（URLパラメータ `?season=2025`）
+- 検索機能は常時有効（成績が空でも選手プロフィールは表示）
+- 選手詳細の表示セクションはデータ有無で自動判定（データなしのセクションは非表示）
+
+---
+
+## 8. Vercel運用
+
+- GitHub連携で `main` push時に自動デプロイ
+- 公開URL: https://mlb-data.vercel.app/
+- 環境変数は原則不要（公開API + CSV運用）
+- 再取得トリガー:
+  - GitHub Actions（6時間ごと）でCSV更新→自動コミット→自動デプロイ
+  - 手動: `npm run fetch-data` 実行後 push
+
+---
+
+## 9. 完了条件
+
+- [x] Web公開URLでホーム/ディビジョン順位/チーム詳細/選手一覧/選手詳細/比較が閲覧可能
+- [x] 試合結果ページで日付別の試合結果を閲覧可能
+- [x] ホームページに最新試合結果を表示
+- [x] 順位表がMLBレギュレーション（ディビジョン基準）に整合している
+- [x] 開幕直後でも画面崩れ・`NaN` 表示がない
+- [x] 4選手比較が動作し、欠損項目は `N/A` 表示
+- [x] データ更新後、Vercel上の表示に反映される
+- [x] スケジュール差分取得が動作している

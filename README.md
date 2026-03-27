@@ -1,63 +1,96 @@
 # MLB Data Dashboard
 
-`~/nba-data/` と同じ方針で構築する、MLBデータ可視化プロジェクトです。
+MLBのチーム・選手・試合データを可視化するダッシュボードです。
 
 ## デプロイURL（Vercel）
 
 - Production: https://mlb-data.vercel.app/
 
-## 対象データ
+## 主要機能
 
-- チーム順位・試合日程・試合結果
-- 選手基本情報
-- 選手スタッツ（打撃 / 投球 / 守備）
+| ページ | パス | 概要 |
+|--------|------|------|
+| ホーム | `/` | 最新試合結果 + チームクイックリンク + ディビジョン別順位スナップショット |
+| 順位表 | `/standings` | AL/NL × East/Central/West の6ディビジョン別順位表 |
+| 試合結果 | `/games` | 日付別の試合結果一覧（日付セレクター付き） |
+| 選手一覧 | `/players` | 打撃/投球タブ切替、ソート、ページネーション、小サンプル警告 |
+| 選手詳細 | `/players/[id]` | スタッツカードグリッド（打者/投手/二刀流で自動切替） |
+| チーム詳細 | `/teams/[id]` | チーム成績 + ロスター + 選手スタッツ |
+| 選手比較 | `/compare` | 最大4選手の並列比較（テーブル + チャート） |
 
-## 主要機能（予定）
+## 技術スタック
 
-- 選手検索（名前・チーム・ポジション・成績フィルター）
-- 選手比較（最大4選手、打撃/投球指標の並列比較）
-- 開幕直後対応（小サンプル警告、最低PA/IP閾値、N/A表示）
+- **Framework**: Next.js 16 (App Router, TypeScript)
+- **Styling**: Tailwind CSS v4
+- **Charts**: Recharts
+- **Icons**: Lucide React
+- **Data**: MLB Stats API → CSV → Server Components
+- **Deploy**: Vercel (Git連携自動デプロイ)
+- **Data Fetch**: Python 3 (`scripts/fetch-mlb-data.py`)
 
-## 利用条件（このリポジトリの前提）
+## セットアップ
 
-- 利用形態: 非商用
-- 公開形態: Web公開あり
-- 注意:
-  - 元データの再配布サイト化はしない（ダッシュボード表示用途に限定）
-  - 大量取得を避ける（更新頻度は日次〜数時間間隔）
-  - 利用条件変更に備えて取得レイヤーを分離する
+```bash
+npm install
+npm run fetch-data   # MLBデータ取得
+npm run dev          # 開発サーバー起動
+```
 
-MLBデータ利用条件参照:
-- http://gdx.mlb.com/components/copyright.txt
-
-## 想定データソース
-
-1. MLB Stats API (`https://statsapi.mlb.com/api/v1/`)
-2. Baseball Savant（必要時のみ）
-3. Retrosheet（履歴分析向け）
-
-## 初期構成
+## ディレクトリ構成
 
 ```text
 mlb-data/
-├── data/
+├── data/                          # CSV/JSONデータ（自動生成）
+│   ├── schedule.csv               # シーズン全試合（差分取得）
+│   ├── standings.csv              # 順位
+│   ├── teams.csv                  # チーム情報
+│   ├── players.csv                # 選手基本情報
+│   ├── player_hitting.csv         # 打撃スタッツ
+│   ├── player_pitching.csv        # 投球スタッツ
+│   ├── player_fielding.csv        # 守備スタッツ
+│   └── last_updated.txt           # 最終更新時刻
 ├── scripts/
+│   └── fetch-mlb-data.py          # データ取得スクリプト
 ├── src/
-├── plan.md
+│   ├── app/                       # Next.js ページ
+│   ├── components/                # 共通コンポーネント
+│   └── lib/                       # データローダー・型定義・ユーティリティ
+├── plan.md                        # 実装プラン
+├── ui-plan.md                     # UIプラン
 └── README.md
 ```
 
-## 次の実装ステップ
+## データ更新
 
-Next.js（App Router）で実装し、Vercelへデプロイする前提です。  
-詳細は [plan.md](./plan.md) を参照。
-
-## データ更新運用（GitHub Actions）
+### GitHub Actions（自動）
 
 - ワークフロー: `.github/workflows/fetch-mlb-data.yml`
-- 実行タイミング:
-  - 定期実行: 6時間ごと
-  - 手動実行: `workflow_dispatch`（season/date指定可）
-- 処理内容:
-  - `scripts/fetch-mlb-data.py` を実行
-  - `data/` に差分がある場合のみ自動コミット
+- 定期実行: 6時間ごと
+- 手動実行: `workflow_dispatch`（season/date指定可）
+- `data/` に差分がある場合のみ自動コミット → Vercel自動デプロイ
+
+### スケジュール差分取得
+
+試合結果（`schedule.csv`）は差分取得に対応:
+- 既存CSVの最新Final日付以降のみAPIから取得
+- 初回はシーズン全体をフル取得
+- `game_pk` で重複排除、新しいデータを優先
+
+### 手動更新
+
+```bash
+npm run fetch-data   # データ取得
+git add data/
+git commit -m "chore(data): update mlb data"
+git push
+```
+
+## データソース
+
+- **MLB Stats API** (`https://statsapi.mlb.com/api/v1/`) - 主要データソース
+
+## 利用条件
+
+- 利用形態: **非商用**
+- 元データの再配布サイト化はしない（ダッシュボード表示用途に限定）
+- MLBデータ利用条件: http://gdx.mlb.com/components/copyright.txt

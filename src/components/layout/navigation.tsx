@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GitCompareArrows, LayoutDashboard, Trophy, Users } from "lucide-react";
+import { Calendar, GitCompareArrows, LayoutDashboard, Trophy, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "ホーム", icon: LayoutDashboard },
   { href: "/standings", label: "順位表", icon: Trophy },
+  { href: "/games", label: "試合", icon: Calendar },
   { href: "/players", label: "選手", icon: Users },
   { href: "/compare", label: "比較", icon: GitCompareArrows },
 ];

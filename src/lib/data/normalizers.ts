@@ -1,6 +1,7 @@
 import type {
   CompareMetrics,
   FieldingStats,
+  GameResult,
   HittingStats,
   PitchingStats,
   PlayerBase,
@@ -208,6 +209,33 @@ export function mergePlayerStatsBySeason(params: {
         fielding,
       };
     });
+}
+
+export function toGameResult(rec: StringRecord): GameResult {
+  return {
+    game_pk: parseNumber(rec.game_pk) ?? 0,
+    game_date: rec.game_date ?? "",
+    official_date: rec.official_date ?? "",
+    status: rec.status ?? "",
+    status_code: rec.status_code ?? "",
+    day_night: rec.day_night ?? "",
+    away_team_id: parseNumber(rec.away_team_id),
+    away_team_name: rec.away_team_name ?? "",
+    away_score: parseNumber(rec.away_score),
+    home_team_id: parseNumber(rec.home_team_id),
+    home_team_name: rec.home_team_name ?? "",
+    home_score: parseNumber(rec.home_score),
+    venue_name: rec.venue_name ?? "",
+  };
+}
+
+export function parseGameResults(records: StringRecord[]): GameResult[] {
+  return records.map(toGameResult).filter((g) => g.game_pk !== 0);
+}
+
+export function getGameDates(games: GameResult[]): string[] {
+  const dates = [...new Set(games.map((g) => g.official_date))];
+  return dates.sort().reverse();
 }
 
 export function toCompareMetrics(row: PlayerSeasonRow): CompareMetrics {

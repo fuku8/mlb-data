@@ -22,6 +22,14 @@ export function fixed(value: number | null, digits: number): string {
   return value.toFixed(digits);
 }
 
+/** Format ISO date (YYYY-MM-DD) to YYYY/MM/DD display format. */
+export function formatDate(d: string | undefined | null): string {
+  if (!d) return "";
+  const parts = d.split("-");
+  if (parts.length !== 3) return d;
+  return parts.join("/");
+}
+
 /** Convert innings pitched string (e.g. "6.2") to total outs. */
 export function ipToOuts(ip: string | null | undefined): number {
   if (!ip) return 0;

@@ -99,3 +99,7 @@ export async function getPlayerPitching(): Promise<Record<string, string>[]> {
 export async function getPlayerFielding(): Promise<Record<string, string>[]> {
   return readCsv("player_fielding.csv");
 }
+
+export async function getSchedule(): Promise<Record<string, string>[]> {
+  return readCsv("schedule.csv");
+}

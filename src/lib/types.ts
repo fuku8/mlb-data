@@ -126,6 +126,22 @@ export interface PlayerSeasonRow extends PlayerBase {
   fielding?: FieldingStats;
 }
 
+export interface GameResult {
+  game_pk: number;
+  game_date: string;
+  official_date: string;
+  status: string;
+  status_code: string;
+  day_night: string;
+  away_team_id: number | null;
+  away_team_name: string;
+  away_score: number | null;
+  home_team_id: number | null;
+  home_team_name: string;
+  home_score: number | null;
+  venue_name: string;
+}
+
 export interface CompareMetrics {
   player_id: number;
   player_name: string;

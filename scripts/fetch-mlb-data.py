@@ -62,12 +62,7 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
             writer.writerow({key: coerce_value(row.get(key)) for key in fieldnames})
 
 
-def fetch_schedule(session: requests.Session) -> list[dict[str, Any]]:
-    payload = request_json(
-        session,
-        "/schedule",
-        params={"sportId": 1, "date": TARGET_DATE},
-    )
+def _parse_schedule_games(payload: dict[str, Any]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for date_item in payload.get("dates", []):
         for game in date_item.get("games", []):
@@ -94,6 +89,72 @@ def fetch_schedule(session: requests.Session) -> list[dict[str, Any]]:
                 }
             )
     return rows
+
+
+def _read_existing_schedule() -> tuple[list[dict[str, Any]], str | None]:
+    """Read existing schedule.csv and return rows + last Final game date."""
+    csv_path = DATA_DIR / "schedule.csv"
+    if not csv_path.exists():
+        return [], None
+
+    with csv_path.open("r", encoding="utf-8") as fp:
+        reader = csv.DictReader(fp)
+        rows = list(reader)
+
+    last_date: str | None = None
+    for row in rows:
+        if row.get("status_code") == "F" and row.get("official_date"):
+            d = row["official_date"]
+            if last_date is None or d > last_date:
+                last_date = d
+    return rows, last_date
+
+
+def fetch_schedule(session: requests.Session) -> list[dict[str, Any]]:
+    existing_rows, last_final_date = _read_existing_schedule()
+
+    if last_final_date:
+        # Differential fetch: from last final date onward (re-fetch that day to update scores)
+        start_date = last_final_date
+        print(f"[INFO] schedule: differential fetch from {start_date}")
+    else:
+        # Full fetch: entire season
+        start_date = f"{SEASON}-03-01"
+        print("[INFO] schedule: full fetch (no existing data)")
+
+    payload = request_json(
+        session,
+        "/schedule",
+        params={
+            "sportId": 1,
+            "season": SEASON,
+            "startDate": start_date,
+            "endDate": f"{SEASON}-12-31",
+            "gameType": "R,F,D,L,W",
+            "hydrate": "team",
+        },
+    )
+    new_rows = _parse_schedule_games(payload)
+
+    if not last_final_date:
+        print(f"[INFO] schedule: fetched {len(new_rows)} games (full)")
+        return new_rows
+
+    # Merge: keep existing rows before start_date, replace with new from start_date onward
+    kept = [r for r in existing_rows if r.get("official_date", "") < start_date]
+    merged = kept + new_rows
+    # Deduplicate by game_pk (prefer newer data)
+    seen: set[str] = set()
+    deduped: list[dict[str, Any]] = []
+    for row in reversed(merged):
+        pk = str(row.get("game_pk", ""))
+        if pk not in seen:
+            seen.add(pk)
+            deduped.append(row)
+    deduped.reverse()
+
+    print(f"[INFO] schedule: kept {len(kept)} existing + {len(new_rows)} fetched = {len(deduped)} total")
+    return deduped
 
 
 def fetch_standings(session: requests.Session) -> list[dict[str, Any]]:
@@ -238,17 +299,22 @@ def fetch_player_group_stats(session: requests.Session, group: str) -> list[dict
 
 
 def fetch_and_write_live_games(session: requests.Session, schedule_rows: list[dict[str, Any]]) -> None:
-    for row in schedule_rows:
+    today_games = [r for r in schedule_rows if r.get("official_date") == TARGET_DATE]
+    for row in today_games:
         game_pk = row.get("game_pk")
         status = row.get("status")
         if not game_pk:
             continue
         if status not in {"In Progress", "Final", "Game Over"}:
             continue
-        payload = request_json(session, f"/game/{game_pk}/feed/live")
-        output = DATA_DIR / f"game_live_{game_pk}.json"
-        output.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-        time.sleep(REQUEST_DELAY_SEC)
+        try:
+            payload = request_json(session, f"/game/{game_pk}/feed/live")
+            output = DATA_DIR / f"game_live_{game_pk}.json"
+            output.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+            time.sleep(REQUEST_DELAY_SEC)
+        except RuntimeError:
+            print(f"[WARN] skipping live game {game_pk} (not available)")
+            continue
 
 
 def main() -> None:

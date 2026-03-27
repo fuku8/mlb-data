@@ -1,8 +1,22 @@
 import Link from "next/link";
-import { getStandings, parseNumber, readTextFile } from "@/lib/data/loaders";
+import { GameCard } from "@/components/game-card";
+import { getSchedule, getStandings, parseNumber, readTextFile } from "@/lib/data/loaders";
+import { getGameDates, parseGameResults } from "@/lib/data/normalizers";
+import { formatDate } from "@/lib/utils";
 
 export default async function HomePage() {
-  const [updated, standings] = await Promise.all([readTextFile("last_updated.txt"), getStandings()]);
+  const [updated, standings, scheduleRaw] = await Promise.all([
+    readTextFile("last_updated.txt"),
+    getStandings(),
+    getSchedule(),
+  ]);
+  const allGames = parseGameResults(scheduleRaw);
+  const dates = getGameDates(allGames);
+  // Find the latest date that has at least one Final game
+  const latestFinalDate = dates.find((d) => allGames.some((g) => g.official_date === d && g.status_code === "F"));
+  const recentGames = latestFinalDate
+    ? allGames.filter((g) => g.official_date === latestFinalDate).sort((a, b) => a.game_date.localeCompare(b.game_date))
+    : [];
   const sorted = [...standings].sort((a, b) => {
     const aRank = parseNumber(a.sport_rank);
     const bRank = parseNumber(b.sport_rank);
@@ -39,6 +53,25 @@ export default async function HomePage() {
       <section className="card">
         <p style={{ margin: 0 }}>Last updated (UTC): {updated ?? "N/A"}</p>
       </section>
+
+      {recentGames.length > 0 && (
+        <section className="card">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+            <h2 style={{ margin: 0 }}>
+              Latest Results
+              <span style={{ fontSize: 14, fontWeight: 400, color: "var(--muted-foreground)", marginLeft: 10 }}>
+                {formatDate(latestFinalDate)}
+              </span>
+            </h2>
+            <Link href={`/games?date=${latestFinalDate}`} style={{ fontSize: 13 }}>All games →</Link>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 10 }}>
+            {recentGames.map((g) => (
+              <GameCard key={g.game_pk} game={g} compact />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="card">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
