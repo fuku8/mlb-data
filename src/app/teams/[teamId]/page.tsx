@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, getStandings, getTeams, parseNumber } from "@/lib/data/loaders";
 import { formatAvg, formatEra, formatObp, formatOps, formatWhip, isQualifiedHitter, isQualifiedPitcher, mergePlayerStatsBySeason, seasonOrDefault } from "@/lib/data/normalizers";
-import { resolveTeamPlayerSort, sortTeamPlayerRows, type TeamSortKey } from "@/lib/team-player-sorting";
+import { defaultSortDirForKey, resolveTeamPlayerSort, sortTeamPlayerRows, type TeamSortKey } from "@/lib/team-player-sorting";
 import { fixed, ipToOuts, n, sum } from "@/lib/utils";
 
 type Props = {
@@ -85,7 +85,7 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
       qs.set("sortDir", activeSortDir === "asc" ? "desc" : "asc");
     } else {
       qs.set("sortBy", key);
-      qs.set("sortDir", key === "era" ? "asc" : "desc");
+      qs.set("sortDir", defaultSortDirForKey(key));
     }
     return `/teams/${teamId}?${qs.toString()}`;
   };
@@ -94,6 +94,8 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
       href={headerQuery(key)}
       style={{
         display: "inline-flex",
+        gap: 4,
+        alignItems: "center",
         color: activeSortBy === key ? "#f3f4f6" : "#a3a3a3",
         textDecoration: "none",
         cursor: "pointer",
@@ -102,6 +104,9 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
       title={`Sort by ${label}`}
     >
       <span>{label}</span>
+      {activeSortBy === key && (
+        <span style={{ fontSize: "0.7em", lineHeight: 1 }}>{activeSortDir === "asc" ? "▲" : "▼"}</span>
+      )}
     </Link>
   );
 

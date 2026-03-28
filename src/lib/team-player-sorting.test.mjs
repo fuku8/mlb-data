@@ -42,6 +42,11 @@ test("resolveTeamPlayerSort falls back to group defaults for invalid keys", () =
   assert.deepEqual(resolveTeamPlayerSort("pitching", "so", "asc"), { sortBy: "so", sortDir: "asc" });
 });
 
+test("resolveTeamPlayerSort uses default dir when dir is omitted for valid key", () => {
+  assert.deepEqual(resolveTeamPlayerSort("pitching", "so", undefined), { sortBy: "so", sortDir: "asc" });
+  assert.deepEqual(resolveTeamPlayerSort("hitting", "pa", undefined), { sortBy: "pa", sortDir: "desc" });
+});
+
 test("valueForTeamPlayerSort returns numeric hitting values", () => {
   const row = makeRow({
     hitting: {
@@ -56,6 +61,27 @@ test("valueForTeamPlayerSort returns numeric hitting values", () => {
 
   assert.equal(valueForTeamPlayerSort(row, "hitting", "pa"), 120);
   assert.equal(valueForTeamPlayerSort(row, "hitting", "ops"), 0.902);
+});
+
+test("valueForTeamPlayerSort returns pitching values including innings conversion", () => {
+  const row = makeRow({
+    pitching: {
+      wins: 3,
+      losses: 1,
+      saves: 0,
+      inningsPitched: "18.1",
+      era: "2.95",
+      whip: "1.04",
+      strikeOuts: 22,
+      baseOnBalls: 5,
+    },
+  });
+
+  assert.equal(valueForTeamPlayerSort(row, "pitching", "era"), 2.95);
+  assert.equal(valueForTeamPlayerSort(row, "pitching", "whip"), 1.04);
+  assert.equal(valueForTeamPlayerSort(row, "pitching", "ip"), 55); // 18*3 + 1 = 55 outs
+  assert.equal(valueForTeamPlayerSort(row, "pitching", "so"), 22);
+  assert.equal(valueForTeamPlayerSort(row, "pitching", "w"), 3);
 });
 
 test("sortTeamPlayerRows sorts hitting rows by requested metric and direction", () => {

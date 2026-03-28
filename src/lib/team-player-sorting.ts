@@ -46,23 +46,22 @@ export function defaultTeamPlayerSort(group: TeamStatGroup): { sortBy: TeamSortK
   return group === "hitting" ? { sortBy: "ops", sortDir: "desc" } : { sortBy: "era", sortDir: "asc" };
 }
 
+export function defaultSortDirForKey(key: string): TeamSortDir {
+  // Keys where smaller values are better → ascending is the natural default
+  const ascKeys = ["era", "whip", "bb9", "h9", "hr9"];
+  return ascKeys.includes(key) ? "asc" : "desc";
+}
+
 export function resolveTeamPlayerSort(
   group: TeamStatGroup,
   sortBy?: string | null,
   sortDir?: string | null,
 ): { sortBy: TeamSortKey; sortDir: TeamSortDir } {
-  const fallback = defaultTeamPlayerSort(group);
   const allowed = group === "hitting" ? hittingSortKeys : pitchingSortKeys;
-  const normalizedSortBy = sortBy && allowed.includes(sortBy as TeamSortKey) ? (sortBy as TeamSortKey) : fallback.sortBy;
-  const normalizedSortDir = sortDir === "asc" || sortDir === "desc" ? sortDir : fallback.sortDir;
-
-  if (normalizedSortBy !== fallback.sortBy) {
-    return { sortBy: normalizedSortBy, sortDir: normalizedSortDir };
-  }
-  if (sortBy === fallback.sortBy) {
-    return { sortBy: normalizedSortBy, sortDir: normalizedSortDir };
-  }
-  return fallback;
+  const isValidKey = sortBy && allowed.includes(sortBy as TeamSortKey);
+  if (!isValidKey) return defaultTeamPlayerSort(group);
+  const resolvedDir: TeamSortDir = sortDir === "asc" || sortDir === "desc" ? sortDir : defaultTeamPlayerSort(group).sortDir;
+  return { sortBy: sortBy as TeamSortKey, sortDir: resolvedDir };
 }
 
 function num(value: string | number | null | undefined): number | null {

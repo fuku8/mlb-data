@@ -11,6 +11,7 @@ import {
   isQualifiedPitcher,
   mergePlayerStatsBySeason,
 } from "@/lib/data/normalizers";
+import { defaultSortDirForKey } from "@/lib/team-player-sorting";
 import { n } from "@/lib/utils";
 
 type Props = {
@@ -27,7 +28,7 @@ export default async function PlayersPage({ searchParams }: Props) {
   const statGroup = group === "pitching" ? "pitching" : "hitting";
   const defaultSortBy = statGroup === "hitting" ? "ops" : "era";
   const activeSortBy = sortBy?.trim() || defaultSortBy;
-  const activeSortDir = sortDir === "asc" ? "asc" : "desc";
+  const activeSortDir: "asc" | "desc" = sortDir === "asc" || sortDir === "desc" ? sortDir : defaultSortDirForKey(activeSortBy);
   const pageNum = Math.max(1, Number(page ?? "1") || 1);
   const perPageNum = [25, 50, 100].includes(Number(perPage)) ? Number(perPage) : 25;
 
@@ -157,7 +158,7 @@ export default async function PlayersPage({ searchParams }: Props) {
       qs.set("sortDir", activeSortDir === "asc" ? "desc" : "asc");
     } else {
       qs.set("sortBy", key);
-      qs.set("sortDir", key === "era" ? "asc" : "desc");
+      qs.set("sortDir", defaultSortDirForKey(key));
     }
     return `/players?${qs.toString()}`;
   };
@@ -166,6 +167,8 @@ export default async function PlayersPage({ searchParams }: Props) {
       href={headerQuery(key)}
       style={{
         display: "inline-flex",
+        gap: 4,
+        alignItems: "center",
         color: activeSortBy === key ? "#f3f4f6" : "#a3a3a3",
         textDecoration: "none",
         cursor: "pointer",
@@ -174,6 +177,9 @@ export default async function PlayersPage({ searchParams }: Props) {
       title={`Sort by ${label}`}
     >
       <span>{label}</span>
+      {activeSortBy === key && (
+        <span style={{ fontSize: "0.7em", lineHeight: 1 }}>{activeSortDir === "asc" ? "▲" : "▼"}</span>
+      )}
     </Link>
   );
 
