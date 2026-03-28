@@ -8,8 +8,13 @@ type Props = {
 
 export function GameCard({ game: g, compact }: Props) {
   const isFinal = g.status_code === "F";
+  const isScheduled = g.status_code === "S";
   const awayWon = isFinal && g.away_score !== null && g.home_score !== null && g.away_score > g.home_score;
   const homeWon = isFinal && g.away_score !== null && g.home_score !== null && g.home_score > g.away_score;
+
+  const jstTime = isScheduled && g.game_date
+    ? new Date(g.game_date).toLocaleTimeString("ja-JP", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit", hour12: false })
+    : null;
 
   const badgeSize = compact ? 10 : 11;
   const scoreSize = compact ? 18 : 22;
@@ -40,7 +45,10 @@ export function GameCard({ game: g, compact }: Props) {
         >
           {isFinal ? "Final" : g.status}
         </span>
-        <span style={{ fontSize: badgeSize, color: "var(--muted-foreground)" }}>{g.venue_name}</span>
+        <span style={{ fontSize: badgeSize, color: "var(--muted-foreground)" }}>
+          {jstTime && <span style={{ marginRight: 6 }}>{jstTime} JST</span>}
+          {g.venue_name}
+        </span>
       </div>
 
       <div style={{ display: "grid", gap }}>
