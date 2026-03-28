@@ -24,8 +24,9 @@ export default async function GamesPage({ searchParams }: Props) {
     .sort((a, b) => a.game_date.localeCompare(b.game_date));
 
   const idx = dates.indexOf(selectedDate);
-  const prevDate = idx >= 0 ? dates[idx + 1] : undefined;
-  const nextDate = idx >= 1 ? dates[idx - 1] : undefined;
+  // dates は降順のため、インデックスが大きい = より古い日付
+  const prevDate = idx >= 0 && idx < dates.length - 1 ? dates[idx + 1] : undefined;
+  const nextDate = idx > 0 ? dates[idx - 1] : undefined;
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
@@ -38,7 +39,7 @@ export default async function GamesPage({ searchParams }: Props) {
             <span style={{ opacity: 0.3, fontSize: 14 }}>← Prev</span>
           )}
           <form method="get" style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <select name="date" defaultValue={selectedDate} style={{ minWidth: 160 }} aria-label="日付を選択">
+            <select key={selectedDate} name="date" defaultValue={selectedDate} style={{ minWidth: 160 }} aria-label="日付を選択">
               {dates.map((d) => (
                 <option key={d} value={d}>{formatDate(d)}</option>
               ))}
