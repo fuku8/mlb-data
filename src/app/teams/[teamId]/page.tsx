@@ -2,18 +2,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, getStandings, getTeams, parseNumber } from "@/lib/data/loaders";
 import { formatAvg, formatEra, formatObp, formatOps, formatWhip, isQualifiedHitter, isQualifiedPitcher, mergePlayerStatsBySeason, seasonOrDefault } from "@/lib/data/normalizers";
+import { resolveTeamPlayerSort, sortTeamPlayerRows, type TeamSortKey } from "@/lib/team-player-sorting";
 import { fixed, ipToOuts, n, sum } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ teamId: string }>;
-  searchParams: Promise<{ season?: string; group?: string }>;
+  searchParams: Promise<{ season?: string; group?: string; sortBy?: string; sortDir?: string }>;
 };
 
 export default async function TeamDetailPage({ params, searchParams }: Props) {
   const { teamId } = await params;
-  const { season, group } = await searchParams;
+  const { season, group, sortBy, sortDir } = await searchParams;
   const targetSeason = seasonOrDefault(season);
   const statGroup = group === "pitching" ? "pitching" : "hitting";
+  const { sortBy: activeSortBy, sortDir: activeSortDir } = resolveTeamPlayerSort(statGroup, sortBy, sortDir);
   const teamIdNum = parseNumber(teamId);
   if (!teamIdNum) notFound();
 
@@ -68,14 +70,40 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
   const teamEra = teamIpOuts > 0 ? (teamER * 27) / teamIpOuts : null;
   const teamWhip = teamIpOuts > 0 ? ((teamHPit + teamBBPit) * 3) / teamIpOuts : null;
 
-  const sorted = [...merged].sort((a, b) => {
-    if (statGroup === "hitting") {
-      return (parseNumber(b.hitting?.ops ?? null) ?? -1) - (parseNumber(a.hitting?.ops ?? null) ?? -1);
-    }
-    return (parseNumber(a.pitching?.era ?? null) ?? 999) - (parseNumber(b.pitching?.era ?? null) ?? 999);
-  });
+  const sorted = sortTeamPlayerRows(merged, statGroup, activeSortBy, activeSortDir);
 
   const teamName = standing?.team_name ?? teamMeta?.name ?? `Team ${teamId}`;
+  const commonQuery = new URLSearchParams({
+    season: targetSeason,
+    group: statGroup,
+    sortBy: activeSortBy,
+    sortDir: activeSortDir,
+  });
+  const headerQuery = (key: TeamSortKey) => {
+    const qs = new URLSearchParams(commonQuery);
+    if (activeSortBy === key) {
+      qs.set("sortDir", activeSortDir === "asc" ? "desc" : "asc");
+    } else {
+      qs.set("sortBy", key);
+      qs.set("sortDir", key === "era" ? "asc" : "desc");
+    }
+    return `/teams/${teamId}?${qs.toString()}`;
+  };
+  const sortableHeader = (label: string, key: TeamSortKey) => (
+    <Link
+      href={headerQuery(key)}
+      style={{
+        display: "inline-flex",
+        color: activeSortBy === key ? "#f3f4f6" : "#a3a3a3",
+        textDecoration: "none",
+        cursor: "pointer",
+        fontWeight: activeSortBy === key ? 700 : 600,
+      }}
+      title={`Sort by ${label}`}
+    >
+      <span>{label}</span>
+    </Link>
+  );
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
@@ -169,6 +197,8 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
       <section className="card">
         <form method="get" style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
           <input name="season" defaultValue={targetSeason} style={{ width: 120 }} />
+          <input type="hidden" name="sortBy" value={activeSortBy} />
+          <input type="hidden" name="sortDir" value={activeSortDir} />
           <select name="group" defaultValue={statGroup}>
             <option value="hitting">Hitting</option>
             <option value="pitching">Pitching</option>
@@ -183,27 +213,27 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
         <table>
           <thead>
             <tr>
-              <th>Player</th>
+              <th>{sortableHeader("Player", "player")}</th>
               <th>Pos</th>
               {statGroup === "hitting" ? (
                 <>
-                  <th>PA</th>
-                  <th>AVG</th>
-                  <th>OBP</th>
-                  <th>OPS</th>
-                  <th>HR</th>
-                  <th>RBI</th>
+                  <th>{sortableHeader("PA", "pa")}</th>
+                  <th>{sortableHeader("AVG", "avg")}</th>
+                  <th>{sortableHeader("OBP", "obp")}</th>
+                  <th>{sortableHeader("OPS", "ops")}</th>
+                  <th>{sortableHeader("HR", "hr")}</th>
+                  <th>{sortableHeader("RBI", "rbi")}</th>
                 </>
               ) : (
                 <>
-                  <th>W</th>
-                  <th>L</th>
-                  <th>SV</th>
-                  <th>IP</th>
-                  <th>ERA</th>
-                  <th>WHIP</th>
-                  <th>SO</th>
-                  <th>BB</th>
+                  <th>{sortableHeader("W", "w")}</th>
+                  <th>{sortableHeader("L", "l")}</th>
+                  <th>{sortableHeader("SV", "sv")}</th>
+                  <th>{sortableHeader("IP", "ip")}</th>
+                  <th>{sortableHeader("ERA", "era")}</th>
+                  <th>{sortableHeader("WHIP", "whip")}</th>
+                  <th>{sortableHeader("SO", "so")}</th>
+                  <th>{sortableHeader("BB", "bb")}</th>
                 </>
               )}
             </tr>
