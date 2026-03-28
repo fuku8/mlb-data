@@ -129,6 +129,7 @@ export interface PlayerSeasonRow extends PlayerBase {
 export interface GameResult {
   game_pk: number;
   game_date: string;
+  jst_date: string;
   official_date: string;
   status: string;
   status_code: string;

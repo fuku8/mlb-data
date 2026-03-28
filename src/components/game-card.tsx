@@ -8,11 +8,10 @@ type Props = {
 
 export function GameCard({ game: g, compact }: Props) {
   const isFinal = g.status_code === "F";
-  const isScheduled = g.status_code === "S";
   const awayWon = isFinal && g.away_score !== null && g.home_score !== null && g.away_score > g.home_score;
   const homeWon = isFinal && g.away_score !== null && g.home_score !== null && g.home_score > g.away_score;
 
-  const jstTime = isScheduled && g.game_date
+  const jstTime = !isFinal && g.game_date
     ? new Date(g.game_date).toLocaleTimeString("ja-JP", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit", hour12: false })
     : null;
 

@@ -211,10 +211,21 @@ export function mergePlayerStatsBySeason(params: {
     });
 }
 
+function gameUTCToJSTDate(game_date: string): string {
+  if (!game_date) return "";
+  const d = new Date(game_date);
+  if (isNaN(d.getTime())) return "";
+  // JST = UTC + 9時間
+  const jst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
+  return jst.toISOString().slice(0, 10);
+}
+
 export function toGameResult(rec: StringRecord): GameResult {
+  const game_date = rec.game_date ?? "";
   return {
     game_pk: parseNumber(rec.game_pk) ?? 0,
-    game_date: rec.game_date ?? "",
+    game_date,
+    jst_date: gameUTCToJSTDate(game_date),
     official_date: rec.official_date ?? "",
     status: rec.status ?? "",
     status_code: rec.status_code ?? "",
@@ -234,7 +245,7 @@ export function parseGameResults(records: StringRecord[]): GameResult[] {
 }
 
 export function getGameDates(games: GameResult[]): string[] {
-  const dates = [...new Set(games.map((g) => g.official_date))];
+  const dates = [...new Set(games.map((g) => g.jst_date).filter(Boolean))];
   return dates.sort().reverse();
 }
 

@@ -15,12 +15,12 @@ export default async function GamesPage({ searchParams }: Props) {
   const dates = getGameDates(allGames);
 
   const latestFinalDate = dates.find((d) =>
-    allGames.some((g) => g.official_date === d && g.status_code === "F")
+    allGames.some((g) => g.jst_date === d && g.status_code === "F")
   );
   const defaultDate = latestFinalDate ?? dates[0] ?? "";
   const selectedDate = date && dates.includes(date) ? date : defaultDate;
   const games = allGames
-    .filter((g) => g.official_date === selectedDate)
+    .filter((g) => g.jst_date === selectedDate)
     .sort((a, b) => a.game_date.localeCompare(b.game_date));
 
   const idx = dates.indexOf(selectedDate);

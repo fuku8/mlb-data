@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { GameCard } from "@/components/game-card";
 import { getSchedule, getStandings, parseNumber, readTextFile } from "@/lib/data/loaders";
-import { getGameDates, parseGameResults } from "@/lib/data/normalizers";
+import { parseGameResults } from "@/lib/data/normalizers";
+import { formatUpdatedAtJst, getGamesForJstDate, getLatestFinalJstDate } from "@/lib/game-display";
 import { formatDate } from "@/lib/utils";
 
 export default async function HomePage() {
@@ -11,12 +12,9 @@ export default async function HomePage() {
     getSchedule(),
   ]);
   const allGames = parseGameResults(scheduleRaw);
-  const dates = getGameDates(allGames);
-  // Find the latest date that has at least one Final game
-  const latestFinalDate = dates.find((d) => allGames.some((g) => g.official_date === d && g.status_code === "F"));
-  const recentGames = latestFinalDate
-    ? allGames.filter((g) => g.official_date === latestFinalDate).sort((a, b) => a.game_date.localeCompare(b.game_date))
-    : [];
+  const latestFinalDate = getLatestFinalJstDate(allGames);
+  const recentGames = latestFinalDate ? getGamesForJstDate(allGames, latestFinalDate) : [];
+  const updatedAtLabel = formatUpdatedAtJst(updated);
   const sorted = [...standings].sort((a, b) => {
     const aRank = parseNumber(a.sport_rank);
     const bRank = parseNumber(b.sport_rank);
@@ -51,7 +49,7 @@ export default async function HomePage() {
       </section>
 
       <section className="card">
-        <p style={{ margin: 0 }}>Last updated (UTC): {updated ?? "N/A"}</p>
+        <p style={{ margin: 0 }}>Last updated (JST): {updatedAtLabel}</p>
       </section>
 
       {recentGames.length > 0 && (
