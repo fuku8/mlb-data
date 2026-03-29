@@ -19,21 +19,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 5,116,Detroit Tigers,night,N,2026-03-28T01:40:00Z,823324,2,135,San Diego Padres,2026-03-27,Regular Season,Final,F,2680,Petco Park
 1,114,Cleveland Guardians,night,N,2026-03-28T01:45:00Z,823162,5,136,Seattle Mariners,2026-03-27,Regular Season,Final,F,680,T-Mobile Park
 4,109,Arizona Diamondbacks,night,N,2026-03-28T02:10:00Z,823971,5,119,Los Angeles Dodgers,2026-03-27,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
-,139,Tampa Bay Rays,day,N,2026-03-28T18:15:00Z,823082,,138,St. Louis Cardinals,2026-03-28,Regular Season,Scheduled,S,2889,Busch Stadium
-,120,Washington Nationals,day,N,2026-03-28T18:20:00Z,824701,,112,Chicago Cubs,2026-03-28,Regular Season,Scheduled,S,17,Wrigley Field
-,133,Athletics,day,N,2026-03-28T19:07:00Z,822838,,141,Toronto Blue Jays,2026-03-28,Regular Season,Scheduled,S,14,Rogers Centre
-,142,Minnesota Twins,day,N,2026-03-28T20:05:00Z,824862,,110,Baltimore Orioles,2026-03-28,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,140,Texas Rangers,day,N,2026-03-28T20:05:00Z,823488,,143,Philadelphia Phillies,2026-03-28,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,111,Boston Red Sox,day,N,2026-03-28T20:10:00Z,824540,,113,Cincinnati Reds,2026-03-28,Regular Season,Scheduled,S,2602,Great American Ball Park
-,134,Pittsburgh Pirates,day,N,2026-03-28T20:10:00Z,823651,,121,New York Mets,2026-03-28,Regular Season,Scheduled,S,3289,Citi Field
-,115,Colorado Rockies,day,N,2026-03-28T20:10:00Z,823892,,146,Miami Marlins,2026-03-28,Regular Season,Scheduled,S,4169,loanDepot park
-,108,Los Angeles Angels,night,N,2026-03-28T23:10:00Z,824213,,117,Houston Astros,2026-03-28,Regular Season,Scheduled,S,2392,Daikin Park
-,145,Chicago White Sox,night,N,2026-03-28T23:10:00Z,823811,,158,Milwaukee Brewers,2026-03-28,Regular Season,Scheduled,S,32,American Family Field
-,118,Kansas City Royals,night,N,2026-03-28T23:15:00Z,824945,,144,Atlanta Braves,2026-03-28,Regular Season,Scheduled,S,4705,Truist Park
-,147,New York Yankees,day,N,2026-03-28T23:15:00Z,823241,,137,San Francisco Giants,2026-03-28,Regular Season,Scheduled,S,2395,Oracle Park
-,116,Detroit Tigers,night,N,2026-03-29T00:40:00Z,823323,,135,San Diego Padres,2026-03-28,Regular Season,Scheduled,S,2680,Petco Park
-,109,Arizona Diamondbacks,night,N,2026-03-29T01:10:00Z,823973,,119,Los Angeles Dodgers,2026-03-28,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
-,114,Cleveland Guardians,night,N,2026-03-29T01:40:00Z,823161,,136,Seattle Mariners,2026-03-28,Regular Season,Scheduled,S,680,T-Mobile Park
+5,139,Tampa Bay Rays,day,N,2026-03-28T18:15:00Z,823082,6,138,St. Louis Cardinals,2026-03-28,Regular Season,Final,F,2889,Busch Stadium
+2,120,Washington Nationals,day,N,2026-03-28T18:20:00Z,824701,10,112,Chicago Cubs,2026-03-28,Regular Season,Final,F,17,Wrigley Field
+7,133,Athletics,day,N,2026-03-28T19:07:00Z,822838,8,141,Toronto Blue Jays,2026-03-28,Regular Season,Final,F,14,Rogers Centre
+4,142,Minnesota Twins,day,N,2026-03-28T20:05:00Z,824862,1,110,Baltimore Orioles,2026-03-28,Regular Season,Final,F,2,Oriole Park at Camden Yards
+5,140,Texas Rangers,day,N,2026-03-28T20:05:00Z,823488,4,143,Philadelphia Phillies,2026-03-28,Regular Season,Final,F,2681,Citizens Bank Park
+5,111,Boston Red Sox,day,N,2026-03-28T20:10:00Z,824540,6,113,Cincinnati Reds,2026-03-28,Regular Season,Final,F,2602,Great American Ball Park
+2,134,Pittsburgh Pirates,day,N,2026-03-28T20:10:00Z,823651,4,121,New York Mets,2026-03-28,Regular Season,Final,F,3289,Citi Field
+3,115,Colorado Rockies,day,N,2026-03-28T20:10:00Z,823892,4,146,Miami Marlins,2026-03-28,Regular Season,Final,F,4169,loanDepot park
+9,108,Los Angeles Angels,night,N,2026-03-28T23:10:00Z,824213,11,117,Houston Astros,2026-03-28,Regular Season,Final,F,2392,Daikin Park
+1,145,Chicago White Sox,night,N,2026-03-28T23:10:00Z,823811,6,158,Milwaukee Brewers,2026-03-28,Regular Season,Final,F,32,American Family Field
+2,118,Kansas City Royals,night,N,2026-03-28T23:15:00Z,824945,6,144,Atlanta Braves,2026-03-28,Regular Season,Final,F,4705,Truist Park
+3,147,New York Yankees,day,N,2026-03-28T23:15:00Z,823241,1,137,San Francisco Giants,2026-03-28,Regular Season,Final,F,2395,Oracle Park
+0,116,Detroit Tigers,night,N,2026-03-29T00:40:00Z,823323,3,135,San Diego Padres,2026-03-28,Regular Season,Final,F,2680,Petco Park
+2,109,Arizona Diamondbacks,night,N,2026-03-29T01:10:00Z,823973,3,119,Los Angeles Dodgers,2026-03-28,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
+6,114,Cleveland Guardians,night,N,2026-03-29T01:40:00Z,823161,5,136,Seattle Mariners,2026-03-28,Regular Season,Final,F,680,T-Mobile Park
 ,142,Minnesota Twins,day,N,2026-03-29T17:35:00Z,824864,,110,Baltimore Orioles,2026-03-29,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,140,Texas Rangers,day,N,2026-03-29T17:35:00Z,823487,,143,Philadelphia Phillies,2026-03-29,Regular Season,Scheduled,S,2681,Citizens Bank Park
 ,118,Kansas City Royals,day,N,2026-03-29T17:35:00Z,824944,,144,Atlanta Braves,2026-03-29,Regular Season,Scheduled,S,4705,Truist Park
