@@ -34,18 +34,18 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 0,116,Detroit Tigers,night,N,2026-03-29T00:40:00Z,823323,3,135,San Diego Padres,2026-03-28,Regular Season,Final,F,2680,Petco Park
 2,109,Arizona Diamondbacks,night,N,2026-03-29T01:10:00Z,823973,3,119,Los Angeles Dodgers,2026-03-28,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 6,114,Cleveland Guardians,night,N,2026-03-29T01:40:00Z,823161,5,136,Seattle Mariners,2026-03-28,Regular Season,Final,F,680,T-Mobile Park
-,142,Minnesota Twins,day,N,2026-03-29T17:35:00Z,824864,,110,Baltimore Orioles,2026-03-29,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,140,Texas Rangers,day,N,2026-03-29T17:35:00Z,823487,,143,Philadelphia Phillies,2026-03-29,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,118,Kansas City Royals,day,N,2026-03-29T17:35:00Z,824944,,144,Atlanta Braves,2026-03-29,Regular Season,Scheduled,S,4705,Truist Park
-,133,Athletics,day,N,2026-03-29T17:37:00Z,822837,,141,Toronto Blue Jays,2026-03-29,Regular Season,Scheduled,S,14,Rogers Centre
-,111,Boston Red Sox,day,N,2026-03-29T17:40:00Z,824538,,113,Cincinnati Reds,2026-03-29,Regular Season,Scheduled,S,2602,Great American Ball Park
-,134,Pittsburgh Pirates,day,N,2026-03-29T17:40:00Z,823647,,121,New York Mets,2026-03-29,Regular Season,Scheduled,S,3289,Citi Field
-,115,Colorado Rockies,day,N,2026-03-29T17:40:00Z,823891,,146,Miami Marlins,2026-03-29,Regular Season,Scheduled,S,4169,loanDepot park
-,108,Los Angeles Angels,day,N,2026-03-29T18:10:00Z,824215,,117,Houston Astros,2026-03-29,Regular Season,Scheduled,S,2392,Daikin Park
-,145,Chicago White Sox,day,N,2026-03-29T18:10:00Z,823810,,158,Milwaukee Brewers,2026-03-29,Regular Season,Scheduled,S,32,American Family Field
-,139,Tampa Bay Rays,day,N,2026-03-29T18:15:00Z,823079,,138,St. Louis Cardinals,2026-03-29,Regular Season,Scheduled,S,2889,Busch Stadium
-,120,Washington Nationals,day,N,2026-03-29T18:20:00Z,824700,,112,Chicago Cubs,2026-03-29,Regular Season,Scheduled,S,17,Wrigley Field
-,114,Cleveland Guardians,day,N,2026-03-29T23:20:00Z,823160,,136,Seattle Mariners,2026-03-29,Regular Season,Scheduled,S,680,T-Mobile Park
+6,142,Minnesota Twins,day,N,2026-03-29T17:35:00Z,824864,8,110,Baltimore Orioles,2026-03-29,Regular Season,Final,F,2,Oriole Park at Camden Yards
+8,140,Texas Rangers,day,N,2026-03-29T17:35:00Z,823487,3,143,Philadelphia Phillies,2026-03-29,Regular Season,Final,F,2681,Citizens Bank Park
+4,118,Kansas City Royals,day,N,2026-03-29T17:35:00Z,824944,1,144,Atlanta Braves,2026-03-29,Regular Season,Final,F,4705,Truist Park
+2,133,Athletics,day,N,2026-03-29T17:37:00Z,822837,5,141,Toronto Blue Jays,2026-03-29,Regular Season,Final,F,14,Rogers Centre
+2,111,Boston Red Sox,day,N,2026-03-29T17:40:00Z,824538,3,113,Cincinnati Reds,2026-03-29,Regular Season,Final,F,2602,Great American Ball Park
+4,134,Pittsburgh Pirates,day,N,2026-03-29T17:40:00Z,823647,3,121,New York Mets,2026-03-29,Regular Season,Final,F,3289,Citi Field
+3,115,Colorado Rockies,day,N,2026-03-29T17:40:00Z,823891,4,146,Miami Marlins,2026-03-29,Regular Season,Final,F,4169,loanDepot park
+7,108,Los Angeles Angels,day,N,2026-03-29T18:10:00Z,824215,9,117,Houston Astros,2026-03-29,Regular Season,Final,F,2392,Daikin Park
+7,145,Chicago White Sox,day,N,2026-03-29T18:10:00Z,823810,9,158,Milwaukee Brewers,2026-03-29,Regular Season,Final,F,32,American Family Field
+11,139,Tampa Bay Rays,day,N,2026-03-29T18:15:00Z,823079,7,138,St. Louis Cardinals,2026-03-29,Regular Season,Final,F,2889,Busch Stadium
+6,120,Washington Nationals,day,N,2026-03-29T18:20:00Z,824700,3,112,Chicago Cubs,2026-03-29,Regular Season,Final,F,17,Wrigley Field
+0,114,Cleveland Guardians,day,N,2026-03-29T23:20:00Z,823160,8,136,Seattle Mariners,2026-03-29,Regular Season,Final,F,680,T-Mobile Park
 ,142,Minnesota Twins,day,N,2026-03-30T20:10:00Z,824135,,118,Kansas City Royals,2026-03-30,Regular Season,Scheduled,S,7,Kauffman Stadium
 ,140,Texas Rangers,night,N,2026-03-30T22:35:00Z,824863,,110,Baltimore Orioles,2026-03-30,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,134,Pittsburgh Pirates,night,N,2026-03-30T22:40:00Z,824539,,113,Cincinnati Reds,2026-03-30,Regular Season,Scheduled,S,2602,Great American Ball Park
