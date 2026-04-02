@@ -75,29 +75,29 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 9,137,San Francisco Giants,night,N,2026-04-01T01:40:00Z,823322,3,135,San Diego Padres,2026-03-31,Regular Season,Final,F,2680,Petco Park
 5,147,New York Yankees,night,N,2026-04-01T01:40:00Z,823158,0,136,Seattle Mariners,2026-03-31,Regular Season,Final,F,680,T-Mobile Park
 1,114,Cleveland Guardians,night,N,2026-04-01T02:10:00Z,823969,4,119,Los Angeles Dodgers,2026-03-31,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
-,133,Athletics,day,N,2026-04-01T16:15:00Z,824940,,144,Atlanta Braves,2026-04-01,Regular Season,Scheduled,S,4705,Truist Park
-,140,Texas Rangers,day,N,2026-04-01T16:35:00Z,824860,,110,Baltimore Orioles,2026-04-01,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,134,Pittsburgh Pirates,day,N,2026-04-01T16:40:00Z,824536,,113,Cincinnati Reds,2026-04-01,Regular Season,Scheduled,S,2602,Great American Ball Park
-,120,Washington Nationals,day,N,2026-04-01T17:05:00Z,823483,,143,Philadelphia Phillies,2026-04-01,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,115,Colorado Rockies,day,N,2026-04-01T17:07:00Z,822835,,141,Toronto Blue Jays,2026-04-01,Regular Season,Scheduled,S,14,Rogers Centre
-,145,Chicago White Sox,day,N,2026-04-01T17:10:00Z,823889,,146,Miami Marlins,2026-04-01,Regular Season,Scheduled,S,4169,loanDepot park
-,121,New York Mets,day,N,2026-04-01T17:15:00Z,823078,,138,St. Louis Cardinals,2026-04-01,Regular Season,Scheduled,S,2889,Busch Stadium
-,139,Tampa Bay Rays,day,N,2026-04-01T17:40:00Z,823806,,158,Milwaukee Brewers,2026-04-01,Regular Season,Scheduled,S,32,American Family Field
-,111,Boston Red Sox,day,N,2026-04-01T18:10:00Z,824211,,117,Houston Astros,2026-04-01,Regular Season,Scheduled,S,2392,Daikin Park
-,108,Los Angeles Angels,day,N,2026-04-01T18:20:00Z,824698,,112,Chicago Cubs,2026-04-01,Regular Season,Scheduled,S,17,Wrigley Field
-,116,Detroit Tigers,day,N,2026-04-01T19:40:00Z,825106,,109,Arizona Diamondbacks,2026-04-01,Regular Season,Scheduled,S,15,Chase Field
-,137,San Francisco Giants,day,N,2026-04-01T20:10:00Z,823321,,135,San Diego Padres,2026-04-01,Regular Season,Scheduled,S,2680,Petco Park
-,147,New York Yankees,day,N,2026-04-01T20:10:00Z,823157,,136,Seattle Mariners,2026-04-01,Regular Season,Scheduled,S,680,T-Mobile Park
-,142,Minnesota Twins,night,N,2026-04-01T23:40:00Z,824136,,118,Kansas City Royals,2026-04-01,Regular Season,Scheduled,S,7,Kauffman Stadium
-,114,Cleveland Guardians,night,N,2026-04-02T00:20:00Z,823970,,119,Los Angeles Dodgers,2026-04-01,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+1,133,Athletics,day,N,2026-04-01T16:15:00Z,824940,5,144,Atlanta Braves,2026-04-01,Regular Season,Final,F,4705,Truist Park
+3,140,Texas Rangers,day,N,2026-04-01T16:35:00Z,824860,8,110,Baltimore Orioles,2026-04-01,Regular Season,Final,F,2,Oriole Park at Camden Yards
+8,134,Pittsburgh Pirates,day,N,2026-04-01T16:40:00Z,824536,3,113,Cincinnati Reds,2026-04-01,Regular Season,Final,F,2602,Great American Ball Park
+5,120,Washington Nationals,day,N,2026-04-01T17:05:00Z,823483,6,143,Philadelphia Phillies,2026-04-01,Regular Season,Final,F,2681,Citizens Bank Park
+2,115,Colorado Rockies,day,N,2026-04-01T17:07:00Z,822835,1,141,Toronto Blue Jays,2026-04-01,Regular Season,Final,F,14,Rogers Centre
+0,145,Chicago White Sox,day,N,2026-04-01T17:10:00Z,823889,10,146,Miami Marlins,2026-04-01,Regular Season,Final,F,4169,loanDepot park
+1,121,New York Mets,day,N,2026-04-01T17:15:00Z,823078,2,138,St. Louis Cardinals,2026-04-01,Regular Season,Final,F,2889,Busch Stadium
+2,139,Tampa Bay Rays,day,N,2026-04-01T17:40:00Z,823806,8,158,Milwaukee Brewers,2026-04-01,Regular Season,Final,F,32,American Family Field
+4,111,Boston Red Sox,day,N,2026-04-01T18:10:00Z,824211,6,117,Houston Astros,2026-04-01,Regular Season,Final,F,2392,Daikin Park
+2,108,Los Angeles Angels,day,N,2026-04-01T18:20:00Z,824698,6,112,Chicago Cubs,2026-04-01,Regular Season,Final,F,17,Wrigley Field
+0,116,Detroit Tigers,day,N,2026-04-01T19:40:00Z,825106,1,109,Arizona Diamondbacks,2026-04-01,Regular Season,Final,F,15,Chase Field
+1,137,San Francisco Giants,day,N,2026-04-01T20:10:00Z,823321,7,135,San Diego Padres,2026-04-01,Regular Season,Final,F,2680,Petco Park
+5,147,New York Yankees,day,N,2026-04-01T20:10:00Z,823157,3,136,Seattle Mariners,2026-04-01,Regular Season,Final,F,680,T-Mobile Park
+9,142,Minnesota Twins,night,N,2026-04-01T23:40:00Z,824136,13,118,Kansas City Royals,2026-04-01,Regular Season,Final,F,7,Kauffman Stadium
+4,114,Cleveland Guardians,night,N,2026-04-02T00:20:00Z,823970,1,119,Los Angeles Dodgers,2026-04-01,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 ,142,Minnesota Twins,day,N,2026-04-02T18:10:00Z,824133,,118,Kansas City Royals,2026-04-02,Regular Season,Scheduled,S,7,Kauffman Stadium
-,141,Toronto Blue Jays,day,N,2026-04-02T20:10:00Z,824621,,145,Chicago White Sox,2026-04-02,Regular Season,Scheduled,S,4,Rate Field
 ,144,Atlanta Braves,night,N,2026-04-03T01:40:00Z,825105,,109,Arizona Diamondbacks,2026-04-02,Regular Season,Scheduled,S,15,Chase Field
 ,121,New York Mets,night,N,2026-04-03T01:45:00Z,823242,,137,San Francisco Giants,2026-04-02,Regular Season,Scheduled,S,2395,Oracle Park
 ,119,Los Angeles Dodgers,day,N,2026-04-03T17:05:00Z,822758,,120,Washington Nationals,2026-04-03,Regular Season,Scheduled,S,3309,Nationals Park
 ,138,St. Louis Cardinals,day,N,2026-04-03T17:10:00Z,824299,,116,Detroit Tigers,2026-04-03,Regular Season,Scheduled,S,2394,Comerica Park
 ,146,Miami Marlins,day,N,2026-04-03T17:35:00Z,823568,,147,New York Yankees,2026-04-03,Regular Season,Scheduled,S,3313,Yankee Stadium
 ,135,San Diego Padres,day,N,2026-04-03T18:10:00Z,824786,,111,Boston Red Sox,2026-04-03,Regular Season,Scheduled,S,3,Fenway Park
+,141,Toronto Blue Jays,day,N,2026-04-03T18:10:00Z,824621,,145,Chicago White Sox,2026-04-03,Regular Season,Scheduled,S,4,Rate Field
 ,113,Cincinnati Reds,day,N,2026-04-03T20:05:00Z,822919,,140,Texas Rangers,2026-04-03,Regular Season,Scheduled,S,5325,Globe Life Field
 ,112,Chicago Cubs,day,N,2026-04-03T20:10:00Z,824458,,114,Cleveland Guardians,2026-04-03,Regular Season,Scheduled,S,5,Progressive Field
 ,139,Tampa Bay Rays,day,N,2026-04-03T20:10:00Z,823732,,142,Minnesota Twins,2026-04-03,Regular Season,Scheduled,S,3312,Target Field
