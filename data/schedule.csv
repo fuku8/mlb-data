@@ -181,12 +181,12 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 4,113,Cincinnati Reds,night,N,2026-04-08T22:40:00Z,823885,7,146,Miami Marlins,2026-04-08,Regular Season,Final,F,4169,loanDepot park
 3,133,Athletics,night,N,2026-04-08T23:05:00Z,823564,2,147,New York Yankees,2026-04-08,Regular Season,Final,F,3313,Yankee Stadium
 6,116,Detroit Tigers,night,N,2026-04-08T23:40:00Z,823726,8,142,Minnesota Twins,2026-04-08,Regular Season,Final,F,3312,Target Field
-,113,Cincinnati Reds,day,N,2026-04-09T16:10:00Z,823884,,146,Miami Marlins,2026-04-09,Regular Season,Scheduled,S,4169,loanDepot park
-,133,Athletics,day,N,2026-04-09T17:35:00Z,823565,,147,New York Yankees,2026-04-09,Regular Season,Scheduled,S,3313,Yankee Stadium
-,116,Detroit Tigers,day,N,2026-04-09T17:40:00Z,823724,,142,Minnesota Twins,2026-04-09,Regular Season,Scheduled,S,3312,Target Field
-,109,Arizona Diamondbacks,night,N,2026-04-09T23:10:00Z,823645,,121,New York Mets,2026-04-09,Regular Season,Scheduled,S,3289,Citi Field
-,145,Chicago White Sox,night,N,2026-04-09T23:40:00Z,824130,,118,Kansas City Royals,2026-04-09,Regular Season,Scheduled,S,7,Kauffman Stadium
-,115,Colorado Rockies,night,N,2026-04-10T01:40:00Z,823319,,135,San Diego Padres,2026-04-09,Regular Season,Scheduled,S,2680,Petco Park
+1,113,Cincinnati Reds,day,N,2026-04-09T16:10:00Z,823884,8,146,Miami Marlins,2026-04-09,Regular Season,Final,F,4169,loanDepot park
+1,133,Athletics,day,N,2026-04-09T17:35:00Z,823565,0,147,New York Yankees,2026-04-09,Regular Season,Final,F,3313,Yankee Stadium
+1,116,Detroit Tigers,day,N,2026-04-09T17:40:00Z,823724,3,142,Minnesota Twins,2026-04-09,Regular Season,Final,F,3312,Target Field
+7,109,Arizona Diamondbacks,night,N,2026-04-09T23:10:00Z,823645,1,121,New York Mets,2026-04-09,Regular Season,Final,F,3289,Citi Field
+2,145,Chicago White Sox,night,N,2026-04-09T23:40:00Z,824130,0,118,Kansas City Royals,2026-04-09,Regular Season,Final,F,7,Kauffman Stadium
+3,115,Colorado Rockies,night,N,2026-04-10T01:40:00Z,823319,7,135,San Diego Padres,2026-04-09,Regular Season,Final,F,2680,Petco Park
 ,134,Pittsburgh Pirates,day,N,2026-04-10T18:20:00Z,824695,,112,Chicago Cubs,2026-04-10,Regular Season,Scheduled,S,17,Wrigley Field
 ,109,Arizona Diamondbacks,night,N,2026-04-10T22:40:00Z,823482,,143,Philadelphia Phillies,2026-04-10,Regular Season,Scheduled,S,2681,Citizens Bank Park
 ,146,Miami Marlins,night,N,2026-04-10T22:40:00Z,824297,,116,Detroit Tigers,2026-04-10,Regular Season,Scheduled,S,2394,Comerica Park
