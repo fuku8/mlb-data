@@ -297,22 +297,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 5,140,Texas Rangers,night,N,2026-04-18T01:40:00Z,823152,0,136,Seattle Mariners,2026-04-17,Regular Season,Final,F,680,T-Mobile Park
 3,141,Toronto Blue Jays,night,N,2026-04-18T01:40:00Z,825101,6,109,Arizona Diamondbacks,2026-04-17,Regular Season,Final,F,15,Chase Field
 9,145,Chicago White Sox,night,N,2026-04-18T01:40:00Z,825019,2,133,Athletics,2026-04-17,Regular Season,Final,F,2529,Sutter Health Park
-,118,Kansas City Royals,day,N,2026-04-18T17:35:00Z,823558,,147,New York Yankees,2026-04-18,Regular Season,Scheduled,S,3313,Yankee Stadium
-,113,Cincinnati Reds,day,N,2026-04-18T18:10:00Z,823721,,142,Minnesota Twins,2026-04-18,Regular Season,Scheduled,S,3312,Target Field
-,121,New York Mets,day,N,2026-04-18T18:20:00Z,824694,,112,Chicago Cubs,2026-04-18,Regular Season,Scheduled,S,17,Wrigley Field
-,137,San Francisco Giants,day,N,2026-04-18T20:05:00Z,822751,,120,Washington Nationals,2026-04-18,Regular Season,Scheduled,S,3309,Nationals Park
-,139,Tampa Bay Rays,day,N,2026-04-18T20:05:00Z,823394,,134,Pittsburgh Pirates,2026-04-18,Regular Season,Scheduled,S,31,PNC Park
-,145,Chicago White Sox,day,N,2026-04-18T20:05:00Z,825020,,133,Athletics,2026-04-18,Regular Season,Scheduled,S,2529,Sutter Health Park
-,116,Detroit Tigers,day,N,2026-04-18T20:10:00Z,824775,,111,Boston Red Sox,2026-04-18,Regular Season,Scheduled,S,3,Fenway Park
-,158,Milwaukee Brewers,day,N,2026-04-18T20:10:00Z,823882,,146,Miami Marlins,2026-04-18,Regular Season,Scheduled,S,4169,loanDepot park
-,110,Baltimore Orioles,night,N,2026-04-18T22:10:00Z,824451,,114,Cleveland Guardians,2026-04-18,Regular Season,Scheduled,S,5,Progressive Field
-,138,St. Louis Cardinals,night,N,2026-04-18T23:10:00Z,824206,,117,Houston Astros,2026-04-18,Regular Season,Scheduled,S,2392,Daikin Park
-,140,Texas Rangers,day,N,2026-04-18T23:15:00Z,823151,,136,Seattle Mariners,2026-04-18,Regular Season,Scheduled,S,680,T-Mobile Park
-,144,Atlanta Braves,night,N,2026-04-18T23:15:00Z,823474,,143,Philadelphia Phillies,2026-04-18,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,119,Los Angeles Dodgers,night,N,2026-04-19T00:10:00Z,824372,,115,Colorado Rockies,2026-04-18,Regular Season,Scheduled,S,19,Coors Field
-,141,Toronto Blue Jays,night,N,2026-04-19T00:10:00Z,825098,,109,Arizona Diamondbacks,2026-04-18,Regular Season,Scheduled,S,15,Chase Field
-,135,San Diego Padres,night,N,2026-04-19T01:38:00Z,824049,,108,Los Angeles Angels,2026-04-18,Regular Season,Scheduled,S,1,Angel Stadium
-,116,Detroit Tigers,day,N,2026-04-19T17:35:00Z,824777,,111,Boston Red Sox,2026-04-19,Regular Season,Scheduled,S,3,Fenway Park
+4,118,Kansas City Royals,day,N,2026-04-18T17:35:00Z,823558,13,147,New York Yankees,2026-04-18,Regular Season,Final,F,3313,Yankee Stadium
+5,113,Cincinnati Reds,day,N,2026-04-18T18:10:00Z,823721,4,142,Minnesota Twins,2026-04-18,Regular Season,Final,F,3312,Target Field
+2,121,New York Mets,day,N,2026-04-18T18:20:00Z,824694,4,112,Chicago Cubs,2026-04-18,Regular Season,Final,F,17,Wrigley Field
+8,139,Tampa Bay Rays,day,N,2026-04-18T19:30:00Z,823394,7,134,Pittsburgh Pirates,2026-04-18,Regular Season,Final,F,31,PNC Park
+7,137,San Francisco Giants,day,N,2026-04-18T20:05:00Z,822751,6,120,Washington Nationals,2026-04-18,Regular Season,Final,F,3309,Nationals Park
+6,145,Chicago White Sox,day,N,2026-04-18T20:05:00Z,825020,7,133,Athletics,2026-04-18,Regular Season,Final,F,2529,Sutter Health Park
+4,116,Detroit Tigers,day,N,2026-04-18T20:10:00Z,824775,1,111,Boston Red Sox,2026-04-18,Regular Season,Final,F,3,Fenway Park
+5,158,Milwaukee Brewers,day,N,2026-04-18T20:10:00Z,823882,2,146,Miami Marlins,2026-04-18,Regular Season,Final,F,4169,loanDepot park
+2,110,Baltimore Orioles,night,N,2026-04-18T22:10:00Z,824451,4,114,Cleveland Guardians,2026-04-18,Regular Season,Final,F,5,Progressive Field
+7,138,St. Louis Cardinals,night,N,2026-04-18T23:10:00Z,824206,5,117,Houston Astros,2026-04-18,Regular Season,Final,F,2392,Daikin Park
+3,140,Texas Rangers,day,N,2026-04-18T23:15:00Z,823151,7,136,Seattle Mariners,2026-04-18,Regular Season,Final,F,680,T-Mobile Park
+3,144,Atlanta Braves,night,N,2026-04-18T23:15:00Z,823474,1,143,Philadelphia Phillies,2026-04-18,Regular Season,Final,F,2681,Citizens Bank Park
+3,119,Los Angeles Dodgers,night,N,2026-04-19T00:10:00Z,824372,4,115,Colorado Rockies,2026-04-18,Regular Season,Final,F,19,Coors Field
+2,141,Toronto Blue Jays,night,N,2026-04-19T00:10:00Z,825098,6,109,Arizona Diamondbacks,2026-04-18,Regular Season,Final,F,15,Chase Field
+4,135,San Diego Padres,night,N,2026-04-19T01:38:00Z,824049,1,108,Los Angeles Angels,2026-04-18,Regular Season,Final,F,1,Angel Stadium
 ,137,San Francisco Giants,day,N,2026-04-19T17:35:00Z,822750,,120,Washington Nationals,2026-04-19,Regular Season,Scheduled,S,3309,Nationals Park
 ,139,Tampa Bay Rays,day,N,2026-04-19T17:35:00Z,823393,,134,Pittsburgh Pirates,2026-04-19,Regular Season,Scheduled,S,31,PNC Park
 ,118,Kansas City Royals,day,N,2026-04-19T17:35:00Z,823556,,147,New York Yankees,2026-04-19,Regular Season,Scheduled,S,3313,Yankee Stadium
@@ -326,6 +325,7 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 ,135,San Diego Padres,day,N,2026-04-19T20:07:00Z,824047,,108,Los Angeles Angels,2026-04-19,Regular Season,Scheduled,S,1,Angel Stadium
 ,140,Texas Rangers,day,N,2026-04-19T20:10:00Z,823150,,136,Seattle Mariners,2026-04-19,Regular Season,Scheduled,S,680,T-Mobile Park
 ,141,Toronto Blue Jays,day,N,2026-04-19T20:10:00Z,825100,,109,Arizona Diamondbacks,2026-04-19,Regular Season,Scheduled,S,15,Chase Field
+,116,Detroit Tigers,day,N,2026-04-19T20:35:00Z,824777,,111,Boston Red Sox,2026-04-19,Regular Season,Scheduled,S,3,Fenway Park
 ,144,Atlanta Braves,night,N,2026-04-19T23:20:00Z,823475,,143,Philadelphia Phillies,2026-04-19,Regular Season,Scheduled,S,2681,Citizens Bank Park
 ,116,Detroit Tigers,day,N,2026-04-20T15:10:00Z,824776,,111,Boston Red Sox,2026-04-20,Regular Season,Scheduled,S,3,Fenway Park
 ,117,Houston Astros,night,N,2026-04-20T22:10:00Z,824450,,114,Cleveland Guardians,2026-04-20,Regular Season,Scheduled,S,5,Progressive Field
