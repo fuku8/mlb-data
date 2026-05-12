@@ -606,12 +606,12 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 2,138,St. Louis Cardinals,day,N,2026-05-10T20:10:00Z,823305,3,135,San Diego Padres,2026-05-10,Regular Season,Final,F,2680,Petco Park
 7,144,Atlanta Braves,day,N,2026-05-10T20:10:00Z,823954,2,119,Los Angeles Dodgers,2026-05-10,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 6,116,Detroit Tigers,night,N,2026-05-10T23:20:00Z,824113,3,118,Kansas City Royals,2026-05-10,Regular Season,Final,F,7,Kauffman Stadium
-,108,Los Angeles Angels,night,N,2026-05-11T22:10:00Z,824441,,114,Cleveland Guardians,2026-05-11,Regular Season,Scheduled,S,5,Progressive Field
-,147,New York Yankees,night,N,2026-05-11T22:35:00Z,824844,,110,Baltimore Orioles,2026-05-11,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,139,Tampa Bay Rays,night,N,2026-05-11T23:07:00Z,822818,,141,Toronto Blue Jays,2026-05-11,Regular Season,Scheduled,S,14,Rogers Centre
-,109,Arizona Diamondbacks,night,N,2026-05-12T00:05:00Z,822901,,140,Texas Rangers,2026-05-11,Regular Season,Scheduled,S,5325,Globe Life Field
-,136,Seattle Mariners,night,N,2026-05-12T00:10:00Z,824199,,117,Houston Astros,2026-05-11,Regular Season,Scheduled,S,2392,Daikin Park
-,137,San Francisco Giants,night,N,2026-05-12T02:10:00Z,823953,,119,Los Angeles Dodgers,2026-05-11,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+2,108,Los Angeles Angels,night,N,2026-05-11T22:10:00Z,824441,7,114,Cleveland Guardians,2026-05-11,Regular Season,Final,F,5,Progressive Field
+2,147,New York Yankees,night,N,2026-05-11T22:35:00Z,824844,3,110,Baltimore Orioles,2026-05-11,Regular Season,Final,F,2,Oriole Park at Camden Yards
+8,139,Tampa Bay Rays,night,N,2026-05-11T23:07:00Z,822818,5,141,Toronto Blue Jays,2026-05-11,Regular Season,Final,F,14,Rogers Centre
+1,109,Arizona Diamondbacks,night,N,2026-05-12T00:05:00Z,822901,0,140,Texas Rangers,2026-05-11,Regular Season,Final,F,5325,Globe Life Field
+3,136,Seattle Mariners,night,N,2026-05-12T00:10:00Z,824199,1,117,Houston Astros,2026-05-11,Regular Season,Final,F,2392,Daikin Park
+9,137,San Francisco Giants,night,N,2026-05-12T02:10:00Z,823953,3,119,Los Angeles Dodgers,2026-05-11,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 ,108,Los Angeles Angels,night,N,2026-05-12T22:10:00Z,824442,,114,Cleveland Guardians,2026-05-12,Regular Season,Scheduled,S,5,Progressive Field
 ,147,New York Yankees,night,N,2026-05-12T22:35:00Z,824843,,110,Baltimore Orioles,2026-05-12,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,120,Washington Nationals,night,N,2026-05-12T22:40:00Z,824521,,113,Cincinnati Reds,2026-05-12,Regular Season,Scheduled,S,2602,Great American Ball Park
@@ -658,11 +658,11 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 ,141,Toronto Blue Jays,night,N,2026-05-15T22:45:00Z,824280,,116,Detroit Tigers,2026-05-15,Regular Season,Scheduled,S,2394,Comerica Park
 ,113,Cincinnati Reds,night,N,2026-05-15T23:10:00Z,824439,,114,Cleveland Guardians,2026-05-15,Regular Season,Scheduled,S,5,Progressive Field
 ,146,Miami Marlins,night,N,2026-05-15T23:10:00Z,822983,,139,Tampa Bay Rays,2026-05-15,Regular Season,Scheduled,S,12,Tropicana Field
+,158,Milwaukee Brewers,night,N,2026-05-15T23:10:00Z,823707,,142,Minnesota Twins,2026-05-15,Regular Season,Scheduled,S,3312,Target Field
 ,111,Boston Red Sox,night,N,2026-05-15T23:15:00Z,824925,,144,Atlanta Braves,2026-05-15,Regular Season,Scheduled,S,4705,Truist Park
 ,147,New York Yankees,night,N,2026-05-15T23:15:00Z,823629,,121,New York Mets,2026-05-15,Regular Season,Scheduled,S,3289,Citi Field
 ,112,Chicago Cubs,night,N,2026-05-15T23:40:00Z,824601,,145,Chicago White Sox,2026-05-15,Regular Season,Scheduled,S,4,Rate Field
 ,140,Texas Rangers,night,N,2026-05-16T00:10:00Z,824194,,117,Houston Astros,2026-05-15,Regular Season,Scheduled,S,2392,Daikin Park
-,158,Milwaukee Brewers,night,N,2026-05-16T00:10:00Z,823707,,142,Minnesota Twins,2026-05-15,Regular Season,Scheduled,S,3312,Target Field
 ,118,Kansas City Royals,night,N,2026-05-16T00:15:00Z,823061,,138,St. Louis Cardinals,2026-05-15,Regular Season,Scheduled,S,2889,Busch Stadium
 ,109,Arizona Diamondbacks,night,N,2026-05-16T00:40:00Z,824360,,115,Colorado Rockies,2026-05-15,Regular Season,Scheduled,S,19,Coors Field
 ,119,Los Angeles Dodgers,night,N,2026-05-16T01:38:00Z,824037,,108,Los Angeles Angels,2026-05-15,Regular Season,Scheduled,S,1,Angel Stadium
