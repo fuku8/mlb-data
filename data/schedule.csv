@@ -742,13 +742,13 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 7,134,Pittsburgh Pirates,night,N,2026-05-20T23:45:00Z,823057,0,138,St. Louis Cardinals,2026-05-20,Regular Season,Final,F,2889,Busch Stadium
 4,119,Los Angeles Dodgers,night,N,2026-05-21T00:40:00Z,823299,0,135,San Diego Padres,2026-05-20,Regular Season,Final,F,2680,Petco Park
 6,133,Athletics,night,N,2026-05-21T01:38:00Z,824032,5,108,Los Angeles Angels,2026-05-20,Regular Season,Final,F,1,Angel Stadium
-,114,Cleveland Guardians,day,N,2026-05-21T17:10:00Z,824274,,116,Detroit Tigers,2026-05-21,Regular Season,Scheduled,S,2394,Comerica Park
-,134,Pittsburgh Pirates,day,N,2026-05-21T17:15:00Z,823056,,138,St. Louis Cardinals,2026-05-21,Regular Season,Scheduled,S,2889,Busch Stadium
-,121,New York Mets,day,N,2026-05-21T20:05:00Z,822733,,120,Washington Nationals,2026-05-21,Regular Season,Scheduled,S,3309,Nationals Park
-,144,Atlanta Braves,night,N,2026-05-21T22:40:00Z,823864,,146,Miami Marlins,2026-05-21,Regular Season,Scheduled,S,4169,loanDepot park
-,141,Toronto Blue Jays,night,N,2026-05-21T23:05:00Z,823545,,147,New York Yankees,2026-05-21,Regular Season,Scheduled,S,3313,Yankee Stadium
-,133,Athletics,night,N,2026-05-22T01:38:00Z,824031,,108,Los Angeles Angels,2026-05-21,Regular Season,Scheduled,S,1,Angel Stadium
-,115,Colorado Rockies,night,N,2026-05-22T01:40:00Z,825083,,109,Arizona Diamondbacks,2026-05-21,Regular Season,Scheduled,S,15,Chase Field
+3,114,Cleveland Guardians,day,N,2026-05-21T17:10:00Z,824274,1,116,Detroit Tigers,2026-05-21,Regular Season,Final,F,2394,Comerica Park
+6,134,Pittsburgh Pirates,day,N,2026-05-21T17:15:00Z,823056,2,138,St. Louis Cardinals,2026-05-21,Regular Season,Final,F,2889,Busch Stadium
+2,121,New York Mets,day,N,2026-05-21T20:05:00Z,822733,1,120,Washington Nationals,2026-05-21,Regular Season,Final,F,3309,Nationals Park
+9,144,Atlanta Braves,night,N,2026-05-21T22:40:00Z,823864,3,146,Miami Marlins,2026-05-21,Regular Season,Final,F,4169,loanDepot park
+2,141,Toronto Blue Jays,night,N,2026-05-21T23:05:00Z,823545,0,147,New York Yankees,2026-05-21,Regular Season,Final,F,3313,Yankee Stadium
+3,133,Athletics,night,N,2026-05-22T01:38:00Z,824031,2,108,Los Angeles Angels,2026-05-21,Regular Season,Final,F,1,Angel Stadium
+1,115,Colorado Rockies,night,N,2026-05-22T01:40:00Z,825083,2,109,Arizona Diamondbacks,2026-05-21,Regular Season,Final,F,15,Chase Field
 ,117,Houston Astros,day,N,2026-05-22T18:20:00Z,824679,,112,Chicago Cubs,2026-05-22,Regular Season,Scheduled,S,17,Wrigley Field
 ,138,St. Louis Cardinals,night,N,2026-05-22T22:40:00Z,824518,,113,Cincinnati Reds,2026-05-22,Regular Season,Scheduled,S,2602,Great American Ball Park
 ,114,Cleveland Guardians,night,N,2026-05-22T22:40:00Z,823461,,143,Philadelphia Phillies,2026-05-22,Regular Season,Scheduled,S,2681,Citizens Bank Park
