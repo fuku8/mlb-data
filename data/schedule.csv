@@ -777,22 +777,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 0,133,Athletics,night,N,2026-05-24T01:40:00Z,823300,2,135,San Diego Padres,2026-05-23,Regular Season,Final,F,2680,Petco Park
 2,140,Texas Rangers,night,N,2026-05-24T02:05:00Z,824030,5,108,Los Angeles Angels,2026-05-23,Regular Season,Final,F,1,Angel Stadium
 4,115,Colorado Rockies,night,N,2026-05-24T02:10:00Z,825080,5,109,Arizona Diamondbacks,2026-05-23,Regular Season,Final,F,15,Chase Field
-,134,Pittsburgh Pirates,day,N,2026-05-24T16:15:00Z,822813,,141,Toronto Blue Jays,2026-05-24,Regular Season,Scheduled,S,14,Rogers Centre
-,116,Detroit Tigers,day,S,2026-05-24T16:35:00Z,824839,,110,Baltimore Orioles,2026-05-24,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,116,Detroit Tigers,night,S,2026-05-24T22:05:00Z,824840,,110,Baltimore Orioles,2026-05-24,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,142,Minnesota Twins,day,N,2026-05-24T17:35:00Z,824759,,111,Boston Red Sox,2026-05-24,Regular Season,Scheduled,S,3,Fenway Park
-,114,Cleveland Guardians,day,N,2026-05-24T17:35:00Z,823459,,143,Philadelphia Phillies,2026-05-24,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,139,Tampa Bay Rays,day,N,2026-05-24T17:35:00Z,823544,,147,New York Yankees,2026-05-24,Regular Season,Scheduled,S,3313,Yankee Stadium
-,138,St. Louis Cardinals,day,N,2026-05-24T17:40:00Z,824514,,113,Cincinnati Reds,2026-05-24,Regular Season,Scheduled,S,2602,Great American Ball Park
-,121,New York Mets,day,N,2026-05-24T17:40:00Z,823861,,146,Miami Marlins,2026-05-24,Regular Season,Scheduled,S,4169,loanDepot park
-,136,Seattle Mariners,day,N,2026-05-24T18:10:00Z,824108,,118,Kansas City Royals,2026-05-24,Regular Season,Scheduled,S,7,Kauffman Stadium
-,119,Los Angeles Dodgers,day,N,2026-05-24T18:10:00Z,823786,,158,Milwaukee Brewers,2026-05-24,Regular Season,Scheduled,S,32,American Family Field
-,117,Houston Astros,day,N,2026-05-24T18:20:00Z,824676,,112,Chicago Cubs,2026-05-24,Regular Season,Scheduled,S,17,Wrigley Field
-,145,Chicago White Sox,day,N,2026-05-24T20:05:00Z,823220,,137,San Francisco Giants,2026-05-24,Regular Season,Scheduled,S,2395,Oracle Park
-,115,Colorado Rockies,day,N,2026-05-24T20:10:00Z,825081,,109,Arizona Diamondbacks,2026-05-24,Regular Season,Scheduled,S,15,Chase Field
-,133,Athletics,day,N,2026-05-24T20:10:00Z,823297,,135,San Diego Padres,2026-05-24,Regular Season,Scheduled,S,2680,Petco Park
-,120,Washington Nationals,day,N,2026-05-24T20:10:00Z,824921,,144,Atlanta Braves,2026-05-24,Regular Season,Scheduled,S,4705,Truist Park
-,140,Texas Rangers,day,N,2026-05-24T23:20:00Z,824028,,108,Los Angeles Angels,2026-05-24,Regular Season,Scheduled,S,1,Angel Stadium
+4,134,Pittsburgh Pirates,day,N,2026-05-24T16:15:00Z,822813,1,141,Toronto Blue Jays,2026-05-24,Regular Season,Final,F,14,Rogers Centre
+3,116,Detroit Tigers,day,S,2026-05-24T16:35:00Z,824839,5,110,Baltimore Orioles,2026-05-24,Regular Season,Final,F,2,Oriole Park at Camden Yards
+4,116,Detroit Tigers,night,S,2026-05-24T22:05:00Z,824840,1,110,Baltimore Orioles,2026-05-24,Regular Season,Final,F,2,Oriole Park at Camden Yards
+6,142,Minnesota Twins,day,N,2026-05-24T17:35:00Z,824759,5,111,Boston Red Sox,2026-05-24,Regular Season,Final,F,3,Fenway Park
+3,114,Cleveland Guardians,day,N,2026-05-24T17:35:00Z,823459,1,143,Philadelphia Phillies,2026-05-24,Regular Season,Final,F,2681,Citizens Bank Park
+0,139,Tampa Bay Rays,day,N,2026-05-24T17:35:00Z,823544,2,147,New York Yankees,2026-05-24,Regular Season,Final,F,3313,Yankee Stadium
+0,121,New York Mets,day,N,2026-05-24T17:40:00Z,823861,4,146,Miami Marlins,2026-05-24,Regular Season,Final,F,4169,loanDepot park
+6,136,Seattle Mariners,day,N,2026-05-24T18:10:00Z,824108,8,118,Kansas City Royals,2026-05-24,Regular Season,Final,F,7,Kauffman Stadium
+5,119,Los Angeles Dodgers,day,N,2026-05-24T18:10:00Z,823786,1,158,Milwaukee Brewers,2026-05-24,Regular Season,Final,F,32,American Family Field
+8,117,Houston Astros,day,N,2026-05-24T18:20:00Z,824676,5,112,Chicago Cubs,2026-05-24,Regular Season,Final,F,17,Wrigley Field
+5,145,Chicago White Sox,day,N,2026-05-24T20:05:00Z,823220,8,137,San Francisco Giants,2026-05-24,Regular Season,Final,F,2395,Oracle Park
+1,115,Colorado Rockies,day,N,2026-05-24T20:10:00Z,825081,9,109,Arizona Diamondbacks,2026-05-24,Regular Season,Final,F,15,Chase Field
+5,133,Athletics,day,N,2026-05-24T20:10:00Z,823297,2,135,San Diego Padres,2026-05-24,Regular Season,Final,F,2680,Petco Park
+2,120,Washington Nationals,day,N,2026-05-24T20:10:00Z,824921,1,144,Atlanta Braves,2026-05-24,Regular Season,Final,F,4705,Truist Park
+1,140,Texas Rangers,day,N,2026-05-24T23:20:00Z,824028,2,108,Los Angeles Angels,2026-05-24,Regular Season,Final,F,1,Angel Stadium
 ,112,Chicago Cubs,day,N,2026-05-25T17:35:00Z,823380,,134,Pittsburgh Pirates,2026-05-25,Regular Season,Scheduled,S,31,PNC Park
 ,139,Tampa Bay Rays,day,N,2026-05-25T17:35:00Z,824838,,110,Baltimore Orioles,2026-05-25,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,142,Minnesota Twins,day,N,2026-05-25T18:10:00Z,824598,,145,Chicago White Sox,2026-05-25,Regular Season,Scheduled,S,4,Rate Field
@@ -1873,7 +1872,8 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 ,118,Kansas City Royals,day,N,2026-08-16T20:07:00Z,823991,,108,Los Angeles Angels,2026-08-16,Regular Season,Scheduled,S,1,Angel Stadium
 ,158,Milwaukee Brewers,day,N,2026-08-16T20:10:00Z,823912,,119,Los Angeles Dodgers,2026-08-16,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
 ,136,Seattle Mariners,night,N,2026-08-16T23:20:00Z,824156,,117,Houston Astros,2026-08-16,Regular Season,Scheduled,S,2392,Daikin Park
-,138,St. Louis Cardinals,night,N,2026-08-17T22:40:00Z,824478,,113,Cincinnati Reds,2026-08-17,Regular Season,Scheduled,S,2602,Great American Ball Park
+,138,St. Louis Cardinals,day,S,2026-08-17T17:40:00Z,824514,,113,Cincinnati Reds,2026-08-17,Regular Season,Scheduled,S,2602,Great American Ball Park
+,138,St. Louis Cardinals,night,S,2026-08-17T22:40:00Z,824478,,113,Cincinnati Reds,2026-08-17,Regular Season,Scheduled,S,2602,Great American Ball Park
 ,110,Baltimore Orioles,night,N,2026-08-17T22:40:00Z,822939,,139,Tampa Bay Rays,2026-08-17,Regular Season,Scheduled,S,12,Tropicana Field
 ,146,Miami Marlins,night,N,2026-08-17T22:40:00Z,823427,,143,Philadelphia Phillies,2026-08-17,Regular Season,Scheduled,S,2681,Citizens Bank Park
 ,116,Detroit Tigers,night,N,2026-08-17T23:05:00Z,823343,,134,Pittsburgh Pirates,2026-08-17,Regular Season,Scheduled,S,31,PNC Park
