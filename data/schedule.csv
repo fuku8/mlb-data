@@ -856,21 +856,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 8,147,New York Yankees,night,N,2026-05-30T01:40:00Z,825002,2,133,Athletics,2026-05-29,Regular Season,Final,F,2529,Sutter Health Park
 6,109,Arizona Diamondbacks,night,N,2026-05-30T02:10:00Z,823135,7,136,Seattle Mariners,2026-05-29,Regular Season,Final,F,680,T-Mobile Park
 2,143,Philadelphia Phillies,night,N,2026-05-30T02:15:00Z,823946,4,119,Los Angeles Dodgers,2026-05-29,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
-,116,Detroit Tigers,day,N,2026-05-30T18:10:00Z,824593,,145,Chicago White Sox,2026-05-30,Regular Season,Scheduled,S,4,Rate Field
-,135,San Diego Padres,day,N,2026-05-30T20:05:00Z,822731,,120,Washington Nationals,2026-05-30,Regular Season,Scheduled,S,3309,Nationals Park
-,118,Kansas City Royals,day,N,2026-05-30T20:05:00Z,822893,,140,Texas Rangers,2026-05-30,Regular Season,Scheduled,S,5325,Globe Life Field
-,141,Toronto Blue Jays,day,N,2026-05-30T20:05:00Z,824833,,110,Baltimore Orioles,2026-05-30,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,142,Minnesota Twins,day,N,2026-05-30T20:05:00Z,823375,,134,Pittsburgh Pirates,2026-05-30,Regular Season,Scheduled,S,31,PNC Park
-,111,Boston Red Sox,day,N,2026-05-30T20:10:00Z,824431,,114,Cleveland Guardians,2026-05-30,Regular Season,Scheduled,S,5,Progressive Field
-,108,Los Angeles Angels,day,N,2026-05-30T20:10:00Z,822975,,139,Tampa Bay Rays,2026-05-30,Regular Season,Scheduled,S,12,Tropicana Field
-,146,Miami Marlins,day,N,2026-05-30T20:10:00Z,823622,,121,New York Mets,2026-05-30,Regular Season,Scheduled,S,3289,Citi Field
-,158,Milwaukee Brewers,day,N,2026-05-30T20:10:00Z,824190,,117,Houston Astros,2026-05-30,Regular Season,Scheduled,S,2392,Daikin Park
-,112,Chicago Cubs,night,N,2026-05-30T23:15:00Z,823054,,138,St. Louis Cardinals,2026-05-30,Regular Season,Scheduled,S,2889,Busch Stadium
-,144,Atlanta Braves,night,N,2026-05-30T23:15:00Z,824513,,113,Cincinnati Reds,2026-05-30,Regular Season,Scheduled,S,2602,Great American Ball Park
-,137,San Francisco Giants,night,N,2026-05-31T01:10:00Z,824352,,115,Colorado Rockies,2026-05-30,Regular Season,Scheduled,S,19,Coors Field
-,147,New York Yankees,night,N,2026-05-31T02:05:00Z,825000,,133,Athletics,2026-05-30,Regular Season,Scheduled,S,2529,Sutter Health Park
-,109,Arizona Diamondbacks,night,N,2026-05-31T02:10:00Z,823132,,136,Seattle Mariners,2026-05-30,Regular Season,Scheduled,S,680,T-Mobile Park
-,143,Philadelphia Phillies,night,N,2026-05-31T02:10:00Z,823945,,119,Los Angeles Dodgers,2026-05-30,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+1,116,Detroit Tigers,day,N,2026-05-30T18:10:00Z,824593,7,145,Chicago White Sox,2026-05-30,Regular Season,Final,F,4,Rate Field
+4,135,San Diego Padres,day,N,2026-05-30T20:05:00Z,822731,9,120,Washington Nationals,2026-05-30,Regular Season,Final,F,3309,Nationals Park
+6,118,Kansas City Royals,day,N,2026-05-30T20:05:00Z,822893,7,140,Texas Rangers,2026-05-30,Regular Season,Final,F,5325,Globe Life Field
+5,141,Toronto Blue Jays,day,N,2026-05-30T20:05:00Z,824833,6,110,Baltimore Orioles,2026-05-30,Regular Season,Final,F,2,Oriole Park at Camden Yards
+9,142,Minnesota Twins,day,N,2026-05-30T20:05:00Z,823375,10,134,Pittsburgh Pirates,2026-05-30,Regular Season,Final,F,31,PNC Park
+9,111,Boston Red Sox,day,N,2026-05-30T20:10:00Z,824431,1,114,Cleveland Guardians,2026-05-30,Regular Season,Final,F,5,Progressive Field
+14,108,Los Angeles Angels,day,N,2026-05-30T20:10:00Z,822975,3,139,Tampa Bay Rays,2026-05-30,Regular Season,Final,F,12,Tropicana Field
+1,146,Miami Marlins,day,N,2026-05-30T20:10:00Z,823622,6,121,New York Mets,2026-05-30,Regular Season,Final,F,3289,Citi Field
+2,158,Milwaukee Brewers,day,N,2026-05-30T20:10:00Z,824190,9,117,Houston Astros,2026-05-30,Regular Season,Final,F,2392,Daikin Park
+6,112,Chicago Cubs,night,N,2026-05-30T23:15:00Z,823054,1,138,St. Louis Cardinals,2026-05-30,Regular Season,Final,F,2889,Busch Stadium
+5,144,Atlanta Braves,night,N,2026-05-30T23:15:00Z,824513,2,113,Cincinnati Reds,2026-05-30,Regular Season,Final,F,2602,Great American Ball Park
+3,137,San Francisco Giants,night,N,2026-05-31T01:10:00Z,824352,8,115,Colorado Rockies,2026-05-30,Regular Season,Final,F,19,Coors Field
+4,147,New York Yankees,night,N,2026-05-31T02:05:00Z,825000,6,133,Athletics,2026-05-30,Regular Season,Final,F,2529,Sutter Health Park
+1,109,Arizona Diamondbacks,night,N,2026-05-31T02:10:00Z,823132,5,136,Seattle Mariners,2026-05-30,Regular Season,Final,F,680,T-Mobile Park
+4,143,Philadelphia Phillies,night,N,2026-05-31T02:10:00Z,823945,3,119,Los Angeles Dodgers,2026-05-30,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 ,141,Toronto Blue Jays,day,N,2026-05-31T16:15:00Z,824832,,110,Baltimore Orioles,2026-05-31,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,135,San Diego Padres,day,N,2026-05-31T17:35:00Z,822729,,120,Washington Nationals,2026-05-31,Regular Season,Scheduled,S,3309,Nationals Park
 ,142,Minnesota Twins,day,N,2026-05-31T17:35:00Z,823373,,134,Pittsburgh Pirates,2026-05-31,Regular Season,Scheduled,S,31,PNC Park
