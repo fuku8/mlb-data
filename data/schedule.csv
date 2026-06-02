@@ -886,15 +886,15 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 2,109,Arizona Diamondbacks,day,N,2026-05-31T20:10:00Z,823133,3,136,Seattle Mariners,2026-05-31,Regular Season,Final,F,680,T-Mobile Park
 1,143,Philadelphia Phillies,day,N,2026-05-31T20:10:00Z,823944,9,119,Los Angeles Dodgers,2026-05-31,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 1,112,Chicago Cubs,night,N,2026-05-31T23:20:00Z,823053,5,138,St. Louis Cardinals,2026-05-31,Regular Season,Final,F,2889,Busch Stadium
-,116,Detroit Tigers,night,N,2026-06-01T22:40:00Z,822974,,139,Tampa Bay Rays,2026-06-01,Regular Season,Scheduled,S,12,Tropicana Field
-,146,Miami Marlins,night,N,2026-06-01T22:45:00Z,822730,,120,Washington Nationals,2026-06-01,Regular Season,Scheduled,S,3309,Nationals Park
-,118,Kansas City Royals,night,N,2026-06-01T23:10:00Z,824510,,113,Cincinnati Reds,2026-06-01,Regular Season,Scheduled,S,2602,Great American Ball Park
-,145,Chicago White Sox,night,N,2026-06-01T23:40:00Z,823702,,142,Minnesota Twins,2026-06-01,Regular Season,Scheduled,S,3312,Target Field
-,137,San Francisco Giants,night,N,2026-06-01T23:40:00Z,823781,,158,Milwaukee Brewers,2026-06-01,Regular Season,Scheduled,S,32,American Family Field
-,140,Texas Rangers,night,N,2026-06-01T23:45:00Z,823050,,138,St. Louis Cardinals,2026-06-01,Regular Season,Scheduled,S,2889,Busch Stadium
-,115,Colorado Rockies,night,N,2026-06-02T01:38:00Z,824027,,108,Los Angeles Angels,2026-06-01,Regular Season,Scheduled,S,1,Angel Stadium
-,119,Los Angeles Dodgers,night,N,2026-06-02T01:40:00Z,825078,,109,Arizona Diamondbacks,2026-06-01,Regular Season,Scheduled,S,15,Chase Field
-,121,New York Mets,night,N,2026-06-02T01:40:00Z,823131,,136,Seattle Mariners,2026-06-01,Regular Season,Scheduled,S,680,T-Mobile Park
+10,116,Detroit Tigers,night,N,2026-06-01T22:40:00Z,822974,9,139,Tampa Bay Rays,2026-06-01,Regular Season,Final,F,12,Tropicana Field
+7,146,Miami Marlins,night,N,2026-06-01T22:45:00Z,822730,3,120,Washington Nationals,2026-06-01,Regular Season,Final,F,3309,Nationals Park
+9,118,Kansas City Royals,night,N,2026-06-01T23:10:00Z,824510,2,113,Cincinnati Reds,2026-06-01,Regular Season,Final,F,2602,Great American Ball Park
+6,145,Chicago White Sox,night,N,2026-06-01T23:40:00Z,823702,9,142,Minnesota Twins,2026-06-01,Regular Season,Final,F,3312,Target Field
+2,137,San Francisco Giants,night,N,2026-06-01T23:40:00Z,823781,16,158,Milwaukee Brewers,2026-06-01,Regular Season,Final,F,32,American Family Field
+2,140,Texas Rangers,night,N,2026-06-01T23:45:00Z,823050,1,138,St. Louis Cardinals,2026-06-01,Regular Season,Final,F,2889,Busch Stadium
+9,115,Colorado Rockies,night,N,2026-06-02T01:38:00Z,824027,8,108,Los Angeles Angels,2026-06-01,Regular Season,Final,F,1,Angel Stadium
+1,119,Los Angeles Dodgers,night,N,2026-06-02T01:40:00Z,825078,4,109,Arizona Diamondbacks,2026-06-01,Regular Season,Final,F,15,Chase Field
+2,121,New York Mets,night,N,2026-06-02T01:40:00Z,823131,3,136,Seattle Mariners,2026-06-01,Regular Season,Final,F,680,T-Mobile Park
 ,116,Detroit Tigers,night,N,2026-06-02T22:40:00Z,822971,,139,Tampa Bay Rays,2026-06-02,Regular Season,Scheduled,S,12,Tropicana Field
 ,135,San Diego Padres,night,N,2026-06-02T22:40:00Z,823460,,143,Philadelphia Phillies,2026-06-02,Regular Season,Scheduled,S,2681,Citizens Bank Park
 ,110,Baltimore Orioles,night,N,2026-06-02T22:45:00Z,824754,,111,Boston Red Sox,2026-06-02,Regular Season,Scheduled,S,3,Fenway Park
