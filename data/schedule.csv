@@ -1001,21 +1001,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 5,113,Cincinnati Reds,night,N,2026-06-10T01:40:00Z,823290,3,135,San Diego Padres,2026-06-09,Regular Season,Final,F,2680,Petco Park
 6,120,Washington Nationals,night,N,2026-06-10T01:45:00Z,823214,3,137,San Francisco Giants,2026-06-09,Regular Season,Final,F,2395,Oracle Park
 5,158,Milwaukee Brewers,night,N,2026-06-10T02:05:00Z,824999,7,133,Athletics,2026-06-09,Regular Season,Final,F,5355,Las Vegas Ballpark
-,111,Boston Red Sox,day,N,2026-06-10T17:10:00Z,822970,,139,Tampa Bay Rays,2026-06-10,Regular Season,Scheduled,S,12,Tropicana Field
-,147,New York Yankees,day,N,2026-06-10T17:10:00Z,824428,,114,Cleveland Guardians,2026-06-10,Regular Season,Scheduled,S,5,Progressive Field
-,120,Washington Nationals,day,N,2026-06-10T19:45:00Z,823215,,137,San Francisco Giants,2026-06-10,Regular Season,Scheduled,S,2395,Oracle Park
-,113,Cincinnati Reds,day,N,2026-06-10T20:10:00Z,823287,,135,San Diego Padres,2026-06-10,Regular Season,Scheduled,S,2680,Petco Park
-,136,Seattle Mariners,night,N,2026-06-10T22:35:00Z,824831,,110,Baltimore Orioles,2026-06-10,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,119,Los Angeles Dodgers,night,N,2026-06-10T22:40:00Z,823372,,134,Pittsburgh Pirates,2026-06-10,Regular Season,Scheduled,S,31,PNC Park
-,142,Minnesota Twins,night,N,2026-06-10T22:40:00Z,824266,,116,Detroit Tigers,2026-06-10,Regular Season,Scheduled,S,2394,Comerica Park
-,109,Arizona Diamondbacks,night,N,2026-06-10T22:40:00Z,823856,,146,Miami Marlins,2026-06-10,Regular Season,Scheduled,S,4169,loanDepot park
-,143,Philadelphia Phillies,night,N,2026-06-10T23:07:00Z,822804,,141,Toronto Blue Jays,2026-06-10,Regular Season,Scheduled,S,14,Rogers Centre
-,138,St. Louis Cardinals,night,N,2026-06-10T23:10:00Z,823618,,121,New York Mets,2026-06-10,Regular Season,Scheduled,S,3289,Citi Field
-,140,Texas Rangers,night,N,2026-06-10T23:40:00Z,824103,,118,Kansas City Royals,2026-06-10,Regular Season,Scheduled,S,7,Kauffman Stadium
-,144,Atlanta Braves,night,N,2026-06-10T23:40:00Z,824590,,145,Chicago White Sox,2026-06-10,Regular Season,Scheduled,S,4,Rate Field
-,112,Chicago Cubs,night,N,2026-06-11T00:40:00Z,824348,,115,Colorado Rockies,2026-06-10,Regular Season,Scheduled,S,19,Coors Field
-,158,Milwaukee Brewers,night,N,2026-06-11T01:05:00Z,824996,,133,Athletics,2026-06-10,Regular Season,Scheduled,S,5355,Las Vegas Ballpark
-,117,Houston Astros,night,N,2026-06-11T01:38:00Z,824022,,108,Los Angeles Angels,2026-06-10,Regular Season,Scheduled,S,1,Angel Stadium
+5,111,Boston Red Sox,day,N,2026-06-10T17:10:00Z,822970,7,139,Tampa Bay Rays,2026-06-10,Regular Season,Final,F,12,Tropicana Field
+8,147,New York Yankees,day,N,2026-06-10T17:10:00Z,824428,4,114,Cleveland Guardians,2026-06-10,Regular Season,Final,F,5,Progressive Field
+10,120,Washington Nationals,day,N,2026-06-10T19:45:00Z,823215,11,137,San Francisco Giants,2026-06-10,Regular Season,Final,F,2395,Oracle Park
+4,113,Cincinnati Reds,day,N,2026-06-10T20:10:00Z,823287,5,135,San Diego Padres,2026-06-10,Regular Season,Final,F,2680,Petco Park
+2,136,Seattle Mariners,night,N,2026-06-10T22:35:00Z,824831,7,110,Baltimore Orioles,2026-06-10,Regular Season,Final,F,2,Oriole Park at Camden Yards
+8,119,Los Angeles Dodgers,night,N,2026-06-10T22:40:00Z,823372,9,134,Pittsburgh Pirates,2026-06-10,Regular Season,Final,F,31,PNC Park
+6,142,Minnesota Twins,night,N,2026-06-10T22:40:00Z,824266,4,116,Detroit Tigers,2026-06-10,Regular Season,Final,F,2394,Comerica Park
+0,109,Arizona Diamondbacks,night,N,2026-06-10T22:40:00Z,823856,8,146,Miami Marlins,2026-06-10,Regular Season,Final,F,4169,loanDepot park
+7,143,Philadelphia Phillies,night,N,2026-06-10T23:07:00Z,822804,4,141,Toronto Blue Jays,2026-06-10,Regular Season,Final,F,14,Rogers Centre
+9,138,St. Louis Cardinals,night,N,2026-06-10T23:10:00Z,823618,2,121,New York Mets,2026-06-10,Regular Season,Final,F,3289,Citi Field
+6,140,Texas Rangers,night,N,2026-06-10T23:40:00Z,824103,4,118,Kansas City Royals,2026-06-10,Regular Season,Final,F,7,Kauffman Stadium
+1,144,Atlanta Braves,night,N,2026-06-10T23:40:00Z,824590,2,145,Chicago White Sox,2026-06-10,Regular Season,Final,F,4,Rate Field
+2,112,Chicago Cubs,night,N,2026-06-11T00:40:00Z,824348,3,115,Colorado Rockies,2026-06-10,Regular Season,Final,F,19,Coors Field
+3,158,Milwaukee Brewers,night,N,2026-06-11T01:05:00Z,824996,4,133,Athletics,2026-06-10,Regular Season,Final,F,5355,Las Vegas Ballpark
+2,117,Houston Astros,night,N,2026-06-11T01:38:00Z,824022,3,108,Los Angeles Angels,2026-06-10,Regular Season,Final,F,1,Angel Stadium
 ,138,St. Louis Cardinals,day,N,2026-06-11T17:10:00Z,823619,,121,New York Mets,2026-06-11,Regular Season,Scheduled,S,3289,Citi Field
 ,142,Minnesota Twins,day,N,2026-06-11T17:10:00Z,824265,,116,Detroit Tigers,2026-06-11,Regular Season,Scheduled,S,2394,Comerica Park
 ,109,Arizona Diamondbacks,day,N,2026-06-11T17:10:00Z,823855,,146,Miami Marlins,2026-06-11,Regular Season,Scheduled,S,4169,loanDepot park
