@@ -1106,15 +1106,14 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 6,115,Colorado Rockies,night,N,2026-06-18T00:05:00Z,824668,8,112,Chicago Cubs,2026-06-17,Regular Season,Final,F,17,Wrigley Field
 12,134,Pittsburgh Pirates,night,N,2026-06-18T01:40:00Z,824992,4,133,Athletics,2026-06-17,Regular Season,Final,F,2529,Sutter Health Park
 5,110,Baltimore Orioles,night,N,2026-06-18T01:40:00Z,823127,3,136,Seattle Mariners,2026-06-17,Regular Season,Final,F,680,T-Mobile Park
-,141,Toronto Blue Jays,day,N,2026-06-18T17:35:00Z,824748,,111,Boston Red Sox,2026-06-18,Regular Season,Scheduled,S,3,Fenway Park
-,114,Cleveland Guardians,day,N,2026-06-18T18:10:00Z,823772,,158,Milwaukee Brewers,2026-06-18,Regular Season,Scheduled,S,32,American Family Field
-,142,Minnesota Twins,day,N,2026-06-18T18:35:00Z,822889,,140,Texas Rangers,2026-06-18,Regular Season,Scheduled,S,5325,Globe Life Field
-,110,Baltimore Orioles,day,N,2026-06-18T20:10:00Z,823125,,136,Seattle Mariners,2026-06-18,Regular Season,Scheduled,S,680,T-Mobile Park
-,121,New York Mets,night,N,2026-06-18T22:40:00Z,823448,,143,Philadelphia Phillies,2026-06-18,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,145,Chicago White Sox,night,N,2026-06-18T23:05:00Z,823533,,147,New York Yankees,2026-06-18,Regular Season,Scheduled,S,3313,Yankee Stadium
-,137,San Francisco Giants,night,N,2026-06-18T23:15:00Z,824911,,144,Atlanta Braves,2026-06-18,Regular Season,Scheduled,S,4705,Truist Park
-,138,St. Louis Cardinals,night,N,2026-06-18T23:40:00Z,824098,,118,Kansas City Royals,2026-06-18,Regular Season,Scheduled,S,7,Kauffman Stadium
-,108,Los Angeles Angels,night,N,2026-06-19T01:40:00Z,824989,,133,Athletics,2026-06-18,Regular Season,Scheduled,S,2529,Sutter Health Park
+4,141,Toronto Blue Jays,day,N,2026-06-18T17:35:00Z,824748,3,111,Boston Red Sox,2026-06-18,Regular Season,Final,F,3,Fenway Park
+4,114,Cleveland Guardians,day,N,2026-06-18T18:10:00Z,823772,2,158,Milwaukee Brewers,2026-06-18,Regular Season,Final,F,32,American Family Field
+9,142,Minnesota Twins,day,N,2026-06-18T18:35:00Z,822889,3,140,Texas Rangers,2026-06-18,Regular Season,Final,F,5325,Globe Life Field
+0,110,Baltimore Orioles,day,N,2026-06-18T20:10:00Z,823125,3,136,Seattle Mariners,2026-06-18,Regular Season,Final,F,680,T-Mobile Park
+6,121,New York Mets,night,N,2026-06-18T22:40:00Z,823448,4,143,Philadelphia Phillies,2026-06-18,Regular Season,Final,F,2681,Citizens Bank Park
+5,145,Chicago White Sox,night,N,2026-06-18T23:05:00Z,823533,1,147,New York Yankees,2026-06-18,Regular Season,Final,F,3313,Yankee Stadium
+6,138,St. Louis Cardinals,night,N,2026-06-18T23:40:00Z,824098,14,118,Kansas City Royals,2026-06-18,Regular Season,Final,F,7,Kauffman Stadium
+0,108,Los Angeles Angels,night,N,2026-06-19T01:40:00Z,824989,5,133,Athletics,2026-06-18,Regular Season,Final,F,2529,Sutter Health Park
 ,141,Toronto Blue Jays,day,N,2026-06-19T18:20:00Z,824663,,112,Chicago Cubs,2026-06-19,Regular Season,Scheduled,S,17,Wrigley Field
 ,145,Chicago White Sox,night,N,2026-06-19T22:40:00Z,824264,,116,Detroit Tigers,2026-06-19,Regular Season,Scheduled,S,2394,Comerica Park
 ,113,Cincinnati Reds,night,N,2026-06-19T23:05:00Z,823534,,147,New York Yankees,2026-06-19,Regular Season,Scheduled,S,3313,Yankee Stadium
@@ -2057,6 +2056,7 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 ,109,Arizona Diamondbacks,day,N,2026-08-30T20:05:00Z,823177,,137,San Francisco Giants,2026-08-30,Regular Season,Scheduled,S,2395,Oracle Park
 ,143,Philadelphia Phillies,day,N,2026-08-30T20:07:00Z,823987,,108,Los Angeles Angels,2026-08-30,Regular Season,Scheduled,S,1,Angel Stadium
 ,117,Houston Astros,night,N,2026-08-30T23:20:00Z,823580,,121,New York Mets,2026-08-30,Regular Season,Scheduled,S,3289,Citi Field
+,137,San Francisco Giants,night,N,2026-08-31T22:05:00Z,824911,,144,Atlanta Braves,2026-08-31,Regular Season,Scheduled,S,4705,Truist Park
 ,135,San Diego Padres,night,N,2026-08-31T22:40:00Z,824473,,113,Cincinnati Reds,2026-08-31,Regular Season,Scheduled,S,2602,Great American Ball Park
 ,121,New York Mets,night,N,2026-08-31T22:40:00Z,822932,,139,Tampa Bay Rays,2026-08-31,Regular Season,Scheduled,S,12,Tropicana Field
 ,136,Seattle Mariners,night,N,2026-08-31T22:45:00Z,824719,,111,Boston Red Sox,2026-08-31,Regular Season,Scheduled,S,3,Fenway Park
