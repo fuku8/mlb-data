@@ -1294,15 +1294,15 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 3,146,Miami Marlins,night,N,2026-07-02T00:40:00Z,824337,6,115,Colorado Rockies,2026-07-01,Regular Season,Final,F,19,Coors Field
 1,119,Los Angeles Dodgers,night,N,2026-07-02T01:40:00Z,824985,7,133,Athletics,2026-07-01,Regular Season,Final,F,2529,Sutter Health Park
 6,137,San Francisco Giants,night,N,2026-07-02T01:40:00Z,825064,4,109,Arizona Diamondbacks,2026-07-01,Regular Season,Final,F,15,Chase Field
-,134,Pittsburgh Pirates,day,N,2026-07-02T16:35:00Z,823442,,143,Philadelphia Phillies,2026-07-02,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,113,Cincinnati Reds,day,N,2026-07-02T18:10:00Z,823765,,158,Milwaukee Brewers,2026-07-02,Regular Season,Scheduled,S,32,American Family Field
-,146,Miami Marlins,day,N,2026-07-02T19:10:00Z,824335,,115,Colorado Rockies,2026-07-02,Regular Season,Scheduled,S,19,Coors Field
-,145,Chicago White Sox,night,N,2026-07-02T22:40:00Z,824416,,114,Cleveland Guardians,2026-07-02,Regular Season,Scheduled,S,5,Progressive Field
-,138,St. Louis Cardinals,night,N,2026-07-02T23:15:00Z,824906,,144,Atlanta Braves,2026-07-02,Regular Season,Scheduled,S,4705,Truist Park
-,139,Tampa Bay Rays,night,N,2026-07-02T23:40:00Z,824093,,118,Kansas City Royals,2026-07-02,Regular Season,Scheduled,S,7,Kauffman Stadium
-,116,Detroit Tigers,night,N,2026-07-03T00:05:00Z,822884,,140,Texas Rangers,2026-07-02,Regular Season,Scheduled,S,5325,Globe Life Field
-,108,Los Angeles Angels,night,N,2026-07-03T01:40:00Z,823119,,136,Seattle Mariners,2026-07-02,Regular Season,Scheduled,S,680,T-Mobile Park
-,135,San Diego Padres,night,N,2026-07-03T02:10:00Z,823935,,119,Los Angeles Dodgers,2026-07-02,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+6,134,Pittsburgh Pirates,day,N,2026-07-02T16:35:00Z,823442,1,143,Philadelphia Phillies,2026-07-02,Regular Season,Final,F,2681,Citizens Bank Park
+7,113,Cincinnati Reds,day,N,2026-07-02T18:10:00Z,823765,2,158,Milwaukee Brewers,2026-07-02,Regular Season,Final,F,32,American Family Field
+4,146,Miami Marlins,day,N,2026-07-02T19:10:00Z,824335,14,115,Colorado Rockies,2026-07-02,Regular Season,Final,F,19,Coors Field
+5,145,Chicago White Sox,night,N,2026-07-02T22:40:00Z,824416,6,114,Cleveland Guardians,2026-07-02,Regular Season,Final,F,5,Progressive Field
+11,138,St. Louis Cardinals,night,N,2026-07-02T23:15:00Z,824906,5,144,Atlanta Braves,2026-07-02,Regular Season,Final,F,4705,Truist Park
+5,139,Tampa Bay Rays,night,N,2026-07-02T23:40:00Z,824093,2,118,Kansas City Royals,2026-07-02,Regular Season,Final,F,7,Kauffman Stadium
+4,116,Detroit Tigers,night,N,2026-07-03T00:05:00Z,822884,10,140,Texas Rangers,2026-07-02,Regular Season,Final,F,5325,Globe Life Field
+0,108,Los Angeles Angels,night,N,2026-07-03T01:40:00Z,823119,1,136,Seattle Mariners,2026-07-02,Regular Season,Final,F,680,T-Mobile Park
+7,135,San Diego Padres,night,N,2026-07-03T02:10:00Z,823935,12,119,Los Angeles Dodgers,2026-07-02,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 ,138,St. Louis Cardinals,day,N,2026-07-03T20:05:00Z,824659,,112,Chicago Cubs,2026-07-03,Regular Season,Scheduled,S,17,Wrigley Field
 ,134,Pittsburgh Pirates,night,N,2026-07-03T22:45:00Z,822714,,120,Washington Nationals,2026-07-03,Regular Season,Scheduled,S,3309,Nationals Park
 ,142,Minnesota Twins,night,N,2026-07-03T23:05:00Z,823527,,147,New York Yankees,2026-07-03,Regular Season,Scheduled,S,3313,Yankee Stadium
