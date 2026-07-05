@@ -275,6 +275,7 @@ def fetch_player_group_stats(session: requests.Session, group: str) -> list[dict
             "season": SEASON,
             "sportIds": 1,
             "limit": 5000,
+            "playerPool": "all",
         },
     )
     rows: list[dict[str, Any]] = []
