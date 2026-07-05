@@ -1,5 +1,6 @@
 // 塁打構成ワッフル: 単打×1/二塁打×2/三塁打×3/本塁打×4 の塁打シェアを100マスで表示
 // サーバーコンポーネント・純CSS grid
+import { MetricLink } from "@/components/metric-link";
 
 const PARTS = [
   { key: "single", label: "単打", color: "#0ea5e9" },
@@ -13,11 +14,13 @@ export function TotalBasesWaffle({
   doubles,
   triples,
   homeRuns,
+  metricHref,
 }: {
   hits: number;
   doubles: number;
   triples: number;
   homeRuns: number;
+  metricHref?: string;
 }) {
   const singles = Math.max(0, hits - doubles - triples - homeRuns);
   const bases = {
@@ -41,7 +44,10 @@ export function TotalBasesWaffle({
 
   return (
     <section className="card">
-      <h2 style={{ marginTop: 0, marginBottom: 12 }}>塁打構成</h2>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
+        <h2 style={{ margin: 0 }}>塁打構成</h2>
+        {metricHref && <MetricLink anchor={metricHref} />}
+      </div>
       <div
         style={{ display: "grid", gridTemplateColumns: "repeat(10, 1fr)", gap: 2, width: "fit-content", marginBottom: 14 }}
         role="img"

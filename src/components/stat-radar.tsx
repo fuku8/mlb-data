@@ -1,5 +1,6 @@
 // 汎用パーセンタイルレーダー（打者/投手で共用）。サーバーコンポーネント・純SVG
 import { radarScore } from "@/lib/radar-score";
+import { MetricLink } from "@/components/metric-link";
 
 export interface RadarAxis {
   label: string;
@@ -21,11 +22,13 @@ export function StatRadar({
   axes,
   score,
   note,
+  metricHref,
 }: {
   title: string;
   axes: RadarAxis[];
   score?: number;
   note?: string;
+  metricHref?: string;
 }) {
   const n = axes.length;
   if (n === 0) return null;
@@ -35,7 +38,10 @@ export function StatRadar({
 
   return (
     <section className="card">
-      <h2 style={{ marginTop: 0, marginBottom: 4 }}>{title}</h2>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+        <h2 style={{ margin: 0 }}>{title}</h2>
+        {metricHref && <MetricLink anchor={metricHref} />}
+      </div>
       {note && (
         <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>{note}</p>
       )}

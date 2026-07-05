@@ -5,6 +5,7 @@ import { formatAvg, formatEra, formatObp, formatOps, formatWhip, isQualifiedHitt
 import { defaultSortDirForKey, resolveTeamPlayerSort, sortTeamPlayerRows, type TeamSortKey } from "@/lib/team-player-sorting";
 import { SeasonHeartbeat, type TeamGameMargin } from "@/components/season-heartbeat";
 import { LorenzCurve } from "@/components/lorenz-curve";
+import { MetricLink } from "@/components/metric-link";
 import { gini } from "@/lib/gini";
 import { fixed, ipToOuts, n, sum } from "@/lib/utils";
 
@@ -226,7 +227,10 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
 
       {teamGames.length > 0 && (
         <section className="card">
-          <h2 style={{ marginTop: 0, marginBottom: 4 }}>Season Heartbeat</h2>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+            <h2 style={{ margin: 0 }}>Season Heartbeat</h2>
+            <MetricLink anchor="heartbeat" />
+          </div>
           <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
             試合ごとの得点差（緑=勝ち・赤=負け、±10点でキャップ）
           </p>
@@ -236,7 +240,10 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
 
       {qualifiedHitterRows.length >= 3 && (
         <section className="card">
-          <h2 style={{ marginTop: 0, marginBottom: 4 }}>打点依存度</h2>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+            <h2 style={{ margin: 0 }}>打点依存度</h2>
+            <MetricLink anchor="gini" />
+          </div>
           <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
             規定打者(PA≥30)内のRBI分布。Gini係数が高いほど特定の選手にRBIが偏っている
           </p>

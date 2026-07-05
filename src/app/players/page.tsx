@@ -13,6 +13,7 @@ import {
 } from "@/lib/data/normalizers";
 import { defaultSortDirForKey } from "@/lib/team-player-sorting";
 import { QuadrantMap } from "@/components/quadrant-map";
+import { MetricLink } from "@/components/metric-link";
 import { n } from "@/lib/utils";
 
 type Props = {
@@ -253,7 +254,10 @@ export default async function PlayersPage({ searchParams }: Props) {
       {mapDots.length > 0 &&
         (statGroup === "hitting" ? (
           <section className="card">
-            <h2 style={{ marginTop: 0, marginBottom: 4 }}>打者マップ</h2>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+              <h2 style={{ margin: 0 }}>打者マップ</h2>
+              <MetricLink anchor="quadrant" />
+            </div>
             <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
               規定打者(PA≥30) OBP(横)×SLG(縦)。破線は中央値
             </p>
@@ -261,7 +265,10 @@ export default async function PlayersPage({ searchParams }: Props) {
           </section>
         ) : (
           <section className="card">
-            <h2 style={{ marginTop: 0, marginBottom: 4 }}>投手マップ</h2>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+              <h2 style={{ margin: 0 }}>投手マップ</h2>
+              <MetricLink anchor="quadrant" />
+            </div>
             <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
               規定投手(アウト数≥30) BB/9(横・左が良い)×K/9(縦)。破線は中央値
             </p>

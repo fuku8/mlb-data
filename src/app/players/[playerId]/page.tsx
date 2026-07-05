@@ -216,6 +216,7 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
             title="League Percentile (Hitting)"
             note={`規定打者(PA≥30)内での位置。${player.season}シーズン・100が最上位`}
             rows={buildHitterPctRows(player, hitterPool)}
+            metricHref="percentile"
           />
         ) : (
           <UnqualifiedNote />
@@ -226,6 +227,7 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
           title="5ツールレーダー"
           note={`規定打者(PA≥30)内でのパーセンタイル。${player.season}シーズン`}
           axes={buildHitterRadarAxes(player, hitterPool)}
+          metricHref="radar"
         />
       )}
 
@@ -235,6 +237,7 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
           doubles={player.hitting?.doubles ?? 0}
           triples={player.hitting?.triples ?? 0}
           homeRuns={player.hitting?.homeRuns ?? 0}
+          metricHref="waffle"
         />
       )}
 
@@ -273,6 +276,7 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
             title="League Percentile (Pitching)"
             note={`規定投手(アウト数≥30)内での位置。${player.season}シーズン・100が最上位`}
             rows={buildPitcherPctRows(player, pitcherPool)}
+            metricHref="percentile"
           />
         ) : (
           <UnqualifiedNote />
@@ -283,6 +287,7 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
           title="投手レーダー"
           note={`規定投手(アウト数≥30)内でのパーセンタイル。${player.season}シーズン`}
           axes={buildPitcherRadarAxes(player, pitcherPool)}
+          metricHref="radar"
         />
       )}
 
