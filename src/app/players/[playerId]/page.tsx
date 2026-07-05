@@ -14,6 +14,8 @@ import {
 } from "@/lib/data/normalizers";
 import { percentileOf } from "@/lib/percentile";
 import { PercentileBars, type PercentileRow } from "@/components/percentile-bars";
+import { StatRadar, type RadarAxis } from "@/components/stat-radar";
+import { TotalBasesWaffle } from "@/components/total-bases-waffle";
 import { n } from "@/lib/utils";
 import type { PlayerSeasonRow } from "@/lib/types";
 
@@ -52,51 +54,82 @@ function UnqualifiedNote() {
   );
 }
 
+// 打者・投手の指標アクセサ。League Percentileカードとレーダーで共有する
+const hm = {
+  avg: (r: PlayerSeasonRow) => parseNumber(r.hitting?.avg) ?? 0,
+  obp: (r: PlayerSeasonRow) => parseNumber(r.hitting?.obp) ?? 0,
+  slg: (r: PlayerSeasonRow) => parseNumber(r.hitting?.slg) ?? 0,
+  ops: (r: PlayerSeasonRow) => parseNumber(r.hitting?.ops) ?? 0,
+  hr: (r: PlayerSeasonRow) => r.hitting?.homeRuns ?? 0,
+  sb: (r: PlayerSeasonRow) => r.hitting?.stolenBases ?? 0,
+  bbPct: (r: PlayerSeasonRow) => (r.hitting?.baseOnBalls ?? 0) / (r.hitting?.plateAppearances || 1),
+  kPct: (r: PlayerSeasonRow) => (r.hitting?.strikeOuts ?? 0) / (r.hitting?.plateAppearances || 1),
+  iso: (r: PlayerSeasonRow) => hm.slg(r) - hm.avg(r),
+  // 選球: BB/K。SOが0の選手はmax(SO,1)で母集団全体を統一計算する
+  bbK: (r: PlayerSeasonRow) => (r.hitting?.baseOnBalls ?? 0) / Math.max(r.hitting?.strikeOuts ?? 0, 1),
+};
+
+const pm = {
+  era: (r: PlayerSeasonRow) => parseNumber(r.pitching?.era) ?? 0,
+  whip: (r: PlayerSeasonRow) => parseNumber(r.pitching?.whip) ?? 0,
+  bb9: (r: PlayerSeasonRow) => parseNumber(r.pitching?.walksPer9Inn) ?? 0,
+  hr9: (r: PlayerSeasonRow) => parseNumber(r.pitching?.homeRunsPer9) ?? 0,
+  oppAvg: (r: PlayerSeasonRow) => parseNumber(r.pitching?.avg) ?? 0,
+  k9: (r: PlayerSeasonRow) => parseNumber(r.pitching?.strikeoutsPer9Inn) ?? 0,
+  kbb: (r: PlayerSeasonRow) => parseNumber(r.pitching?.strikeoutWalkRatio) ?? 0,
+};
+
 // 打者のLeague Percentile: 母集団は同シーズンの規定打者（PA≥30）
 function buildHitterPctRows(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): PercentileRow[] {
-  const avg = (r: PlayerSeasonRow) => parseNumber(r.hitting?.avg) ?? 0;
-  const obp = (r: PlayerSeasonRow) => parseNumber(r.hitting?.obp) ?? 0;
-  const slg = (r: PlayerSeasonRow) => parseNumber(r.hitting?.slg) ?? 0;
-  const ops = (r: PlayerSeasonRow) => parseNumber(r.hitting?.ops) ?? 0;
-  const hr = (r: PlayerSeasonRow) => r.hitting?.homeRuns ?? 0;
-  const sb = (r: PlayerSeasonRow) => r.hitting?.stolenBases ?? 0;
-  const bbPct = (r: PlayerSeasonRow) => (r.hitting?.baseOnBalls ?? 0) / (r.hitting?.plateAppearances || 1);
-  const kPct = (r: PlayerSeasonRow) => (r.hitting?.strikeOuts ?? 0) / (r.hitting?.plateAppearances || 1);
-  const iso = (r: PlayerSeasonRow) => slg(r) - avg(r);
-
   const h = target.hitting!;
   return [
-    { label: "AVG", display: formatAvg(h.avg), pct: percentileOf(pool.map(avg), avg(target)) },
-    { label: "OBP", display: formatObp(h.obp), pct: percentileOf(pool.map(obp), obp(target)) },
-    { label: "SLG", display: formatSlg(h.slg), pct: percentileOf(pool.map(slg), slg(target)) },
-    { label: "OPS", display: formatOps(h.ops), pct: percentileOf(pool.map(ops), ops(target)) },
-    { label: "HR", display: n(h.homeRuns), pct: percentileOf(pool.map(hr), hr(target)) },
-    { label: "SB", display: n(h.stolenBases), pct: percentileOf(pool.map(sb), sb(target)) },
-    { label: "BB%", display: `${(bbPct(target) * 100).toFixed(1)}%`, pct: percentileOf(pool.map(bbPct), bbPct(target)) },
-    { label: "K%", display: `${(kPct(target) * 100).toFixed(1)}%`, pct: 1 - percentileOf(pool.map(kPct), kPct(target)) },
-    { label: "ISO", display: iso(target).toFixed(3), pct: percentileOf(pool.map(iso), iso(target)) },
+    { label: "AVG", display: formatAvg(h.avg), pct: percentileOf(pool.map(hm.avg), hm.avg(target)) },
+    { label: "OBP", display: formatObp(h.obp), pct: percentileOf(pool.map(hm.obp), hm.obp(target)) },
+    { label: "SLG", display: formatSlg(h.slg), pct: percentileOf(pool.map(hm.slg), hm.slg(target)) },
+    { label: "OPS", display: formatOps(h.ops), pct: percentileOf(pool.map(hm.ops), hm.ops(target)) },
+    { label: "HR", display: n(h.homeRuns), pct: percentileOf(pool.map(hm.hr), hm.hr(target)) },
+    { label: "SB", display: n(h.stolenBases), pct: percentileOf(pool.map(hm.sb), hm.sb(target)) },
+    { label: "BB%", display: `${(hm.bbPct(target) * 100).toFixed(1)}%`, pct: percentileOf(pool.map(hm.bbPct), hm.bbPct(target)) },
+    { label: "K%", display: `${(hm.kPct(target) * 100).toFixed(1)}%`, pct: 1 - percentileOf(pool.map(hm.kPct), hm.kPct(target)) },
+    { label: "ISO", display: hm.iso(target).toFixed(3), pct: percentileOf(pool.map(hm.iso), hm.iso(target)) },
   ];
 }
 
 // 投手のLeague Percentile: 母集団は同シーズンの規定投手（アウト数≥30）。低いほど良い指標は反転する
 function buildPitcherPctRows(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): PercentileRow[] {
-  const era = (r: PlayerSeasonRow) => parseNumber(r.pitching?.era) ?? 0;
-  const whip = (r: PlayerSeasonRow) => parseNumber(r.pitching?.whip) ?? 0;
-  const bb9 = (r: PlayerSeasonRow) => parseNumber(r.pitching?.walksPer9Inn) ?? 0;
-  const hr9 = (r: PlayerSeasonRow) => parseNumber(r.pitching?.homeRunsPer9) ?? 0;
-  const oppAvg = (r: PlayerSeasonRow) => parseNumber(r.pitching?.avg) ?? 0;
-  const k9 = (r: PlayerSeasonRow) => parseNumber(r.pitching?.strikeoutsPer9Inn) ?? 0;
-  const kbb = (r: PlayerSeasonRow) => parseNumber(r.pitching?.strikeoutWalkRatio) ?? 0;
-
   const p = target.pitching!;
   return [
-    { label: "ERA", display: formatEra(p.era), pct: 1 - percentileOf(pool.map(era), era(target)) },
-    { label: "WHIP", display: formatWhip(p.whip), pct: 1 - percentileOf(pool.map(whip), whip(target)) },
-    { label: "BB/9", display: n(p.walksPer9Inn), pct: 1 - percentileOf(pool.map(bb9), bb9(target)) },
-    { label: "HR/9", display: n(p.homeRunsPer9), pct: 1 - percentileOf(pool.map(hr9), hr9(target)) },
-    { label: "被打率", display: formatAvg(p.avg), pct: 1 - percentileOf(pool.map(oppAvg), oppAvg(target)) },
-    { label: "K/9", display: n(p.strikeoutsPer9Inn), pct: percentileOf(pool.map(k9), k9(target)) },
-    { label: "K/BB", display: n(p.strikeoutWalkRatio), pct: percentileOf(pool.map(kbb), kbb(target)) },
+    { label: "ERA", display: formatEra(p.era), pct: 1 - percentileOf(pool.map(pm.era), pm.era(target)) },
+    { label: "WHIP", display: formatWhip(p.whip), pct: 1 - percentileOf(pool.map(pm.whip), pm.whip(target)) },
+    { label: "BB/9", display: n(p.walksPer9Inn), pct: 1 - percentileOf(pool.map(pm.bb9), pm.bb9(target)) },
+    { label: "HR/9", display: n(p.homeRunsPer9), pct: 1 - percentileOf(pool.map(pm.hr9), pm.hr9(target)) },
+    { label: "被打率", display: formatAvg(p.avg), pct: 1 - percentileOf(pool.map(pm.oppAvg), pm.oppAvg(target)) },
+    { label: "K/9", display: n(p.strikeoutsPer9Inn), pct: percentileOf(pool.map(pm.k9), pm.k9(target)) },
+    { label: "K/BB", display: n(p.strikeoutWalkRatio), pct: percentileOf(pool.map(pm.kbb), pm.kbb(target)) },
+  ];
+}
+
+// 5ツールレーダー: ミート(AVG)・出塁(OBP)・長打(ISO)・走塁(SB)・選球(BB/K)
+function buildHitterRadarAxes(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): RadarAxis[] {
+  const h = target.hitting!;
+  return [
+    { label: "ミート", display: formatAvg(h.avg), pct: percentileOf(pool.map(hm.avg), hm.avg(target)) },
+    { label: "出塁", display: formatObp(h.obp), pct: percentileOf(pool.map(hm.obp), hm.obp(target)) },
+    { label: "長打", display: hm.iso(target).toFixed(3), pct: percentileOf(pool.map(hm.iso), hm.iso(target)) },
+    { label: "走塁", display: n(h.stolenBases), pct: percentileOf(pool.map(hm.sb), hm.sb(target)) },
+    { label: "選球", display: hm.bbK(target).toFixed(2), pct: percentileOf(pool.map(hm.bbK), hm.bbK(target)) },
+  ];
+}
+
+// 投手レーダー: 奪三振(K/9)・制球(BB/9反転)・被打抑制(被打率反転)・一発回避(HR/9反転)・走者管理(WHIP反転)
+function buildPitcherRadarAxes(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): RadarAxis[] {
+  const p = target.pitching!;
+  return [
+    { label: "奪三振", display: n(p.strikeoutsPer9Inn), pct: percentileOf(pool.map(pm.k9), pm.k9(target)) },
+    { label: "制球", display: n(p.walksPer9Inn), pct: 1 - percentileOf(pool.map(pm.bb9), pm.bb9(target)) },
+    { label: "被打抑制", display: formatAvg(p.avg), pct: 1 - percentileOf(pool.map(pm.oppAvg), pm.oppAvg(target)) },
+    { label: "一発回避", display: n(p.homeRunsPer9), pct: 1 - percentileOf(pool.map(pm.hr9), pm.hr9(target)) },
+    { label: "走者管理", display: formatWhip(p.whip), pct: 1 - percentileOf(pool.map(pm.whip), pm.whip(target)) },
   ];
 }
 
@@ -188,6 +221,23 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
           <UnqualifiedNote />
         ))}
 
+      {showHitting && hitterQualified && (
+        <StatRadar
+          title="5ツールレーダー"
+          note={`規定打者(PA≥30)内でのパーセンタイル。${player.season}シーズン`}
+          axes={buildHitterRadarAxes(player, hitterPool)}
+        />
+      )}
+
+      {showHitting && hitterQualified && (
+        <TotalBasesWaffle
+          hits={player.hitting?.hits ?? 0}
+          doubles={player.hitting?.doubles ?? 0}
+          triples={player.hitting?.triples ?? 0}
+          homeRuns={player.hitting?.homeRuns ?? 0}
+        />
+      )}
+
       {showPitching && (
         <StatGrid
           title="Pitching"
@@ -227,6 +277,14 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         ) : (
           <UnqualifiedNote />
         ))}
+
+      {showPitching && pitcherQualified && (
+        <StatRadar
+          title="投手レーダー"
+          note={`規定投手(アウト数≥30)内でのパーセンタイル。${player.season}シーズン`}
+          axes={buildPitcherRadarAxes(player, pitcherPool)}
+        />
+      )}
 
       {player.fielding && (
         <StatGrid

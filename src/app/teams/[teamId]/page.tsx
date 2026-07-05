@@ -4,6 +4,8 @@ import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, get
 import { formatAvg, formatEra, formatObp, formatOps, formatWhip, isQualifiedHitter, isQualifiedPitcher, mergePlayerStatsBySeason, parseGameResults, seasonOrDefault } from "@/lib/data/normalizers";
 import { defaultSortDirForKey, resolveTeamPlayerSort, sortTeamPlayerRows, type TeamSortKey } from "@/lib/team-player-sorting";
 import { SeasonHeartbeat, type TeamGameMargin } from "@/components/season-heartbeat";
+import { LorenzCurve } from "@/components/lorenz-curve";
+import { gini } from "@/lib/gini";
 import { fixed, ipToOuts, n, sum } from "@/lib/utils";
 
 type Props = {
@@ -57,10 +59,13 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
     })
     .sort((a, b) => a.date.localeCompare(b.date));
 
-  const qualifiedHitters = merged.filter((r) => isQualifiedHitter(r.hitting?.plateAppearances ?? null)).length;
+  const qualifiedHitterRows = merged.filter((r) => isQualifiedHitter(r.hitting?.plateAppearances ?? null));
+  const qualifiedHitters = qualifiedHitterRows.length;
   const qualifiedPitchers = merged.filter((r) => isQualifiedPitcher(r.pitching?.inningsPitched)).length;
   const hitters = merged.filter((r) => r.hitting);
   const pitchers = merged.filter((r) => r.pitching);
+  const rbiValues = qualifiedHitterRows.map((r) => r.hitting?.rbi ?? 0);
+  const rbiGini = gini(rbiValues);
 
   const teamAB = sum(hitters.map((r) => r.hitting?.atBats));
   const teamH = sum(hitters.map((r) => r.hitting?.hits));
@@ -226,6 +231,22 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
             試合ごとの得点差（緑=勝ち・赤=負け、±10点でキャップ）
           </p>
           <SeasonHeartbeat games={teamGames} />
+        </section>
+      )}
+
+      {qualifiedHitterRows.length >= 3 && (
+        <section className="card">
+          <h2 style={{ marginTop: 0, marginBottom: 4 }}>打点依存度</h2>
+          <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
+            規定打者(PA≥30)内のRBI分布。Gini係数が高いほど特定の選手にRBIが偏っている
+          </p>
+          <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
+            <LorenzCurve values={rbiValues} label="RBI" />
+            <div>
+              <div style={{ fontSize: 12, color: "var(--muted-foreground)" }}>Gini係数</div>
+              <div style={{ fontSize: 32, fontWeight: 700 }}>{rbiGini.toFixed(3)}</div>
+            </div>
+          </div>
         </section>
       )}
 

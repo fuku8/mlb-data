@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPlayerHitting, getPlayerPitching, getPlayers } from "@/lib/data/loaders";
+import { getPlayerHitting, getPlayerPitching, getPlayers, parseNumber } from "@/lib/data/loaders";
 import {
   formatAvg,
   formatEra,
@@ -12,6 +12,7 @@ import {
   mergePlayerStatsBySeason,
 } from "@/lib/data/normalizers";
 import { defaultSortDirForKey } from "@/lib/team-player-sorting";
+import { QuadrantMap } from "@/components/quadrant-map";
 import { n } from "@/lib/utils";
 
 type Props = {
@@ -34,13 +35,35 @@ export default async function PlayersPage({ searchParams }: Props) {
 
   const [players, hitting, pitching] = await Promise.all([getPlayers(), getPlayerHitting(), getPlayerPitching()]);
 
-  const mergedAll = mergePlayerStatsBySeason({
+  const merged0 = mergePlayerStatsBySeason({
     players,
     hitting,
     pitching,
     fielding: [],
     season,
-  })
+  });
+
+  // 打者マップ/投手マップの母集団: 検索クエリに関係なく同シーズンの規定到達者全員
+  const mapDots =
+    statGroup === "hitting"
+      ? merged0
+          .filter((r) => isQualifiedHitter(r.hitting?.plateAppearances ?? null))
+          .map((r) => ({
+            name: r.full_name,
+            detail: r.team_name,
+            x: parseNumber(r.hitting?.obp) ?? 0,
+            y: parseNumber(r.hitting?.slg) ?? 0,
+          }))
+      : merged0
+          .filter((r) => isQualifiedPitcher(r.pitching?.inningsPitched))
+          .map((r) => ({
+            name: r.full_name,
+            detail: r.team_name,
+            x: parseNumber(r.pitching?.walksPer9Inn) ?? 0,
+            y: parseNumber(r.pitching?.strikeoutsPer9Inn) ?? 0,
+          }));
+
+  const mergedAll = merged0
     .filter((row) => contains(row.full_name, q ?? ""))
     .map((row) => ({
       ...row,
@@ -226,6 +249,25 @@ export default async function PlayersPage({ searchParams }: Props) {
           )}
         </div>
       </section>
+
+      {mapDots.length > 0 &&
+        (statGroup === "hitting" ? (
+          <section className="card">
+            <h2 style={{ marginTop: 0, marginBottom: 4 }}>打者マップ</h2>
+            <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
+              規定打者(PA≥30) OBP(横)×SLG(縦)。破線は中央値
+            </p>
+            <QuadrantMap dots={mapDots} xLabel="OBP" yLabel="SLG" formatX={(v) => v.toFixed(3)} formatY={(v) => v.toFixed(3)} />
+          </section>
+        ) : (
+          <section className="card">
+            <h2 style={{ marginTop: 0, marginBottom: 4 }}>投手マップ</h2>
+            <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
+              規定投手(アウト数≥30) BB/9(横・左が良い)×K/9(縦)。破線は中央値
+            </p>
+            <QuadrantMap dots={mapDots} xLabel="BB/9" yLabel="K/9" formatX={(v) => v.toFixed(2)} formatY={(v) => v.toFixed(2)} />
+          </section>
+        ))}
 
       <section className="card table-wrap">
         <table>
