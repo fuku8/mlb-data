@@ -141,7 +141,7 @@
 
 ## 10.5 feel-viz ビジュアル
 
-指標ビジュアル（League Percentile バー、5ツール/投手レーダー、塁打構成ワッフル、Season Heartbeat、打点依存度 Gini/Lorenz、打者/投手マップ、`/metrics` 解説ページ）の仕様・指標定義・進捗は `docs/feel-viz.md` に集約。すべてサーバーコンポーネント＋自前SVG/純CSS（チャートライブラリ不使用）。
+指標ビジュアル（League Percentile バー、5ツール/投手レーダー、塁打構成ワッフル、Season Heartbeat、得点関与依存度・イニング依存度 Gini/Lorenz、打者/投手マップ、`/metrics` 解説ページ）の仕様・指標定義・進捗は `docs/feel-viz.md` に集約。すべてサーバーコンポーネント＋自前SVG/純CSS（チャートライブラリ不使用）。
 
 ---
 
