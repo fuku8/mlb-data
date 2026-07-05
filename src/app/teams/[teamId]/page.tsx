@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, getStandings, getTeams, parseNumber } from "@/lib/data/loaders";
-import { formatAvg, formatEra, formatObp, formatOps, formatWhip, isQualifiedHitter, isQualifiedPitcher, mergePlayerStatsBySeason, seasonOrDefault } from "@/lib/data/normalizers";
+import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, getSchedule, getStandings, getTeams, parseNumber } from "@/lib/data/loaders";
+import { formatAvg, formatEra, formatObp, formatOps, formatWhip, isQualifiedHitter, isQualifiedPitcher, mergePlayerStatsBySeason, parseGameResults, seasonOrDefault } from "@/lib/data/normalizers";
 import { defaultSortDirForKey, resolveTeamPlayerSort, sortTeamPlayerRows, type TeamSortKey } from "@/lib/team-player-sorting";
+import { SeasonHeartbeat, type TeamGameMargin } from "@/components/season-heartbeat";
 import { fixed, ipToOuts, n, sum } from "@/lib/utils";
 
 type Props = {
@@ -19,13 +20,14 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
   const teamIdNum = parseNumber(teamId);
   if (!teamIdNum) notFound();
 
-  const [teams, standings, players, hitting, pitching, fielding] = await Promise.all([
+  const [teams, standings, players, hitting, pitching, fielding, schedule] = await Promise.all([
     getTeams(),
     getStandings(),
     getPlayers(),
     getPlayerHitting(),
     getPlayerPitching(),
     getPlayerFielding(),
+    getSchedule(),
   ]);
 
   const teamMeta = teams.find((t) => parseNumber(t.team_id) === teamIdNum && (t.season === targetSeason || !t.season));
@@ -36,6 +38,24 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
   );
 
   if (!teamMeta && !standing && merged.length === 0) notFound();
+
+  // Season Heartbeat: schedule.csvにseason列がないため、Finalなチーム全試合を日付順に表示する
+  const allGames = parseGameResults(schedule);
+  const teamGames: TeamGameMargin[] = allGames
+    .filter((g) => g.status_code === "F" && (g.home_team_id === teamIdNum || g.away_team_id === teamIdNum))
+    .map((g) => {
+      const isHome = g.home_team_id === teamIdNum;
+      const teamScore = (isHome ? g.home_score : g.away_score) ?? 0;
+      const oppScore = (isHome ? g.away_score : g.home_score) ?? 0;
+      return {
+        date: g.jst_date || g.official_date,
+        opponent: isHome ? g.away_team_name : g.home_team_name,
+        teamScore,
+        oppScore,
+        margin: teamScore - oppScore,
+      };
+    })
+    .sort((a, b) => a.date.localeCompare(b.date));
 
   const qualifiedHitters = merged.filter((r) => isQualifiedHitter(r.hitting?.plateAppearances ?? null)).length;
   const qualifiedPitchers = merged.filter((r) => isQualifiedPitcher(r.pitching?.inningsPitched)).length;
@@ -198,6 +218,16 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
           <div style={{ fontSize: 24, fontWeight: 700 }}>{teamBBPit}</div>
         </div>
       </section>
+
+      {teamGames.length > 0 && (
+        <section className="card">
+          <h2 style={{ marginTop: 0, marginBottom: 4 }}>Season Heartbeat</h2>
+          <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
+            試合ごとの得点差（緑=勝ち・赤=負け、±10点でキャップ）
+          </p>
+          <SeasonHeartbeat games={teamGames} />
+        </section>
+      )}
 
       <section className="card">
         <form method="get" style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>

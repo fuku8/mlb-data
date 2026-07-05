@@ -1,8 +1,21 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers } from "@/lib/data/loaders";
-import { formatAvg, formatEra, formatObp, formatOps, formatSlg, formatWhip, mergePlayerStatsBySeason } from "@/lib/data/normalizers";
+import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, parseNumber } from "@/lib/data/loaders";
+import {
+  formatAvg,
+  formatEra,
+  formatObp,
+  formatOps,
+  formatSlg,
+  formatWhip,
+  isQualifiedHitter,
+  isQualifiedPitcher,
+  mergePlayerStatsBySeason,
+} from "@/lib/data/normalizers";
+import { percentileOf } from "@/lib/percentile";
+import { PercentileBars, type PercentileRow } from "@/components/percentile-bars";
 import { n } from "@/lib/utils";
+import type { PlayerSeasonRow } from "@/lib/types";
 
 type Props = {
   params: Promise<{ playerId: string }>;
@@ -31,6 +44,62 @@ function StatGrid({ title, items }: { title: string; items: [string, string][] }
   );
 }
 
+function UnqualifiedNote() {
+  return (
+    <section className="card">
+      <p style={{ margin: 0, color: "var(--muted-foreground)" }}>規定未到達のためパーセンタイル非表示</p>
+    </section>
+  );
+}
+
+// 打者のLeague Percentile: 母集団は同シーズンの規定打者（PA≥30）
+function buildHitterPctRows(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): PercentileRow[] {
+  const avg = (r: PlayerSeasonRow) => parseNumber(r.hitting?.avg) ?? 0;
+  const obp = (r: PlayerSeasonRow) => parseNumber(r.hitting?.obp) ?? 0;
+  const slg = (r: PlayerSeasonRow) => parseNumber(r.hitting?.slg) ?? 0;
+  const ops = (r: PlayerSeasonRow) => parseNumber(r.hitting?.ops) ?? 0;
+  const hr = (r: PlayerSeasonRow) => r.hitting?.homeRuns ?? 0;
+  const sb = (r: PlayerSeasonRow) => r.hitting?.stolenBases ?? 0;
+  const bbPct = (r: PlayerSeasonRow) => (r.hitting?.baseOnBalls ?? 0) / (r.hitting?.plateAppearances || 1);
+  const kPct = (r: PlayerSeasonRow) => (r.hitting?.strikeOuts ?? 0) / (r.hitting?.plateAppearances || 1);
+  const iso = (r: PlayerSeasonRow) => slg(r) - avg(r);
+
+  const h = target.hitting!;
+  return [
+    { label: "AVG", display: formatAvg(h.avg), pct: percentileOf(pool.map(avg), avg(target)) },
+    { label: "OBP", display: formatObp(h.obp), pct: percentileOf(pool.map(obp), obp(target)) },
+    { label: "SLG", display: formatSlg(h.slg), pct: percentileOf(pool.map(slg), slg(target)) },
+    { label: "OPS", display: formatOps(h.ops), pct: percentileOf(pool.map(ops), ops(target)) },
+    { label: "HR", display: n(h.homeRuns), pct: percentileOf(pool.map(hr), hr(target)) },
+    { label: "SB", display: n(h.stolenBases), pct: percentileOf(pool.map(sb), sb(target)) },
+    { label: "BB%", display: `${(bbPct(target) * 100).toFixed(1)}%`, pct: percentileOf(pool.map(bbPct), bbPct(target)) },
+    { label: "K%", display: `${(kPct(target) * 100).toFixed(1)}%`, pct: 1 - percentileOf(pool.map(kPct), kPct(target)) },
+    { label: "ISO", display: iso(target).toFixed(3), pct: percentileOf(pool.map(iso), iso(target)) },
+  ];
+}
+
+// 投手のLeague Percentile: 母集団は同シーズンの規定投手（アウト数≥30）。低いほど良い指標は反転する
+function buildPitcherPctRows(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): PercentileRow[] {
+  const era = (r: PlayerSeasonRow) => parseNumber(r.pitching?.era) ?? 0;
+  const whip = (r: PlayerSeasonRow) => parseNumber(r.pitching?.whip) ?? 0;
+  const bb9 = (r: PlayerSeasonRow) => parseNumber(r.pitching?.walksPer9Inn) ?? 0;
+  const hr9 = (r: PlayerSeasonRow) => parseNumber(r.pitching?.homeRunsPer9) ?? 0;
+  const oppAvg = (r: PlayerSeasonRow) => parseNumber(r.pitching?.avg) ?? 0;
+  const k9 = (r: PlayerSeasonRow) => parseNumber(r.pitching?.strikeoutsPer9Inn) ?? 0;
+  const kbb = (r: PlayerSeasonRow) => parseNumber(r.pitching?.strikeoutWalkRatio) ?? 0;
+
+  const p = target.pitching!;
+  return [
+    { label: "ERA", display: formatEra(p.era), pct: 1 - percentileOf(pool.map(era), era(target)) },
+    { label: "WHIP", display: formatWhip(p.whip), pct: 1 - percentileOf(pool.map(whip), whip(target)) },
+    { label: "BB/9", display: n(p.walksPer9Inn), pct: 1 - percentileOf(pool.map(bb9), bb9(target)) },
+    { label: "HR/9", display: n(p.homeRunsPer9), pct: 1 - percentileOf(pool.map(hr9), hr9(target)) },
+    { label: "被打率", display: formatAvg(p.avg), pct: 1 - percentileOf(pool.map(oppAvg), oppAvg(target)) },
+    { label: "K/9", display: n(p.strikeoutsPer9Inn), pct: percentileOf(pool.map(k9), k9(target)) },
+    { label: "K/BB", display: n(p.strikeoutWalkRatio), pct: percentileOf(pool.map(kbb), kbb(target)) },
+  ];
+}
+
 export default async function PlayerDetailPage({ params, searchParams }: Props) {
   const { playerId } = await params;
   const { season } = await searchParams;
@@ -54,6 +123,13 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
 
   const showHitting = !!player.hitting;
   const showPitching = !!player.pitching;
+
+  // League Percentile: 母集団は同シーズンの規定打者/規定投手（player_hitting.csv / player_pitching.csvに
+  // 移籍による同一選手複数行は現状データに存在しないため未対応。発生した場合はPA/アウト数最大の行を採用する）
+  const hitterPool = merged.filter((r) => isQualifiedHitter(r.hitting?.plateAppearances ?? null));
+  const pitcherPool = merged.filter((r) => isQualifiedPitcher(r.pitching?.inningsPitched));
+  const hitterQualified = showHitting && isQualifiedHitter(player.hitting?.plateAppearances ?? null);
+  const pitcherQualified = showPitching && isQualifiedPitcher(player.pitching?.inningsPitched);
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
@@ -101,6 +177,17 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         />
       )}
 
+      {showHitting &&
+        (hitterQualified ? (
+          <PercentileBars
+            title="League Percentile (Hitting)"
+            note={`規定打者(PA≥30)内での位置。${player.season}シーズン・100が最上位`}
+            rows={buildHitterPctRows(player, hitterPool)}
+          />
+        ) : (
+          <UnqualifiedNote />
+        ))}
+
       {showPitching && (
         <StatGrid
           title="Pitching"
@@ -129,6 +216,17 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
           ]}
         />
       )}
+
+      {showPitching &&
+        (pitcherQualified ? (
+          <PercentileBars
+            title="League Percentile (Pitching)"
+            note={`規定投手(アウト数≥30)内での位置。${player.season}シーズン・100が最上位`}
+            rows={buildPitcherPctRows(player, pitcherPool)}
+          />
+        ) : (
+          <UnqualifiedNote />
+        ))}
 
       {player.fielding && (
         <StatGrid

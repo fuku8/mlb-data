@@ -102,6 +102,7 @@ export interface PitchingStats {
   homeRunsPer9: string;
   era: string;
   whip: string;
+  avg: string;
 }
 
 export interface FieldingStats {

@@ -103,6 +103,7 @@ function toPitching(rec: StringRecord): PitchingStats {
     homeRunsPer9: rec.homeRunsPer9 ?? "",
     era: rec.era ?? "",
     whip: rec.whip ?? "",
+    avg: rec.avg ?? "",
   };
 }
 
