@@ -40,7 +40,7 @@ export function StatRadar({
       <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
         <svg
           viewBox="0 0 260 220"
-          style={{ width: "100%", maxWidth: 260 }}
+          style={{ width: "100%", maxWidth: 400 }}
           role="img"
           aria-label={`${title}: ${axes.map((a) => `${a.label} ${Math.round(a.pct * 100)}`).join(", ")}`}
         >

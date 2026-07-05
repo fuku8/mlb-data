@@ -148,4 +148,16 @@ Phase 1-3 のコードレビュー指摘を修正。
 
 **検証結果**: typecheck ✅ / build ✅ / node --test 22/22 pass ✅。
 
+### 最終ビジュアル確認（2026-07-05）
+
+デスクトップ(1440px)・モバイル(390px)の実スクリーンショット（headless Chrome / Playwright）で全ページを目視確認し、以下を修正。
+
+- **カード見出しが本文サイズに潰れていた**: Tailwind preflight が h1-h6 を font-size: inherit にリセットするため、指標カードの h2 が14px相当で表示されていた → `globals.css` に `.card h2 { font-size: 20px; font-weight: 700 }` を一括追加（StatGrid「Hitting」等の既存カード見出しも同時に改善）
+- **レーダーが小さい**: maxWidth 260→400（SVGなので軸ラベルも比例拡大）
+- **塁打構成ワッフルが小さい**: マス 14px→20px、gap 2→3
+- **ローレンツ曲線**: maxWidth 320→400
+- **モバイル(390px)で横はみ出し**: /players（象限マップ minWidth 480）と /teams（Heartbeat minWidth 560）でページ全体が横に伸びていた。両者とも overflowX:auto で包んであったが、grid アイテムの min-width:auto が効いて突き抜けていた → `.card { min-width: 0 }` で一括解消（Playwright 実測で全5ページ scrollWidth=390 を確認）
+
+検証: typecheck ✅ / build ✅ / 22/22 pass ✅ / 修正後の 1440px・390px スクリーンショットで目視確認。
+
 **再レビュー（同日）**: 修正10件の適用を全件確認。1件の主張と実装の乖離を検出・修正——「パーセンタイルはバーとレーダーで1回だけ計算」とされていたが、実際は `buildHitterPctRows`/`buildHitterRadarAxes` が別々に `computeMetrics` を呼び2回計算していた。4つの個別ビルダーを `buildHitterViz`/`buildPitcherViz`（bars+radar を1回の computeMetrics から返す）に統合して解消。再検証: typecheck ✅ / build ✅ / 22/22 pass ✅ / 本番サーバーでレーダー値が修正前と同一であることを実確認。

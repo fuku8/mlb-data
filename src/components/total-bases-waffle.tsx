@@ -46,12 +46,12 @@ export function TotalBasesWaffle({
     <section className="card">
       <CardHeader title="塁打構成" metricHref={metricHref} />
       <div
-        style={{ display: "grid", gridTemplateColumns: "repeat(10, 1fr)", gap: 2, width: "fit-content", marginBottom: 14 }}
+        style={{ display: "grid", gridTemplateColumns: "repeat(10, 1fr)", gap: 3, width: "fit-content", marginBottom: 14 }}
         role="img"
         aria-label={`塁打構成: ${PARTS.map((p, i) => `${p.label} ${counts[i]}%`).join(", ")}`}
       >
         {cells.map((color, i) => (
-          <div key={i} style={{ height: 14, width: 14, borderRadius: 2, backgroundColor: color }} />
+          <div key={i} style={{ height: 20, width: 20, borderRadius: 3, backgroundColor: color }} />
         ))}
       </div>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap", fontSize: 13, color: "var(--muted-foreground)" }}>

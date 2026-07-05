@@ -45,6 +45,14 @@ a {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 16px;
+  /* grid/flexアイテムのmin-width:autoを打ち消し、内側のoverflowスクロールを効かせる */
+  min-width: 0;
+}
+
+/* Tailwind preflightで見出しが本文サイズに潰れるため、カード見出しはここで一括指定する */
+.card h2 {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .table-wrap {

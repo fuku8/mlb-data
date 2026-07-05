@@ -21,7 +21,7 @@ export function LorenzCurve({ values, label }: { values: number[]; label: string
   const path = pts.map(([x, y], i) => `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`).join("");
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", maxWidth: 320 }} role="img" aria-label={`${label}の偏りを表すローレンツ曲線`}>
+    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", maxWidth: 400 }} role="img" aria-label={`${label}の偏りを表すローレンツ曲線`}>
       {/* 完全均等線と曲線の間が「偏り」 */}
       <path d={`${path}Z`} fill="#f97316" fillOpacity={0.15} />
       <line x1={sx(0)} y1={sy(0)} x2={sx(1)} y2={sy(1)} stroke="currentColor" strokeOpacity={0.35} strokeDasharray="4 3" />
