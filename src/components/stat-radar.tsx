@@ -1,6 +1,6 @@
 // 汎用パーセンタイルレーダー（打者/投手で共用）。サーバーコンポーネント・純SVG
 import { radarScore } from "@/lib/radar-score";
-import { MetricLink } from "@/components/metric-link";
+import { CardHeader } from "@/components/card-header";
 
 export interface RadarAxis {
   label: string;
@@ -20,13 +20,11 @@ function pt(i: number, n: number, r: number): [number, number] {
 export function StatRadar({
   title,
   axes,
-  score,
   note,
   metricHref,
 }: {
   title: string;
   axes: RadarAxis[];
-  score?: number;
   note?: string;
   metricHref?: string;
 }) {
@@ -34,17 +32,11 @@ export function StatRadar({
   if (n === 0) return null;
   const ring = (frac: number) => axes.map((_, i) => pt(i, n, R * frac).join(",")).join(" ");
   const shape = axes.map((a, i) => pt(i, n, R * Math.max(0.02, a.pct)).join(",")).join(" ");
-  const computedScore = score ?? radarScore(axes.map((a) => a.pct));
+  const computedScore = radarScore(axes.map((a) => a.pct));
 
   return (
     <section className="card">
-      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-        <h2 style={{ margin: 0 }}>{title}</h2>
-        {metricHref && <MetricLink anchor={metricHref} />}
-      </div>
-      {note && (
-        <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>{note}</p>
-      )}
+      <CardHeader title={title} metricHref={metricHref} note={note} />
       <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
         <svg
           viewBox="0 0 260 220"

@@ -135,12 +135,17 @@ export function filterBySeason<T extends { season: string }>(rows: T[], season?:
   return rows.filter((r) => r.season === target);
 }
 
+// 規定打者/規定投手のしきい値。/metrics 等のプロース文言もここから補間する
+export const HITTER_QUALIFY_PA = 30;
+export const PITCHER_QUALIFY_OUTS = 30;
+export const PITCHER_QUALIFY_IP = PITCHER_QUALIFY_OUTS / 3;
+
 export function isQualifiedHitter(pa: number | null): boolean {
-  return (pa ?? 0) >= 30;
+  return (pa ?? 0) >= HITTER_QUALIFY_PA;
 }
 
 export function isQualifiedPitcher(ip: string | null | undefined): boolean {
-  return ipToOuts(ip ?? "") >= 30;
+  return ipToOuts(ip ?? "") >= PITCHER_QUALIFY_OUTS;
 }
 
 export function formatRate(value: string | null | undefined): string {

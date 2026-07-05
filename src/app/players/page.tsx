@@ -7,13 +7,16 @@ import {
   formatOps,
   formatSlg,
   formatWhip,
+  HITTER_QUALIFY_PA,
   isQualifiedHitter,
   isQualifiedPitcher,
   mergePlayerStatsBySeason,
+  PITCHER_QUALIFY_IP,
+  PITCHER_QUALIFY_OUTS,
 } from "@/lib/data/normalizers";
 import { defaultSortDirForKey } from "@/lib/team-player-sorting";
 import { QuadrantMap } from "@/components/quadrant-map";
-import { MetricLink } from "@/components/metric-link";
+import { CardHeader } from "@/components/card-header";
 import { n } from "@/lib/utils";
 
 type Props = {
@@ -44,7 +47,8 @@ export default async function PlayersPage({ searchParams }: Props) {
     season,
   });
 
-  // 打者マップ/投手マップの母集団: 検索クエリに関係なく同シーズンの規定到達者全員
+  // 打者マップ/投手マップの母集団: 検索クエリに関係なく同シーズンの規定到達者全員。
+  // 軸の値が欠損している選手は除外する（0扱いにすると中央値・軸範囲が歪む）
   const mapDots =
     statGroup === "hitting"
       ? merged0
@@ -52,17 +56,19 @@ export default async function PlayersPage({ searchParams }: Props) {
           .map((r) => ({
             name: r.full_name,
             detail: r.team_name,
-            x: parseNumber(r.hitting?.obp) ?? 0,
-            y: parseNumber(r.hitting?.slg) ?? 0,
+            x: parseNumber(r.hitting?.obp),
+            y: parseNumber(r.hitting?.slg),
           }))
+          .filter((d): d is { name: string; detail: string; x: number; y: number } => d.x !== null && d.y !== null)
       : merged0
           .filter((r) => isQualifiedPitcher(r.pitching?.inningsPitched))
           .map((r) => ({
             name: r.full_name,
             detail: r.team_name,
-            x: parseNumber(r.pitching?.walksPer9Inn) ?? 0,
-            y: parseNumber(r.pitching?.strikeoutsPer9Inn) ?? 0,
-          }));
+            x: parseNumber(r.pitching?.walksPer9Inn),
+            y: parseNumber(r.pitching?.strikeoutsPer9Inn),
+          }))
+          .filter((d): d is { name: string; detail: string; x: number; y: number } => d.x !== null && d.y !== null);
 
   const mergedAll = merged0
     .filter((row) => contains(row.full_name, q ?? ""))
@@ -212,7 +218,7 @@ export default async function PlayersPage({ searchParams }: Props) {
       <section className="card">
         <h1 style={{ margin: "0 0 16px", fontSize: 34, lineHeight: 1.1 }}>Players</h1>
         <p style={{ margin: 0, color: "var(--muted-foreground)" }}>
-          小サンプルは ⚠ 表示（打者 PA&lt;30 / 投手 IP&lt;10）
+          {`小サンプルは ⚠ 表示（打者 PA<${HITTER_QUALIFY_PA} / 投手 IP<${PITCHER_QUALIFY_IP}）`}
         </p>
         <form method="get" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <input name="q" defaultValue={q ?? ""} placeholder="Search player" />
@@ -254,24 +260,20 @@ export default async function PlayersPage({ searchParams }: Props) {
       {mapDots.length > 0 &&
         (statGroup === "hitting" ? (
           <section className="card">
-            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-              <h2 style={{ margin: 0 }}>打者マップ</h2>
-              <MetricLink anchor="quadrant" />
-            </div>
-            <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
-              規定打者(PA≥30) OBP(横)×SLG(縦)。破線は中央値
-            </p>
+            <CardHeader
+              title="打者マップ"
+              metricHref="quadrant"
+              note={`規定打者(PA≥${HITTER_QUALIFY_PA}) OBP(横)×SLG(縦)。破線は中央値`}
+            />
             <QuadrantMap dots={mapDots} xLabel="OBP" yLabel="SLG" formatX={(v) => v.toFixed(3)} formatY={(v) => v.toFixed(3)} />
           </section>
         ) : (
           <section className="card">
-            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-              <h2 style={{ margin: 0 }}>投手マップ</h2>
-              <MetricLink anchor="quadrant" />
-            </div>
-            <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
-              規定投手(アウト数≥30) BB/9(横・左が良い)×K/9(縦)。破線は中央値
-            </p>
+            <CardHeader
+              title="投手マップ"
+              metricHref="quadrant"
+              note={`規定投手(アウト数≥${PITCHER_QUALIFY_OUTS}) BB/9(横・左が良い)×K/9(縦)。破線は中央値`}
+            />
             <QuadrantMap dots={mapDots} xLabel="BB/9" yLabel="K/9" formatX={(v) => v.toFixed(2)} formatY={(v) => v.toFixed(2)} />
           </section>
         ))}

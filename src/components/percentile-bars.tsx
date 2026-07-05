@@ -1,5 +1,5 @@
 // リーグ内パーセンタイルを色温度つきバーで表示するカード。サーバーコンポーネント・純CSS
-import { MetricLink } from "@/components/metric-link";
+import { CardHeader } from "@/components/card-header";
 
 export interface PercentileRow {
   label: string;
@@ -26,13 +26,7 @@ export function PercentileBars({
 }) {
   return (
     <section className="card">
-      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: note ? 4 : 12 }}>
-        <h2 style={{ margin: 0 }}>{title}</h2>
-        {metricHref && <MetricLink anchor={metricHref} />}
-      </div>
-      {note && (
-        <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>{note}</p>
-      )}
+      <CardHeader title={title} metricHref={metricHref} note={note} />
       <div style={{ display: "grid", gap: 10 }}>
         {rows.map(({ label, display, pct }) => {
           const p100 = Math.round(pct * 100);

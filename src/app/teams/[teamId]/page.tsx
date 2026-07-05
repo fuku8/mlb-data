@@ -1,11 +1,24 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, getSchedule, getStandings, getTeams, parseNumber } from "@/lib/data/loaders";
-import { formatAvg, formatEra, formatObp, formatOps, formatWhip, isQualifiedHitter, isQualifiedPitcher, mergePlayerStatsBySeason, parseGameResults, seasonOrDefault } from "@/lib/data/normalizers";
+import {
+  formatAvg,
+  formatEra,
+  formatObp,
+  formatOps,
+  formatWhip,
+  HITTER_QUALIFY_PA,
+  isQualifiedHitter,
+  isQualifiedPitcher,
+  mergePlayerStatsBySeason,
+  parseGameResults,
+  PITCHER_QUALIFY_IP,
+  seasonOrDefault,
+} from "@/lib/data/normalizers";
 import { defaultSortDirForKey, resolveTeamPlayerSort, sortTeamPlayerRows, type TeamSortKey } from "@/lib/team-player-sorting";
 import { SeasonHeartbeat, type TeamGameMargin } from "@/components/season-heartbeat";
 import { LorenzCurve } from "@/components/lorenz-curve";
-import { MetricLink } from "@/components/metric-link";
+import { CardHeader } from "@/components/card-header";
 import { gini } from "@/lib/gini";
 import { fixed, ipToOuts, n, sum } from "@/lib/utils";
 
@@ -45,11 +58,17 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
   // Season Heartbeat: schedule.csvにseason列がないため、Finalなチーム全試合を日付順に表示する
   const allGames = parseGameResults(schedule);
   const teamGames: TeamGameMargin[] = allGames
-    .filter((g) => g.status_code === "F" && (g.home_team_id === teamIdNum || g.away_team_id === teamIdNum))
+    .filter(
+      (g) =>
+        g.status_code === "F" &&
+        (g.home_team_id === teamIdNum || g.away_team_id === teamIdNum) &&
+        g.home_score !== null &&
+        g.away_score !== null,
+    )
     .map((g) => {
       const isHome = g.home_team_id === teamIdNum;
-      const teamScore = (isHome ? g.home_score : g.away_score) ?? 0;
-      const oppScore = (isHome ? g.away_score : g.home_score) ?? 0;
+      const teamScore = (isHome ? g.home_score : g.away_score) as number;
+      const oppScore = (isHome ? g.away_score : g.home_score) as number;
       return {
         date: g.jst_date || g.official_date,
         opponent: isHome ? g.away_team_name : g.home_team_name,
@@ -227,26 +246,22 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
 
       {teamGames.length > 0 && (
         <section className="card">
-          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-            <h2 style={{ margin: 0 }}>Season Heartbeat</h2>
-            <MetricLink anchor="heartbeat" />
-          </div>
-          <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
-            試合ごとの得点差（緑=勝ち・赤=負け、±10点でキャップ）
-          </p>
+          <CardHeader
+            title="Season Heartbeat"
+            metricHref="heartbeat"
+            note="試合ごとの得点差（緑=勝ち・赤=負け、±10点でキャップ）"
+          />
           <SeasonHeartbeat games={teamGames} />
         </section>
       )}
 
       {qualifiedHitterRows.length >= 3 && (
         <section className="card">
-          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-            <h2 style={{ margin: 0 }}>打点依存度</h2>
-            <MetricLink anchor="gini" />
-          </div>
-          <p style={{ marginTop: 0, marginBottom: 12, color: "var(--muted-foreground)", fontSize: 13 }}>
-            規定打者(PA≥30)内のRBI分布。Gini係数が高いほど特定の選手にRBIが偏っている
-          </p>
+          <CardHeader
+            title="打点依存度"
+            metricHref="gini"
+            note={`規定打者(PA≥${HITTER_QUALIFY_PA})内のRBI分布。Gini係数が高いほど特定の選手にRBIが偏っている`}
+          />
           <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
             <LorenzCurve values={rbiValues} label="RBI" />
             <div>
@@ -267,7 +282,9 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
             <option value="pitching">Pitching</option>
           </select>
           <button className="primary" type="submit">Apply</button>
-          <span style={{ color: "var(--muted-foreground)", fontSize: 13 }}>小サンプル: 打者 PA&lt;30 / 投手 IP&lt;10</span>
+          <span style={{ color: "var(--muted-foreground)", fontSize: 13 }}>
+            {`小サンプル: 打者 PA<${HITTER_QUALIFY_PA} / 投手 IP<${PITCHER_QUALIFY_IP}`}
+          </span>
         </form>
       </section>
 

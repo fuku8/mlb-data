@@ -22,16 +22,12 @@ export function QuadrantMap({
   dots,
   xLabel,
   yLabel,
-  invertX = false,
-  invertY = false,
   formatX = (v: number) => v.toFixed(2),
   formatY = (v: number) => v.toFixed(2),
 }: {
   dots: QuadrantDot[];
   xLabel: string;
   yLabel: string;
-  invertX?: boolean;
-  invertY?: boolean;
   formatX?: (v: number) => string;
   formatY?: (v: number) => string;
 }) {
@@ -49,11 +45,11 @@ export function QuadrantMap({
 
   const sx = (v: number) => {
     const f = (v - x0) / (x1 - x0);
-    return PAD.l + (invertX ? 1 - f : f) * (W - PAD.l - PAD.r);
+    return PAD.l + f * (W - PAD.l - PAD.r);
   };
   const sy = (v: number) => {
     const f = (v - y0) / (y1 - y0);
-    return H - PAD.b - (invertY ? 1 - f : f) * (H - PAD.t - PAD.b);
+    return H - PAD.b - f * (H - PAD.t - PAD.b);
   };
 
   return (
