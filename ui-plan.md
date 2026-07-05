@@ -101,7 +101,7 @@
 - 最大4選手を同時選択・比較
 - 打撃指標比較（AVG, OBP, SLG, OPS, HR, RBI 等）
 - 投球指標比較（ERA, WHIP, SO, BB, IP 等）
-- 表形式 + チャート表示
+- 表形式で表示
 - クエリパラメータで状態共有
 
 ## 9. Footer ✅
@@ -124,7 +124,7 @@
 
 ### タイポグラフィ
 - ページタイトル: 34-38px, font-weight 700, line-height 1.1
-- セクション見出し: h2 デフォルト
+- セクション見出し: `.card h2` = 20px, weight 700（globals.cssで一括指定。Tailwind preflight対策）
 - テーブル: 14px
 - スタッツカードラベル: 11px, weight 600, muted color
 - スタッツカード値: 18px, weight 700
@@ -132,10 +132,16 @@
 
 ### レイアウト
 - 全体: `display: grid, gap: 16`
-- カード: `.card` クラス（padding 16px, border-radius 10px）
+- カード: `.card` クラス（padding 16px, border-radius 10px, min-width 0 — 内側の横スクロールをモバイルで効かせるため）
 - テーブル: `.table-wrap` で横スクロール対応
 - グリッド（試合カード）: `repeat(auto-fill, minmax(280-320px, 1fr))`
 - グリッド（スタッツカード）: `repeat(auto-fill, minmax(90px, 1fr))`
+
+---
+
+## 10.5 feel-viz ビジュアル
+
+指標ビジュアル（League Percentile バー、5ツール/投手レーダー、塁打構成ワッフル、Season Heartbeat、打点依存度 Gini/Lorenz、打者/投手マップ、`/metrics` 解説ページ）の仕様・指標定義・進捗は `docs/feel-viz.md` に集約。すべてサーバーコンポーネント＋自前SVG/純CSS（チャートライブラリ不使用）。
 
 ---
 
