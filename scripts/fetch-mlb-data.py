@@ -266,6 +266,7 @@ def fetch_players(session: requests.Session) -> list[dict[str, Any]]:
 
 
 def fetch_player_group_stats(session: requests.Session, group: str) -> list[dict[str, Any]]:
+    limit = 5000
     payload = request_json(
         session,
         "/stats",
@@ -274,7 +275,7 @@ def fetch_player_group_stats(session: requests.Session, group: str) -> list[dict
             "group": group,
             "season": SEASON,
             "sportIds": 1,
-            "limit": 5000,
+            "limit": limit,
             "playerPool": "all",
         },
     )
@@ -296,6 +297,9 @@ def fetch_player_group_stats(session: requests.Session, group: str) -> list[dict
         for key, value in stat.items():
             row[key] = coerce_value(value)
         rows.append(row)
+
+    if len(rows) >= limit:
+        print(f"[WARN] player_group_stats({group}): fetched {len(rows)} rows, reached limit={limit}; data may be truncated")
     return rows
 
 

@@ -139,6 +139,8 @@ export function filterBySeason<T extends { season: string }>(rows: T[], season?:
 export const HITTER_QUALIFY_PA = 30;
 export const PITCHER_QUALIFY_OUTS = 30;
 export const PITCHER_QUALIFY_IP = PITCHER_QUALIFY_OUTS / 3;
+// イニング依存度カード（チーム詳細ページ）の対象しきい値（投球アウト数）
+export const INNINGS_DEPENDENCY_MIN_OUTS = 9; // 3イニング分
 
 export function isQualifiedHitter(pa: number | null): boolean {
   return (pa ?? 0) >= HITTER_QUALIFY_PA;

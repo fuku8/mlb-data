@@ -1,5 +1,5 @@
 // 指標解説ページ: feel-vizで追加した各ビジュアルの意味・計算方法・母集団・注意点をまとめる
-import { HITTER_QUALIFY_PA, PITCHER_QUALIFY_OUTS } from "@/lib/data/normalizers";
+import { HITTER_QUALIFY_PA, INNINGS_DEPENDENCY_MIN_OUTS, PITCHER_QUALIFY_OUTS } from "@/lib/data/normalizers";
 import { HITTER_BARS_METRICS, PITCHER_BARS_METRICS } from "@/lib/metrics";
 
 // "AVG・OBP(=BB/PA)" のように、指標一覧を builder と同じ定義から文言化する
@@ -50,8 +50,8 @@ const SECTIONS: MetricSection[] = [
     title: "依存度（Gini係数・ローレンツ曲線）",
     where: "チーム詳細ページ",
     what: "チームの「得点関与」や「投球回」が特定の選手にどれだけ偏っているかを、1つの数値（Gini係数）と曲線（ローレンツ曲線）で表したもの。所得格差の分析に使われる手法をチーム内の分布に応用している。得点関与依存度（打者）とイニング依存度（投手）の2枚のカードで構成される。",
-    how: `得点関与依存度: 規定打者（PA≥${HITTER_QUALIFY_PA}）の「R+RBI−HR」分布からGini係数を算出する。RBIだけでなくRを合わせるのは、走者を返す形の貢献も含めるため。本塁打はRとRBIの両方に自動加算され二重計上になるので、HR分を差し引いて補正している。イニング依存度: 投球アウト数が9（3イニング）以上の投手の投球回（アウト数）分布からGini係数を算出する。いずれも0=全員が完全に均等、1に近いほど偏りが大きい。ローレンツ曲線は選手を値の少ない順に並べ、累積シェアをプロットしたもの。対角線（完全均等線）から離れるほど偏りが大きい。`,
-    population: `得点関与依存度は規定打者（PA≥${HITTER_QUALIFY_PA}）、イニング依存度は投球アウト数9以上の投手が対象。どちらも対象人数が3人未満の場合はそのカードを非表示にしている。`,
+    how: `得点関与依存度: 規定打者（PA≥${HITTER_QUALIFY_PA}）の「R+RBI−HR」分布からGini係数を算出する。RBIだけでなくRを合わせるのは、走者を返す形の貢献も含めるため。本塁打はRとRBIの両方に自動加算され二重計上になるので、HR分を差し引いて補正している。イニング依存度: 投球アウト数が${INNINGS_DEPENDENCY_MIN_OUTS}（${INNINGS_DEPENDENCY_MIN_OUTS / 3}イニング）以上の投手の投球回（アウト数）分布からGini係数を算出する。いずれも0=全員が完全に均等、1に近いほど偏りが大きい。ローレンツ曲線は選手を値の少ない順に並べ、累積シェアをプロットしたもの。対角線（完全均等線）から離れるほど偏りが大きい。`,
+    population: `得点関与依存度は規定打者（PA≥${HITTER_QUALIFY_PA}）、イニング依存度は投球アウト数${INNINGS_DEPENDENCY_MIN_OUTS}以上の投手が対象。どちらも対象人数が3人未満の場合はそのカードを非表示にしている。`,
     caveat: "Gini係数が高い=一部の選手への依存度が高い、低い=分散しているというだけで、良し悪しを直接示す指標ではない。イニング依存度が高い＝エース級の先発に投球回が集中、低い＝ブルペン運用で分散、という読み方になる。シーズン序盤は対象人数自体が少なく、1人の好不調・起用で数値が大きく動きやすい。",
   },
   {

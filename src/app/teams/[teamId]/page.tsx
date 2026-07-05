@@ -8,6 +8,7 @@ import {
   formatOps,
   formatWhip,
   HITTER_QUALIFY_PA,
+  INNINGS_DEPENDENCY_MIN_OUTS,
   isQualifiedHitter,
   isQualifiedPitcher,
   mergePlayerStatsBySeason,
@@ -26,6 +27,34 @@ type Props = {
   params: Promise<{ teamId: string }>;
   searchParams: Promise<{ season?: string; group?: string; sortBy?: string; sortDir?: string }>;
 };
+
+// 依存度カード（得点関与依存度/イニング依存度）共通レイアウト
+function GiniCard({
+  title,
+  note,
+  values,
+  label,
+  metricHref,
+}: {
+  title: string;
+  note: string;
+  values: number[];
+  label: string;
+  metricHref: string;
+}) {
+  return (
+    <section className="card">
+      <CardHeader title={title} metricHref={metricHref} note={note} />
+      <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
+        <LorenzCurve values={values} label={label} />
+        <div>
+          <div style={{ fontSize: 12, color: "var(--muted-foreground)" }}>Gini係数</div>
+          <div style={{ fontSize: 32, fontWeight: 700 }}>{gini(values).toFixed(3)}</div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default async function TeamDetailPage({ params, searchParams }: Props) {
   const { teamId } = await params;
@@ -88,12 +117,11 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
   const runsProducedValues = qualifiedHitterRows.map(
     (r) => (r.hitting?.runs ?? 0) + (r.hitting?.rbi ?? 0) - (r.hitting?.homeRuns ?? 0),
   );
-  const runsProducedGini = gini(runsProducedValues);
 
-  const INNINGS_DEPENDENCY_MIN_OUTS = 9; // 3イニング分
-  const pitcherOutsRows = pitchers.filter((r) => ipToOuts(r.pitching?.inningsPitched) >= INNINGS_DEPENDENCY_MIN_OUTS);
-  const pitcherOutsValues = pitcherOutsRows.map((r) => ipToOuts(r.pitching?.inningsPitched));
-  const pitcherOutsGini = gini(pitcherOutsValues);
+  const pitcherOuts = pitchers
+    .map((r) => ({ row: r, outs: ipToOuts(r.pitching?.inningsPitched) }))
+    .filter((p) => p.outs >= INNINGS_DEPENDENCY_MIN_OUTS);
+  const pitcherOutsValues = pitcherOuts.map((p) => p.outs);
 
   const teamAB = sum(hitters.map((r) => r.hitting?.atBats));
   const teamH = sum(hitters.map((r) => r.hitting?.hits));
@@ -263,40 +291,26 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
         </section>
       )}
 
-      {(qualifiedHitterRows.length >= 3 || pitcherOutsRows.length >= 3) && (
-        <div className="grid gap-4 lg:grid-cols-2">
+      {(qualifiedHitterRows.length >= 3 || pitcherOuts.length >= 3) && (
+        <div className={qualifiedHitterRows.length >= 3 && pitcherOuts.length >= 3 ? "grid gap-4 lg:grid-cols-2" : "grid gap-4"}>
           {qualifiedHitterRows.length >= 3 && (
-            <section className="card">
-              <CardHeader
-                title="得点関与依存度"
-                metricHref="gini"
-                note={`規定打者(PA≥${HITTER_QUALIFY_PA})内のR+RBI−HR(本塁打の二重計上を補正)分布。Gini係数が高いほど特定の選手に得点関与が偏っている`}
-              />
-              <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
-                <LorenzCurve values={runsProducedValues} label="得点関与" />
-                <div>
-                  <div style={{ fontSize: 12, color: "var(--muted-foreground)" }}>Gini係数</div>
-                  <div style={{ fontSize: 32, fontWeight: 700 }}>{runsProducedGini.toFixed(3)}</div>
-                </div>
-              </div>
-            </section>
+            <GiniCard
+              title="得点関与依存度"
+              metricHref="gini"
+              note={`規定打者(PA≥${HITTER_QUALIFY_PA})内のR+RBI−HR(本塁打の二重計上を補正)分布。Gini係数が高いほど特定の選手に得点関与が偏っている`}
+              values={runsProducedValues}
+              label="得点関与"
+            />
           )}
 
-          {pitcherOutsRows.length >= 3 && (
-            <section className="card">
-              <CardHeader
-                title="イニング依存度"
-                metricHref="gini"
-                note={`投球アウト数≥${INNINGS_DEPENDENCY_MIN_OUTS}(3イニング)の投手${pitcherOutsRows.length}人の投球回分布。Gini係数が高いほど特定の投手にイニングが偏っている`}
-              />
-              <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
-                <LorenzCurve values={pitcherOutsValues} label="投球回" />
-                <div>
-                  <div style={{ fontSize: 12, color: "var(--muted-foreground)" }}>Gini係数</div>
-                  <div style={{ fontSize: 32, fontWeight: 700 }}>{pitcherOutsGini.toFixed(3)}</div>
-                </div>
-              </div>
-            </section>
+          {pitcherOuts.length >= 3 && (
+            <GiniCard
+              title="イニング依存度"
+              metricHref="gini"
+              note={`投球アウト数≥${INNINGS_DEPENDENCY_MIN_OUTS}(${INNINGS_DEPENDENCY_MIN_OUTS / 3}イニング)の投手${pitcherOuts.length}人の投球回分布。Gini係数が高いほど特定の投手にイニングが偏っている`}
+              values={pitcherOutsValues}
+              label="投球回"
+            />
           )}
         </div>
       )}
