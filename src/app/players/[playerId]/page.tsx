@@ -146,23 +146,27 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
           <UnqualifiedNote />
         ))}
 
-      {hitterViz && (
-        <StatRadar
-          title="5ツールレーダー"
-          note={`規定打者(PA≥${HITTER_QUALIFY_PA})内でのパーセンタイル。${player.season}シーズン`}
-          axes={hitterViz.radar}
-          metricHref="radar"
-        />
-      )}
+      {(hitterViz || (showHitting && hitterQualified)) && (
+        <div className={hitterViz && showHitting && hitterQualified ? "grid gap-4 lg:grid-cols-2" : "grid gap-4"}>
+          {hitterViz && (
+            <StatRadar
+              title="5ツールレーダー"
+              note={`規定打者(PA≥${HITTER_QUALIFY_PA})内でのパーセンタイル。${player.season}シーズン`}
+              axes={hitterViz.radar}
+              metricHref="radar"
+            />
+          )}
 
-      {showHitting && hitterQualified && (
-        <TotalBasesWaffle
-          hits={player.hitting?.hits ?? 0}
-          doubles={player.hitting?.doubles ?? 0}
-          triples={player.hitting?.triples ?? 0}
-          homeRuns={player.hitting?.homeRuns ?? 0}
-          metricHref="waffle"
-        />
+          {showHitting && hitterQualified && (
+            <TotalBasesWaffle
+              hits={player.hitting?.hits ?? 0}
+              doubles={player.hitting?.doubles ?? 0}
+              triples={player.hitting?.triples ?? 0}
+              homeRuns={player.hitting?.homeRuns ?? 0}
+              metricHref="waffle"
+            />
+          )}
+        </div>
       )}
 
       {showPitching && (
