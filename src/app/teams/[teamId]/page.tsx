@@ -36,14 +36,14 @@ function GiniCard({
   values,
   label,
   metricHref,
-  leagueRank,
+  overallRank,
 }: {
   title: string;
   note: string;
   values: number[];
   label: string;
   metricHref: string;
-  leagueRank: { rank: number; total: number } | null;
+  overallRank: { rank: number; total: number } | null;
 }) {
   return (
     <section className="card">
@@ -53,9 +53,9 @@ function GiniCard({
         <div>
           <div style={{ fontSize: 12, color: "var(--muted-foreground)" }}>Gini係数</div>
           <div style={{ fontSize: 32, fontWeight: 700 }}>{gini(values).toFixed(3)}</div>
-          {leagueRank && (
+          {overallRank && (
             <div style={{ fontSize: 13, color: "var(--muted-foreground)", marginTop: 4 }}>
-              偏り リーグ{leagueRank.rank}位 / {leagueRank.total}チーム
+              偏り MLB{overallRank.rank}位 / {overallRank.total}球団
             </div>
           )}
         </div>
@@ -64,7 +64,7 @@ function GiniCard({
   );
 }
 
-// 依存度のGini値算出に使う値列（チームカードとリーグ内順位で同条件を共有）
+// 依存度のGini値算出に使う値列（チームカードと全球団順位で同条件を共有）
 const hitterGiniValues = (rows: PlayerSeasonRow[]) =>
   rows
     .filter((r) => isQualifiedHitter(r.hitting?.plateAppearances ?? null))
@@ -73,8 +73,8 @@ const hitterGiniValues = (rows: PlayerSeasonRow[]) =>
 const pitcherGiniValues = (rows: PlayerSeasonRow[]) =>
   rows.map((r) => ipToOuts(r.pitching?.inningsPitched)).filter((outs) => outs >= INNINGS_DEPENDENCY_MIN_OUTS);
 
-// リーグ内順位: 全チームに同条件でGiniを算出し降順（1位=最も偏っている）に並べた中の位置。対象3人未満のチームは除外
-function leagueGiniRank(
+// 全球団順位: リーグで絞らずMLB全チームに同条件でGiniを算出し降順（1位=最も偏っている）に並べた中の位置。対象3人未満のチームは除外
+function overallGiniRank(
   allRows: PlayerSeasonRow[],
   teamId: number,
   extract: (teamRows: PlayerSeasonRow[]) => number[],
@@ -155,8 +155,8 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
   const runsProducedValues = hitterGiniValues(merged);
   const pitcherOutsValues = pitcherGiniValues(merged);
 
-  const hitterLeagueRank = leagueGiniRank(mergedAll, teamIdNum, hitterGiniValues);
-  const pitcherLeagueRank = leagueGiniRank(mergedAll, teamIdNum, pitcherGiniValues);
+  const hitterOverallRank = overallGiniRank(mergedAll, teamIdNum, hitterGiniValues);
+  const pitcherOverallRank = overallGiniRank(mergedAll, teamIdNum, pitcherGiniValues);
 
   const teamAB = sum(hitters.map((r) => r.hitting?.atBats));
   const teamH = sum(hitters.map((r) => r.hitting?.hits));
@@ -335,7 +335,7 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
               note={`規定打者(PA≥${HITTER_QUALIFY_PA})内のR+RBI−HR(本塁打の二重計上を補正)分布。Gini係数が高いほど特定の選手に得点関与が偏っている`}
               values={runsProducedValues}
               label="得点関与"
-              leagueRank={hitterLeagueRank}
+              overallRank={hitterOverallRank}
             />
           )}
 
@@ -346,7 +346,7 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
               note={`投球アウト数≥${INNINGS_DEPENDENCY_MIN_OUTS}(${INNINGS_DEPENDENCY_MIN_OUTS / 3}イニング)の投手${pitcherOutsValues.length}人の投球回分布。Gini係数が高いほど特定の投手にイニングが偏っている`}
               values={pitcherOutsValues}
               label="投球回"
-              leagueRank={pitcherLeagueRank}
+              overallRank={pitcherOverallRank}
             />
           )}
         </div>
