@@ -1331,21 +1331,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 7,146,Miami Marlins,night,N,2026-07-05T01:40:00Z,824983,2,133,Athletics,2026-07-04,Regular Season,Final,F,2529,Sutter Health Park
 3,158,Milwaukee Brewers,night,N,2026-07-05T01:40:00Z,825063,4,109,Arizona Diamondbacks,2026-07-04,Regular Season,Final,F,15,Chase Field
 0,135,San Diego Padres,night,N,2026-07-05T02:10:00Z,823932,3,119,Los Angeles Dodgers,2026-07-04,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
-,121,New York Mets,day,N,2026-07-05T16:30:00Z,824902,,144,Atlanta Braves,2026-07-05,Regular Season,Scheduled,S,4705,Truist Park
-,134,Pittsburgh Pirates,day,N,2026-07-05T17:00:00Z,822715,,120,Washington Nationals,2026-07-05,Regular Season,Scheduled,S,3309,Nationals Park
-,110,Baltimore Orioles,day,N,2026-07-05T17:05:00Z,824497,,113,Cincinnati Reds,2026-07-05,Regular Season,Scheduled,S,2602,Great American Ball Park
-,142,Minnesota Twins,day,N,2026-07-05T17:35:00Z,823525,,147,New York Yankees,2026-07-05,Regular Season,Scheduled,S,3313,Yankee Stadium
-,145,Chicago White Sox,day,N,2026-07-05T18:00:00Z,824413,,114,Cleveland Guardians,2026-07-05,Regular Season,Scheduled,S,5,Progressive Field
-,138,St. Louis Cardinals,day,N,2026-07-05T18:30:00Z,824656,,112,Chicago Cubs,2026-07-05,Regular Season,Scheduled,S,17,Wrigley Field
-,143,Philadelphia Phillies,day,N,2026-07-05T19:00:00Z,824091,,118,Kansas City Royals,2026-07-05,Regular Season,Scheduled,S,7,Kauffman Stadium
-,139,Tampa Bay Rays,day,N,2026-07-05T19:30:00Z,824172,,117,Houston Astros,2026-07-05,Regular Season,Scheduled,S,2392,Daikin Park
-,116,Detroit Tigers,day,N,2026-07-05T19:30:00Z,822879,,140,Texas Rangers,2026-07-05,Regular Season,Scheduled,S,5325,Globe Life Field
-,137,San Francisco Giants,day,N,2026-07-05T20:00:00Z,824333,,115,Colorado Rockies,2026-07-05,Regular Season,Scheduled,S,19,Coors Field
-,158,Milwaukee Brewers,day,N,2026-07-05T20:00:00Z,825061,,109,Arizona Diamondbacks,2026-07-05,Regular Season,Scheduled,S,15,Chase Field
-,146,Miami Marlins,day,N,2026-07-05T20:30:00Z,824980,,133,Athletics,2026-07-05,Regular Season,Scheduled,S,2529,Sutter Health Park
-,141,Toronto Blue Jays,day,N,2026-07-05T21:00:00Z,823117,,136,Seattle Mariners,2026-07-05,Regular Season,Scheduled,S,680,T-Mobile Park
-,135,San Diego Padres,day,N,2026-07-05T23:20:00Z,823931,,119,Los Angeles Dodgers,2026-07-05,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
-,111,Boston Red Sox,night,N,2026-07-06T01:30:00Z,824010,,108,Los Angeles Angels,2026-07-05,Regular Season,Scheduled,S,1,Angel Stadium
+10,121,New York Mets,day,N,2026-07-05T16:30:00Z,824902,9,144,Atlanta Braves,2026-07-05,Regular Season,Final,F,4705,Truist Park
+11,134,Pittsburgh Pirates,day,N,2026-07-05T17:00:00Z,822715,5,120,Washington Nationals,2026-07-05,Regular Season,Final,F,3309,Nationals Park
+2,110,Baltimore Orioles,day,N,2026-07-05T17:05:00Z,824497,3,113,Cincinnati Reds,2026-07-05,Regular Season,Final,F,2602,Great American Ball Park
+6,142,Minnesota Twins,day,N,2026-07-05T17:35:00Z,823525,1,147,New York Yankees,2026-07-05,Regular Season,Final,F,3313,Yankee Stadium
+7,145,Chicago White Sox,day,N,2026-07-05T18:00:00Z,824413,6,114,Cleveland Guardians,2026-07-05,Regular Season,Final,F,5,Progressive Field
+4,138,St. Louis Cardinals,day,N,2026-07-05T18:30:00Z,824656,6,112,Chicago Cubs,2026-07-05,Regular Season,Final,F,17,Wrigley Field
+2,143,Philadelphia Phillies,day,N,2026-07-05T19:00:00Z,824091,5,118,Kansas City Royals,2026-07-05,Regular Season,Final,F,7,Kauffman Stadium
+0,139,Tampa Bay Rays,day,N,2026-07-05T19:30:00Z,824172,2,117,Houston Astros,2026-07-05,Regular Season,Final,F,2392,Daikin Park
+6,116,Detroit Tigers,day,N,2026-07-05T19:30:00Z,822879,3,140,Texas Rangers,2026-07-05,Regular Season,Final,F,5325,Globe Life Field
+6,137,San Francisco Giants,day,N,2026-07-05T20:00:00Z,824333,7,115,Colorado Rockies,2026-07-05,Regular Season,Final,F,19,Coors Field
+3,158,Milwaukee Brewers,day,N,2026-07-05T20:00:00Z,825061,2,109,Arizona Diamondbacks,2026-07-05,Regular Season,Final,F,15,Chase Field
+9,146,Miami Marlins,day,N,2026-07-05T20:30:00Z,824980,8,133,Athletics,2026-07-05,Regular Season,Final,F,2529,Sutter Health Park
+0,141,Toronto Blue Jays,day,N,2026-07-05T21:00:00Z,823117,4,136,Seattle Mariners,2026-07-05,Regular Season,Final,F,680,T-Mobile Park
+5,135,San Diego Padres,day,N,2026-07-05T23:20:00Z,823931,2,119,Los Angeles Dodgers,2026-07-05,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
+7,111,Boston Red Sox,night,N,2026-07-06T01:30:00Z,824010,5,108,Los Angeles Angels,2026-07-05,Regular Season,Final,F,1,Angel Stadium
 ,143,Philadelphia Phillies,day,N,2026-07-06T18:10:00Z,824089,,118,Kansas City Royals,2026-07-06,Regular Season,Scheduled,S,7,Kauffman Stadium
 ,147,New York Yankees,night,N,2026-07-06T22:40:00Z,822958,,139,Tampa Bay Rays,2026-07-06,Regular Season,Scheduled,S,12,Tropicana Field
 ,117,Houston Astros,night,N,2026-07-06T22:45:00Z,822712,,120,Washington Nationals,2026-07-06,Regular Season,Scheduled,S,3309,Nationals Park
