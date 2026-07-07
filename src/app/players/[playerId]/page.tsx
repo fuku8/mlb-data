@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers } from "@/lib/data/loaders";
+import { getPlayerFielding, getPlayerHitting, getPlayerPitching, getPlayers, parseNumber } from "@/lib/data/loaders";
 import {
   formatAvg,
   formatEra,
@@ -14,8 +14,10 @@ import {
   mergePlayerStatsBySeason,
   PITCHER_QUALIFY_OUTS,
 } from "@/lib/data/normalizers";
-import { buildHitterSaber, buildHitterViz, buildPitcherSaber, buildPitcherViz } from "@/lib/metrics";
+import { buildHitterSaber, buildHitterViz, buildPitcherSaber, buildPitcherViz, hBabip, pitcherFipValue, poolFipConstant } from "@/lib/metrics";
+import { hitterLuck, pitcherLuck } from "@/lib/luck";
 import { classifyHitters, classifyPitchers } from "@/lib/player-types";
+import { LuckMeter } from "@/components/luck-meter";
 import { PercentileBars } from "@/components/percentile-bars";
 import { SaberCard } from "@/components/saber-card";
 import { StatRadar } from "@/components/stat-radar";
@@ -93,6 +95,16 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
   const hitterSaber = hitterQualified ? buildHitterSaber(player, hitterPool) : [];
   const pitcherSaber = pitcherQualified ? buildPitcherSaber(player, pitcherPool) : [];
 
+  // ラック指数: 打者はBABIPのリーグ平均（規定打者プールから自算）との差、投手はERA−FIPの差
+  const leagueBabipValues = hitterPool.map(hBabip).filter((v): v is number => v !== null);
+  const leagueBabipAvg = leagueBabipValues.length > 0 ? leagueBabipValues.reduce((a, b) => a + b, 0) / leagueBabipValues.length : null;
+  const hitterBabip = hitterQualified ? hBabip(player) : null;
+  const hitterLuckResult = hitterBabip !== null && leagueBabipAvg !== null ? hitterLuck(hitterBabip, leagueBabipAvg) : null;
+
+  const pitcherEra = pitcherQualified ? parseNumber(player.pitching?.era) : null;
+  const pitcherFip = pitcherQualified ? pitcherFipValue(player, poolFipConstant(pitcherPool)) : null;
+  const pitcherLuckResult = pitcherEra !== null && pitcherFip !== null ? pitcherLuck(pitcherEra, pitcherFip) : null;
+
   // タイプバッジ: 規定到達者(hitterPool/pitcherPool)のみが判定対象のため、qualifiedでない選手は自然に空配列になる
   const hitterBadges = hitterQualified ? (classifyHitters(hitterPool).get(player.player_id) ?? []) : [];
   const pitcherBadges = pitcherQualified ? (classifyPitchers(pitcherPool).get(player.player_id) ?? []) : [];
@@ -159,6 +171,16 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
 
       {showHitting && <SaberCard title="セイバー指標（打撃）" rows={hitterSaber} metricHref="saber" />}
 
+      {hitterLuckResult && (
+        <LuckMeter
+          title="ラック指数（打撃）"
+          result={hitterLuckResult}
+          range={0.06}
+          desc="BABIP（インプレー打球の安打率）のリーグ平均との差。プラスは追い風=打球が平均より多くヒットになっている。俊足や強い打球など実力でBABIPが高い選手もいるため、乖離のすべてが運ではない"
+          metricHref="luck"
+        />
+      )}
+
       {(hitterViz || (showHitting && hitterQualified)) && (
         <div className={hitterViz && showHitting && hitterQualified ? "grid gap-4 lg:grid-cols-2" : "grid gap-4"}>
           {hitterViz && (
@@ -224,6 +246,16 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         ))}
 
       {showPitching && <SaberCard title="セイバー指標（投球）" rows={pitcherSaber} metricHref="saber" />}
+
+      {pitcherLuckResult && (
+        <LuckMeter
+          title="ラック指数（投球）"
+          result={pitcherLuckResult}
+          range={1.2}
+          desc="ERAとFIP（守備と運を除いた実力値）の差。ERAがFIPより悪ければ向かい風=実力より打たれて見えている"
+          metricHref="luck"
+        />
+      )}
 
       {pitcherViz && (
         <StatRadar

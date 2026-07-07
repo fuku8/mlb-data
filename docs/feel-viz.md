@@ -222,3 +222,15 @@ Phase 1-3 のコードレビュー指摘を修正。
 - `getTypeLeaderboard`は表示名解決（`full_name`）をpoolから引く設計にした。nba-data版は内部キャッシュのplayer名マップを使うが、mlb-dataのclassify系はプールを毎回引数で受け取る純関数設計のため、同じ引数から名前も引けるようにして依存を増やさなかった
 
 **検証結果**: `npx tsc --noEmit` ✅ / `npx eslint`（変更5ファイル）✅ / `node --test src/lib/*.test.mjs` 33/33 pass ✅（`getTypeLeaderboard`のsort/fallback除外/topN capを検証する1件を追加）。build・実ブラウザ確認はサンドボックス制約のため未実施（次フェーズでのビジュアル確認時に合わせて確認する）。
+
+### Phase 2b: ラック指数（風向きメーター）（2026-07-07）
+
+**実装**: `src/lib/luck.ts`（純計算関数: `hitterLuck`/`pitcherLuck`。BABIP−リーグ平均・ERA−FIPの差を「tail(追い風)/head(向かい風)/neutral」に分類し、控えめな可能性表現のlabelを付ける。しきい値は打者±0.015/±0.040、投手±0.30/±0.70）＋テスト2件、`LuckMeter`（`src/components/luck-meter.tsx`。中央=平均/FIP一致の横メーター、deltaを表示レンジ（打者±0.06・投手±1.2）でクランプしてマーカー配置する純SVG）、選手詳細ページの各セイバー指標カード直後に「ラック指数（打撃/投球）」カードを追加（欠損時はカード自体を非表示）、`/metrics`に`#luck`セクションを追加。
+
+**検証結果**: `npx tsc --noEmit` ✅ / `npx eslint`（変更5ファイル）✅ / `node --test src/lib/*.test.mjs` 35/35 pass ✅（luck.tsの2件が追加）。build・実ブラウザ確認はサンドボックス制約のため未実施。
+
+**設計判断**:
+- 投手の方向判定はブリーフのサンプル実装（分類後にdirectionを反転する後処理）ではなく、`classify`ヘルパーに正/負それぞれの方向とテキストを引数で渡す直接的な実装にした。テストの期待値（ERA>FIPで`head`）は変わらないが、後処理での反転より読みやすい
+- FIP再構成のため`metrics.ts`の`buildPitcherSaber`内にあったローカル関数を`pitcherFipValue(target, constant)`としてexportし、選手ページから同じ計算式を再利用できるようにした。既存の`hBabip`アクセサも同ファイル内で`export`に変更（打者のラック指数のリーグ平均自算に必要なため。ラッパー関数は追加せず既存constをexportするだけに留めた）
+- リーグ平均BABIPは選手ページ側で`hitterPool.map(hBabip)`から都度算出する1回限りの計算のため、`metrics.ts`に集計関数を追加せずページ内のインライン`reduce`に留めた（他で再利用される見込みがないため）
+- 判定文はブリーフの文言をそのまま使用し、しきい値・ラベルとも変更していない

@@ -167,7 +167,7 @@ const hWobaCounts = (r: PlayerSeasonRow) => {
   };
 };
 const hWoba = (r: PlayerSeasonRow) => { const c = hWobaCounts(r); return c ? woba(c) : null; };
-const hBabip = (r: PlayerSeasonRow) => parseNumber(r.hitting?.babip); // MLBはCSV値をそのまま使う
+export const hBabip = (r: PlayerSeasonRow) => parseNumber(r.hitting?.babip); // MLBはCSV値をそのまま使う。ラック指数でも再利用
 
 const pIp = (r: PlayerSeasonRow) => {
   const outs = ipToOuts(r.pitching?.inningsPitched);
@@ -228,12 +228,15 @@ export function buildHitterSaber(target: PlayerSeasonRow, pool: PlayerSeasonRow[
   ].filter((r): r is SaberRow => r !== null);
 }
 
+// 1選手分のFIP値を再構成する（ラック指数でERAとの比較に使う）。constantはpoolFipConstant(pool)の結果を渡す
+export function pitcherFipValue(target: PlayerSeasonRow, constant: number | null): number | null {
+  const core = pFipCore(target);
+  return core === null || constant === null ? null : core + constant;
+}
+
 export function buildPitcherSaber(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): SaberRow[] {
   const c = poolFipConstant(pool);
-  const pFip = (r: PlayerSeasonRow) => {
-    const core = pFipCore(r);
-    return core === null || c === null ? null : core + c;
-  };
+  const pFip = (r: PlayerSeasonRow) => pitcherFipValue(r, c);
   return [
     saberRow("FIP", PITCHER_SABER_DESCS.fip, target, pool, pFip, (v) => v.toFixed(2), true),
     saberRow("K-BB%", PITCHER_SABER_DESCS.kbbPct, target, pool, pKbbPct, (v) => `${(v * 100).toFixed(1)}%`),
