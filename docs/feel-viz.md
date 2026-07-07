@@ -195,3 +195,15 @@ Phase 1-3 のコードレビュー指摘を修正。
 - `CardHeader`/`MetricLink`の既存呼び出し規約に合わせ、`metricHref`には`"saber"`（アンカーIDのみ）を渡す。`MetricLink`側で`/metrics#${anchor}`を組み立てるため、フルパスを渡すと`/metrics#/metrics#saber`のような二重パスになってしまうため
 
 **検証項目**: `node --test` でwOBA/BABIP/FIP/K-BB%の計算式・エッジケース（分母0など）を確認。UIの実ブラウザ確認はサンドボックス制約により未実施（次フェーズでのビジュアル確認時に合わせて確認する）。
+
+### プレイヤータイプ判定エンジン（2026-07-07）
+
+**実装**: `src/lib/player-types.ts`（nba-data `src/lib/data/player-types.ts` の移植）。`pickBadges`（z≥1.0を最大3タイプ・score降順、なければ最上位1つをfallback）を純関数として分離し、その上に打者6タイプ（パワーヒッター/安打製造機/スピードスター/選球の達人/ポイントゲッター/オールラウンダー）・投手6タイプ（ドクターK/精密機械/ワークホース/守護神/中継ぎの柱/グラウンドボーラー）を実装。母集団は既存の規定到達者（打者PA≥30・投手アウト≥30）。特徴量は全てプール内パーセンタイル化（mid-rank）し、反転指標（K%・BB/9・ERA・WHIP・HR/9）は`1−pct`を格納。オールラウンダーのみnba-data同様「style=radarScoreの生値でz標準化（選抜率を保つ）／score=その生値を再パーセンタイル化したもの」という二段構成。`classifyHitters`/`classifyPitchers`は`player_id`をキーに`Map<number, TypeBadge[]>`を返す。UIへの組み込み（バッジ表示）は次フェーズ。
+
+**検証結果**: `npx tsc --noEmit` ✅ / `npx eslint src/lib/player-types.ts` ✅ / `node --test src/lib/*.test.mjs` 32/32 pass ✅（pickBadgesの選抜ロジック2件を追加）。実データ検分（規定到達者・打者498人/投手512人、欠損除外0件）: 全12タイプで非fallback該当者0人のケースなし、全員fallbackにもならない（打者fallbackのみ195/498・投手140/512）。上位選手は目視で妥当（例: パワーヒッター1位 Yordan Alvarez、ドクターK1位 Mason Miller）。
+
+**設計判断**:
+- ブリーフのTYPE_DEFS例で「パワーヒッター」のscoreが`g("hr")`（本塁打の生カウント）を参照する一方、ブリーフの特徴量列挙には`hrRate`（率）しか無かった。他タイプのscoreが`hits`/`sb`/`rbi`等の生カウントをrate系styleと組み合わせて評価に使う設計（styleは「何をする選手か」の率、scoreは「どれだけ稼いだか」の生産量）と一貫させるため、`hr`（生カウント）を特徴量に追加した。TypeBadge/TypeCandidate/pickBadgesのインターフェースは変更していない
+- 投手の`ip`特徴はブリーフの注記「ip(アウト数)」に従い、`inningsPitched`の小数表記（例: "6.2"）ではなく`ipToOuts`で出したアウト数の生値を使用（IPの端数表記の丸め誤差を避けるため、`metrics.ts`の`pIp`=小数イニングとは別の値）
+- Node --testが素の`node`ランタイムで`.ts`を直接importして走るため（tsconfig pathsの`@/*`エイリアスを解決できない）、`percentileOf`/`radarScore`/`woba`/`kbbPct`等の値importは相対パス＋明示`.ts`拡張子にした。これをtscで許可するため`tsconfig.json`に`allowImportingTsExtensions: true`を追加（`noEmit: true`のプロジェクトなので出力・既存ファイルへの影響なし。他ファイルは拡張子なしimportのまま動作する）
+- 実データ検分で「守護神」バッジが512人中94人（18%）に付与され、SV分布はmedian=3・min=2（0はゼロ）という偏りを確認した。セーブ機会がクローザーに集中する一方で大多数の中継ぎがSV=0のため、母平均が低くsdも相対的に小さくなり、2〜3セーブの投手でもz≥1.0を超えやすい。ブリーフが事前に指摘していた「守護神が救援機会の集中で破綻するケース」に該当する。しきい値やstyle定義は指示通りリターンせず、次フェーズでの検討事項として残す（例: styleをSVの生値でなくSV/GF等の関与率にする案）
