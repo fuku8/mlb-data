@@ -234,3 +234,22 @@ Phase 1-3 のコードレビュー指摘を修正。
 - FIP再構成のため`metrics.ts`の`buildPitcherSaber`内にあったローカル関数を`pitcherFipValue(target, constant)`としてexportし、選手ページから同じ計算式を再利用できるようにした。既存の`hBabip`アクセサも同ファイル内で`export`に変更（打者のラック指数のリーグ平均自算に必要なため。ラッパー関数は追加せず既存constをexportするだけに留めた）
 - リーグ平均BABIPは選手ページ側で`hitterPool.map(hBabip)`から都度算出する1回限りの計算のため、`metrics.ts`に集計関数を追加せずページ内のインライン`reduce`に留めた（他で再利用される見込みがないため）
 - 判定文はブリーフの文言をそのまま使用し、しきい値・ラベルとも変更していない
+
+### Phase 3a準備: Statcast取得スクリプト（2026-07-07）
+
+**PoC結果**: Baseball Savant の3エンドポイントを実環境から確認、全て成功。
+- 打者カスタムリーダーボード（`type=batter&min=q`, xwOBA/xBA/xSLG/打球速度/バレル率/ハードヒット率）
+- 投手カスタムリーダーボード（`type=pitcher&min=q`, xwOBA/打球速度/バレル率/空振り率/chase率）— **chase_percent は実データで全59行が空**（末尾カンマ）。ソース側の欠損でスクリプトのバグではない（curlで直接確認済み）。nullable前提で実装
+- スプリント速度リーダーボード（`min=10`）
+
+いずれもBOM付きCSV・ヘッダはダブルクォート、率の値も`"354"`のようなクォート済み文字列で返る。
+
+**実装**: `scripts/fetch-statcast.py`（`fetch-mlb-data.py`と同じ流儀: `requests.Session`、season は `MLB_SEASON` env→未指定ならUTC年から導出、リトライ付きfetchヘルパー）。3エンドポイントをCSVとして取得し（`utf-8-sig`でBOM除去）、打者+スプリントを`player_id`でマージして`data/statcast_hitting.csv`、投手をそのまま`data/statcast_pitching.csv`に出力。列順は固定（Task 10の依存契約に合わせるため、既存`write_csv`のアルファベット順ソートは使わず本スクリプト内で列順を明示）。
+
+**失敗時の安全策**: 3エンドポイントいずれかがHTTPエラー、または0行を返した場合は一切書き込まずexit 1（既存CSVを保持）。両方の分岐をスクリプト外から直接呼び出して確認済み（HTTPエラー→`RuntimeError`、空行→ガード条件が真になる）。
+
+**運用方式**: `.github/workflows/fetch-mlb-data.yml`の既存fetchステップの後に「Fetch Statcast data」ステップを追加し、`continue-on-error: true`を付与（Statcast取得の失敗がデイリー更新全体を止めないようにするため）。CI環境での実測（ネットワーク到達性・実行時間）はコントローラー側で実施。
+
+**実行結果（本番エンドポイントに対する実行、2026-07-07時点）**: `data/statcast_hitting.csv` 152行、`data/statcast_pitching.csv` 59行（シーズン中盤で規定到達者数がまだ少ないため、フルシーズンの「数百行」より少ない値。データとしては妥当）。
+
+**検証結果**: `npx tsc --noEmit` ✅（既存TS成果物への影響なし）。実行後のCSVパース確認（列名・行数）✅。新規依存追加なし（`requests`のみ）。

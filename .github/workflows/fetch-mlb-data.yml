@@ -46,6 +46,16 @@ jobs:
           fi
           python scripts/fetch-mlb-data.py
 
+      - name: Fetch Statcast data
+        continue-on-error: true
+        env:
+          MLB_SEASON: ${{ inputs.season }}
+        run: |
+          if [ -z "$MLB_SEASON" ]; then
+            unset MLB_SEASON
+          fi
+          python scripts/fetch-statcast.py
+
       - name: Commit and push when changed
         run: |
           if git diff --quiet data; then
