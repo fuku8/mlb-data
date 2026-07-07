@@ -4,6 +4,8 @@
 
 **Goal:** mlb-data/npb-dataにセイバー指標カード・プレイヤータイプ判定・ラック指数・Statcastフィジカルカードを追加する（spec: `docs/superpowers/specs/2026-07-07-saber-feelviz-design.md`）
 
+> **状況（2026-07-07）: 全11タスク実装・レビュー完了。** 各タスクのコミット・レビュー結果・Minor申し送りは `.superpowers/sdd/progress.md`（gitignore）と `docs/feel-viz.md` を参照。最終全体レビュー: Ready to push（Critical/Important 0件）。
+
 **Architecture:** mlb-dataで実装→npb-dataへ移植（feel-viz本体と同じ流れ）。計算は純関数（`src/lib/saber.ts`等）に分離してnode --testで検証、表示はサーバーコンポーネント＋純CSS/SVG。Statcast（Phase 3）はMLBのみで、取得失敗時はカード非表示にフォールバック。
 
 **Tech Stack:** Next.js（App Router・サーバーコンポーネント）、TypeScript、node:test（.tsを直接import）、Python（fetch scripts）
