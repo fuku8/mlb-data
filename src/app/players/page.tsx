@@ -255,12 +255,12 @@ export default async function PlayersPage({ searchParams }: Props) {
           {currentPage <= 1 ? (
             <span style={{ opacity: 0.5 }}>Prev</span>
           ) : (
-            <Link href={`/players?${prevQuery.toString()}`}>Prev</Link>
+            <Link href={`/players?${prevQuery.toString()}`} scroll={false}>Prev</Link>
           )}
           {currentPage >= totalPages ? (
             <span style={{ opacity: 0.5 }}>Next</span>
           ) : (
-            <Link href={`/players?${nextQuery.toString()}`}>Next</Link>
+            <Link href={`/players?${nextQuery.toString()}`} scroll={false}>Next</Link>
           )}
         </div>
       </section>
@@ -425,12 +425,12 @@ export default async function PlayersPage({ searchParams }: Props) {
         {currentPage <= 1 ? (
           <span style={{ opacity: 0.5 }}>Prev</span>
         ) : (
-          <Link href={`/players?${prevQuery.toString()}`}>Prev</Link>
+          <Link href={`/players?${prevQuery.toString()}`} scroll={false}>Prev</Link>
         )}
         {currentPage >= totalPages ? (
           <span style={{ opacity: 0.5 }}>Next</span>
         ) : (
-          <Link href={`/players?${nextQuery.toString()}`}>Next</Link>
+          <Link href={`/players?${nextQuery.toString()}`} scroll={false}>Next</Link>
         )}
       </section>
     </div>
