@@ -28,6 +28,8 @@ function contains(base: string, q: string): boolean {
   return base.toLowerCase().includes(q.toLowerCase());
 }
 
+type MapDot = { player_id: string; name: string; detail: string; x: number; y: number; href: string };
+
 export default async function PlayersPage({ searchParams }: Props) {
   const { season, group, q, page, perPage, sortBy, sortDir } = await searchParams;
   const statGroup = group === "pitching" ? "pitching" : "hitting";
@@ -47,6 +49,8 @@ export default async function PlayersPage({ searchParams }: Props) {
     season,
   });
 
+  const seasonValue = season ?? new Date().getUTCFullYear().toString();
+
   // 打者マップ/投手マップの母集団: 検索クエリに関係なく同シーズンの規定到達者全員。
   // 軸の値が欠損している選手は除外する（0扱いにすると中央値・軸範囲が歪む）
   const mapDots =
@@ -54,21 +58,25 @@ export default async function PlayersPage({ searchParams }: Props) {
       ? merged0
           .filter((r) => isQualifiedHitter(r.hitting?.plateAppearances ?? null))
           .map((r) => ({
+            player_id: String(r.player_id),
             name: r.full_name,
             detail: r.team_name,
             x: parseNumber(r.hitting?.obp),
             y: parseNumber(r.hitting?.slg),
+            href: `/players/${r.player_id}?season=${seasonValue}`,
           }))
-          .filter((d): d is { name: string; detail: string; x: number; y: number } => d.x !== null && d.y !== null)
+          .filter((d): d is MapDot => d.x !== null && d.y !== null)
       : merged0
           .filter((r) => isQualifiedPitcher(r.pitching?.inningsPitched))
           .map((r) => ({
+            player_id: String(r.player_id),
             name: r.full_name,
             detail: r.team_name,
             x: parseNumber(r.pitching?.walksPer9Inn),
             y: parseNumber(r.pitching?.strikeoutsPer9Inn),
+            href: `/players/${r.player_id}?season=${seasonValue}`,
           }))
-          .filter((d): d is { name: string; detail: string; x: number; y: number } => d.x !== null && d.y !== null);
+          .filter((d): d is MapDot => d.x !== null && d.y !== null);
 
   const mergedAll = merged0
     .filter((row) => contains(row.full_name, q ?? ""))
@@ -168,7 +176,6 @@ export default async function PlayersPage({ searchParams }: Props) {
   const start = (currentPage - 1) * perPageNum;
   const merged = mergedAll.slice(start, start + perPageNum);
 
-  const seasonValue = season ?? new Date().getUTCFullYear().toString();
   const commonQuery = new URLSearchParams({
     season: seasonValue,
     group: statGroup,
@@ -265,7 +272,7 @@ export default async function PlayersPage({ searchParams }: Props) {
               metricHref="quadrant"
               note={`規定打者(PA≥${HITTER_QUALIFY_PA}) OBP(横)×SLG(縦)。破線は中央値`}
             />
-            <QuadrantMap dots={mapDots} xLabel="OBP" yLabel="SLG" formatX={(v) => v.toFixed(3)} formatY={(v) => v.toFixed(3)} />
+            <QuadrantMap dots={mapDots} xLabel="OBP" yLabel="SLG" xDigits={3} yDigits={3} />
           </section>
         ) : (
           <section className="card">
@@ -274,7 +281,7 @@ export default async function PlayersPage({ searchParams }: Props) {
               metricHref="quadrant"
               note={`規定投手(アウト数≥${PITCHER_QUALIFY_OUTS}) BB/9(横・左が良い)×K/9(縦)。破線は中央値`}
             />
-            <QuadrantMap dots={mapDots} xLabel="BB/9" yLabel="K/9" formatX={(v) => v.toFixed(2)} formatY={(v) => v.toFixed(2)} />
+            <QuadrantMap dots={mapDots} xLabel="BB/9" yLabel="K/9" />
           </section>
         ))}
 
