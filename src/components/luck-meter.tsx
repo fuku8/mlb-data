@@ -2,9 +2,10 @@
 import { meterValue, type LuckResult } from "@/lib/luck";
 import { CardHeader } from "@/components/card-header";
 
-const W = 320;
-const H = 70;
-const TRACK_Y = 30;
+// トラックのみSVGで描き、方向ラベルはHTMLに置く（幅に応じて文字サイズが伸縮しないように）
+const W = 560;
+const H = 24;
+const TRACK_Y = 12;
 
 export function LuckMeter({
   title,
@@ -15,7 +16,7 @@ export function LuckMeter({
 }: {
   title: string;
   result: LuckResult;
-  range: number; // 表示レンジ（この値で±クランプ）。打者0.06、投手1.2
+  range: number; // 表示レンジ（この値で±クランプ）。打者X版0.05/BABIP版0.06、投手1.2
   desc: string;
   metricHref?: string;
 }) {
@@ -27,17 +28,26 @@ export function LuckMeter({
   return (
     <section className="card">
       <CardHeader title={title} metricHref={metricHref} />
-      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", maxWidth: W }} role="img" aria-label={`${title}: ${result.label}`}>
-        <line x1={6} y1={TRACK_Y} x2={W - 6} y2={TRACK_Y} stroke="var(--muted)" strokeWidth={6} strokeLinecap="round" />
-        <line x1={W / 2} y1={TRACK_Y - 10} x2={W / 2} y2={TRACK_Y + 10} stroke="currentColor" strokeOpacity={0.35} strokeDasharray="3 2" />
-        <circle cx={markerX} cy={TRACK_Y} r={8} fill={color} />
-        <text x={6} y={H - 6} fontSize={11} fill="currentColor" fillOpacity={0.6}>
-          ← 向かい風
-        </text>
-        <text x={W - 6} y={H - 6} fontSize={11} textAnchor="end" fill="currentColor" fillOpacity={0.6}>
-          追い風 →
-        </text>
-      </svg>
+      <div style={{ maxWidth: W }}>
+        <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", display: "block" }} role="img" aria-label={`${title}: ${result.label}`}>
+          <line x1={6} y1={TRACK_Y} x2={W - 6} y2={TRACK_Y} stroke="var(--muted)" strokeWidth={6} strokeLinecap="round" />
+          <line x1={W / 2} y1={TRACK_Y - 10} x2={W / 2} y2={TRACK_Y + 10} stroke="currentColor" strokeOpacity={0.35} strokeDasharray="3 2" />
+          <circle cx={markerX} cy={TRACK_Y} r={8} fill={color} />
+        </svg>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            fontSize: 11,
+            color: "currentcolor",
+            opacity: 0.6,
+            marginTop: 4,
+          }}
+        >
+          <span>← 向かい風</span>
+          <span>追い風 →</span>
+        </div>
+      </div>
       <p style={{ margin: "8px 0 4px", fontWeight: 600 }}>{result.label}</p>
       <p style={{ margin: 0, fontSize: 12, color: "var(--muted-foreground)" }}>{desc}</p>
     </section>
