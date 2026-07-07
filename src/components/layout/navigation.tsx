@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpenText, Calendar, GitCompareArrows, LayoutDashboard, Trophy, Users } from "lucide-react";
+import { BookOpenText, Calendar, GitCompareArrows, LayoutDashboard, Trophy, Users, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -12,6 +12,7 @@ const navItems = [
   { href: "/players", label: "選手", icon: Users },
   { href: "/compare", label: "比較", icon: GitCompareArrows },
   { href: "/metrics", label: "Metrics", icon: BookOpenText },
+  { href: "/types", label: "Types", icon: Sparkles },
 ];
 
 export function Navigation() {

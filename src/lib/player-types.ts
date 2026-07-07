@@ -270,3 +270,30 @@ export const PITCHER_TYPE_NAMES = PITCHER_TYPE_DEFS.map((t) => t.name);
 export function classifyPitchers(pool: PlayerSeasonRow[]): Map<number, TypeBadge[]> {
   return classify(pool, PITCHER_FEAT_DEFS, PITCHER_TYPE_DEFS);
 }
+
+// --- タイプ別リーダーボード（/typesページ用） ---
+
+export interface LeaderboardPlayer {
+  id: number;
+  name: string;
+  score: number;
+}
+
+// タイプ別に評価点降順でtopN件（fallbackバッジは除外）。nba-dataのgetTypeLeaderboardを移植
+export function getTypeLeaderboard(
+  pool: PlayerSeasonRow[],
+  badges: Map<number, TypeBadge[]>,
+  typeNames: string[],
+  topN = 10,
+): { type: string; players: LeaderboardPlayer[] }[] {
+  const nameOf = new Map(pool.map((r) => [r.player_id, r.full_name]));
+  return typeNames.map((type) => {
+    const players = [...badges.entries()]
+      .flatMap(([id, list]) =>
+        list.filter((b) => b.type === type && !b.fallback).map((b) => ({ id, name: nameOf.get(id) ?? "", score: b.score })),
+      )
+      .sort((a, b) => b.score - a.score)
+      .slice(0, topN);
+    return { type, players };
+  });
+}

@@ -15,10 +15,12 @@ import {
   PITCHER_QUALIFY_OUTS,
 } from "@/lib/data/normalizers";
 import { buildHitterSaber, buildHitterViz, buildPitcherSaber, buildPitcherViz } from "@/lib/metrics";
+import { classifyHitters, classifyPitchers } from "@/lib/player-types";
 import { PercentileBars } from "@/components/percentile-bars";
 import { SaberCard } from "@/components/saber-card";
 import { StatRadar } from "@/components/stat-radar";
 import { TotalBasesWaffle } from "@/components/total-bases-waffle";
+import { TypeBadges } from "@/components/type-badges";
 import { n } from "@/lib/utils";
 
 type Props = {
@@ -91,6 +93,10 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
   const hitterSaber = hitterQualified ? buildHitterSaber(player, hitterPool) : [];
   const pitcherSaber = pitcherQualified ? buildPitcherSaber(player, pitcherPool) : [];
 
+  // タイプバッジ: 規定到達者(hitterPool/pitcherPool)のみが判定対象のため、qualifiedでない選手は自然に空配列になる
+  const hitterBadges = hitterQualified ? (classifyHitters(hitterPool).get(player.player_id) ?? []) : [];
+  const pitcherBadges = pitcherQualified ? (classifyPitchers(pitcherPool).get(player.player_id) ?? []) : [];
+
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <section className="card">
@@ -106,6 +112,8 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
             player.team_name || "N/A"
           )}
         </p>
+        <TypeBadges label="打者タイプ" badges={hitterBadges} />
+        <TypeBadges label="投手タイプ" badges={pitcherBadges} />
       </section>
 
       {showHitting && (
