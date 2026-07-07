@@ -142,6 +142,7 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
         teamScore,
         oppScore,
         margin: teamScore - oppScore,
+        isHome,
       };
     })
     .sort((a, b) => a.date.localeCompare(b.date));
