@@ -22,6 +22,14 @@ function classify(
     : { delta, direction: negDir, label: `${strength}${negText}` };
 }
 
+// メーター表示用: 方向に符号を揃えた値（正=追い風tail、負=向かい風head、neutralは中央=0）
+// 投手はdelta正=向かい風のため、生deltaの符号でマーカーを置くと左右が逆になる
+export function meterValue(result: LuckResult): number {
+  if (result.direction === "tail") return Math.abs(result.delta);
+  if (result.direction === "head") return -Math.abs(result.delta);
+  return 0;
+}
+
 // 打者: BABIP − リーグ平均。正=追い風（インプレー打球が平均より多く安打に）
 export function hitterLuck(babipValue: number, leagueAvg: number): LuckResult {
   return classify(

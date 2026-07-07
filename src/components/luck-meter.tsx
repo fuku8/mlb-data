@@ -1,5 +1,5 @@
 // ラック指数（風向きメーター）: 中央=平均/FIP一致、左=向かい風・右=追い風。純SVG・サーバーコンポーネント
-import type { LuckResult } from "@/lib/luck";
+import { meterValue, type LuckResult } from "@/lib/luck";
 import { CardHeader } from "@/components/card-header";
 
 const W = 320;
@@ -19,7 +19,8 @@ export function LuckMeter({
   desc: string;
   metricHref?: string;
 }) {
-  const clamped = Math.max(-range, Math.min(range, result.delta));
+  // マーカー位置は生deltaでなくmeterValue（正=追い風=右）を使う。投手はdelta正=向かい風のため符号が逆
+  const clamped = Math.max(-range, Math.min(range, meterValue(result)));
   const markerX = W / 2 + (clamped / range) * (W / 2 - 12);
   const color = result.direction === "neutral" ? "var(--muted-foreground)" : result.direction === "tail" ? "#22c55e" : "#ef4444";
 
