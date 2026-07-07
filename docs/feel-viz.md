@@ -253,3 +253,5 @@ Phase 1-3 のコードレビュー指摘を修正。
 **実行結果（本番エンドポイントに対する実行、2026-07-07時点）**: `data/statcast_hitting.csv` 152行、`data/statcast_pitching.csv` 59行（シーズン中盤で規定到達者数がまだ少ないため、フルシーズンの「数百行」より少ない値。データとしては妥当）。
 
 **検証結果**: `npx tsc --noEmit` ✅（既存TS成果物への影響なし）。実行後のCSVパース確認（列名・行数）✅。新規依存追加なし（`requests`のみ）。
+
+**修正（同日）: chase率のソース列を`oz_swing_percent`に変更**。コントローラーの実測で、Savantカスタムリーダーボードの`chase_percent`は2025年でも全行空＝未提供の死に列と判明。チェイス率の正しい選択名は`oz_swing_percent`（O-Zone Swing % = ボール球スイング率）で、実値が返ることを確認済み。スクリプトの投手selectionsを`oz_swing_percent`に変更し、値は出力CSVの`chase_percent`列に書く（**出力契約の列名は変更なし**、Task 10への影響なし）。再実行結果: `statcast_pitching.csv` 59行中59行でchase_percentに値あり（38.4, 28.3 等）。hitting側は152行のまま変更なし。

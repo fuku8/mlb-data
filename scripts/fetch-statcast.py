@@ -31,7 +31,7 @@ BATTER_URL = (
 PITCHER_URL = (
     "https://baseballsavant.mlb.com/leaderboard/custom"
     f"?year={SEASON}&type=pitcher&min=q"
-    "&selections=xwoba,exit_velocity_avg,barrel_batted_rate,whiff_percent,chase_percent"
+    "&selections=xwoba,exit_velocity_avg,barrel_batted_rate,whiff_percent,oz_swing_percent"
     "&csv=true"
 )
 SPRINT_URL = f"https://baseballsavant.mlb.com/leaderboard/sprint_speed?year={SEASON}&min=10&csv=true"
@@ -140,7 +140,8 @@ def main() -> None:
             "exit_velocity_avg": row.get("exit_velocity_avg", ""),
             "barrel_batted_rate": row.get("barrel_batted_rate", ""),
             "whiff_percent": row.get("whiff_percent", ""),
-            "chase_percent": row.get("chase_percent", ""),
+            # Savantのカスタムリーダーボードではchase_percentは常に空。oz_swing_percent=チェイス率を使用
+            "chase_percent": row.get("oz_swing_percent", ""),
         }
         for row in pitcher_rows
     ]
