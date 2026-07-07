@@ -181,3 +181,17 @@ Phase 1-3 のコードレビュー指摘を修正。
 検証: typecheck ✅ / build ✅ / 22/22 pass ✅ / 修正後の 1440px・390px スクリーンショットで目視確認。
 
 **再レビュー（同日）**: 修正10件の適用を全件確認。1件の主張と実装の乖離を検出・修正——「パーセンタイルはバーとレーダーで1回だけ計算」とされていたが、実際は `buildHitterPctRows`/`buildHitterRadarAxes` が別々に `computeMetrics` を呼び2回計算していた。4つの個別ビルダーを `buildHitterViz`/`buildPitcherViz`（bars+radar を1回の computeMetrics から返す）に統合して解消。再検証: typecheck ✅ / build ✅ / 22/22 pass ✅ / 本番サーバーでレーダー値が修正前と同一であることを実確認。
+
+### セイバー拡張 Phase 1（2026-07-07）
+
+**実装**: `src/lib/saber.ts`（純計算関数: `woba`/`babip`/`fipCore`/`fipConstant`/`kbbPct`＋テスト8件）、`src/lib/metrics.ts` に `SaberRow` 型と `buildHitterSaber`/`buildPitcherSaber`（wOBA・BABIP／FIP・K-BB% を既存 `computeMetrics` と同じ mid-rank パーセンタイルで算出し、1行解説文を付与）、`src/components/saber-card.tsx`（`SaberCard`。rows空ならnullを返す）、選手詳細ページの打者/投手 League Percentile カード直後に「セイバー指標（打撃/投球）」カードを追加、`/metrics` に `#saber` セクションを追加。
+
+**検証結果**: `npx tsc --noEmit` ✅ / `npx eslint`（対象3ファイル）✅ / `node --test src/lib/*.test.mjs` 30/30 pass ✅（saber.ts の8件が追加）。build はサンドボックス制約のため未実行（本タスクの検証範囲外）。
+
+**設計判断**:
+- バー描画（レイアウト・hsl色温度）は `percentile-bars.tsx` のコピーではなく、`pctColor` をexportしてSaberCardから再利用する形にした（既存の色ロジックを一元管理）
+- FIPはリーグ定数Cを母集団（規定投手プール）から都度算出（`poolFipConstant`）。低いほど良い指標のためパーセンタイルは反転
+- 規定未到達者向けの専用注記は追加しない——`SaberCard`はrowsが空ならnullを返すだけで、既存の`UnqualifiedNote`（percentileカードの直下）が既に規定未到達を案内済みのため二重表示を避けた
+- `CardHeader`/`MetricLink`の既存呼び出し規約に合わせ、`metricHref`には`"saber"`（アンカーIDのみ）を渡す。`MetricLink`側で`/metrics#${anchor}`を組み立てるため、フルパスを渡すと`/metrics#/metrics#saber`のような二重パスになってしまうため
+
+**検証項目**: `node --test` でwOBA/BABIP/FIP/K-BB%の計算式・エッジケース（分母0など）を確認。UIの実ブラウザ確認はサンドボックス制約により未実施（次フェーズでのビジュアル確認時に合わせて確認する）。

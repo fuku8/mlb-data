@@ -14,8 +14,9 @@ import {
   mergePlayerStatsBySeason,
   PITCHER_QUALIFY_OUTS,
 } from "@/lib/data/normalizers";
-import { buildHitterViz, buildPitcherViz } from "@/lib/metrics";
+import { buildHitterSaber, buildHitterViz, buildPitcherSaber, buildPitcherViz } from "@/lib/metrics";
 import { PercentileBars } from "@/components/percentile-bars";
+import { SaberCard } from "@/components/saber-card";
 import { StatRadar } from "@/components/stat-radar";
 import { TotalBasesWaffle } from "@/components/total-bases-waffle";
 import { n } from "@/lib/utils";
@@ -87,6 +88,8 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
   const pitcherQualified = showPitching && isQualifiedPitcher(player.pitching?.inningsPitched);
   const hitterViz = hitterQualified ? buildHitterViz(player, hitterPool) : null;
   const pitcherViz = pitcherQualified ? buildPitcherViz(player, pitcherPool) : null;
+  const hitterSaber = hitterQualified ? buildHitterSaber(player, hitterPool) : [];
+  const pitcherSaber = pitcherQualified ? buildPitcherSaber(player, pitcherPool) : [];
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
@@ -145,6 +148,8 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         ) : (
           <UnqualifiedNote />
         ))}
+
+      {showHitting && <SaberCard title="セイバー指標（打撃）" rows={hitterSaber} metricHref="saber" />}
 
       {(hitterViz || (showHitting && hitterQualified)) && (
         <div className={hitterViz && showHitting && hitterQualified ? "grid gap-4 lg:grid-cols-2" : "grid gap-4"}>
@@ -209,6 +214,8 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         ) : (
           <UnqualifiedNote />
         ))}
+
+      {showPitching && <SaberCard title="セイバー指標（投球）" rows={pitcherSaber} metricHref="saber" />}
 
       {pitcherViz && (
         <StatRadar

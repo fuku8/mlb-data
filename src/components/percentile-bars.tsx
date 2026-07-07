@@ -8,7 +8,7 @@ export interface PercentileRow {
 }
 
 // 青(低) → 赤(高) の色温度
-function pctColor(pct: number): string {
+export function pctColor(pct: number): string {
   const hue = 220 * (1 - pct);
   return `hsl(${hue}, 65%, 48%)`;
 }
