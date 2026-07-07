@@ -202,6 +202,7 @@ export default async function PlayersPage({ searchParams }: Props) {
   const sortableHeader = (label: string, key: string) => (
     <Link
       href={headerQuery(key)}
+      scroll={false}
       style={{
         display: "inline-flex",
         gap: 4,

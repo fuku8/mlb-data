@@ -209,6 +209,7 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
   const sortableHeader = (label: string, key: TeamSortKey) => (
     <Link
       href={headerQuery(key)}
+      scroll={false}
       style={{
         display: "inline-flex",
         gap: 4,
