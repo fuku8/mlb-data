@@ -45,6 +45,7 @@ interface FeatDef {
   key: string;
   accessor: (r: PlayerSeasonRow) => number | null;
   invert?: boolean; // 低いほど良い指標は 1-pct を格納する
+  raw?: boolean; // パーセンタイル化せず生値のまま格納する（SV/HLDのようなゼロ過多分布のstyle用。z標準化はstyle出力の分布に対して行うためスケール不問＝versatRawと同じ性質）
 }
 
 interface TypeDef {
@@ -78,9 +79,13 @@ function classify(
   const ids = [...raw.keys()];
   if (ids.length === 0) return new Map();
 
-  // 各特徴をプール内パーセンタイル化（反転特徴は1-pctを格納する）
+  // 各特徴をプール内パーセンタイル化（反転特徴は1-pctを、raw特徴は生値をそのまま格納する）
   const pcts = new Map<number, Record<string, number>>(ids.map((id) => [id, {}]));
   for (const f of featDefs) {
+    if (f.raw) {
+      for (const id of ids) pcts.get(id)![f.key] = raw.get(id)![f.key];
+      continue;
+    }
     const vals = ids.map((id) => raw.get(id)![f.key]);
     for (const id of ids) {
       let pct = percentileOf(vals, raw.get(id)![f.key]);
@@ -238,6 +243,10 @@ const PITCHER_FEAT_DEFS: FeatDef[] = [
   { key: "cg", accessor: pCg },
   { key: "sv", accessor: pSv },
   { key: "hld", accessor: pHld },
+  // SV/HLDはゼロ過多分布のためパーセンタイル化するとSV1-2でもz≥1.0に入る。
+  // styleは生カウントのz標準化（真のクローザー/セットアッパーだけが+1σを超える）、scoreはパーセンタイル版sv/hldを使う
+  { key: "svRaw", accessor: pSv, raw: true },
+  { key: "hldRaw", accessor: pHld, raw: true },
   { key: "eraLow", accessor: pEra, invert: true },
   { key: "whipLow", accessor: pWhip, invert: true },
   { key: "kbbPct", accessor: pKbbPct },
@@ -250,8 +259,8 @@ const PITCHER_TYPE_DEFS: TypeDef[] = [
   { name: "ドクターK", style: (g) => g("k9"), score: (g) => mean(g("k9"), g("kbbPct"), g("eraLow")) },
   { name: "精密機械", style: (g) => g("bb9Low"), score: (g) => mean(g("bb9Low"), g("whipLow"), g("kbb")) },
   { name: "ワークホース", style: (g) => mean(g("ip"), g("gs"), g("cg")), score: (g) => mean(g("ip"), g("eraLow"), g("whipLow")) },
-  { name: "守護神", style: (g) => g("sv"), score: (g) => mean(g("sv"), g("eraLow"), g("kbbPct")) },
-  { name: "中継ぎの柱", style: (g) => g("hld"), score: (g) => mean(g("hld"), g("eraLow"), g("whipLow")) },
+  { name: "守護神", style: (g) => g("svRaw"), score: (g) => mean(g("sv"), g("eraLow"), g("kbbPct")) },
+  { name: "中継ぎの柱", style: (g) => g("hldRaw"), score: (g) => mean(g("hld"), g("eraLow"), g("whipLow")) },
   // MLBのみ。npb移植時は除外
   { name: "グラウンドボーラー", style: (g) => g("goAo"), score: (g) => mean(g("goAo"), g("hr9Low"), g("eraLow")) },
 ];
