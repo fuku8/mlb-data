@@ -166,7 +166,7 @@ const hWobaCounts = (r: PlayerSeasonRow) => {
     h: hits, doubles, triples, hr: homeRuns,
   };
 };
-const hWoba = (r: PlayerSeasonRow) => { const c = hWobaCounts(r); return c ? woba(c) : null; };
+export const hWoba = (r: PlayerSeasonRow) => { const c = hWobaCounts(r); return c ? woba(c) : null; }; // ラック指数X版（wOBA-xwOBA）で再利用
 export const hBabip = (r: PlayerSeasonRow) => parseNumber(r.hitting?.babip); // MLBはCSV値をそのまま使う。ラック指数でも再利用
 
 const pIp = (r: PlayerSeasonRow) => {

@@ -265,3 +265,33 @@ Phase 1-3 のコードレビュー指摘を修正。
 - ローダー本体（`readCsv`/`parseNumber`のI/O層）は既存`loaders.ts`同様このリポジトリでは未テスト。`buildHitterPhysical`/`buildPitcherPhysical`（分岐・invertを含む純ロジック）も、直系の前例である`metrics.ts`の`buildHitterSaber`/`buildPitcherSaber`（同一形状のmid-rankビルダー）に専用テストが存在しないため、同じ前例に従い専用テストファイルは追加しなかった。パーセンタイル計算自体は`percentile.test.mjs`で検証済みのロジックをそのまま再利用している
 - `physicalRow`/`buildHitterPhysical`/`buildPitcherPhysical`を`metrics.ts`ではなく新設の`statcast.ts`に置いた。`metrics.ts`は`player_hitting.csv`/`player_pitching.csv`由来の指標に閉じた既存ファイルのため、Statcast由来の指標を混在させず新ドメインファイルに集約した
 - カード表示条件に`isQualifiedHitter`/`isQualifiedPitcher`を使わず、StatcastのMapの有無だけで判定した。Baseball SavantのカスタムリーダーボードCSV自体が`min=q`（規定到達者のみ）でフィルタ済みのため、二重判定は不要かつ将来Savant側のしきい値が変わった場合に自動追従できる
+
+### Phase 3b: ラック指数のxwOBA強化（2026-07-07）
+
+**実装**: `src/lib/luck.ts`に`hitterLuckX(wobaActual, xwoba)`を追加（wOBA実測−xwOBAの差を「tail(追い風)/head(向かい風)/neutral」に分類。しきい値±0.010/±0.025、既存`classify`ヘルパーをそのまま再利用）＋テスト1件（境界値・`meterValue`との整合を含む）。`metrics.ts`の`hWoba`（打者wOBAアクセサ、既存`buildHitterSaber`内でのみ使用していた非exportの内部const）をexportに変更し、選手ページから同じ計算式を再利用できるようにした（新規ラッパーは追加していない）。選手詳細ページ（`src/app/players/[playerId]/page.tsx`）にフォールバック分岐を追加: 対象選手のStatcast行（`statcastHitterRow`、Phase 3aで既に取得済み）に`xwoba`があり、かつ`hWoba(player)`が算出できる場合はX版を使用、どちらか一方でも欠損する場合は既存のBABIP版（`hitterLuck`）にフォールバックし、両方不可なら`hitterLuckResult`が`null`になりカード自体を非表示にする（既存の非表示パターンを踏襲）。`LuckMeter`の`range`・`desc`はX版かBABIP版かで切り替え——X版は表示レンジを±0.05（wOBA−xwOBAの|Δ|は既存BABIP版の±0.06ほど広がらないため）、解説文はブリーフ指定の文言をそのまま使用してどちらの計算かを明示する。`/metrics`の`#luck`セクションにX版の計算方法・しきい値・表示レンジ・フォールバック条件を追記。
+
+**検証結果**: `npx tsc --noEmit` ✅ / `npx eslint`（変更5ファイル: `luck.ts`/`luck.test.mjs`/`metrics.ts`/`players/[playerId]/page.tsx`/`metrics/page.tsx`）✅ / `node --test src/lib/*.test.mjs` 37/37 pass ✅（luck.test.mjsに1件追加、既存36件は変更なし）。build・実ブラウザ確認はサンドボックス制約のため未実施（既存フェーズと同様）。
+
+**設計判断**:
+- `hitterLuckX`のしきい値・ラベル文言はブリーフの指定値をそのまま採用し変更していない（BABIP版の±0.015/±0.040とは別の値——wOBA−xwOBAはBABIP−リーグ平均よりも変動幅が小さいスケールのため）
+- メーター表示レンジをX版だけ±0.06→±0.05に変更した。wOBA−xwOBAの実測値は±0.04を超えることが稀なため、共通の±0.06のままだとマーカーが常に中央付近に寄って見づらくなる（BABIP版は既存レンジを維持——挙動を変える理由がないため）
+- フォールバック判定はページ内のインライン条件式に留め、専用ヘルパー関数を新設しなかった。分岐が2値のnullチェックのみで、他画面から再利用される見込みもないため
+- `hitterLuckIsX`（表示切り替え用フラグ）は`hitterLuckResult`の算出条件と同じ式を2箇所に書いている。三項演算子内でTypeScriptの型絞り込みを効かせるため、真偽値変数を条件に流用する書き方は避けた（`number | null`のまま`hitterLuckX`に渡すとコンパイルエラーになる）
+
+## 計画の全タスク完了サマリー（Task 1〜11、2026-07-07）
+
+セイバー拡張＋Statcast強化プラン（Task 1〜11）が全完了。追加されたビジュアル・指標:
+
+| Task | 内容 |
+|---|---|
+| 1〜3 | wOBA/BABIP/FIP/K-BB%（セイバー指標カード）、選手ページ・`/metrics`統合 |
+| 4 | NPB版セイバー指標カード（npb-dataリポジトリ） |
+| 5〜6 | プレイヤータイプ判定エンジン（打者/投手）、タイプバッジ表示・`/types`ページ |
+| 7 | ラック指数（風向きメーター）: 打者BABIP版・投手ERA-FIP版 |
+| 8 | NPB版タイプ判定・タイプバッジ（npb-dataリポジトリ） |
+| 9〜10 | Statcast取得スクリプト、フィジカルカード（打球速度・Barrel%・HardHit%・スプリントスピード等） |
+| 11 | ラック指数のxwOBA強化: `hitterLuckX`（wOBA−xwOBA）＋BABIP版への自動フォールバック |
+
+母集団・しきい値・判定文の言い回しは各Taskのブリーフに準拠し、独自の拡張・変更は加えていない。検証は全Taskを通じて`tsc --noEmit` / `eslint` / `node --test`の3点のみ（build・実ブラウザ確認はサンドボックス制約のため未実施、既存Phase 1-4と同様）。
+
+コミット範囲: `0948ec1..`（Task 1）から本コミット（Task 11）まで。各Taskの詳細ログは`.superpowers/sdd/task-*-report.md`、レビュー結果は`.superpowers/sdd/progress.md`を参照。

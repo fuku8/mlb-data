@@ -39,6 +39,16 @@ export function hitterLuck(babipValue: number, leagueAvg: number): LuckResult {
   );
 }
 
+// 打者X版: wOBA実測 − xwOBA（打球の速度・角度から算出される期待値）。正=追い風（出来すぎ）
+// BABIP版よりも打球の質そのものを基準にするため守備位置・球場の影響が残る点はBABIP版と同様
+export function hitterLuckX(wobaActual: number, xwoba: number): LuckResult {
+  return classify(
+    wobaActual - xwoba, 0.01, 0.025,
+    "tail", "追い風。打球の質から期待される以上の結果が出ている可能性",
+    "head", "向かい風。打球の質の割に結果が出ていない可能性",
+  );
+}
+
 // 投手: ERA − FIP。正=向かい風（FIPが示す実力より失点が多い）
 export function pitcherLuck(era: number, fip: number): LuckResult {
   return classify(

@@ -14,8 +14,8 @@ import {
   mergePlayerStatsBySeason,
   PITCHER_QUALIFY_OUTS,
 } from "@/lib/data/normalizers";
-import { buildHitterSaber, buildHitterViz, buildPitcherSaber, buildPitcherViz, hBabip, pitcherFipValue, poolFipConstant } from "@/lib/metrics";
-import { hitterLuck, pitcherLuck } from "@/lib/luck";
+import { buildHitterSaber, buildHitterViz, buildPitcherSaber, buildPitcherViz, hBabip, hWoba, pitcherFipValue, poolFipConstant } from "@/lib/metrics";
+import { hitterLuck, hitterLuckX, pitcherLuck } from "@/lib/luck";
 import { classifyHitters, classifyPitchers } from "@/lib/player-types";
 import { buildHitterPhysical, buildPitcherPhysical, getStatcastHitting, getStatcastPitching } from "@/lib/data/statcast";
 import { LuckMeter } from "@/components/luck-meter";
@@ -105,11 +105,18 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
   const hitterPhysical = statcastHitterRow ? buildHitterPhysical(statcastHitterRow, [...statcastHitting.values()]) : [];
   const pitcherPhysical = statcastPitcherRow ? buildPitcherPhysical(statcastPitcherRow, [...statcastPitching.values()]) : [];
 
-  // ラック指数: 打者はBABIPのリーグ平均（規定打者プールから自算）との差、投手はERA−FIPの差
+  // ラック指数（打者）: xwOBAとwOBA実測が両方揃えばX版（打球の質基準）、揃わなければBABIP版（リーグ平均との差）にフォールバック
   const leagueBabipValues = hitterPool.map(hBabip).filter((v): v is number => v !== null);
   const leagueBabipAvg = leagueBabipValues.length > 0 ? leagueBabipValues.reduce((a, b) => a + b, 0) / leagueBabipValues.length : null;
   const hitterBabip = hitterQualified ? hBabip(player) : null;
-  const hitterLuckResult = hitterBabip !== null && leagueBabipAvg !== null ? hitterLuck(hitterBabip, leagueBabipAvg) : null;
+  const hitterWoba = hitterQualified ? hWoba(player) : null;
+  const hitterXwoba = statcastHitterRow?.xwoba ?? null;
+  const hitterLuckResult = hitterWoba !== null && hitterXwoba !== null
+    ? hitterLuckX(hitterWoba, hitterXwoba)
+    : hitterBabip !== null && leagueBabipAvg !== null
+      ? hitterLuck(hitterBabip, leagueBabipAvg)
+      : null;
+  const hitterLuckIsX = hitterWoba !== null && hitterXwoba !== null;
 
   const pitcherEra = pitcherQualified ? parseNumber(player.pitching?.era) : null;
   const pitcherFip = pitcherQualified ? pitcherFipValue(player, poolFipConstant(pitcherPool)) : null;
@@ -187,8 +194,12 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         <LuckMeter
           title="ラック指数（打撃）"
           result={hitterLuckResult}
-          range={0.06}
-          desc="BABIP（インプレー打球の安打率）のリーグ平均との差。プラスは追い風=打球が平均より多くヒットになっている。俊足や強い打球など実力でBABIPが高い選手もいるため、乖離のすべてが運ではない"
+          range={hitterLuckIsX ? 0.05 : 0.06}
+          desc={
+            hitterLuckIsX
+              ? "wOBA実測とxwOBA（打球の速度・角度から算出される期待値）の差。プラスは追い風=打球の質から期待される以上の結果が出ている。守備位置や球場の影響も含まれるため、乖離のすべてが運ではない"
+              : "BABIP（インプレー打球の安打率）のリーグ平均との差。プラスは追い風=打球が平均より多くヒットになっている。俊足や強い打球など実力でBABIPが高い選手もいるため、乖離のすべてが運ではない"
+          }
           metricHref="luck"
         />
       )}
