@@ -73,6 +73,15 @@ const SECTIONS: MetricSection[] = [
     caveat: "wOBA係数は年度別の厳密な再計算ではなく固定近似のため、傾向把握用と捉える。BABIPは運の要素が大きく、極端な値は翌シーズンに平均回帰しやすい。FIPは守備・打線の援護の影響を除いた「実力寄りのERA」で、実際のERAと乖離する投手は今後ERAが近づく可能性がある。",
   },
   {
+    id: "statcast",
+    title: "フィジカル（Statcast）",
+    where: "選手詳細ページ（打者/投手、Statcastデータのある選手のみ）",
+    what: "打球速度やスプリントスピードなど、Baseball Savant（MLB公式のトラッキングデータサイト）が計測した「体感できる身体能力」の指標。AVGやERAのような結果指標ではなく、打球初速や走力そのものを測る。打者は「フィジカル（Statcast）」、投手は「フィジカル（Statcast・被打球）」カードで表示する。",
+    how: "打者は平均打球速度(exit_velocity_avg)・Barrel%(barrel_batted_rate)・HardHit%(hard_hit_percent)・スプリントスピード(sprint_speed、ft/s)の4項目。投手は被打球速度・被Barrel%（ともに低いほど良いためパーセンタイル反転）・Whiff%(whiff_percent)・Chase%(chase_percent)の4項目。値が欠損している行は表示しない。Chase%はBaseball Savant側のchase_percent列が空のため、代わりにoz_swing_percent（ボール球スイング率）を同じ意味で使用している。",
+    population: "Baseball SavantのカスタムリーダーボードCSV（打者152人・投手59人、2026-07-07時点）に収録されている選手全員。このCSV自体が規定到達者（min=q）のみを収録しているため、既存の規定打者/規定投手判定とは独立に、Statcastデータの有無だけでカード表示を決めている。",
+    caveat: "データはBaseball Savantから毎日取得する想定で、シーズン序盤は収録人数が少ない。CSVが存在しない場合はカード自体を表示しない（サイトの他の機能には影響しない）。",
+  },
+  {
     id: "luck",
     title: "ラック指数（風向きメーター）",
     where: "選手詳細ページ（打者/投手、規定到達者のみ）",

@@ -17,8 +17,10 @@ import {
 import { buildHitterSaber, buildHitterViz, buildPitcherSaber, buildPitcherViz, hBabip, pitcherFipValue, poolFipConstant } from "@/lib/metrics";
 import { hitterLuck, pitcherLuck } from "@/lib/luck";
 import { classifyHitters, classifyPitchers } from "@/lib/player-types";
+import { buildHitterPhysical, buildPitcherPhysical, getStatcastHitting, getStatcastPitching } from "@/lib/data/statcast";
 import { LuckMeter } from "@/components/luck-meter";
 import { PercentileBars } from "@/components/percentile-bars";
+import { PhysicalCard } from "@/components/physical-card";
 import { SaberCard } from "@/components/saber-card";
 import { StatRadar } from "@/components/stat-radar";
 import { TotalBasesWaffle } from "@/components/total-bases-waffle";
@@ -63,11 +65,13 @@ function UnqualifiedNote() {
 export default async function PlayerDetailPage({ params, searchParams }: Props) {
   const { playerId } = await params;
   const { season } = await searchParams;
-  const [players, hitting, pitching, fielding] = await Promise.all([
+  const [players, hitting, pitching, fielding, statcastHitting, statcastPitching] = await Promise.all([
     getPlayers(),
     getPlayerHitting(),
     getPlayerPitching(),
     getPlayerFielding(),
+    getStatcastHitting(),
+    getStatcastPitching(),
   ]);
 
   const merged = mergePlayerStatsBySeason({
@@ -94,6 +98,12 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
   const pitcherViz = pitcherQualified ? buildPitcherViz(player, pitcherPool) : null;
   const hitterSaber = hitterQualified ? buildHitterSaber(player, hitterPool) : [];
   const pitcherSaber = pitcherQualified ? buildPitcherSaber(player, pitcherPool) : [];
+
+  // フィジカルカード: Statcast CSV自体が規定到達者(min=q)のみを収録しているため、規定判定とは独立してMap存在有無で表示を決める
+  const statcastHitterRow = statcastHitting.get(player.player_id) ?? null;
+  const statcastPitcherRow = statcastPitching.get(player.player_id) ?? null;
+  const hitterPhysical = statcastHitterRow ? buildHitterPhysical(statcastHitterRow, [...statcastHitting.values()]) : [];
+  const pitcherPhysical = statcastPitcherRow ? buildPitcherPhysical(statcastPitcherRow, [...statcastPitching.values()]) : [];
 
   // ラック指数: 打者はBABIPのリーグ平均（規定打者プールから自算）との差、投手はERA−FIPの差
   const leagueBabipValues = hitterPool.map(hBabip).filter((v): v is number => v !== null);
@@ -171,6 +181,8 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
 
       {showHitting && <SaberCard title="セイバー指標（打撃）" rows={hitterSaber} metricHref="saber" />}
 
+      {statcastHitterRow && <PhysicalCard title="フィジカル（Statcast）" rows={hitterPhysical} metricHref="statcast" />}
+
       {hitterLuckResult && (
         <LuckMeter
           title="ラック指数（打撃）"
@@ -246,6 +258,8 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         ))}
 
       {showPitching && <SaberCard title="セイバー指標（投球）" rows={pitcherSaber} metricHref="saber" />}
+
+      {statcastPitcherRow && <PhysicalCard title="フィジカル（Statcast・被打球）" rows={pitcherPhysical} metricHref="statcast" />}
 
       {pitcherLuckResult && (
         <LuckMeter
