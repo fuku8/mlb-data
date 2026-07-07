@@ -18,7 +18,7 @@ export function woba(c: WobaCounts): number | null {
   if (denom <= 0) return null;
   const ubb = c.bb - c.ibb;
   const singles = c.h - c.doubles - c.triples - c.hr;
-  return (0.69 * ubb + 0.72 * c.hbp + 0.89 * singles + 1.27 * c.doubles + 1.62 * c.triples + 2.175 * c.hr) / denom;
+  return (0.69 * ubb + 0.72 * c.hbp + 0.89 * singles + 1.27 * c.doubles + 1.62 * c.triples + 2.1 * c.hr) / denom;
 }
 
 export function babip(h: number, hr: number, ab: number, so: number, sf: number): number | null {

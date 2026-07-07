@@ -8,9 +8,9 @@ const close = (a, b, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} !== $
 test("woba computes weighted on-base average", () => {
   // AB=100, H=30(2B=5,3B=1,HR=4 → 1B=20), BB=10(IBB=2), HBP=1, SF=2
   // uBB=8, denom=100+10-2+2+1=111
-  // 分子=0.69*8 + 0.72*1 + 0.89*20 + 1.27*5 + 1.62*1 + 2.10*4 = 40.71
+  // 分子=0.69*8 + 0.72*1 + 0.89*20 + 1.27*5 + 1.62*1 + 2.10*4 = 40.41
   const c = { ab: 100, bb: 10, ibb: 2, hbp: 1, sf: 2, h: 30, doubles: 5, triples: 1, hr: 4 };
-  close(woba(c), 40.71 / 111);
+  close(woba(c), 40.41 / 111);
 });
 
 test("woba returns null when denominator is zero", () => {
