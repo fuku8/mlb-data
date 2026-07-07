@@ -61,6 +61,7 @@ export interface HittingStats {
   stolenBases: number | null;
   caughtStealing: number | null;
   baseOnBalls: number | null;
+  intentionalWalks: number | null;
   strikeOuts: number | null;
   hitByPitch: number | null;
   sacFlies: number | null;
@@ -95,11 +96,14 @@ export interface PitchingStats {
   battersFaced: number | null;
   strikeOuts: number | null;
   baseOnBalls: number | null;
+  intentionalWalks: number | null;
+  hitBatsmen: number | null;
   strikeoutWalkRatio: string;
   strikeoutsPer9Inn: string;
   walksPer9Inn: string;
   hitsPer9Inn: string;
   homeRunsPer9: string;
+  groundOutsToAirouts: string;
   era: string;
   whip: string;
   avg: string;

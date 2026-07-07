@@ -1,8 +1,9 @@
 // 打者/投手の指標定義。League Percentileカードとレーダーで共有し、パーセンタイルは1回だけ計算する
-import { formatAvg, formatEra, formatObp, formatOps, formatSlg, formatWhip } from "@/lib/data/normalizers";
+import { formatAvg, formatEra, formatObp, formatOps, formatSlg, formatWhip, ipToOuts } from "@/lib/data/normalizers";
 import { parseNumber } from "@/lib/data/loaders";
 import { percentileOf } from "@/lib/percentile";
 import { n } from "@/lib/utils";
+import { woba, fipCore, fipConstant, kbbPct, type FipLeagueRow } from "@/lib/saber";
 import type { PlayerSeasonRow } from "@/lib/types";
 import type { PercentileRow } from "@/components/percentile-bars";
 import type { RadarAxis } from "@/components/stat-radar";
@@ -146,4 +147,95 @@ export function buildPitcherViz(target: PlayerSeasonRow, pool: PlayerSeasonRow[]
     bars: toBarsRows(PITCHER_METRICS, results),
     radar: toRadarAxes(PITCHER_METRICS, PITCHER_RADAR_ORDER, results),
   };
+}
+
+export interface SaberRow {
+  label: string;
+  display: string;
+  pct: number;
+  desc: string; // カード内に常時表示する1行解説
+}
+
+const hWobaCounts = (r: PlayerSeasonRow) => {
+  const h = r.hitting;
+  if (!h) return null;
+  const { atBats, baseOnBalls, intentionalWalks, hitByPitch, sacFlies, hits, doubles, triples, homeRuns } = h;
+  if (atBats === null || baseOnBalls === null || hits === null || doubles === null || triples === null || homeRuns === null) return null;
+  return {
+    ab: atBats, bb: baseOnBalls, ibb: intentionalWalks ?? 0, hbp: hitByPitch ?? 0, sf: sacFlies ?? 0,
+    h: hits, doubles, triples, hr: homeRuns,
+  };
+};
+const hWoba = (r: PlayerSeasonRow) => { const c = hWobaCounts(r); return c ? woba(c) : null; };
+const hBabip = (r: PlayerSeasonRow) => parseNumber(r.hitting?.babip); // MLBはCSV値をそのまま使う
+
+const pIp = (r: PlayerSeasonRow) => {
+  const outs = ipToOuts(r.pitching?.inningsPitched);
+  return outs === null ? null : outs / 3;
+};
+const pFipCore = (r: PlayerSeasonRow) => {
+  const p = r.pitching;
+  const ip = pIp(r);
+  if (!p || ip === null || p.homeRuns === null || p.baseOnBalls === null || p.strikeOuts === null) return null;
+  return fipCore(p.homeRuns, p.baseOnBalls, p.hitBatsmen ?? 0, p.strikeOuts, ip);
+};
+const pKbbPct = (r: PlayerSeasonRow) => {
+  const p = r.pitching;
+  if (!p || p.strikeOuts === null || p.baseOnBalls === null || p.battersFaced === null) return null;
+  return kbbPct(p.strikeOuts, p.baseOnBalls, p.battersFaced);
+};
+
+// プールからFIP定数を計算（er/ipが揃う行のみ集計）
+export function poolFipConstant(pool: PlayerSeasonRow[]): number | null {
+  const rows: FipLeagueRow[] = [];
+  for (const r of pool) {
+    const p = r.pitching;
+    const ip = pIp(r);
+    if (!p || ip === null || p.homeRuns === null || p.baseOnBalls === null || p.strikeOuts === null || p.earnedRuns === null) continue;
+    rows.push({ hr: p.homeRuns, bb: p.baseOnBalls, hbp: p.hitBatsmen ?? 0, so: p.strikeOuts, ip, er: p.earnedRuns });
+  }
+  return fipConstant(rows);
+}
+
+const HITTER_SABER_DESCS = {
+  woba: "1打席あたりの得点貢献。OPSより正確に打者の総合力を測る",
+  babip: "インプレー打球がヒットになった率。極端な高低は運の影響が大きい",
+};
+const PITCHER_SABER_DESCS = {
+  fip: "三振・四球・被本塁打だけで測る投手の実力。守備と運の影響を除いた「本当のERA」",
+  kbbPct: "支配力の最短指標。三振で取れて四球を出さない投手ほど高い",
+};
+
+// SaberRowビルダー: 各指標のpctは既存computeMetricsと同じmid-rank方式で1回計算
+function saberRow(
+  label: string, desc: string, target: PlayerSeasonRow, pool: PlayerSeasonRow[],
+  accessor: (r: PlayerSeasonRow) => number | null,
+  format: (v: number) => string, invert = false,
+): SaberRow | null {
+  const value = accessor(target);
+  if (value === null) return null;
+  const poolValues = pool.map(accessor).filter((v): v is number => v !== null);
+  if (poolValues.length === 0) return null;
+  let pct = percentileOf(poolValues, value);
+  if (invert) pct = 1 - pct;
+  return { label, display: format(value), pct, desc };
+}
+
+export function buildHitterSaber(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): SaberRow[] {
+  return [
+    saberRow("wOBA", HITTER_SABER_DESCS.woba, target, pool, hWoba, (v) => v.toFixed(3)),
+    saberRow("BABIP", HITTER_SABER_DESCS.babip, target, pool, hBabip, (v) => v.toFixed(3)),
+  ].filter((r): r is SaberRow => r !== null);
+}
+
+export function buildPitcherSaber(target: PlayerSeasonRow, pool: PlayerSeasonRow[]): SaberRow[] {
+  const c = poolFipConstant(pool);
+  const pFip = (r: PlayerSeasonRow) => {
+    const core = pFipCore(r);
+    return core === null || c === null ? null : core + c;
+  };
+  return [
+    saberRow("FIP", PITCHER_SABER_DESCS.fip, target, pool, pFip, (v) => v.toFixed(2), true),
+    saberRow("K-BB%", PITCHER_SABER_DESCS.kbbPct, target, pool, pKbbPct, (v) => `${(v * 100).toFixed(1)}%`),
+  ].filter((r): r is SaberRow => r !== null);
 }
