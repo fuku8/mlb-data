@@ -31,6 +31,8 @@ export function pickBadges(cand: TypeCandidate[]): TypeBadge[] {
   const sorted = [...cand].sort((a, b) => b.z - a.z);
   const picked = sorted.filter((c) => c.z >= 1.0).slice(0, 3);
   const isFallback = picked.length === 0;
+  // fallback候補の最上位すらリーグ平均未満(z<0)なら「消去法で強いて言えば」の体すら成さないため非表示にする
+  if (isFallback && (sorted.length === 0 || sorted[0].z < 0)) return [];
   return (isFallback ? [sorted[0]] : picked)
     .map((c) => ({ type: c.name, score: c.score, fallback: isFallback }))
     .sort((a, b) => b.score - a.score);
@@ -46,6 +48,7 @@ interface FeatDef {
   accessor: (r: PlayerSeasonRow) => number | null;
   invert?: boolean; // 低いほど良い指標は 1-pct を格納する
   raw?: boolean; // パーセンタイル化せず生値のまま格納する（SV/HLDのようなゼロ過多分布のstyle用。z標準化はstyle出力の分布に対して行うためスケール不問＝versatRawと同じ性質）
+  zscore?: boolean; // パーセンタイル化せず「プール内zスコア（(v-mean)/sd、sd=0なら0）」を格納する。ゼロ過多分布の特徴を複数meanでstyle合成する場合、rawの生値だとスケールが揃わない（sbAttemptCt/triplesCt）ため、スケールフリーなzで重みを対等にする
 }
 
 interface TypeDef {
@@ -84,6 +87,13 @@ function classify(
   for (const f of featDefs) {
     if (f.raw) {
       for (const id of ids) pcts.get(id)![f.key] = raw.get(id)![f.key];
+      continue;
+    }
+    if (f.zscore) {
+      const vals = ids.map((id) => raw.get(id)![f.key]);
+      const m = mean(...vals);
+      const sd = Math.sqrt(vals.reduce((a, v) => a + (v - m) ** 2, 0) / vals.length);
+      for (const id of ids) pcts.get(id)![f.key] = sd === 0 ? 0 : (raw.get(id)![f.key] - m) / sd;
       continue;
     }
     const vals = ids.map((id) => raw.get(id)![f.key]);
@@ -134,7 +144,6 @@ const hSb = (r: PlayerSeasonRow) => r.hitting?.stolenBases ?? null;
 const hCs = (r: PlayerSeasonRow) => r.hitting?.caughtStealing ?? null;
 const hBb = (r: PlayerSeasonRow) => r.hitting?.baseOnBalls ?? null;
 const hSo = (r: PlayerSeasonRow) => r.hitting?.strikeOuts ?? null;
-const hG = (r: PlayerSeasonRow) => r.hitting?.gamesPlayed ?? null;
 const h3b = (r: PlayerSeasonRow) => r.hitting?.triples ?? null;
 const hRuns = (r: PlayerSeasonRow) => r.hitting?.runs ?? null;
 const hHits = (r: PlayerSeasonRow) => r.hitting?.hits ?? null;
@@ -153,13 +162,11 @@ const hBbK = (r: PlayerSeasonRow) => {
   return bb === null || so === null ? null : bb / Math.max(so, 1);
 };
 const hHrRate = (r: PlayerSeasonRow) => ratio(hHr(r), hPa(r));
-const hTripleRate = (r: PlayerSeasonRow) => ratio(h3b(r), hPa(r));
 const hRbiRate = (r: PlayerSeasonRow) => ratio(hRbi(r), hPa(r));
-const hSbAttempt = (r: PlayerSeasonRow) => {
+const hSbAttemptCt = (r: PlayerSeasonRow) => {
   const sb = hSb(r);
   const cs = hCs(r);
-  const g = hG(r);
-  return sb === null || cs === null || !g ? null : (sb + cs) / g;
+  return sb === null || cs === null ? null : sb + cs;
 };
 const hSbSuccess = (r: PlayerSeasonRow) => {
   const sb = hSb(r);
@@ -180,8 +187,10 @@ const HITTER_FEAT_DEFS: FeatDef[] = [
   { key: "hr", accessor: hHr }, // 各タイプscoreの生産量評価（hits/rbi/sb等と同じ「raw count」枠）に必要
   { key: "avg", accessor: hAvg },
   { key: "kLow", accessor: hKPct, invert: true },
-  { key: "sbAttempt", accessor: hSbAttempt },
-  { key: "tripleRate", accessor: hTripleRate },
+  // 盗塁企図数(SB+CS)・三塁打数はSV/HLD（守護神・中継ぎの柱）と同じ「ゼロ過多カウントはpctでなく生分布で標準化」方針。
+  // 率(企図率/三塁打率)にしないのは、極小サンプルの偶発1本が非有界zで支配するため。mean合成でスケールを揃える必要があるのでrawでなくzscore
+  { key: "sbAttemptCt", accessor: hSbAttemptCt, zscore: true },
+  { key: "triplesCt", accessor: h3b, zscore: true },
   { key: "bbPct", accessor: hBbPct },
   { key: "bbK", accessor: hBbK },
   { key: "rbiRate", accessor: hRbiRate },
@@ -202,7 +211,7 @@ const versatRaw = (g: Get) => radarScore([g("avg"), g("obp"), g("iso"), g("sb"),
 const HITTER_TYPE_DEFS: TypeDef[] = [
   { name: "パワーヒッター", style: (g) => mean(g("iso"), g("hrRate")), score: (g) => mean(g("slg"), g("hr"), g("woba")) },
   { name: "安打製造機", style: (g) => mean(g("avg"), g("kLow")), score: (g) => mean(g("avg"), g("obp"), g("hits")) },
-  { name: "スピードスター", style: (g) => mean(g("sbAttempt"), g("tripleRate")), score: (g) => mean(g("sb"), g("sbSuccess"), g("runs")) },
+  { name: "スピードスター", style: (g) => mean(g("sbAttemptCt"), g("triplesCt")), score: (g) => mean(g("sb"), g("sbSuccess"), g("runs")) },
   { name: "選球の達人", style: (g) => mean(g("bbPct"), g("bbK")), score: (g) => mean(g("obp"), g("bbPct"), g("woba")) },
   { name: "ポイントゲッター", style: (g) => g("rbiRate"), score: (g) => mean(g("rbi"), g("slg"), g("woba")) },
   // オールラウンダー: styleは生値（radarScore=5ツールpctの水準×均等さ）、scoreはそのプール内pct
