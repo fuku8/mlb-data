@@ -1,5 +1,10 @@
 import type { GameResult } from "./types";
 
+// 公式サイト（MLB Gameday）の試合詳細ページ。試合結果表示からはここへ外部リンクする
+export function gameDetailUrl(gamePk: number): string {
+  return `https://www.mlb.com/gameday/${gamePk}`;
+}
+
 export function getLatestFinalJstDate(games: GameResult[]): string | null {
   const dates = [...new Set(games.map((game) => game.jst_date).filter(Boolean))].sort().reverse();
   return dates.find((date) => games.some((game) => game.jst_date === date && game.status_code === "F")) ?? null;

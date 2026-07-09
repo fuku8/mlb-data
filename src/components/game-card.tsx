@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { gameDetailUrl } from "@/lib/game-display";
 import type { GameResult } from "@/lib/types";
 
 type Props = {
@@ -46,7 +47,16 @@ export function GameCard({ game: g, compact }: Props) {
         </span>
         <span style={{ fontSize: badgeSize, color: "var(--muted-foreground)" }}>
           {jstTime && <span style={{ marginRight: 6 }}>{jstTime} JST</span>}
-          {g.venue_name}
+          {g.venue_name}{" "}
+          <a
+            href={gameDetailUrl(g.game_pk)}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="公式サイトの試合詳細を開く"
+            style={{ color: "inherit" }}
+          >
+            ↗
+          </a>
         </span>
       </div>
 

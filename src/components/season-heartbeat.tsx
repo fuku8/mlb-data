@@ -3,6 +3,7 @@
 "use client";
 
 import { useState } from "react";
+import { gameDetailUrl } from "@/lib/game-display";
 
 export interface TeamGameMargin {
   date: string;
@@ -11,6 +12,7 @@ export interface TeamGameMargin {
   oppScore: number;
   margin: number; // 自チーム得点 − 相手得点
   isHome: boolean;
+  gamePk: number;
 }
 
 const BAR_W = 5;
@@ -101,6 +103,15 @@ export function SeasonHeartbeat({ games }: { games: TeamGameMargin[] }) {
           <span style={{ fontWeight: 600, color: sel.margin > 0 ? "#10b981" : "#f43f5e" }}>
             {sel.margin > 0 ? "勝ち" : "負け"} {sel.teamScore}-{sel.oppScore}
           </span>
+          <a
+            href={gameDetailUrl(sel.gamePk)}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="公式サイトの試合詳細を開く"
+            style={{ fontSize: 13 }}
+          >
+            公式サイトの試合詳細 ↗
+          </a>
         </div>
       )}
     </div>

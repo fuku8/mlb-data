@@ -141,6 +141,7 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
         opponent: isHome ? g.away_team_name : g.home_team_name,
         teamScore,
         oppScore,
+        gamePk: g.game_pk,
         margin: teamScore - oppScore,
         isHome,
       };
@@ -322,7 +323,7 @@ export default async function TeamDetailPage({ params, searchParams }: Props) {
           <CardHeader
             title="Season Heartbeat"
             metricHref="heartbeat"
-            note="試合ごとの得点差（緑=勝ち・赤=負け、±10点でキャップ）"
+            note="試合ごとの得点差（緑=勝ち・赤=負け、±10点でキャップ）。バーをクリックすると公式サイトの試合詳細へのリンクが表示されます。"
           />
           <SeasonHeartbeat games={teamGames} />
         </section>

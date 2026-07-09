@@ -32,6 +32,9 @@ export default async function GamesPage({ searchParams }: Props) {
     <div style={{ display: "grid", gap: 16 }}>
       <section className="card">
         <h1 style={{ margin: "0 0 12px", fontSize: 34, lineHeight: 1.1 }}>試合結果</h1>
+        <p style={{ margin: "0 0 12px", fontSize: 13, color: "var(--muted-foreground)" }}>
+          試合カードの↗をクリックすると公式サイトの試合詳細が開きます。
+        </p>
         <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           {prevDate ? (
             <Link href={`/games?date=${prevDate}`} style={{ fontSize: 14 }}>← {formatDate(prevDate)}</Link>
