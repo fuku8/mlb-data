@@ -108,7 +108,19 @@ export function SeasonHeartbeat({ games }: { games: TeamGameMargin[] }) {
             target="_blank"
             rel="noopener noreferrer"
             title="公式サイトの試合詳細を開く"
-            style={{ fontSize: 13 }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 4,
+              fontSize: 13,
+              fontWeight: 600,
+              color: "var(--foreground)",
+              background: "var(--secondary)",
+              border: "1px solid var(--border)",
+              borderRadius: 999,
+              padding: "8px 14px",
+              whiteSpace: "nowrap",
+            }}
           >
             公式サイトの試合詳細 ↗
           </a>

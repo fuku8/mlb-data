@@ -45,17 +45,31 @@ export function GameCard({ game: g, compact }: Props) {
         >
           {isFinal ? "Final" : g.status}
         </span>
-        <span style={{ fontSize: badgeSize, color: "var(--muted-foreground)" }}>
-          {jstTime && <span style={{ marginRight: 6 }}>{jstTime} JST</span>}
-          {g.venue_name}{" "}
+        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: badgeSize, color: "var(--muted-foreground)" }}>
+          <span>
+            {jstTime && <span style={{ marginRight: 6 }}>{jstTime} JST</span>}
+            {g.venue_name}
+          </span>
           <a
             href={gameDetailUrl(g.game_pk)}
             target="_blank"
             rel="noopener noreferrer"
             title="公式サイトの試合詳細を開く"
-            style={{ color: "inherit" }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 3,
+              fontSize: 12,
+              fontWeight: 600,
+              color: "var(--foreground)",
+              background: "var(--secondary)",
+              border: "1px solid var(--border)",
+              borderRadius: 999,
+              padding: "8px 12px",
+              whiteSpace: "nowrap",
+            }}
           >
-            ↗
+            Gameday ↗
           </a>
         </span>
       </div>
