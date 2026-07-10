@@ -15,12 +15,16 @@ export function TotalBasesWaffle({
   triples,
   homeRuns,
   metricHref,
+  title = "塁打構成",
+  bare = false,
 }: {
   hits: number;
   doubles: number;
   triples: number;
   homeRuns: number;
   metricHref?: string;
+  title?: string; // 比較ページで選手名付きタイトルに差し替える場合に使用
+  bare?: boolean; // trueなら外側のcard/見出しを省略し、グリッドと凡例だけ返す（比較ページで1枚のcardに複数選手をまとめる用）
 }) {
   const singles = Math.max(0, hits - doubles - triples - homeRuns);
   const bases = {
@@ -42,9 +46,8 @@ export function TotalBasesWaffle({
     for (let j = 0; j < counts[i]; j++) cells.push(p.color);
   });
 
-  return (
-    <section className="card">
-      <CardHeader title="塁打構成" metricHref={metricHref} />
+  const content = (
+    <>
       <div
         style={{ display: "grid", gridTemplateColumns: "repeat(10, 1fr)", gap: 3, width: "fit-content", marginBottom: 14 }}
         role="img"
@@ -54,7 +57,7 @@ export function TotalBasesWaffle({
           <div key={i} style={{ height: 20, width: 20, borderRadius: 3, backgroundColor: color }} />
         ))}
       </div>
-      <div style={{ display: "flex", gap: 16, flexWrap: "wrap", fontSize: 13, color: "var(--muted-foreground)" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, color: "var(--muted-foreground)" }}>
         {PARTS.map((p, i) => (
           <span key={p.key} style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <span style={{ height: 10, width: 10, borderRadius: 2, backgroundColor: p.color, display: "inline-block" }} />
@@ -62,6 +65,15 @@ export function TotalBasesWaffle({
           </span>
         ))}
       </div>
+    </>
+  );
+
+  if (bare) return content;
+
+  return (
+    <section className="card">
+      <CardHeader title={title} metricHref={metricHref} />
+      {content}
     </section>
   );
 }

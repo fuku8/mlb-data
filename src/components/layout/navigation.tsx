@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpenText, Calendar, GitCompareArrows, LayoutDashboard, Trophy, Users, Sparkles } from "lucide-react";
+import { BookOpenText, Calendar, LayoutDashboard, Search, Trophy, Users, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -10,7 +10,7 @@ const navItems = [
   { href: "/standings", label: "順位表", icon: Trophy },
   { href: "/games", label: "試合", icon: Calendar },
   { href: "/players", label: "選手", icon: Users },
-  { href: "/compare", label: "比較", icon: GitCompareArrows },
+  { href: "/compare", label: "検索", icon: Search },
   { href: "/metrics", label: "Metrics", icon: BookOpenText },
   { href: "/types", label: "Types", icon: Sparkles },
 ];
