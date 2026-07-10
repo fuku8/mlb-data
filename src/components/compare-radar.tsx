@@ -36,10 +36,10 @@ export function CompareRadar({
   return (
     <section className="card">
       <CardHeader title={title} metricHref={metricHref} note={note} />
-      <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "center" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
         <svg
           viewBox="0 0 260 220"
-          style={{ width: "100%", maxWidth: 400 }}
+          style={{ width: "100%", maxWidth: 560 }}
           role="img"
           aria-label={`${title}: ${axes.map((a) => a.label).join(", ")}`}
         >
@@ -70,7 +70,7 @@ export function CompareRadar({
             );
           })}
         </svg>
-        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 8, minWidth: 100 }}>
+        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
           {series.map((s) => (
             <li key={s.name} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: s.color }}>
               <span style={{ height: 10, width: 10, borderRadius: "50%", backgroundColor: s.color, display: "inline-block", flexShrink: 0 }} />
