@@ -39,7 +39,7 @@ export function CompareRadar({
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
         <svg
           viewBox="0 0 260 220"
-          style={{ width: "100%", maxWidth: 560 }}
+          style={{ width: "100%", maxWidth: 400 }}
           role="img"
           aria-label={`${title}: ${axes.map((a) => a.label).join(", ")}`}
         >
