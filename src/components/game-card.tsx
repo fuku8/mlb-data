@@ -16,7 +16,7 @@ export function GameCard({ game: g, compact }: Props) {
     ? new Date(g.game_date).toLocaleTimeString("ja-JP", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit", hour12: false })
     : null;
 
-  const badgeSize = compact ? 10 : 11;
+  const badgeSize = compact ? 11 : 12;
   const scoreSize = compact ? 18 : 22;
   const teamSize = compact ? 13 : undefined;
   const gap = compact ? 4 : 6;
@@ -37,7 +37,7 @@ export function GameCard({ game: g, compact }: Props) {
           style={{
             fontSize: badgeSize,
             fontWeight: 600,
-            padding: compact ? "1px 6px" : "2px 8px",
+            padding: compact ? "3px 8px" : "4px 10px",
             borderRadius: 4,
             background: isFinal ? "#166534" : "#854d0e",
             color: "#fff",
@@ -65,7 +65,7 @@ export function GameCard({ game: g, compact }: Props) {
               background: "var(--secondary)",
               border: "1px solid var(--border)",
               borderRadius: 999,
-              padding: "8px 12px",
+              padding: "5px 10px",
               whiteSpace: "nowrap",
             }}
           >
