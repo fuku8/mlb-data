@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { CompareRadar } from "@/components/compare-radar";
+import { CompareScoreBars } from "@/components/compare-score-bars";
 import { CardHeader } from "@/components/card-header";
 import { TotalBasesWaffle } from "@/components/total-bases-waffle";
 import type { RadarAxis } from "@/components/stat-radar";
@@ -256,11 +257,18 @@ export function CompareClient({
             </table>
           </section>
 
-          <CompareRadar
-            title="スタッツ比較（5ツール・パーセンタイル）"
-            note="規定打者内でのパーセンタイル。選手ページと同じ算出方式"
-            series={battersSel.selected.map((p, i) => ({ name: p.name, color: COLORS[i], axes: p.radar }))}
-          />
+          <div className="grid gap-4 lg:grid-cols-2">
+            <CompareRadar
+              title="スタッツ比較（5ツール・パーセンタイル）"
+              note="規定打者内でのパーセンタイル。選手ページと同じ算出方式"
+              series={battersSel.selected.map((p, i) => ({ name: p.name, color: COLORS[i], axes: p.radar }))}
+            />
+            <CompareScoreBars
+              title="総合スコア（平均×均等さ）"
+              note="レーダー5項目の平均×均等さ。選手ページと同じ算出方式"
+              series={battersSel.selected.map((p, i) => ({ name: p.name, color: COLORS[i], axes: p.radar }))}
+            />
+          </div>
 
           <section className="card">
             <CardHeader title="塁打構成比較" />
@@ -314,11 +322,18 @@ export function CompareClient({
             </table>
           </section>
 
-          <CompareRadar
-            title="投手レーダー比較（パーセンタイル）"
-            note="規定投手内でのパーセンタイル。選手ページと同じ算出方式"
-            series={pitchersSel.selected.map((p, i) => ({ name: p.name, color: COLORS[i], axes: p.radar }))}
-          />
+          <div className="grid gap-4 lg:grid-cols-2">
+            <CompareRadar
+              title="投手レーダー比較（パーセンタイル）"
+              note="規定投手内でのパーセンタイル。選手ページと同じ算出方式"
+              series={pitchersSel.selected.map((p, i) => ({ name: p.name, color: COLORS[i], axes: p.radar }))}
+            />
+            <CompareScoreBars
+              title="総合スコア（平均×均等さ）"
+              note="レーダー5項目の平均×均等さ。選手ページと同じ算出方式"
+              series={pitchersSel.selected.map((p, i) => ({ name: p.name, color: COLORS[i], axes: p.radar }))}
+            />
+          </div>
         </>
       )}
     </div>
