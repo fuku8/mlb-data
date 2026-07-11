@@ -17,7 +17,12 @@ import { CompareClient, type CompareBatter, type ComparePitcher } from "./client
 
 export const revalidate = 3600;
 
-export default async function ComparePage() {
+type Props = {
+  searchParams: Promise<{ ids?: string; tab?: string }>;
+};
+
+export default async function ComparePage({ searchParams }: Props) {
+  const { ids, tab } = await searchParams;
   const season = seasonOrDefault(undefined);
   const [players, hitting, pitching] = await Promise.all([getPlayers(), getPlayerHitting(), getPlayerPitching()]);
   const merged = mergePlayerStatsBySeason({ players, hitting, pitching, fielding: [], season });
@@ -70,5 +75,18 @@ export default async function ComparePage() {
       radar: buildPitcherViz(r, pitcherPool).radar,
     }));
 
-  return <CompareClient batters={batters} pitchers={pitchers} season={season} />;
+  // urlのids指定: 実在するplayerIdのみ最大MAX_PLAYERS件を初期選択として渡す。未指定時は従来と同じ挙動
+  const initialTab: "batting" | "pitching" = tab === "pitching" ? "pitching" : "batting";
+  const idPool = initialTab === "pitching" ? pitchers : batters;
+  const initialIds = ids
+    ? ids
+        .split(",")
+        .map((s) => Number(s))
+        // "use client"モジュールからのvalue import（MAX_PLAYERS）は実行時にクライアント参照になり
+        // Number変換でNaN→slice(0,NaN)=[]となるため、リテラルで指定する（client.tsxのMAX_PLAYERSと同値）
+        .filter((id) => idPool.some((p) => p.playerId === id))
+        .slice(0, 4)
+    : [];
+
+  return <CompareClient batters={batters} pitchers={pitchers} season={season} initialIds={initialIds} initialTab={initialTab} />;
 }

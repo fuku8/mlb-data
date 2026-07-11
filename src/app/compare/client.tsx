@@ -86,8 +86,8 @@ const PITCHER_STAT_ROWS: { label: string; get: (p: ComparePitcher) => string }[]
 ];
 
 // 選手検索・選択・削除の状態管理。打者タブ/投手タブで独立させる
-function useSelection<T extends { playerId: number; name: string }>(pool: T[]) {
-  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+function useSelection<T extends { playerId: number; name: string }>(pool: T[], initialIds: number[] = []) {
+  const [selectedIds, setSelectedIds] = useState<number[]>(initialIds);
   const [search, setSearch] = useState("");
 
   const suggestions = useMemo(() => {
@@ -107,21 +107,27 @@ function useSelection<T extends { playerId: number; name: string }>(pool: T[]) {
 
   const remove = (id: number) => setSelectedIds(selectedIds.filter((n) => n !== id));
 
-  return { search, setSearch, suggestions, selected, add, remove };
+  const clear = () => setSelectedIds([]);
+
+  return { search, setSearch, suggestions, selected, add, remove, clear };
 }
 
 export function CompareClient({
   batters,
   pitchers,
   season,
+  initialIds = [],
+  initialTab = "batting",
 }: {
   batters: CompareBatter[];
   pitchers: ComparePitcher[];
   season: string;
+  initialIds?: number[];
+  initialTab?: "batting" | "pitching";
 }) {
-  const [tab, setTab] = useState<"batting" | "pitching">("batting");
-  const battersSel = useSelection(batters);
-  const pitchersSel = useSelection(pitchers);
+  const [tab, setTab] = useState<"batting" | "pitching">(initialTab);
+  const battersSel = useSelection(batters, initialTab === "batting" ? initialIds : []);
+  const pitchersSel = useSelection(pitchers, initialTab === "pitching" ? initialIds : []);
   const active = tab === "batting" ? battersSel : pitchersSel;
 
   return (
@@ -186,7 +192,12 @@ export function CompareClient({
           )}
         </div>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12, alignItems: "center" }}>
+          {active.selected.length > 0 && (
+            <button type="button" onClick={active.clear} style={{ fontSize: 13 }}>
+              すべてクリア
+            </button>
+          )}
           {active.selected.map((p, i) => (
             <span
               key={p.playerId}
@@ -235,6 +246,7 @@ export function CompareClient({
                       {row.label}
                     </th>
                   ))}
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -251,6 +263,15 @@ export function CompareClient({
                         {row.get(p)}
                       </td>
                     ))}
+                    <td style={{ textAlign: "right" }}>
+                      <button
+                        type="button"
+                        onClick={() => battersSel.remove(p.playerId)}
+                        style={{ border: "none", background: "transparent", padding: 0, display: "inline-flex" }}
+                      >
+                        <X size={12} />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -300,6 +321,7 @@ export function CompareClient({
                       {row.label}
                     </th>
                   ))}
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -316,6 +338,15 @@ export function CompareClient({
                         {row.get(p)}
                       </td>
                     ))}
+                    <td style={{ textAlign: "right" }}>
+                      <button
+                        type="button"
+                        onClick={() => pitchersSel.remove(p.playerId)}
+                        style={{ border: "none", background: "transparent", padding: 0, display: "inline-flex" }}
+                      >
+                        <X size={12} />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

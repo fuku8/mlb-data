@@ -17,6 +17,7 @@ import {
 import { buildHitterSaber, buildHitterViz, buildPitcherSaber, buildPitcherViz, hBabip, hWoba, pitcherFipValue, poolFipConstant } from "@/lib/metrics";
 import { hitterLuck, hitterLuckX, pitcherLuck } from "@/lib/luck";
 import { classifyHitters, classifyPitchers } from "@/lib/player-types";
+import { getSimilarPlayers } from "@/lib/data/similar";
 import { buildHitterPhysical, buildPitcherPhysical, getStatcastHitting, getStatcastPitching } from "@/lib/data/statcast";
 import { LuckMeter } from "@/components/luck-meter";
 import { PercentileBars } from "@/components/percentile-bars";
@@ -126,6 +127,11 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
   const hitterBadges = hitterQualified ? (classifyHitters(hitterPool).get(player.player_id) ?? []) : [];
   const pitcherBadges = pitcherQualified ? (classifyPitchers(pitcherPool).get(player.player_id) ?? []) : [];
 
+  const similar = getSimilarPlayers(player, hitterPool, pitcherPool);
+  const similarHref = similar
+    ? `/compare?ids=${[player.player_id, ...similar.ids].join(",")}${similar.type === "pitching" ? "&tab=pitching" : ""}`
+    : null;
+
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <section className="card">
@@ -143,6 +149,11 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         </p>
         <TypeBadges label="打者タイプ" badges={hitterBadges} />
         <TypeBadges label="投手タイプ" badges={pitcherBadges} />
+        {similarHref && (
+          <p style={{ marginTop: 12, marginBottom: 0 }}>
+            <Link href={similarHref}>似たタイプの選手 ↗</Link>
+          </p>
+        )}
       </section>
 
       {showHitting && (
