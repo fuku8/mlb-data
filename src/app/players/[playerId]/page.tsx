@@ -127,10 +127,8 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
   const hitterBadges = hitterQualified ? (classifyHitters(hitterPool).get(player.player_id) ?? []) : [];
   const pitcherBadges = pitcherQualified ? (classifyPitchers(pitcherPool).get(player.player_id) ?? []) : [];
 
-  const similar = getSimilarPlayers(player, hitterPool, pitcherPool);
-  const similarHref = similar
-    ? `/compare?ids=${[player.player_id, ...similar.ids].join(",")}${similar.type === "pitching" ? "&tab=pitching" : ""}`
-    : null;
+  // 二刀流（大谷）や野手登板は打撃・投球の2リンクになる（主たる役割が先頭。similar.ts参照）
+  const similarLinks = getSimilarPlayers(player, hitterPool, pitcherPool);
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
@@ -149,11 +147,13 @@ export default async function PlayerDetailPage({ params, searchParams }: Props) 
         </p>
         <TypeBadges label="打者タイプ" badges={hitterBadges} />
         <TypeBadges label="投手タイプ" badges={pitcherBadges} />
-        {similarHref && (
-          <p style={{ marginTop: 12, marginBottom: 0 }}>
-            <Link href={similarHref}>似たタイプの選手 ↗</Link>
+        {similarLinks.map((s, i) => (
+          <p key={s.type} style={{ marginTop: i === 0 ? 12 : 4, marginBottom: 0 }}>
+            <Link href={`/compare?ids=${[player.player_id, ...s.ids].join(",")}${s.type === "pitching" ? "&tab=pitching" : ""}`}>
+              似たタイプの選手{similarLinks.length > 1 ? (s.type === "batting" ? "（打撃）" : "（投球）") : ""} ↗
+            </Link>
           </p>
-        )}
+        ))}
       </section>
 
       {showHitting && (

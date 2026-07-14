@@ -1,7 +1,7 @@
 // 似たタイプの選手: 打者/投手それぞれ独立に、規定到達者プール内でz-score標準化したユークリッド距離が
 // 最小の3名を返す。プールは呼び出し元（選手ページ）が既に持っている規定到達者配列をそのまま使う
 import { parseNumber } from "@/lib/data/loaders";
-import { isQualifiedHitter, ipToOuts } from "@/lib/data/normalizers";
+import { ipToOuts } from "@/lib/data/normalizers";
 import type { PlayerSeasonRow } from "@/lib/types";
 
 export interface SimilarPlayersResult {
@@ -75,20 +75,25 @@ function nearestByFeatures(target: PlayerSeasonRow, pool: PlayerSeasonRow[], fea
     .map((r) => r.playerId);
 }
 
-// 打者・投手両方のスタッツを持つ選手は、規定打者なら打者優先（シンプルなタイブレーク）
+// 打者・投手両方のスタッツを持つ選手（大谷などの二刀流・野手登板）は両方の結果を返し、
+// 主たる役割（投球アウト数 >= 打席数なら投手）を先頭に置く。PA=0/アウト0の側は算出しない
 export function getSimilarPlayers(
   player: PlayerSeasonRow,
   hitterPool: PlayerSeasonRow[],
   pitcherPool: PlayerSeasonRow[],
-): SimilarPlayersResult | null {
-  const hasHitting = (player.hitting?.plateAppearances ?? 0) > 0;
-  const hasPitching = ipToOuts(player.pitching?.inningsPitched) > 0;
-  if (!hasHitting && !hasPitching) return null;
+): SimilarPlayersResult[] {
+  const pa = player.hitting?.plateAppearances ?? 0;
+  const outs = ipToOuts(player.pitching?.inningsPitched);
 
-  const useBatting = hasHitting && (!hasPitching || isQualifiedHitter(player.hitting?.plateAppearances ?? null));
-  const pool = useBatting ? hitterPool : pitcherPool;
-  const ids = nearestByFeatures(player, pool, useBatting ? BATTER_FEATURES : PITCHER_FEATURES, 3);
-  if (ids.length === 0) return null;
-
-  return { type: useBatting ? "batting" : "pitching", ids };
+  const results: SimilarPlayersResult[] = [];
+  if (pa > 0) {
+    const ids = nearestByFeatures(player, hitterPool, BATTER_FEATURES, 3);
+    if (ids.length > 0) results.push({ type: "batting", ids });
+  }
+  if (outs > 0) {
+    const ids = nearestByFeatures(player, pitcherPool, PITCHER_FEATURES, 3);
+    if (ids.length > 0) results.push({ type: "pitching", ids });
+  }
+  if (results.length === 2 && outs >= pa) results.reverse();
+  return results;
 }
