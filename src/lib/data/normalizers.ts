@@ -154,6 +154,16 @@ export function isQualifiedPitcher(ip: string | null | undefined): boolean {
   return ipToOuts(ip ?? "") >= PITCHER_QUALIFY_OUTS;
 }
 
+// リーダーボード用の公式規定（MLB規則: 打者はチーム試合数×3.1打席以上、投手は×1.0投球回以上）。
+// 上のisQualified*は小サンプル除外用の軽い閾値なので別物
+export function isLeaderQualifiedHitter(pa: number | null, teamGames: number): boolean {
+  return (pa ?? 0) >= 3.1 * teamGames;
+}
+
+export function isLeaderQualifiedPitcher(ip: string | null | undefined, teamGames: number): boolean {
+  return ipToOuts(ip ?? "") >= 3 * teamGames; // 1試合1回換算＝3アウト
+}
+
 export function formatRate(value: string | null | undefined): string {
   if (!value || value === "0" || value === "0.000") return "N/A";
   const n = Number(value);

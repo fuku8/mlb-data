@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPlayerHitting, getPlayerPitching, getPlayers, parseNumber } from "@/lib/data/loaders";
+import { getPlayerHitting, getPlayerPitching, getPlayers, getStandings, parseNumber } from "@/lib/data/loaders";
 import {
   formatAvg,
   formatEra,
@@ -8,6 +8,8 @@ import {
   formatSlg,
   formatWhip,
   HITTER_QUALIFY_PA,
+  isLeaderQualifiedHitter,
+  isLeaderQualifiedPitcher,
   isQualifiedHitter,
   isQualifiedPitcher,
   mergePlayerStatsBySeason,
@@ -20,7 +22,7 @@ import { CardHeader } from "@/components/card-header";
 import { n } from "@/lib/utils";
 
 type Props = {
-  searchParams: Promise<{ season?: string; group?: string; q?: string; page?: string; perPage?: string; sortBy?: string; sortDir?: string }>;
+  searchParams: Promise<{ season?: string; group?: string; q?: string; page?: string; perPage?: string; sortBy?: string; sortDir?: string; qualified?: string }>;
 };
 
 function contains(base: string, q: string): boolean {
@@ -31,15 +33,25 @@ function contains(base: string, q: string): boolean {
 type MapDot = { player_id: string; name: string; detail: string; x: number; y: number; href: string };
 
 export default async function PlayersPage({ searchParams }: Props) {
-  const { season, group, q, page, perPage, sortBy, sortDir } = await searchParams;
+  const { season, group, q, page, perPage, sortBy, sortDir, qualified } = await searchParams;
   const statGroup = group === "pitching" ? "pitching" : "hitting";
+  const qualifiedOnly = qualified === "1";
   const defaultSortBy = statGroup === "hitting" ? "ops" : "era";
   const activeSortBy = sortBy?.trim() || defaultSortBy;
   const activeSortDir: "asc" | "desc" = sortDir === "asc" || sortDir === "desc" ? sortDir : defaultSortDirForKey(activeSortBy);
   const pageNum = Math.max(1, Number(page ?? "1") || 1);
   const perPageNum = [25, 50, 100].includes(Number(perPage)) ? Number(perPage) : 25;
 
-  const [players, hitting, pitching] = await Promise.all([getPlayers(), getPlayerHitting(), getPlayerPitching()]);
+  const [players, hitting, pitching, standings] = await Promise.all([
+    getPlayers(),
+    getPlayerHitting(),
+    getPlayerPitching(),
+    getStandings(),
+  ]);
+
+  // 公式規定の基準になるチーム試合数（W+L）。チーム不明の選手は最多試合数で判定（規定を甘くしない側に倒す）
+  const teamGames = new Map(standings.map((s) => [s.team_id, Number(s.wins ?? 0) + Number(s.losses ?? 0)]));
+  const maxTeamGames = Math.max(0, ...teamGames.values());
 
   const merged0 = mergePlayerStatsBySeason({
     players,
@@ -87,6 +99,15 @@ export default async function PlayersPage({ searchParams }: Props) {
           ? isQualifiedHitter(row.hitting?.plateAppearances ?? null)
           : isQualifiedPitcher(row.pitching?.inningsPitched),
     }))
+    // 規定到達のみ: 公式規定（チーム試合数基準）で絞り、スタッツソートをリーダーボードとして使えるようにする。
+    // ⚠（小サンプル PA<30/IP<10）とは別基準
+    .filter((row) => {
+      if (!qualifiedOnly) return true;
+      const games = teamGames.get(String(row.team_id ?? "")) ?? maxTeamGames;
+      return statGroup === "hitting"
+        ? isLeaderQualifiedHitter(row.hitting?.plateAppearances ?? null, games)
+        : isLeaderQualifiedPitcher(row.pitching?.inningsPitched, games);
+    })
     .sort((a, b) => {
       const inningsToOuts = (ip?: string | null) => {
         if (!ip) return null;
@@ -183,6 +204,7 @@ export default async function PlayersPage({ searchParams }: Props) {
     perPage: String(perPageNum),
     sortBy: activeSortBy,
     sortDir: activeSortDir,
+    ...(qualifiedOnly ? { qualified: "1" } : {}),
   });
   const prevQuery = new URLSearchParams(commonQuery);
   prevQuery.set("page", String(Math.max(1, currentPage - 1)));
@@ -243,6 +265,10 @@ export default async function PlayersPage({ searchParams }: Props) {
             <option value="50">50 / page</option>
             <option value="100">100 / page</option>
           </select>
+          <label style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13 }}>
+            <input type="checkbox" name="qualified" value="1" defaultChecked={qualifiedOnly} />
+            規定到達のみ
+          </label>
           <button className="primary" type="submit">Apply</button>
         </form>
       </section>
