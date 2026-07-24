@@ -1534,11 +1534,11 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 4,145,Chicago White Sox,night,N,2026-07-23T00:05:00Z,822873,2,140,Texas Rangers,2026-07-22,Regular Season,Final,F,5325,Globe Life Field
 5,116,Detroit Tigers,night,N,2026-07-23T00:10:00Z,824650,1,112,Chicago Cubs,2026-07-22,Regular Season,Final,F,17,Wrigley Field
 2,146,Miami Marlins,night,N,2026-07-23T00:10:00Z,824166,5,117,Houston Astros,2026-07-22,Regular Season,Final,F,2392,Daikin Park
-,135,San Diego Padres,day,N,2026-07-23T16:15:00Z,824893,,144,Atlanta Braves,2026-07-23,Regular Season,Scheduled,S,4705,Truist Park
-,142,Minnesota Twins,day,N,2026-07-23T17:10:00Z,824406,,114,Cleveland Guardians,2026-07-23,Regular Season,Scheduled,S,5,Progressive Field
-,139,Tampa Bay Rays,day,N,2026-07-23T19:07:00Z,822785,,141,Toronto Blue Jays,2026-07-23,Regular Season,Scheduled,S,14,Rogers Centre
-,109,Arizona Diamondbacks,day,N,2026-07-23T21:15:00Z,823042,,138,St. Louis Cardinals,2026-07-23,Regular Season,Scheduled,S,2889,Busch Stadium
-,118,Kansas City Royals,night,N,2026-07-23T22:40:00Z,824247,,116,Detroit Tigers,2026-07-23,Regular Season,Scheduled,S,2394,Comerica Park
+5,135,San Diego Padres,day,N,2026-07-23T16:15:00Z,824893,6,144,Atlanta Braves,2026-07-23,Regular Season,Final,F,4705,Truist Park
+3,142,Minnesota Twins,day,N,2026-07-23T17:10:00Z,824406,1,114,Cleveland Guardians,2026-07-23,Regular Season,Final,F,5,Progressive Field
+1,139,Tampa Bay Rays,day,N,2026-07-23T19:07:00Z,822785,3,141,Toronto Blue Jays,2026-07-23,Regular Season,Final,F,14,Rogers Centre
+10,109,Arizona Diamondbacks,day,N,2026-07-23T21:15:00Z,823042,6,138,St. Louis Cardinals,2026-07-23,Regular Season,Final,F,2889,Busch Stadium
+3,118,Kansas City Royals,night,N,2026-07-23T22:40:00Z,824247,4,116,Detroit Tigers,2026-07-23,Regular Season,Final,F,2394,Comerica Park
 ,115,Colorado Rockies,day,N,2026-07-24T20:10:00Z,823759,,158,Milwaukee Brewers,2026-07-24,Regular Season,Scheduled,S,32,American Family Field
 ,118,Kansas City Royals,night,N,2026-07-24T22:40:00Z,824248,,116,Detroit Tigers,2026-07-24,Regular Season,Scheduled,S,2394,Comerica Park
 ,112,Chicago Cubs,night,N,2026-07-24T22:40:00Z,823352,,134,Pittsburgh Pirates,2026-07-24,Regular Season,Scheduled,S,31,PNC Park
