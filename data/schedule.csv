@@ -1595,27 +1595,27 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 6,117,Houston Astros,night,N,2026-07-28T01:38:00Z,824001,4,108,Los Angeles Angels,2026-07-27,Regular Season,Final,F,1,Angel Stadium
 4,111,Boston Red Sox,night,N,2026-07-28T01:40:00Z,824977,2,133,Athletics,2026-07-27,Regular Season,Final,F,2529,Sutter Health Park
 0,158,Milwaukee Brewers,night,N,2026-07-28T01:45:00Z,823195,3,137,San Francisco Giants,2026-07-27,Regular Season,Final,F,2395,Oracle Park
-,114,Cleveland Guardians,day,S,2026-07-28T17:40:00Z,824490,,113,Cincinnati Reds,2026-07-28,Regular Season,Scheduled,S,2602,Great American Ball Park
-,114,Cleveland Guardians,night,S,2026-07-28T23:10:00Z,824489,,113,Cincinnati Reds,2026-07-28,Regular Season,Scheduled,S,2602,Great American Ball Park
-,110,Baltimore Orioles,night,N,2026-07-28T22:40:00Z,824243,,116,Detroit Tigers,2026-07-28,Regular Season,Scheduled,S,2394,Comerica Park
-,109,Arizona Diamondbacks,night,N,2026-07-28T22:40:00Z,823350,,134,Pittsburgh Pirates,2026-07-28,Regular Season,Scheduled,S,31,PNC Park
-,140,Texas Rangers,night,N,2026-07-28T22:40:00Z,822949,,139,Tampa Bay Rays,2026-07-28,Regular Season,Scheduled,S,12,Tropicana Field
-,143,Philadelphia Phillies,night,N,2026-07-28T22:40:00Z,823838,,146,Miami Marlins,2026-07-28,Regular Season,Scheduled,S,4169,loanDepot park
-,141,Toronto Blue Jays,night,N,2026-07-28T22:45:00Z,822703,,120,Washington Nationals,2026-07-28,Regular Season,Scheduled,S,3309,Nationals Park
-,144,Atlanta Braves,night,N,2026-07-28T23:10:00Z,823598,,121,New York Mets,2026-07-28,Regular Season,Scheduled,S,3289,Citi Field
-,118,Kansas City Royals,night,N,2026-07-28T23:40:00Z,823676,,142,Minnesota Twins,2026-07-28,Regular Season,Scheduled,S,3312,Target Field
-,147,New York Yankees,night,N,2026-07-28T23:40:00Z,824569,,145,Chicago White Sox,2026-07-28,Regular Season,Scheduled,S,4,Rate Field
-,112,Chicago Cubs,night,N,2026-07-28T23:45:00Z,823026,,138,St. Louis Cardinals,2026-07-28,Regular Season,Scheduled,S,2889,Busch Stadium
-,117,Houston Astros,night,N,2026-07-29T01:38:00Z,824003,,108,Los Angeles Angels,2026-07-28,Regular Season,Scheduled,S,1,Angel Stadium
-,111,Boston Red Sox,night,N,2026-07-29T01:40:00Z,824976,,133,Athletics,2026-07-28,Regular Season,Scheduled,S,2529,Sutter Health Park
-,115,Colorado Rockies,night,N,2026-07-29T01:40:00Z,823275,,135,San Diego Padres,2026-07-28,Regular Season,Scheduled,S,2680,Petco Park
-,158,Milwaukee Brewers,night,N,2026-07-29T01:45:00Z,823193,,137,San Francisco Giants,2026-07-28,Regular Season,Scheduled,S,2395,Oracle Park
-,136,Seattle Mariners,night,N,2026-07-29T02:10:00Z,823923,,119,Los Angeles Dodgers,2026-07-28,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+6,114,Cleveland Guardians,day,S,2026-07-28T17:40:00Z,824490,5,113,Cincinnati Reds,2026-07-28,Regular Season,Final,F,2602,Great American Ball Park
+0,114,Cleveland Guardians,night,S,2026-07-28T23:10:00Z,824489,2,113,Cincinnati Reds,2026-07-28,Regular Season,Final,F,2602,Great American Ball Park
+0,110,Baltimore Orioles,night,N,2026-07-28T22:40:00Z,824243,14,116,Detroit Tigers,2026-07-28,Regular Season,Final,F,2394,Comerica Park
+8,109,Arizona Diamondbacks,night,N,2026-07-28T22:40:00Z,823350,7,134,Pittsburgh Pirates,2026-07-28,Regular Season,Final,F,31,PNC Park
+4,140,Texas Rangers,night,N,2026-07-28T22:40:00Z,822949,1,139,Tampa Bay Rays,2026-07-28,Regular Season,Final,F,12,Tropicana Field
+0,143,Philadelphia Phillies,night,N,2026-07-28T22:40:00Z,823838,1,146,Miami Marlins,2026-07-28,Regular Season,Final,F,4169,loanDepot park
+6,141,Toronto Blue Jays,night,N,2026-07-28T22:45:00Z,822703,8,120,Washington Nationals,2026-07-28,Regular Season,Final,F,3309,Nationals Park
+2,118,Kansas City Royals,night,N,2026-07-28T23:40:00Z,823676,3,142,Minnesota Twins,2026-07-28,Regular Season,Final,F,3312,Target Field
+3,147,New York Yankees,night,N,2026-07-28T23:40:00Z,824569,2,145,Chicago White Sox,2026-07-28,Regular Season,Final,F,4,Rate Field
+10,112,Chicago Cubs,night,N,2026-07-28T23:45:00Z,823026,2,138,St. Louis Cardinals,2026-07-28,Regular Season,Final,F,2889,Busch Stadium
+3,117,Houston Astros,night,N,2026-07-29T01:38:00Z,824003,2,108,Los Angeles Angels,2026-07-28,Regular Season,Final,F,1,Angel Stadium
+3,111,Boston Red Sox,night,N,2026-07-29T01:40:00Z,824976,4,133,Athletics,2026-07-28,Regular Season,Final,F,2529,Sutter Health Park
+7,115,Colorado Rockies,night,N,2026-07-29T01:40:00Z,823275,8,135,San Diego Padres,2026-07-28,Regular Season,Final,F,2680,Petco Park
+8,158,Milwaukee Brewers,night,N,2026-07-29T01:45:00Z,823193,2,137,San Francisco Giants,2026-07-28,Regular Season,Final,F,2395,Oracle Park
+7,136,Seattle Mariners,night,N,2026-07-29T02:10:00Z,823923,6,119,Los Angeles Dodgers,2026-07-28,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 ,143,Philadelphia Phillies,day,N,2026-07-29T16:10:00Z,823837,,146,Miami Marlins,2026-07-29,Regular Season,Scheduled,S,4169,loanDepot park
 ,109,Arizona Diamondbacks,day,N,2026-07-29T16:35:00Z,823351,,134,Pittsburgh Pirates,2026-07-29,Regular Season,Scheduled,S,31,PNC Park
 ,141,Toronto Blue Jays,day,N,2026-07-29T17:05:00Z,822702,,120,Washington Nationals,2026-07-29,Regular Season,Scheduled,S,3309,Nationals Park
 ,110,Baltimore Orioles,day,N,2026-07-29T17:10:00Z,824242,,116,Detroit Tigers,2026-07-29,Regular Season,Scheduled,S,2394,Comerica Park
-,144,Atlanta Braves,day,N,2026-07-29T17:10:00Z,823596,,121,New York Mets,2026-07-29,Regular Season,Scheduled,S,3289,Citi Field
+,144,Atlanta Braves,day,S,2026-07-29T17:10:00Z,823596,,121,New York Mets,2026-07-29,Regular Season,Scheduled,S,3289,Citi Field
+,144,Atlanta Braves,night,S,2026-07-29T23:10:00Z,823598,,121,New York Mets,2026-07-29,Regular Season,Scheduled,S,3289,Citi Field
 ,158,Milwaukee Brewers,day,N,2026-07-29T19:45:00Z,823192,,137,San Francisco Giants,2026-07-29,Regular Season,Scheduled,S,2395,Oracle Park
 ,115,Colorado Rockies,day,N,2026-07-29T20:10:00Z,823273,,135,San Diego Padres,2026-07-29,Regular Season,Scheduled,S,2680,Petco Park
 ,140,Texas Rangers,night,N,2026-07-29T22:40:00Z,822947,,139,Tampa Bay Rays,2026-07-29,Regular Season,Scheduled,S,12,Tropicana Field
