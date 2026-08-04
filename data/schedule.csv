@@ -1681,14 +1681,14 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 4,137,San Francisco Giants,day,N,2026-08-02T20:10:00Z,823270,5,135,San Diego Padres,2026-08-02,Regular Season,Final,F,2680,Petco Park
 6,142,Minnesota Twins,day,N,2026-08-02T20:10:00Z,823107,7,136,Seattle Mariners,2026-08-02,Regular Season,Final,F,680,T-Mobile Park
 8,111,Boston Red Sox,day,N,2026-08-02T23:20:00Z,823919,4,119,Los Angeles Dodgers,2026-08-02,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
-,120,Washington Nationals,night,N,2026-08-03T22:40:00Z,823431,,143,Philadelphia Phillies,2026-08-03,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,138,St. Louis Cardinals,night,N,2026-08-03T23:05:00Z,823520,,147,New York Yankees,2026-08-03,Regular Season,Scheduled,S,3313,Yankee Stadium
-,134,Pittsburgh Pirates,night,N,2026-08-03T23:40:00Z,823757,,158,Milwaukee Brewers,2026-08-03,Regular Season,Scheduled,S,32,American Family Field
-,119,Los Angeles Dodgers,night,N,2026-08-04T00:05:00Z,824647,,112,Chicago Cubs,2026-08-03,Regular Season,Scheduled,S,17,Wrigley Field
-,137,San Francisco Giants,night,N,2026-08-04T00:05:00Z,822867,,140,Texas Rangers,2026-08-03,Regular Season,Scheduled,S,5325,Globe Life Field
-,141,Toronto Blue Jays,night,N,2026-08-04T00:10:00Z,824160,,117,Houston Astros,2026-08-03,Regular Season,Scheduled,S,2392,Daikin Park
-,139,Tampa Bay Rays,night,N,2026-08-04T00:40:00Z,824324,,115,Colorado Rockies,2026-08-03,Regular Season,Scheduled,S,19,Coors Field
-,135,San Diego Padres,night,N,2026-08-04T01:40:00Z,825095,,109,Arizona Diamondbacks,2026-08-03,Regular Season,Scheduled,S,15,Chase Field
+3,120,Washington Nationals,night,N,2026-08-03T22:40:00Z,823431,6,143,Philadelphia Phillies,2026-08-03,Regular Season,Final,F,2681,Citizens Bank Park
+13,138,St. Louis Cardinals,night,N,2026-08-03T23:05:00Z,823520,7,147,New York Yankees,2026-08-03,Regular Season,Final,F,3313,Yankee Stadium
+4,134,Pittsburgh Pirates,night,N,2026-08-03T23:40:00Z,823757,3,158,Milwaukee Brewers,2026-08-03,Regular Season,Final,F,32,American Family Field
+5,119,Los Angeles Dodgers,night,N,2026-08-04T00:05:00Z,824647,10,112,Chicago Cubs,2026-08-03,Regular Season,Final,F,17,Wrigley Field
+5,137,San Francisco Giants,night,N,2026-08-04T00:05:00Z,822867,1,140,Texas Rangers,2026-08-03,Regular Season,Final,F,5325,Globe Life Field
+3,141,Toronto Blue Jays,night,N,2026-08-04T00:10:00Z,824160,1,117,Houston Astros,2026-08-03,Regular Season,Final,F,2392,Daikin Park
+13,139,Tampa Bay Rays,night,N,2026-08-04T00:40:00Z,824324,9,115,Colorado Rockies,2026-08-03,Regular Season,Final,F,19,Coors Field
+1,135,San Diego Padres,night,N,2026-08-04T01:40:00Z,825095,5,109,Arizona Diamondbacks,2026-08-03,Regular Season,Final,F,15,Chase Field
 ,108,Los Angeles Angels,night,N,2026-08-04T22:35:00Z,824805,,110,Baltimore Orioles,2026-08-04,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,121,New York Mets,night,N,2026-08-04T22:40:00Z,824403,,114,Cleveland Guardians,2026-08-04,Regular Season,Scheduled,S,5,Progressive Field
 ,133,Athletics,night,N,2026-08-04T22:40:00Z,824484,,113,Cincinnati Reds,2026-08-04,Regular Season,Scheduled,S,2602,Great American Ball Park
