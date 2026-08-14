@@ -1815,15 +1815,15 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 0,113,Cincinnati Reds,night,N,2026-08-12T23:40:00Z,824562,5,145,Chicago White Sox,2026-08-12,Regular Season,Final,F,4,Rate Field
 2,118,Kansas City Royals,night,N,2026-08-13T02:10:00Z,823916,4,119,Los Angeles Dodgers,2026-08-12,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 2,140,Texas Rangers,night,N,2026-08-13T02:10:00Z,823994,5,108,Los Angeles Angels,2026-08-12,Regular Season,Final,F,1,Angel Stadium
-,114,Cleveland Guardians,day,N,2026-08-13T17:10:00Z,824238,,116,Detroit Tigers,2026-08-13,Regular Season,Scheduled,S,2394,Comerica Park
-,134,Pittsburgh Pirates,day,N,2026-08-13T17:10:00Z,823829,,146,Miami Marlins,2026-08-13,Regular Season,Scheduled,S,4169,loanDepot park
-,136,Seattle Mariners,day,N,2026-08-13T17:35:00Z,823508,,147,New York Yankees,2026-08-13,Regular Season,Scheduled,S,3313,Yankee Stadium
-,113,Cincinnati Reds,day,N,2026-08-13T18:10:00Z,824561,,145,Chicago White Sox,2026-08-13,Regular Season,Scheduled,S,4,Rate Field
-,111,Boston Red Sox,day,N,2026-08-13T19:07:00Z,822776,,141,Toronto Blue Jays,2026-08-13,Regular Season,Scheduled,S,14,Rogers Centre
-,112,Chicago Cubs,day,N,2026-08-13T20:05:00Z,822696,,120,Washington Nationals,2026-08-13,Regular Season,Scheduled,S,3309,Nationals Park
-,143,Philadelphia Phillies,night,N,2026-08-13T23:30:00Z,823669,,142,Minnesota Twins,2026-08-13,Regular Season,Scheduled,S,5445,Field of Dreams
-,140,Texas Rangers,night,N,2026-08-14T02:07:00Z,823995,,108,Los Angeles Angels,2026-08-13,Regular Season,Scheduled,S,1,Angel Stadium
-,158,Milwaukee Brewers,night,N,2026-08-14T02:10:00Z,823915,,119,Los Angeles Dodgers,2026-08-13,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+0,114,Cleveland Guardians,day,N,2026-08-13T17:10:00Z,824238,3,116,Detroit Tigers,2026-08-13,Regular Season,Final,F,2394,Comerica Park
+9,113,Cincinnati Reds,day,N,2026-08-13T17:10:00Z,824561,8,145,Chicago White Sox,2026-08-13,Regular Season,Final,F,4,Rate Field
+13,134,Pittsburgh Pirates,day,N,2026-08-13T17:10:00Z,823829,1,146,Miami Marlins,2026-08-13,Regular Season,Final,F,4169,loanDepot park
+1,136,Seattle Mariners,day,N,2026-08-13T17:35:00Z,823508,0,147,New York Yankees,2026-08-13,Regular Season,Final,F,3313,Yankee Stadium
+7,111,Boston Red Sox,day,N,2026-08-13T19:07:00Z,822776,0,141,Toronto Blue Jays,2026-08-13,Regular Season,Final,F,14,Rogers Centre
+0,112,Chicago Cubs,day,N,2026-08-13T20:05:00Z,822696,7,120,Washington Nationals,2026-08-13,Regular Season,Final,F,3309,Nationals Park
+7,143,Philadelphia Phillies,night,N,2026-08-13T23:30:00Z,823669,1,142,Minnesota Twins,2026-08-13,Regular Season,Final,F,5445,Field of Dreams
+0,140,Texas Rangers,night,N,2026-08-14T02:07:00Z,823995,7,108,Los Angeles Angels,2026-08-13,Regular Season,Final,F,1,Angel Stadium
+5,158,Milwaukee Brewers,night,N,2026-08-14T02:10:00Z,823915,4,119,Los Angeles Dodgers,2026-08-13,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 ,138,St. Louis Cardinals,day,N,2026-08-14T18:20:00Z,824643,,112,Chicago Cubs,2026-08-14,Regular Season,Scheduled,S,17,Wrigley Field
 ,146,Miami Marlins,night,N,2026-08-14T22:10:00Z,824479,,113,Cincinnati Reds,2026-08-14,Regular Season,Scheduled,S,2602,Great American Ball Park
 ,111,Boston Red Sox,night,N,2026-08-14T22:40:00Z,823346,,134,Pittsburgh Pirates,2026-08-14,Regular Season,Scheduled,S,31,PNC Park
