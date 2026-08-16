@@ -1,7 +1,7 @@
 // セイバー指標カード: 値＋リーグ内パーセンタイルバー＋1行解説の3点セット
 import type { SaberRow } from "@/lib/metrics";
 import { CardHeader } from "@/components/card-header";
-import { pctColor } from "@/components/percentile-bars";
+import { knobTextColor, pctColor } from "@/components/percentile-bars";
 
 export function SaberCard({
   title,
@@ -45,15 +45,15 @@ export function SaberCard({
                       top: "50%",
                       left: `${r.pct * 100}%`,
                       transform: "translate(-50%, -50%)",
-                      height: 22,
-                      width: 22,
+                      height: 26,
+                      width: 26,
                       borderRadius: "50%",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: 10,
+                      fontSize: 13,
                       fontWeight: 700,
-                      color: "#fff",
+                      color: knobTextColor(r.pct),
                       backgroundColor: color,
                     }}
                   >

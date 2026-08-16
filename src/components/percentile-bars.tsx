@@ -13,6 +13,25 @@ export function pctColor(pct: number): string {
   return `hsl(${hue}, 65%, 48%)`;
 }
 
+// ノブ背景（pctColor）の相対輝度で文字色を白/黒に切り替える。
+// 白文字固定だと黄〜緑帯（pct 0.3〜0.9）でWCAG 4.5:1を割るため（feel-viz 2026-07-16アクセシビリティ点検 A-1の移植）。
+// しきい値0.179は白と黒のコントラストが等しくなる輝度＝境界でも両側4.58:1を確保できる値
+export function knobTextColor(pct: number): string {
+  const hue = 220 * (1 - pct);
+  const s = 0.65;
+  const l = 0.48;
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs(((hue / 60) % 2) - 1));
+  const m = l - c / 2;
+  const [r, g, b] = hue < 60 ? [c, x, 0] : hue < 120 ? [x, c, 0] : hue < 180 ? [0, c, x] : [0, x, c];
+  const lin = (ch: number) => {
+    const v = ch + m;
+    return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  };
+  const lum = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  return lum > 0.179 ? "#000" : "#fff";
+}
+
 export function PercentileBars({
   title,
   rows,
@@ -53,15 +72,15 @@ export function PercentileBars({
                     top: "50%",
                     left: `${pct * 100}%`,
                     transform: "translate(-50%, -50%)",
-                    height: 22,
-                    width: 22,
+                    height: 26,
+                    width: 26,
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 10,
+                    fontSize: 13,
                     fontWeight: 700,
-                    color: "#fff",
+                    color: knobTextColor(pct),
                     backgroundColor: color,
                   }}
                 >
