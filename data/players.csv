@@ -184,6 +184,7 @@ True,S,1999-03-01,27,Oswaldo,Oswaldo Cabrera,"6' 0""",Cabrera,2022-08-17,R,66582
 True,L,2003-02-09,23,Jeffrey,Jac Caglianone,"6' 4""",Caglianone,2025-06-03,L,695506,RF,9,14,Jac,250
 True,L,2002-07-08,24,Owen,Owen Caissie,"6' 4""",Caissie,2025-08-14,R,683357,RF,9,17,Owen,190
 True,R,1994-09-27,31,Alex,Alex Call,"5' 11""",Call,2022-07-11,R,669743,LF,7,12,Alex,189
+True,L,2001-11-02,24,Brett,Brett Callahan,"6' 0""",Callahan,2026-08-16,R,814430,LF,7,34,Brett,195
 True,L,2000-06-22,26,Tyler,Tyler Callihan,"5' 11""",Callihan,2025-04-30,R,682997,LF,7,37,Tyler,205
 True,R,1999-07-01,27,Jair,Jair Camargo,"5' 10""",Camargo,2024-04-16,R,665856,C,2,78,Jair,230
 True,R,1997-01-15,29,Dazmon,Daz Cameron,"6' 0""",Cameron,2020-09-09,R,663662,RF,9,23,Daz,185
@@ -196,7 +197,7 @@ True,R,2000-07-19,26,Jonathan,Jonathan Cannon,"6' 6""",Cannon,2024-04-17,R,68656
 True,R,1994-03-09,32,Yennier,Yennier Cano,"6' 4""",Cano,2022-05-11,R,666974,P,1,78,Yennier,245
 True,L,1999-12-18,26,Joseph,Joey Cantillo,"6' 4""",Cantillo,2024-07-28,L,676282,P,1,54,Joey,225
 True,L,1997-08-16,29,Dominic,Dominic Canzone,"6' 0""",Canzone,2023-07-08,R,686527,DH,10,8,Dominic,190
-True,S,1993-08-17,32,Victor,Victor Caratini,"6' 0""",Caratini,2017-06-28,R,605170,C,2,37,Victor,225
+True,S,1993-08-17,33,Victor,Victor Caratini,"6' 0""",Caratini,2017-06-28,R,605170,C,2,37,Victor,225
 True,S,1998-10-23,27,Dylan,Dylan Carlson,"6' 1""",Carlson,2020-08-15,L,666185,LF,7,3,Dylan,200
 True,L,1997-09-02,28,Kerry,Kerry Carpenter,"6' 1""",Carpenter,2022-08-10,R,681481,RF,9,30,Kerry,220
 True,R,1987-03-21,39,Carlos,Carlos Carrasco,"6' 4""",Carrasco,2009-09-01,R,471911,P,1,59,Carlos,224
@@ -354,7 +355,7 @@ True,L,2004-08-10,22,Andrew,A.J. Ewing,"5' 10""",Ewing,2026-05-12,R,805999,CF,8,
 True,R,1993-12-16,32,Peter,Pete Fairbanks,"6' 6""",Fairbanks,2019-06-09,R,664126,P,1,29,Pete,235
 True,R,1996-03-17,30,Stuart,Stuart Fairchild,"5' 11""",Fairchild,2021-07-06,R,656413,CF,8,63,Stuart,205
 True,R,1997-04-24,29,Bailey,Bailey Falter,"6' 4""",Falter,2021-04-25,L,663559,P,1,,Bailey,205
-True,R,1990-08-17,35,James,Kyle Farmer,"5' 11""",Farmer,2017-07-30,R,571657,DH,10,52,Kyle,205
+True,R,1990-08-17,36,James,Kyle Farmer,"5' 11""",Farmer,2017-07-30,R,571657,DH,10,52,Kyle,205
 True,L,2001-02-14,25,Mitchell,Mitch Farris,"6' 2""",Farris,2025-09-02,L,815083,P,1,70,Mitch,195
 True,R,1995-09-22,30,Calvin,Calvin Faucher,"6' 1""",Faucher,2022-05-09,R,676534,P,1,53,Calvin,190
 True,R,1993-02-25,33,Erick,Erick Fedde,"6' 4""",Fedde,2017-07-30,R,607200,P,1,47,Erick,205
@@ -567,7 +568,7 @@ True,L,1997-03-03,29,Kyle,Kyle Isbel,"5' 10""",Isbel,2021-04-01,R,664728,CF,8,28
 True,R,1995-12-25,30,Alexander,Alex Jackson,"6' 1""",Jackson,2019-04-07,R,656577,C,2,70,Alex,238
 True,R,2000-03-26,26,Jeremiah,Jeremiah Jackson,"5' 11""",Jackson,2025-08-01,R,669236,2B,4,82,Jeremiah,200
 True,L,1998-06-16,28,Alek,Alek Jacob,"6' 3""",Jacob,2023-07-15,R,689690,P,1,37,Alek,190
-True,R,1997-08-17,28,Drey,Drey Jameson,"6' 0""",Jameson,2022-09-15,R,686753,P,1,99,Drey,175
+True,R,1997-08-17,29,Drey,Drey Jameson,"6' 0""",Jameson,2022-09-15,R,686753,P,1,99,Drey,175
 True,R,1995-04-15,31,Daniel,Danny Jansen,"6' 2""",Jansen,2018-08-13,R,643376,C,2,9,Danny,240
 True,S,1987-09-30,38,Kenley,Kenley Jansen,"6' 5""",Jansen,2010-07-24,R,445276,P,1,74,Kenley,265
 True,L,2000-11-06,25,James,Jim Jarvis,"5' 9""",Jarvis,2026-05-06,R,805347,SS,6,74,Jim,190
@@ -626,6 +627,7 @@ True,L,2003-02-10,23,Jackson,Jackson Kent,"6' 3""",Kent,2026-08-12,L,800600,P,1,
 True,R,1998-02-24,28,Zachary,Zak Kent,"6' 3""",Kent,2025-04-23,R,687849,P,1,57,Zak,208
 True,L,1993-02-10,33,Maximilian,Max Kepler,"6' 4""",Kepler,2015-09-27,L,596146,LF,7,22,Max,225
 True,R,2001-04-04,25,Richard,Orion Kerkering,"6' 2""",Kerkering,2023-09-24,R,689147,P,1,50,Orion,204
+True,L,1994-09-10,31,Raymond,Ray Kerr,"6' 3""",Kerr,2022-04-24,L,678061,P,1,62,Ray,185
 True,R,1999-04-12,27,Brett,Brett Kerry,"6' 0""",Kerry,2026-06-17,R,695049,P,1,71,Brett,213
 True,L,2003-05-26,23,Sean,Sean Keys,"6' 1""",Keys,2026-06-27,R,815873,DH,10,20,Sean,232
 True,L,1991-06-17,35,Yusei,Yusei Kikuchi,"6' 0""",Kikuchi,2019-03-21,L,579328,P,1,16,Yusei,210
@@ -1017,7 +1019,7 @@ True,R,1997-07-04,29,Ethan,Ethan Roberts,"5' 10""",Roberts,2022-04-09,R,681799,P
 True,R,1994-12-14,31,Charles,Chuckie Robinson,"6' 0""",Robinson,2022-08-24,R,642020,C,2,52,Chuckie,215
 True,R,1997-05-19,29,Victor,Victor Robles,"6' 0""",Robles,2017-09-07,R,645302,RF,9,10,Victor,193
 True,S,2001-01-13,25,Brayan,Brayan Rocchio,"5' 9""",Rocchio,2023-05-16,R,677587,SS,6,4,Brayan,170
-True,L,2000-07-29,26,Joseph,Joe Rock,"6' 6""",Rock,2025-06-28,L,697812,P,1,46,Joe,220
+True,L,2000-07-29,26,Joseph,Joe Rock,"6' 6""",Rock,2025-06-28,L,697812,P,1,,Joe,220
 True,R,1999-11-22,26,Kumar,Kumar Rocker,"6' 5""",Rocker,2024-09-12,R,677958,P,1,80,Kumar,245
 True,S,2000-05-25,26,Brock,Brock Rodden,"5' 7""",Rodden,2026-08-14,R,801126,2B,4,90,Brock,170
 True,L,1999-12-22,26,Alan,Alan Roden,"5' 11""",Roden,2025-03-27,R,702176,RF,9,18,Alan,215
@@ -1078,7 +1080,7 @@ True,L,1996-04-15,30,Reiver,Reiver Sanmartin,"6' 1""",Sanmartin,2021-09-27,L,665
 True,R,2002-09-03,23,Javier,Javier Sanoja,"5' 7""",Sanoja,2024-09-07,R,691594,3B,5,8,Javier,150
 True,R,2003-05-03,23,Alimber,Alimber Santa,"5' 10""",Santa,2026-05-25,R,695001,P,1,72,Alimber,228
 True,S,1986-04-08,40,Carlos,Carlos Santana,"5' 10""",Santana,2010-06-11,R,467793,1B,3,41,Carlos,210
-True,R,1996-04-12,30,Dennis,Dennis Santana,"6' 2""",Santana,2018-06-01,R,642701,P,1,,Dennis,202
+True,R,1996-04-12,30,Dennis,Dennis Santana,"6' 2""",Santana,2018-06-01,R,642701,P,1,59,Dennis,202
 True,R,1997-04-15,29,Antonio,Tony Santillan,"6' 3""",Santillan,2021-06-13,R,663574,P,1,64,Tony,285
 True,R,1999-08-28,26,Gregory,Gregory Santos,"6' 3""",Santos,2021-04-22,R,666619,P,1,57,Gregory,236
 True,R,2002-04-15,24,Winston,Winston Santos,"6' 0""",Santos,2026-07-01,R,692437,P,1,47,Winston,160
@@ -1365,8 +1367,8 @@ True,R,2000-09-27,25,Simeon,Simeon Woods Richardson,"6' 3""",Woods Richardson,20
 True,L,1999-10-24,26,Gage,Gage Workman,"6' 4""",Workman,2025-03-29,R,669398,3B,5,99,Gage,202
 True,L,2000-07-14,26,Justin,Justin Wrobleski,"6' 1""",Wrobleski,2024-07-07,L,680736,P,1,70,Justin,194
 True,R,1990-12-10,35,Robert,Austin Wynns,"6' 1""",Wynns,2018-06-05,R,642851,C,2,38,Austin,190
-True,R,1998-08-17,27,Yoshinobu,Yoshinobu Yamamoto,"5' 10""",Yamamoto,2024-03-21,R,808967,P,1,18,Yoshinobu,176
-True,L,1996-08-17,29,Jefry,Jefry Yan,"6' 3""",Yan,2026-08-05,L,642376,P,1,84,Jefry,185
+True,R,1998-08-17,28,Yoshinobu,Yoshinobu Yamamoto,"5' 10""",Yamamoto,2024-03-21,R,808967,P,1,18,Yoshinobu,176
+True,L,1996-08-17,30,Jefry,Jefry Yan,"6' 3""",Yan,2026-08-05,L,642376,P,1,84,Jefry,185
 True,R,1991-12-31,34,Ryan,Ryan Yarbrough,"6' 5""",Yarbrough,2018-03-31,L,642232,P,1,33,Ryan,205
 True,L,1990-08-23,35,Michael,Mike Yastrzemski,"5' 10""",Yastrzemski,2019-05-25,L,573262,LF,7,18,Mike,180
 True,L,1987-03-25,39,Kirby,Kirby Yates,"5' 10""",Yates,2014-06-07,R,489446,P,1,54,Kirby,205
