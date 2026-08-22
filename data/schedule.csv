@@ -1918,21 +1918,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 6,147,New York Yankees,night,N,2026-08-20T22:35:00Z,824802,1,110,Baltimore Orioles,2026-08-20,Regular Season,Final,F,2,Oriole Park at Camden Yards
 0,120,Washington Nationals,night,N,2026-08-21T00:05:00Z,822861,2,140,Texas Rangers,2026-08-20,Regular Season,Final,F,5325,Globe Life Field
 18,108,Los Angeles Angels,night,N,2026-08-21T00:10:00Z,824153,3,117,Houston Astros,2026-08-20,Regular Season,Final,F,2392,Daikin Park
-,144,Atlanta Braves,day,N,2026-08-21T20:10:00Z,823746,,158,Milwaukee Brewers,2026-08-21,Regular Season,Scheduled,S,32,American Family Field
-,138,St. Louis Cardinals,night,N,2026-08-21T22:40:00Z,823420,,143,Philadelphia Phillies,2026-08-21,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,141,Toronto Blue Jays,night,N,2026-08-21T23:05:00Z,823510,,147,New York Yankees,2026-08-21,Regular Season,Scheduled,S,3313,Yankee Stadium
-,137,San Francisco Giants,night,N,2026-08-21T23:10:00Z,824721,,111,Boston Red Sox,2026-08-21,Regular Season,Scheduled,S,3,Fenway Park
-,120,Washington Nationals,night,N,2026-08-21T23:10:00Z,823830,,146,Miami Marlins,2026-08-21,Regular Season,Scheduled,S,4169,loanDepot park
-,139,Tampa Bay Rays,night,N,2026-08-21T23:15:00Z,824800,,110,Baltimore Orioles,2026-08-21,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,121,New York Mets,night,N,2026-08-21T23:40:00Z,824559,,145,Chicago White Sox,2026-08-21,Regular Season,Scheduled,S,4,Rate Field
-,116,Detroit Tigers,night,N,2026-08-22T00:10:00Z,824072,,118,Kansas City Royals,2026-08-21,Regular Season,Scheduled,S,7,Kauffman Stadium
-,133,Athletics,night,N,2026-08-22T00:10:00Z,824152,,117,Houston Astros,2026-08-21,Regular Season,Scheduled,S,2392,Daikin Park
-,108,Los Angeles Angels,night,N,2026-08-22T00:15:00Z,822857,,140,Texas Rangers,2026-08-21,Regular Season,Scheduled,S,5325,Globe Life Field
-,114,Cleveland Guardians,night,N,2026-08-22T00:40:00Z,824317,,115,Colorado Rockies,2026-08-21,Regular Season,Scheduled,S,19,Coors Field
-,113,Cincinnati Reds,night,N,2026-08-22T01:40:00Z,825045,,109,Arizona Diamondbacks,2026-08-21,Regular Season,Scheduled,S,15,Chase Field
-,142,Minnesota Twins,night,N,2026-08-22T01:40:00Z,823262,,135,San Diego Padres,2026-08-21,Regular Season,Scheduled,S,2680,Petco Park
-,134,Pittsburgh Pirates,night,N,2026-08-22T02:10:00Z,823911,,119,Los Angeles Dodgers,2026-08-21,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
-,112,Chicago Cubs,night,N,2026-08-22T02:10:00Z,823101,,136,Seattle Mariners,2026-08-21,Regular Season,Scheduled,S,680,T-Mobile Park
+1,144,Atlanta Braves,day,N,2026-08-21T20:10:00Z,823746,2,158,Milwaukee Brewers,2026-08-21,Regular Season,Final,F,32,American Family Field
+6,138,St. Louis Cardinals,night,N,2026-08-21T22:40:00Z,823420,7,143,Philadelphia Phillies,2026-08-21,Regular Season,Final,F,2681,Citizens Bank Park
+1,141,Toronto Blue Jays,night,N,2026-08-21T23:05:00Z,823510,3,147,New York Yankees,2026-08-21,Regular Season,Final,F,3313,Yankee Stadium
+4,137,San Francisco Giants,night,N,2026-08-21T23:10:00Z,824721,6,111,Boston Red Sox,2026-08-21,Regular Season,Final,F,3,Fenway Park
+2,120,Washington Nationals,night,N,2026-08-21T23:10:00Z,823830,3,146,Miami Marlins,2026-08-21,Regular Season,Final,F,4169,loanDepot park
+3,139,Tampa Bay Rays,night,N,2026-08-21T23:15:00Z,824800,5,110,Baltimore Orioles,2026-08-21,Regular Season,Final,F,2,Oriole Park at Camden Yards
+4,121,New York Mets,night,N,2026-08-21T23:40:00Z,824559,6,145,Chicago White Sox,2026-08-21,Regular Season,Final,F,4,Rate Field
+2,116,Detroit Tigers,night,N,2026-08-22T00:10:00Z,824072,5,118,Kansas City Royals,2026-08-21,Regular Season,Final,F,7,Kauffman Stadium
+0,133,Athletics,night,N,2026-08-22T00:10:00Z,824152,4,117,Houston Astros,2026-08-21,Regular Season,Final,F,2392,Daikin Park
+1,108,Los Angeles Angels,night,N,2026-08-22T00:15:00Z,822857,2,140,Texas Rangers,2026-08-21,Regular Season,Final,F,5325,Globe Life Field
+9,114,Cleveland Guardians,night,N,2026-08-22T00:40:00Z,824317,1,115,Colorado Rockies,2026-08-21,Regular Season,Final,F,19,Coors Field
+0,113,Cincinnati Reds,night,N,2026-08-22T01:40:00Z,825045,9,109,Arizona Diamondbacks,2026-08-21,Regular Season,Final,F,15,Chase Field
+2,142,Minnesota Twins,night,N,2026-08-22T01:40:00Z,823262,6,135,San Diego Padres,2026-08-21,Regular Season,Final,F,2680,Petco Park
+4,134,Pittsburgh Pirates,night,N,2026-08-22T02:10:00Z,823911,5,119,Los Angeles Dodgers,2026-08-21,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
+5,112,Chicago Cubs,night,N,2026-08-22T02:10:00Z,823101,6,136,Seattle Mariners,2026-08-21,Regular Season,Final,F,680,T-Mobile Park
 ,141,Toronto Blue Jays,day,N,2026-08-22T17:35:00Z,823509,,147,New York Yankees,2026-08-22,Regular Season,Scheduled,S,3313,Yankee Stadium
 ,144,Atlanta Braves,day,N,2026-08-22T18:10:00Z,823743,,158,Milwaukee Brewers,2026-08-22,Regular Season,Scheduled,S,32,American Family Field
 ,120,Washington Nationals,day,N,2026-08-22T20:10:00Z,823831,,146,Miami Marlins,2026-08-22,Regular Season,Scheduled,S,4169,loanDepot park
