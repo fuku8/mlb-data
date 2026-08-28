@@ -2003,21 +2003,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 4,140,Texas Rangers,night,N,2026-08-26T23:40:00Z,824555,10,145,Chicago White Sox,2026-08-26,Regular Season,Final,F,4,Rate Field
 8,110,Baltimore Orioles,night,N,2026-08-26T23:45:00Z,823015,7,138,St. Louis Cardinals,2026-08-26,Regular Season,Final,F,2889,Busch Stadium
 4,142,Minnesota Twins,night,N,2026-08-27T01:05:00Z,824963,7,133,Athletics,2026-08-26,Regular Season,Final,F,2529,Sutter Health Park
-1,115,Colorado Rockies,day,N,2026-08-27T17:05:00Z,822694,2,120,Washington Nationals,2026-08-27,Regular Season,In Progress,I,3309,Nationals Park
-0,110,Baltimore Orioles,day,N,2026-08-27T18:15:00Z,823014,0,138,St. Louis Cardinals,2026-08-27,Regular Season,Pre-Game,P,2889,Busch Stadium
-,117,Houston Astros,night,N,2026-08-27T23:05:00Z,823503,,147,New York Yankees,2026-08-27,Regular Season,Scheduled,S,3313,Yankee Stadium
-,118,Kansas City Royals,night,N,2026-08-27T23:07:00Z,822771,,141,Toronto Blue Jays,2026-08-27,Regular Season,Scheduled,S,14,Rogers Centre
-,158,Milwaukee Brewers,night,N,2026-08-27T23:10:00Z,823581,,121,New York Mets,2026-08-27,Regular Season,Scheduled,S,3289,Citi Field
-,119,Los Angeles Dodgers,night,N,2026-08-27T23:15:00Z,824879,,144,Atlanta Braves,2026-08-27,Regular Season,Scheduled,S,4705,Truist Park
-,109,Arizona Diamondbacks,night,N,2026-08-28T01:45:00Z,823179,,137,San Francisco Giants,2026-08-27,Regular Season,Scheduled,S,2395,Oracle Park
-,113,Cincinnati Reds,day,N,2026-08-28T18:20:00Z,824638,,112,Chicago Cubs,2026-08-28,Regular Season,Scheduled,S,17,Wrigley Field
-,119,Los Angeles Dodgers,night,N,2026-08-28T22:40:00Z,824231,,116,Detroit Tigers,2026-08-28,Regular Season,Scheduled,S,2394,Comerica Park
+1,115,Colorado Rockies,day,N,2026-08-27T17:05:00Z,822694,7,120,Washington Nationals,2026-08-27,Regular Season,Final,F,3309,Nationals Park
+5,110,Baltimore Orioles,day,N,2026-08-27T18:15:00Z,823014,7,138,St. Louis Cardinals,2026-08-27,Regular Season,Final,F,2889,Busch Stadium
+5,117,Houston Astros,night,N,2026-08-27T23:05:00Z,823503,1,147,New York Yankees,2026-08-27,Regular Season,Final,F,3313,Yankee Stadium
+13,118,Kansas City Royals,night,N,2026-08-27T23:07:00Z,822771,2,141,Toronto Blue Jays,2026-08-27,Regular Season,Final,F,14,Rogers Centre
+8,158,Milwaukee Brewers,night,N,2026-08-27T23:10:00Z,823581,2,121,New York Mets,2026-08-27,Regular Season,Final,F,3289,Citi Field
+0,119,Los Angeles Dodgers,night,N,2026-08-27T23:15:00Z,824879,1,144,Atlanta Braves,2026-08-27,Regular Season,Final,F,4705,Truist Park
+1,109,Arizona Diamondbacks,night,N,2026-08-28T01:45:00Z,823179,6,137,San Francisco Giants,2026-08-27,Regular Season,Final,F,2395,Oracle Park
+0,113,Cincinnati Reds,day,N,2026-08-28T18:20:00Z,824638,1,112,Chicago Cubs,2026-08-28,Regular Season,In Progress,I,17,Wrigley Field
+0,119,Los Angeles Dodgers,night,N,2026-08-28T22:40:00Z,824231,0,116,Detroit Tigers,2026-08-28,Regular Season,Pre-Game,P,2394,Comerica Park
 ,146,Miami Marlins,night,N,2026-08-28T22:45:00Z,822691,,120,Washington Nationals,2026-08-28,Regular Season,Scheduled,S,3309,Nationals Park
-,118,Kansas City Royals,night,N,2026-08-28T23:10:00Z,824396,,114,Cleveland Guardians,2026-08-28,Regular Season,Scheduled,S,5,Progressive Field
-,117,Houston Astros,night,N,2026-08-28T23:10:00Z,823583,,121,New York Mets,2026-08-28,Regular Season,Scheduled,S,3289,Citi Field
-,135,San Diego Padres,night,N,2026-08-28T23:10:00Z,822935,,139,Tampa Bay Rays,2026-08-28,Regular Season,Scheduled,S,12,Tropicana Field
+0,118,Kansas City Royals,night,N,2026-08-28T23:10:00Z,824396,0,114,Cleveland Guardians,2026-08-28,Regular Season,Pre-Game,P,5,Progressive Field
+,117,Houston Astros,night,N,2026-08-28T23:10:00Z,823583,,121,New York Mets,2026-08-28,Regular Season,Pre-Game,P,3289,Citi Field
+,135,San Diego Padres,night,N,2026-08-28T23:10:00Z,822935,,139,Tampa Bay Rays,2026-08-28,Regular Season,Pre-Game,P,12,Tropicana Field
 ,136,Seattle Mariners,night,N,2026-08-28T23:15:00Z,822769,,141,Toronto Blue Jays,2026-08-28,Regular Season,Scheduled,S,14,Rogers Centre
-,115,Colorado Rockies,night,N,2026-08-28T23:15:00Z,824877,,144,Atlanta Braves,2026-08-28,Regular Season,Scheduled,S,4705,Truist Park
+,115,Colorado Rockies,night,N,2026-08-28T23:15:00Z,824877,,144,Atlanta Braves,2026-08-28,Regular Season,Pre-Game,P,4705,Truist Park
 ,111,Boston Red Sox,night,N,2026-08-28T23:15:00Z,823504,,147,New York Yankees,2026-08-28,Regular Season,Scheduled,S,3313,Yankee Stadium
 ,140,Texas Rangers,night,N,2026-08-28T23:40:00Z,823744,,158,Milwaukee Brewers,2026-08-28,Regular Season,Scheduled,S,32,American Family Field
 ,145,Chicago White Sox,night,N,2026-08-29T00:10:00Z,823666,,142,Minnesota Twins,2026-08-28,Regular Season,Scheduled,S,3312,Target Field
