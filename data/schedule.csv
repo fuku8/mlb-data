@@ -2042,20 +2042,20 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 3,140,Texas Rangers,night,N,2026-08-29T23:15:00Z,823741,5,158,Milwaukee Brewers,2026-08-29,Regular Season,Final,F,32,American Family Field
 5,110,Baltimore Orioles,night,N,2026-08-30T02:05:00Z,824961,3,133,Athletics,2026-08-29,Regular Season,Final,F,2529,Sutter Health Park
 4,143,Philadelphia Phillies,night,N,2026-08-30T02:07:00Z,823986,2,108,Los Angeles Angels,2026-08-29,Regular Season,Final,F,1,Angel Stadium
-,146,Miami Marlins,day,N,2026-08-30T16:15:00Z,822688,,120,Washington Nationals,2026-08-30,Regular Season,Scheduled,S,3309,Nationals Park
-,115,Colorado Rockies,day,N,2026-08-30T17:35:00Z,824876,,144,Atlanta Braves,2026-08-30,Regular Season,Scheduled,S,4705,Truist Park
-,111,Boston Red Sox,day,N,2026-08-30T17:35:00Z,823502,,147,New York Yankees,2026-08-30,Regular Season,Scheduled,S,3313,Yankee Stadium
-,136,Seattle Mariners,day,N,2026-08-30T17:37:00Z,822766,,141,Toronto Blue Jays,2026-08-30,Regular Season,Scheduled,S,14,Rogers Centre
-,118,Kansas City Royals,day,N,2026-08-30T17:40:00Z,824393,,114,Cleveland Guardians,2026-08-30,Regular Season,Scheduled,S,5,Progressive Field
-,119,Los Angeles Dodgers,day,N,2026-08-30T17:40:00Z,824232,,116,Detroit Tigers,2026-08-30,Regular Season,Scheduled,S,2394,Comerica Park
-,135,San Diego Padres,day,N,2026-08-30T17:40:00Z,822933,,139,Tampa Bay Rays,2026-08-30,Regular Season,Scheduled,S,12,Tropicana Field
-,145,Chicago White Sox,day,N,2026-08-30T18:10:00Z,823662,,142,Minnesota Twins,2026-08-30,Regular Season,Scheduled,S,3312,Target Field
-,140,Texas Rangers,day,N,2026-08-30T18:10:00Z,823740,,158,Milwaukee Brewers,2026-08-30,Regular Season,Scheduled,S,32,American Family Field
-,134,Pittsburgh Pirates,day,N,2026-08-30T18:15:00Z,823010,,138,St. Louis Cardinals,2026-08-30,Regular Season,Scheduled,S,2889,Busch Stadium
-,117,Houston Astros,day,N,2026-08-30T19:10:00Z,823580,,121,New York Mets,2026-08-30,Regular Season,Scheduled,S,3289,Citi Field
-,110,Baltimore Orioles,day,N,2026-08-30T20:05:00Z,824959,,133,Athletics,2026-08-30,Regular Season,Scheduled,S,2529,Sutter Health Park
-,143,Philadelphia Phillies,day,N,2026-08-30T20:07:00Z,823987,,108,Los Angeles Angels,2026-08-30,Regular Season,Scheduled,S,1,Angel Stadium
-,113,Cincinnati Reds,night,N,2026-08-30T23:20:00Z,824636,,112,Chicago Cubs,2026-08-30,Regular Season,Scheduled,S,17,Wrigley Field
+6,146,Miami Marlins,day,N,2026-08-30T16:15:00Z,822688,2,120,Washington Nationals,2026-08-30,Regular Season,Final,F,3309,Nationals Park
+2,115,Colorado Rockies,day,N,2026-08-30T17:35:00Z,824876,3,144,Atlanta Braves,2026-08-30,Regular Season,Final,F,4705,Truist Park
+1,111,Boston Red Sox,day,N,2026-08-30T17:35:00Z,823502,16,147,New York Yankees,2026-08-30,Regular Season,Final,F,3313,Yankee Stadium
+0,136,Seattle Mariners,day,N,2026-08-30T17:37:00Z,822766,7,141,Toronto Blue Jays,2026-08-30,Regular Season,Final,F,14,Rogers Centre
+1,118,Kansas City Royals,day,N,2026-08-30T17:40:00Z,824393,11,114,Cleveland Guardians,2026-08-30,Regular Season,Final,F,5,Progressive Field
+6,119,Los Angeles Dodgers,day,N,2026-08-30T17:40:00Z,824232,1,116,Detroit Tigers,2026-08-30,Regular Season,Final,F,2394,Comerica Park
+4,135,San Diego Padres,day,N,2026-08-30T17:40:00Z,822933,5,139,Tampa Bay Rays,2026-08-30,Regular Season,Final,F,12,Tropicana Field
+1,145,Chicago White Sox,day,N,2026-08-30T18:10:00Z,823662,5,142,Minnesota Twins,2026-08-30,Regular Season,Final,F,3312,Target Field
+7,140,Texas Rangers,day,N,2026-08-30T18:10:00Z,823740,4,158,Milwaukee Brewers,2026-08-30,Regular Season,Final,F,32,American Family Field
+5,134,Pittsburgh Pirates,day,N,2026-08-30T18:15:00Z,823010,4,138,St. Louis Cardinals,2026-08-30,Regular Season,Final,F,2889,Busch Stadium
+6,117,Houston Astros,day,N,2026-08-30T19:10:00Z,823580,3,121,New York Mets,2026-08-30,Regular Season,Final,F,3289,Citi Field
+8,110,Baltimore Orioles,day,N,2026-08-30T20:05:00Z,824959,5,133,Athletics,2026-08-30,Regular Season,Final,F,2529,Sutter Health Park
+5,143,Philadelphia Phillies,day,N,2026-08-30T20:07:00Z,823987,2,108,Los Angeles Angels,2026-08-30,Regular Season,Final,F,1,Angel Stadium
+7,113,Cincinnati Reds,night,N,2026-08-30T23:20:00Z,824636,5,112,Chicago Cubs,2026-08-30,Regular Season,Final,F,17,Wrigley Field
 ,137,San Francisco Giants,night,N,2026-08-31T22:05:00Z,824911,,144,Atlanta Braves,2026-08-31,Regular Season,Scheduled,S,4705,Truist Park
 ,135,San Diego Padres,night,N,2026-08-31T22:40:00Z,824473,,113,Cincinnati Reds,2026-08-31,Regular Season,Scheduled,S,2602,Great American Ball Park
 ,121,New York Mets,night,N,2026-08-31T22:40:00Z,822932,,139,Tampa Bay Rays,2026-08-31,Regular Season,Scheduled,S,12,Tropicana Field
