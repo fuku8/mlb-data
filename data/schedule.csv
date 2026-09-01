@@ -2056,18 +2056,18 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 8,110,Baltimore Orioles,day,N,2026-08-30T20:05:00Z,824959,5,133,Athletics,2026-08-30,Regular Season,Final,F,2529,Sutter Health Park
 5,143,Philadelphia Phillies,day,N,2026-08-30T20:07:00Z,823987,2,108,Los Angeles Angels,2026-08-30,Regular Season,Final,F,1,Angel Stadium
 7,113,Cincinnati Reds,night,N,2026-08-30T23:20:00Z,824636,5,112,Chicago Cubs,2026-08-30,Regular Season,Final,F,17,Wrigley Field
-,137,San Francisco Giants,night,N,2026-08-31T22:05:00Z,824911,,144,Atlanta Braves,2026-08-31,Regular Season,Scheduled,S,4705,Truist Park
-,135,San Diego Padres,night,N,2026-08-31T22:40:00Z,824473,,113,Cincinnati Reds,2026-08-31,Regular Season,Scheduled,S,2602,Great American Ball Park
-,121,New York Mets,night,N,2026-08-31T22:40:00Z,822932,,139,Tampa Bay Rays,2026-08-31,Regular Season,Scheduled,S,12,Tropicana Field
-,136,Seattle Mariners,night,N,2026-08-31T22:45:00Z,824719,,111,Boston Red Sox,2026-08-31,Regular Season,Scheduled,S,3,Fenway Park
-,146,Miami Marlins,night,N,2026-08-31T22:45:00Z,822689,,120,Washington Nationals,2026-08-31,Regular Season,Scheduled,S,3309,Nationals Park
-,116,Detroit Tigers,night,N,2026-08-31T23:40:00Z,823663,,142,Minnesota Twins,2026-08-31,Regular Season,Scheduled,S,3312,Target Field
-,158,Milwaukee Brewers,night,N,2026-08-31T23:40:00Z,824635,,112,Chicago Cubs,2026-08-31,Regular Season,Scheduled,S,17,Wrigley Field
-,133,Athletics,night,N,2026-09-01T00:05:00Z,822855,,140,Texas Rangers,2026-08-31,Regular Season,Scheduled,S,5325,Globe Life Field
-,145,Chicago White Sox,night,N,2026-09-01T00:10:00Z,824149,,117,Houston Astros,2026-08-31,Regular Season,Scheduled,S,2392,Daikin Park
-,110,Baltimore Orioles,night,N,2026-09-01T00:40:00Z,824314,,115,Colorado Rockies,2026-08-31,Regular Season,Scheduled,S,19,Coors Field
-,147,New York Yankees,night,N,2026-09-01T01:38:00Z,823982,,108,Los Angeles Angels,2026-08-31,Regular Season,Scheduled,S,1,Angel Stadium
-,143,Philadelphia Phillies,night,N,2026-09-01T01:40:00Z,825040,,109,Arizona Diamondbacks,2026-08-31,Regular Season,Scheduled,S,15,Chase Field
+7,137,San Francisco Giants,night,N,2026-08-31T22:05:00Z,824911,3,144,Atlanta Braves,2026-08-31,Regular Season,Final,F,4705,Truist Park
+5,135,San Diego Padres,night,N,2026-08-31T22:40:00Z,824473,0,113,Cincinnati Reds,2026-08-31,Regular Season,Final,F,2602,Great American Ball Park
+3,121,New York Mets,night,N,2026-08-31T22:40:00Z,822932,2,139,Tampa Bay Rays,2026-08-31,Regular Season,Final,F,12,Tropicana Field
+8,136,Seattle Mariners,night,N,2026-08-31T22:45:00Z,824719,9,111,Boston Red Sox,2026-08-31,Regular Season,Final,F,3,Fenway Park
+3,146,Miami Marlins,night,N,2026-08-31T22:45:00Z,822689,6,120,Washington Nationals,2026-08-31,Regular Season,Final,F,3309,Nationals Park
+1,116,Detroit Tigers,night,N,2026-08-31T23:40:00Z,823663,11,142,Minnesota Twins,2026-08-31,Regular Season,Final,F,3312,Target Field
+3,158,Milwaukee Brewers,night,N,2026-08-31T23:40:00Z,824635,17,112,Chicago Cubs,2026-08-31,Regular Season,Final,F,17,Wrigley Field
+1,133,Athletics,night,N,2026-09-01T00:05:00Z,822855,8,140,Texas Rangers,2026-08-31,Regular Season,Final,F,5325,Globe Life Field
+3,145,Chicago White Sox,night,N,2026-09-01T00:10:00Z,824149,6,117,Houston Astros,2026-08-31,Regular Season,Final,F,2392,Daikin Park
+2,110,Baltimore Orioles,night,N,2026-09-01T00:40:00Z,824314,1,115,Colorado Rockies,2026-08-31,Regular Season,Final,F,19,Coors Field
+1,147,New York Yankees,night,N,2026-09-01T01:38:00Z,823982,10,108,Los Angeles Angels,2026-08-31,Regular Season,Final,F,1,Angel Stadium
+2,143,Philadelphia Phillies,night,N,2026-09-01T01:40:00Z,825040,1,109,Arizona Diamondbacks,2026-08-31,Regular Season,Final,F,15,Chase Field
 ,135,San Diego Padres,night,N,2026-09-01T22:40:00Z,824472,,113,Cincinnati Reds,2026-09-01,Regular Season,Scheduled,S,2602,Great American Ball Park
 ,137,San Francisco Giants,night,N,2026-09-01T22:40:00Z,823340,,134,Pittsburgh Pirates,2026-09-01,Regular Season,Scheduled,S,31,PNC Park
 ,121,New York Mets,night,N,2026-09-01T22:40:00Z,822929,,139,Tampa Bay Rays,2026-09-01,Regular Season,Scheduled,S,12,Tropicana Field
