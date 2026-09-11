@@ -2194,11 +2194,11 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 4,134,Pittsburgh Pirates,night,N,2026-09-09T23:40:00Z,824549,2,145,Chicago White Sox,2026-09-09,Regular Season,Final,F,4,Rate Field
 6,112,Chicago Cubs,night,N,2026-09-09T23:40:00Z,823739,8,158,Milwaukee Brewers,2026-09-09,Regular Season,Final,F,32,American Family Field
 1,113,Cincinnati Reds,night,N,2026-09-10T02:10:00Z,823900,14,119,Los Angeles Dodgers,2026-09-09,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
-,139,Tampa Bay Rays,day,N,2026-09-10T16:15:00Z,824872,,144,Atlanta Braves,2026-09-10,Regular Season,Scheduled,S,4705,Truist Park
-,117,Houston Astros,day,N,2026-09-10T17:05:00Z,823413,,143,Philadelphia Phillies,2026-09-10,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,140,Texas Rangers,day,N,2026-09-10T20:10:00Z,823088,,136,Seattle Mariners,2026-09-10,Regular Season,Scheduled,S,680,T-Mobile Park
-,115,Colorado Rockies,night,N,2026-09-10T23:05:00Z,823499,,147,New York Yankees,2026-09-10,Regular Season,Scheduled,S,3313,Yankee Stadium
-,134,Pittsburgh Pirates,night,N,2026-09-10T23:40:00Z,824550,,145,Chicago White Sox,2026-09-10,Regular Season,Scheduled,S,4,Rate Field
+1,139,Tampa Bay Rays,day,N,2026-09-10T16:15:00Z,824872,3,144,Atlanta Braves,2026-09-10,Regular Season,Final,F,4705,Truist Park
+2,117,Houston Astros,day,N,2026-09-10T17:05:00Z,823413,1,143,Philadelphia Phillies,2026-09-10,Regular Season,Final,F,2681,Citizens Bank Park
+3,140,Texas Rangers,day,N,2026-09-10T20:10:00Z,823088,4,136,Seattle Mariners,2026-09-10,Regular Season,Final,F,680,T-Mobile Park
+3,115,Colorado Rockies,night,N,2026-09-10T23:05:00Z,823499,10,147,New York Yankees,2026-09-10,Regular Season,Final,F,3313,Yankee Stadium
+2,134,Pittsburgh Pirates,night,N,2026-09-10T23:40:00Z,824550,0,145,Chicago White Sox,2026-09-10,Regular Season,Final,F,4,Rate Field
 ,134,Pittsburgh Pirates,day,N,2026-09-11T18:20:00Z,824631,,112,Chicago Cubs,2026-09-11,Regular Season,Scheduled,S,17,Wrigley Field
 ,115,Colorado Rockies,night,N,2026-09-11T22:40:00Z,824227,,116,Detroit Tigers,2026-09-11,Regular Season,Scheduled,S,2394,Comerica Park
 ,108,Los Angeles Angels,night,N,2026-09-11T22:45:00Z,822684,,120,Washington Nationals,2026-09-11,Regular Season,Scheduled,S,3309,Nationals Park
