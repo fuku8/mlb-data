@@ -2214,23 +2214,22 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 5,136,Seattle Mariners,night,N,2026-09-12T01:40:00Z,824954,6,133,Athletics,2026-09-11,Regular Season,Final,F,2529,Sutter Health Park
 1,140,Texas Rangers,night,N,2026-09-12T01:40:00Z,825036,9,109,Arizona Diamondbacks,2026-09-11,Regular Season,Final,F,15,Chase Field
 7,135,San Diego Padres,night,N,2026-09-12T02:15:00Z,823173,5,137,San Francisco Giants,2026-09-11,Regular Season,Final,F,2395,Oracle Park
-,115,Colorado Rockies,day,N,2026-09-12T17:10:00Z,824224,,116,Detroit Tigers,2026-09-12,Regular Season,Scheduled,S,2394,Comerica Park
-,121,New York Mets,day,N,2026-09-12T17:35:00Z,823496,,147,New York Yankees,2026-09-12,Regular Season,Scheduled,S,3313,Yankee Stadium
-,134,Pittsburgh Pirates,day,N,2026-09-12T18:20:00Z,824630,,112,Chicago Cubs,2026-09-12,Regular Season,Scheduled,S,17,Wrigley Field
-,110,Baltimore Orioles,day,N,2026-09-12T19:07:00Z,822768,,141,Toronto Blue Jays,2026-09-12,Regular Season,Scheduled,S,14,Rogers Centre
-,108,Los Angeles Angels,day,N,2026-09-12T20:05:00Z,822685,,120,Washington Nationals,2026-09-12,Regular Season,Scheduled,S,3309,Nationals Park
-,135,San Diego Padres,day,N,2026-09-12T20:05:00Z,823170,,137,San Francisco Giants,2026-09-12,Regular Season,Scheduled,S,2395,Oracle Park
-,118,Kansas City Royals,day,N,2026-09-12T20:10:00Z,824712,,111,Boston Red Sox,2026-09-12,Regular Season,Scheduled,S,3,Fenway Park
-,114,Cleveland Guardians,day,N,2026-09-12T20:10:00Z,823657,,142,Minnesota Twins,2026-09-12,Regular Season,Scheduled,S,3312,Target Field
-,119,Los Angeles Dodgers,day,N,2026-09-12T20:10:00Z,823819,,146,Miami Marlins,2026-09-12,Regular Season,Scheduled,S,4169,loanDepot park
-,117,Houston Astros,night,N,2026-09-12T22:10:00Z,822927,,139,Tampa Bay Rays,2026-09-12,Regular Season,Scheduled,S,12,Tropicana Field
-,113,Cincinnati Reds,night,N,2026-09-12T23:10:00Z,823737,,158,Milwaukee Brewers,2026-09-12,Regular Season,Scheduled,S,32,American Family Field
-,143,Philadelphia Phillies,night,N,2026-09-12T23:15:00Z,824870,,144,Atlanta Braves,2026-09-12,Regular Season,Scheduled,S,4705,Truist Park
-,145,Chicago White Sox,night,N,2026-09-12T23:15:00Z,823009,,138,St. Louis Cardinals,2026-09-12,Regular Season,Scheduled,S,2889,Busch Stadium
-,140,Texas Rangers,night,N,2026-09-13T00:10:00Z,825035,,109,Arizona Diamondbacks,2026-09-12,Regular Season,Scheduled,S,15,Chase Field
-,136,Seattle Mariners,night,N,2026-09-13T01:40:00Z,824955,,133,Athletics,2026-09-12,Regular Season,Scheduled,S,2529,Sutter Health Park
+7,115,Colorado Rockies,day,N,2026-09-12T17:10:00Z,824224,11,116,Detroit Tigers,2026-09-12,Regular Season,Final,F,2394,Comerica Park
+12,121,New York Mets,day,N,2026-09-12T17:35:00Z,823496,2,147,New York Yankees,2026-09-12,Regular Season,Final,F,3313,Yankee Stadium
+3,134,Pittsburgh Pirates,day,N,2026-09-12T18:20:00Z,824630,4,112,Chicago Cubs,2026-09-12,Regular Season,Final,F,17,Wrigley Field
+3,110,Baltimore Orioles,day,N,2026-09-12T19:07:00Z,822768,7,141,Toronto Blue Jays,2026-09-12,Regular Season,Final,F,14,Rogers Centre
+5,108,Los Angeles Angels,day,N,2026-09-12T20:05:00Z,822685,6,120,Washington Nationals,2026-09-12,Regular Season,Final,F,3309,Nationals Park
+7,135,San Diego Padres,day,N,2026-09-12T20:05:00Z,823170,6,137,San Francisco Giants,2026-09-12,Regular Season,Final,F,2395,Oracle Park
+1,118,Kansas City Royals,day,N,2026-09-12T20:10:00Z,824712,5,111,Boston Red Sox,2026-09-12,Regular Season,Final,F,3,Fenway Park
+3,114,Cleveland Guardians,day,N,2026-09-12T20:10:00Z,823657,4,142,Minnesota Twins,2026-09-12,Regular Season,Final,F,3312,Target Field
+3,119,Los Angeles Dodgers,day,N,2026-09-12T20:10:00Z,823819,4,146,Miami Marlins,2026-09-12,Regular Season,Final,F,4169,loanDepot park
+2,117,Houston Astros,night,N,2026-09-12T22:10:00Z,822927,3,139,Tampa Bay Rays,2026-09-12,Regular Season,Final,F,12,Tropicana Field
+9,113,Cincinnati Reds,night,N,2026-09-12T23:10:00Z,823737,13,158,Milwaukee Brewers,2026-09-12,Regular Season,Final,F,32,American Family Field
+2,143,Philadelphia Phillies,night,N,2026-09-12T23:15:00Z,824870,12,144,Atlanta Braves,2026-09-12,Regular Season,Final,F,4705,Truist Park
+6,145,Chicago White Sox,night,N,2026-09-12T23:15:00Z,823009,5,138,St. Louis Cardinals,2026-09-12,Regular Season,Final,F,2889,Busch Stadium
+6,140,Texas Rangers,night,N,2026-09-13T00:10:00Z,825035,2,109,Arizona Diamondbacks,2026-09-12,Regular Season,Final,F,15,Chase Field
+19,136,Seattle Mariners,night,N,2026-09-13T01:40:00Z,824955,1,133,Athletics,2026-09-12,Regular Season,Final,F,2529,Sutter Health Park
 ,115,Colorado Rockies,day,N,2026-09-13T16:10:00Z,824225,,116,Detroit Tigers,2026-09-13,Regular Season,Scheduled,S,2394,Comerica Park
-,118,Kansas City Royals,day,N,2026-09-13T17:35:00Z,824708,,111,Boston Red Sox,2026-09-13,Regular Season,Scheduled,S,3,Fenway Park
 ,108,Los Angeles Angels,day,N,2026-09-13T17:35:00Z,822682,,120,Washington Nationals,2026-09-13,Regular Season,Scheduled,S,3309,Nationals Park
 ,143,Philadelphia Phillies,day,N,2026-09-13T17:35:00Z,824869,,144,Atlanta Braves,2026-09-13,Regular Season,Scheduled,S,4705,Truist Park
 ,121,New York Mets,day,N,2026-09-13T17:35:00Z,823495,,147,New York Yankees,2026-09-13,Regular Season,Scheduled,S,3313,Yankee Stadium
@@ -2241,6 +2240,7 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 ,113,Cincinnati Reds,day,N,2026-09-13T18:10:00Z,823734,,158,Milwaukee Brewers,2026-09-13,Regular Season,Scheduled,S,32,American Family Field
 ,145,Chicago White Sox,day,N,2026-09-13T18:15:00Z,823008,,138,St. Louis Cardinals,2026-09-13,Regular Season,Scheduled,S,2889,Busch Stadium
 ,134,Pittsburgh Pirates,day,N,2026-09-13T18:20:00Z,824628,,112,Chicago Cubs,2026-09-13,Regular Season,Scheduled,S,17,Wrigley Field
+,118,Kansas City Royals,day,N,2026-09-13T19:05:00Z,824708,,111,Boston Red Sox,2026-09-13,Regular Season,Scheduled,S,3,Fenway Park
 ,136,Seattle Mariners,day,N,2026-09-13T20:05:00Z,824952,,133,Athletics,2026-09-13,Regular Season,Scheduled,S,2529,Sutter Health Park
 ,140,Texas Rangers,day,N,2026-09-13T20:10:00Z,825033,,109,Arizona Diamondbacks,2026-09-13,Regular Season,Scheduled,S,15,Chase Field
 ,135,San Diego Padres,day,N,2026-09-13T23:20:00Z,823171,,137,San Francisco Giants,2026-09-13,Regular Season,Scheduled,S,2395,Oracle Park
