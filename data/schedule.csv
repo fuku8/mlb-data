@@ -2244,16 +2244,16 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 7,136,Seattle Mariners,day,N,2026-09-13T20:05:00Z,824952,8,133,Athletics,2026-09-13,Regular Season,Final,F,2529,Sutter Health Park
 7,140,Texas Rangers,day,N,2026-09-13T20:10:00Z,825033,6,109,Arizona Diamondbacks,2026-09-13,Regular Season,Final,F,15,Chase Field
 6,135,San Diego Padres,day,N,2026-09-13T23:20:00Z,823171,4,137,San Francisco Giants,2026-09-13,Regular Season,Final,F,2395,Oracle Park
-,119,Los Angeles Dodgers,night,N,2026-09-14T22:40:00Z,824465,,113,Cincinnati Reds,2026-09-14,Regular Season,Scheduled,S,2602,Great American Ball Park
-,145,Chicago White Sox,night,N,2026-09-14T22:40:00Z,824386,,114,Cleveland Guardians,2026-09-14,Regular Season,Scheduled,S,5,Progressive Field
-,116,Detroit Tigers,night,N,2026-09-14T23:07:00Z,822765,,141,Toronto Blue Jays,2026-09-14,Regular Season,Scheduled,S,14,Rogers Centre
-,110,Baltimore Orioles,night,N,2026-09-14T23:10:00Z,823575,,121,New York Mets,2026-09-14,Regular Season,Scheduled,S,3289,Citi Field
-,144,Atlanta Braves,night,N,2026-09-14T23:40:00Z,824629,,112,Chicago Cubs,2026-09-14,Regular Season,Scheduled,S,17,Wrigley Field
-,147,New York Yankees,night,N,2026-09-14T23:40:00Z,823656,,142,Minnesota Twins,2026-09-14,Regular Season,Scheduled,S,3312,Target Field
-,137,San Francisco Giants,night,N,2026-09-14T23:45:00Z,823006,,138,St. Louis Cardinals,2026-09-14,Regular Season,Scheduled,S,2889,Busch Stadium
-,135,San Diego Padres,night,N,2026-09-15T00:40:00Z,824308,,115,Colorado Rockies,2026-09-14,Regular Season,Scheduled,S,19,Coors Field
-,136,Seattle Mariners,night,N,2026-09-15T01:38:00Z,823981,,108,Los Angeles Angels,2026-09-14,Regular Season,Scheduled,S,1,Angel Stadium
-,146,Miami Marlins,night,N,2026-09-15T01:40:00Z,825034,,109,Arizona Diamondbacks,2026-09-14,Regular Season,Scheduled,S,15,Chase Field
+4,119,Los Angeles Dodgers,night,N,2026-09-14T22:40:00Z,824465,1,113,Cincinnati Reds,2026-09-14,Regular Season,Final,F,2602,Great American Ball Park
+7,145,Chicago White Sox,night,N,2026-09-14T22:40:00Z,824386,3,114,Cleveland Guardians,2026-09-14,Regular Season,Final,F,5,Progressive Field
+6,116,Detroit Tigers,night,N,2026-09-14T23:07:00Z,822765,5,141,Toronto Blue Jays,2026-09-14,Regular Season,Final,F,14,Rogers Centre
+2,110,Baltimore Orioles,night,N,2026-09-14T23:10:00Z,823575,1,121,New York Mets,2026-09-14,Regular Season,Final,F,3289,Citi Field
+3,144,Atlanta Braves,night,N,2026-09-14T23:40:00Z,824629,7,112,Chicago Cubs,2026-09-14,Regular Season,Final,F,17,Wrigley Field
+8,147,New York Yankees,night,N,2026-09-14T23:40:00Z,823656,3,142,Minnesota Twins,2026-09-14,Regular Season,Final,F,3312,Target Field
+1,137,San Francisco Giants,night,N,2026-09-14T23:45:00Z,823006,2,138,St. Louis Cardinals,2026-09-14,Regular Season,Final,F,2889,Busch Stadium
+8,135,San Diego Padres,night,N,2026-09-15T00:40:00Z,824308,7,115,Colorado Rockies,2026-09-14,Regular Season,Final,F,19,Coors Field
+4,136,Seattle Mariners,night,N,2026-09-15T01:38:00Z,823981,6,108,Los Angeles Angels,2026-09-14,Regular Season,Final,F,1,Angel Stadium
+7,146,Miami Marlins,night,N,2026-09-15T01:40:00Z,825034,8,109,Arizona Diamondbacks,2026-09-14,Regular Season,Final,F,15,Chase Field
 ,119,Los Angeles Dodgers,night,N,2026-09-15T22:40:00Z,824466,,113,Cincinnati Reds,2026-09-15,Regular Season,Scheduled,S,2602,Great American Ball Park
 ,133,Athletics,night,N,2026-09-15T22:40:00Z,822925,,139,Tampa Bay Rays,2026-09-15,Regular Season,Scheduled,S,12,Tropicana Field
 ,145,Chicago White Sox,night,N,2026-09-15T22:40:00Z,824384,,114,Cleveland Guardians,2026-09-15,Regular Season,Scheduled,S,5,Progressive Field
