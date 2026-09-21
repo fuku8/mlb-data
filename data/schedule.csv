@@ -2323,21 +2323,21 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 6,146,Miami Marlins,night,N,2026-09-20T00:40:00Z,823249,7,135,San Diego Padres,2026-09-19,Regular Season,Final,F,2680,Petco Park
 4,137,San Francisco Giants,night,N,2026-09-20T01:10:00Z,823899,10,119,Los Angeles Dodgers,2026-09-19,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 5,142,Minnesota Twins,night,N,2026-09-20T01:38:00Z,823976,6,108,Los Angeles Angels,2026-09-19,Regular Season,Final,F,1,Angel Stadium
-,143,Philadelphia Phillies,day,N,2026-09-20T17:10:00Z,823570,,121,New York Mets,2026-09-20,Regular Season,Scheduled,S,3289,Citi Field
-,118,Kansas City Royals,day,N,2026-09-20T17:35:00Z,823329,,134,Pittsburgh Pirates,2026-09-20,Regular Season,Scheduled,S,31,PNC Park
-,112,Chicago Cubs,day,N,2026-09-20T17:40:00Z,824462,,113,Cincinnati Reds,2026-09-20,Regular Season,Scheduled,S,2602,Great American Ball Park
-,133,Athletics,day,N,2026-09-20T17:40:00Z,824381,,114,Cleveland Guardians,2026-09-20,Regular Season,Scheduled,S,5,Progressive Field
-,111,Boston Red Sox,day,N,2026-09-20T17:40:00Z,822922,,139,Tampa Bay Rays,2026-09-20,Regular Season,Scheduled,S,12,Tropicana Field
-,144,Atlanta Braves,day,N,2026-09-20T18:10:00Z,824139,,117,Houston Astros,2026-09-20,Regular Season,Scheduled,S,2392,Daikin Park
-,116,Detroit Tigers,day,N,2026-09-20T18:10:00Z,824546,,145,Chicago White Sox,2026-09-20,Regular Season,Scheduled,S,4,Rate Field
-,120,Washington Nationals,day,N,2026-09-20T18:15:00Z,823001,,138,St. Louis Cardinals,2026-09-20,Regular Season,Scheduled,S,2889,Busch Stadium
-,141,Toronto Blue Jays,day,N,2026-09-20T18:35:00Z,822844,,140,Texas Rangers,2026-09-20,Regular Season,Scheduled,S,5325,Globe Life Field
-,136,Seattle Mariners,day,N,2026-09-20T19:10:00Z,824300,,115,Colorado Rockies,2026-09-20,Regular Season,Scheduled,S,19,Coors Field
-,142,Minnesota Twins,day,N,2026-09-20T20:07:00Z,823975,,108,Los Angeles Angels,2026-09-20,Regular Season,Scheduled,S,1,Angel Stadium
-,137,San Francisco Giants,day,N,2026-09-20T20:10:00Z,823896,,119,Los Angeles Dodgers,2026-09-20,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
-,146,Miami Marlins,day,N,2026-09-20T20:10:00Z,823247,,135,San Diego Padres,2026-09-20,Regular Season,Scheduled,S,2680,Petco Park
-,147,New York Yankees,day,N,2026-09-20T20:10:00Z,825028,,109,Arizona Diamondbacks,2026-09-20,Regular Season,Scheduled,S,15,Chase Field
-,158,Milwaukee Brewers,night,N,2026-09-20T23:20:00Z,824789,,110,Baltimore Orioles,2026-09-20,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
+7,143,Philadelphia Phillies,day,N,2026-09-20T17:10:00Z,823570,2,121,New York Mets,2026-09-20,Regular Season,Final,F,3289,Citi Field
+3,118,Kansas City Royals,day,N,2026-09-20T17:35:00Z,823329,4,134,Pittsburgh Pirates,2026-09-20,Regular Season,Final,F,31,PNC Park
+9,112,Chicago Cubs,day,N,2026-09-20T17:40:00Z,824462,1,113,Cincinnati Reds,2026-09-20,Regular Season,Final,F,2602,Great American Ball Park
+0,133,Athletics,day,N,2026-09-20T17:40:00Z,824381,1,114,Cleveland Guardians,2026-09-20,Regular Season,Final,F,5,Progressive Field
+1,111,Boston Red Sox,day,N,2026-09-20T17:40:00Z,822922,5,139,Tampa Bay Rays,2026-09-20,Regular Season,Final,F,12,Tropicana Field
+4,144,Atlanta Braves,day,N,2026-09-20T18:10:00Z,824139,2,117,Houston Astros,2026-09-20,Regular Season,Final,F,2392,Daikin Park
+1,116,Detroit Tigers,day,N,2026-09-20T18:10:00Z,824546,8,145,Chicago White Sox,2026-09-20,Regular Season,Final,F,4,Rate Field
+3,120,Washington Nationals,day,N,2026-09-20T18:15:00Z,823001,5,138,St. Louis Cardinals,2026-09-20,Regular Season,Final,F,2889,Busch Stadium
+7,141,Toronto Blue Jays,day,N,2026-09-20T18:35:00Z,822844,2,140,Texas Rangers,2026-09-20,Regular Season,Final,F,5325,Globe Life Field
+2,136,Seattle Mariners,day,N,2026-09-20T19:10:00Z,824300,1,115,Colorado Rockies,2026-09-20,Regular Season,Final,F,19,Coors Field
+8,142,Minnesota Twins,day,N,2026-09-20T20:07:00Z,823975,0,108,Los Angeles Angels,2026-09-20,Regular Season,Final,F,1,Angel Stadium
+1,137,San Francisco Giants,day,N,2026-09-20T20:10:00Z,823896,3,119,Los Angeles Dodgers,2026-09-20,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
+3,146,Miami Marlins,day,N,2026-09-20T20:10:00Z,823247,7,135,San Diego Padres,2026-09-20,Regular Season,Final,F,2680,Petco Park
+4,147,New York Yankees,day,N,2026-09-20T20:10:00Z,825028,8,109,Arizona Diamondbacks,2026-09-20,Regular Season,Final,F,15,Chase Field
+3,158,Milwaukee Brewers,night,N,2026-09-20T23:20:00Z,824789,0,110,Baltimore Orioles,2026-09-20,Regular Season,Final,F,2,Oriole Park at Camden Yards
 ,141,Toronto Blue Jays,night,N,2026-09-21T22:35:00Z,824787,,110,Baltimore Orioles,2026-09-21,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,120,Washington Nationals,night,N,2026-09-21T22:40:00Z,824221,,116,Detroit Tigers,2026-09-21,Regular Season,Scheduled,S,2394,Comerica Park
 ,142,Minnesota Twins,night,N,2026-09-22T01:45:00Z,823169,,137,San Francisco Giants,2026-09-21,Regular Season,Scheduled,S,2395,Oracle Park
