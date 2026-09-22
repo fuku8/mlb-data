@@ -2338,9 +2338,9 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 3,146,Miami Marlins,day,N,2026-09-20T20:10:00Z,823247,7,135,San Diego Padres,2026-09-20,Regular Season,Final,F,2680,Petco Park
 4,147,New York Yankees,day,N,2026-09-20T20:10:00Z,825028,8,109,Arizona Diamondbacks,2026-09-20,Regular Season,Final,F,15,Chase Field
 3,158,Milwaukee Brewers,night,N,2026-09-20T23:20:00Z,824789,0,110,Baltimore Orioles,2026-09-20,Regular Season,Final,F,2,Oriole Park at Camden Yards
-,141,Toronto Blue Jays,night,N,2026-09-21T22:35:00Z,824787,,110,Baltimore Orioles,2026-09-21,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,120,Washington Nationals,night,N,2026-09-21T22:40:00Z,824221,,116,Detroit Tigers,2026-09-21,Regular Season,Scheduled,S,2394,Comerica Park
-,142,Minnesota Twins,night,N,2026-09-22T01:45:00Z,823169,,137,San Francisco Giants,2026-09-21,Regular Season,Scheduled,S,2395,Oracle Park
+3,141,Toronto Blue Jays,night,N,2026-09-21T22:35:00Z,824787,4,110,Baltimore Orioles,2026-09-21,Regular Season,Final,F,2,Oriole Park at Camden Yards
+2,120,Washington Nationals,night,N,2026-09-21T22:40:00Z,824221,9,116,Detroit Tigers,2026-09-21,Regular Season,Final,F,2394,Comerica Park
+2,142,Minnesota Twins,night,N,2026-09-22T01:45:00Z,823169,5,137,San Francisco Giants,2026-09-21,Regular Season,Final,F,2395,Oracle Park
 ,139,Tampa Bay Rays,day,S,2026-09-22T17:05:00Z,823543,,147,New York Yankees,2026-09-22,Regular Season,Scheduled,S,3313,Yankee Stadium
 ,139,Tampa Bay Rays,night,S,2026-09-22T23:05:00Z,823494,,147,New York Yankees,2026-09-22,Regular Season,Scheduled,S,3313,Yankee Stadium
 ,141,Toronto Blue Jays,night,N,2026-09-22T22:35:00Z,824785,,110,Baltimore Orioles,2026-09-22,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
