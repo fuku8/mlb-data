@@ -2341,25 +2341,25 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 3,141,Toronto Blue Jays,night,N,2026-09-21T22:35:00Z,824787,4,110,Baltimore Orioles,2026-09-21,Regular Season,Final,F,2,Oriole Park at Camden Yards
 2,120,Washington Nationals,night,N,2026-09-21T22:40:00Z,824221,9,116,Detroit Tigers,2026-09-21,Regular Season,Final,F,2394,Comerica Park
 2,142,Minnesota Twins,night,N,2026-09-22T01:45:00Z,823169,5,137,San Francisco Giants,2026-09-21,Regular Season,Final,F,2395,Oracle Park
-,139,Tampa Bay Rays,day,S,2026-09-22T17:05:00Z,823543,,147,New York Yankees,2026-09-22,Regular Season,Scheduled,S,3313,Yankee Stadium
-,139,Tampa Bay Rays,night,S,2026-09-22T23:05:00Z,823494,,147,New York Yankees,2026-09-22,Regular Season,Scheduled,S,3313,Yankee Stadium
-,141,Toronto Blue Jays,night,N,2026-09-22T22:35:00Z,824785,,110,Baltimore Orioles,2026-09-22,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
-,120,Washington Nationals,night,N,2026-09-22T22:40:00Z,824222,,116,Detroit Tigers,2026-09-22,Regular Season,Scheduled,S,2394,Comerica Park
-,138,St. Louis Cardinals,night,N,2026-09-22T22:40:00Z,823328,,134,Pittsburgh Pirates,2026-09-22,Regular Season,Scheduled,S,31,PNC Park
-,158,Milwaukee Brewers,night,N,2026-09-22T22:40:00Z,823412,,143,Philadelphia Phillies,2026-09-22,Regular Season,Scheduled,S,2681,Citizens Bank Park
-,114,Cleveland Guardians,night,N,2026-09-22T22:45:00Z,824709,,111,Boston Red Sox,2026-09-22,Regular Season,Scheduled,S,3,Fenway Park
-,113,Cincinnati Reds,night,N,2026-09-22T23:15:00Z,824867,,144,Atlanta Braves,2026-09-22,Regular Season,Scheduled,S,4705,Truist Park
-,145,Chicago White Sox,night,N,2026-09-22T23:40:00Z,824061,,118,Kansas City Royals,2026-09-22,Regular Season,Scheduled,S,7,Kauffman Stadium
-,146,Miami Marlins,night,N,2026-09-22T23:40:00Z,824624,,112,Chicago Cubs,2026-09-22,Regular Season,Scheduled,S,17,Wrigley Field
-,121,New York Mets,night,N,2026-09-23T00:05:00Z,822840,,140,Texas Rangers,2026-09-22,Regular Season,Scheduled,S,5325,Globe Life Field
-,109,Arizona Diamondbacks,night,N,2026-09-23T00:40:00Z,824302,,115,Colorado Rockies,2026-09-22,Regular Season,Scheduled,S,19,Coors Field
-,108,Los Angeles Angels,night,N,2026-09-23T01:40:00Z,824953,,133,Athletics,2026-09-22,Regular Season,Scheduled,S,2529,Sutter Health Park
-,117,Houston Astros,night,N,2026-09-23T01:40:00Z,823089,,136,Seattle Mariners,2026-09-22,Regular Season,Scheduled,S,680,T-Mobile Park
-,142,Minnesota Twins,night,N,2026-09-23T01:45:00Z,823166,,137,San Francisco Giants,2026-09-22,Regular Season,Scheduled,S,2395,Oracle Park
-,135,San Diego Padres,night,N,2026-09-23T02:10:00Z,823897,,119,Los Angeles Dodgers,2026-09-22,Regular Season,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+0,139,Tampa Bay Rays,day,S,2026-09-22T17:05:00Z,823543,2,147,New York Yankees,2026-09-22,Regular Season,Final,F,3313,Yankee Stadium
+6,139,Tampa Bay Rays,night,S,2026-09-22T23:05:00Z,823494,1,147,New York Yankees,2026-09-22,Regular Season,Final,F,3313,Yankee Stadium
+3,120,Washington Nationals,night,N,2026-09-22T22:40:00Z,824222,1,116,Detroit Tigers,2026-09-22,Regular Season,Final,F,2394,Comerica Park
+0,138,St. Louis Cardinals,night,N,2026-09-22T22:40:00Z,823328,2,134,Pittsburgh Pirates,2026-09-22,Regular Season,Final,F,31,PNC Park
+4,158,Milwaukee Brewers,night,N,2026-09-22T22:40:00Z,823412,6,143,Philadelphia Phillies,2026-09-22,Regular Season,Final,F,2681,Citizens Bank Park
+3,114,Cleveland Guardians,night,N,2026-09-22T22:45:00Z,824709,2,111,Boston Red Sox,2026-09-22,Regular Season,Final,F,3,Fenway Park
+4,113,Cincinnati Reds,night,N,2026-09-22T23:15:00Z,824867,0,144,Atlanta Braves,2026-09-22,Regular Season,Final,F,4705,Truist Park
+14,145,Chicago White Sox,night,N,2026-09-22T23:40:00Z,824061,11,118,Kansas City Royals,2026-09-22,Regular Season,Final,F,7,Kauffman Stadium
+8,146,Miami Marlins,night,N,2026-09-22T23:40:00Z,824624,2,112,Chicago Cubs,2026-09-22,Regular Season,Final,F,17,Wrigley Field
+6,121,New York Mets,night,N,2026-09-23T00:05:00Z,822840,3,140,Texas Rangers,2026-09-22,Regular Season,Final,F,5325,Globe Life Field
+7,109,Arizona Diamondbacks,night,N,2026-09-23T00:40:00Z,824302,2,115,Colorado Rockies,2026-09-22,Regular Season,Final,F,19,Coors Field
+7,108,Los Angeles Angels,night,N,2026-09-23T01:40:00Z,824953,9,133,Athletics,2026-09-22,Regular Season,Final,F,2529,Sutter Health Park
+7,117,Houston Astros,night,N,2026-09-23T01:40:00Z,823089,0,136,Seattle Mariners,2026-09-22,Regular Season,Final,F,680,T-Mobile Park
+3,142,Minnesota Twins,night,N,2026-09-23T01:45:00Z,823166,2,137,San Francisco Giants,2026-09-22,Regular Season,Final,F,2395,Oracle Park
+0,135,San Diego Padres,night,N,2026-09-23T02:10:00Z,823897,7,119,Los Angeles Dodgers,2026-09-22,Regular Season,Final,F,22,UNIQLO Field at Dodger Stadium
 ,120,Washington Nationals,day,N,2026-09-23T17:10:00Z,824223,,116,Detroit Tigers,2026-09-23,Regular Season,Scheduled,S,2394,Comerica Park
+,141,Toronto Blue Jays,day,S,2026-09-23T17:35:00Z,824785,,110,Baltimore Orioles,2026-09-23,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
+,141,Toronto Blue Jays,night,S,2026-09-23T22:35:00Z,824784,,110,Baltimore Orioles,2026-09-23,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,142,Minnesota Twins,day,N,2026-09-23T19:45:00Z,823168,,137,San Francisco Giants,2026-09-23,Regular Season,Scheduled,S,2395,Oracle Park
-,141,Toronto Blue Jays,night,N,2026-09-23T22:35:00Z,824784,,110,Baltimore Orioles,2026-09-23,Regular Season,Scheduled,S,2,Oriole Park at Camden Yards
 ,138,St. Louis Cardinals,night,N,2026-09-23T22:40:00Z,823327,,134,Pittsburgh Pirates,2026-09-23,Regular Season,Scheduled,S,31,PNC Park
 ,158,Milwaukee Brewers,night,N,2026-09-23T22:40:00Z,823410,,143,Philadelphia Phillies,2026-09-23,Regular Season,Scheduled,S,2681,Citizens Bank Park
 ,139,Tampa Bay Rays,night,N,2026-09-23T23:05:00Z,823492,,147,New York Yankees,2026-09-23,Regular Season,Scheduled,S,3313,Yankee Stadium
@@ -2429,38 +2429,38 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 ,144,Atlanta Braves,day,N,2026-09-27T19:10:00Z,823814,,146,Miami Marlins,2026-09-27,Regular Season,Scheduled,S,4169,loanDepot park
 ,138,St. Louis Cardinals,day,N,2026-09-27T19:10:00Z,823731,,158,Milwaukee Brewers,2026-09-27,Regular Season,Scheduled,S,32,American Family Field
 ,110,Baltimore Orioles,day,N,2026-09-27T19:20:00Z,823490,,147,New York Yankees,2026-09-27,Regular Season,Scheduled,S,3313,Yankee Stadium
-,4944,AL Wild Card #2,day,N,2026-09-29T07:33:00Z,849851,,4618,AL Wild Card #1,2026-09-29,AL Wild Card Series,Scheduled,S,3832,AL Stadium
+,4944,AL Wild Card #2,day,N,2026-09-29T07:33:00Z,849851,,147,New York Yankees,2026-09-29,AL Wild Card Series,Scheduled,S,3313,Yankee Stadium
 ,4945,NL Wild Card #2,day,N,2026-09-29T07:33:00Z,849843,,4619,NL Wild Card #1,2026-09-29,NL Wild Card Series,Scheduled,S,3833,NL Stadium
 ,4946,AL Wild Card #3,day,N,2026-09-29T07:33:00Z,849849,,4614,AL #3 Seed,2026-09-29,AL Wild Card Series,Scheduled,S,3832,AL Stadium
 ,4947,NL Wild Card #3,day,N,2026-09-29T07:33:00Z,849845,,4617,NL #3 Seed,2026-09-29,NL Wild Card Series,Scheduled,S,3833,NL Stadium
-,4944,AL Wild Card #2,day,N,2026-09-30T07:33:00Z,849848,,4618,AL Wild Card #1,2026-09-30,AL Wild Card Series,Scheduled,S,3832,AL Stadium
+,4944,AL Wild Card #2,day,N,2026-09-30T07:33:00Z,849848,,147,New York Yankees,2026-09-30,AL Wild Card Series,Scheduled,S,3313,Yankee Stadium
 ,4945,NL Wild Card #2,day,N,2026-09-30T07:33:00Z,849842,,4619,NL Wild Card #1,2026-09-30,NL Wild Card Series,Scheduled,S,3833,NL Stadium
 ,4946,AL Wild Card #3,day,N,2026-09-30T07:33:00Z,849846,,4614,AL #3 Seed,2026-09-30,AL Wild Card Series,Scheduled,S,3832,AL Stadium
 ,4947,NL Wild Card #3,day,N,2026-09-30T07:33:00Z,849841,,4617,NL #3 Seed,2026-09-30,NL Wild Card Series,Scheduled,S,3833,NL Stadium
-,4944,AL Wild Card #2,day,N,2026-10-01T07:33:00Z,849847,,4618,AL Wild Card #1,2026-10-01,AL Wild Card Series,Scheduled,S,3832,AL Stadium
+,4944,AL Wild Card #2,day,N,2026-10-01T07:33:00Z,849847,,147,New York Yankees,2026-10-01,AL Wild Card Series,Scheduled,S,3313,Yankee Stadium
 ,4945,NL Wild Card #2,day,N,2026-10-01T07:33:00Z,849840,,4619,NL Wild Card #1,2026-10-01,NL Wild Card Series,Scheduled,S,3833,NL Stadium
 ,4946,AL Wild Card #3,day,N,2026-10-01T07:33:00Z,849850,,4614,AL #3 Seed,2026-10-01,AL Wild Card Series,Scheduled,S,3832,AL Stadium
 ,4947,NL Wild Card #3,day,N,2026-10-01T07:33:00Z,849844,,4617,NL #3 Seed,2026-10-01,NL Wild Card Series,Scheduled,S,3833,NL Stadium
+,5529,AL 4/5 Winner,day,N,2026-10-03T07:33:00Z,849835,,139,Tampa Bay Rays,2026-10-03,AL Division Series,Scheduled,S,12,Tropicana Field
 ,5528,AL 3/6 Winner,day,N,2026-10-03T07:33:00Z,849829,,4613,AL #2 Seed,2026-10-03,AL Division Series,Scheduled,S,3832,AL Stadium
-,5529,AL 4/5 Winner,day,N,2026-10-03T07:33:00Z,849835,,4612,AL East Champ,2026-10-03,AL Division Series,Scheduled,S,3832,AL Stadium
 ,5532,NL 3/6 Winner,day,N,2026-10-03T07:33:00Z,849828,,4616,NL #2 Seed,2026-10-03,NL Division Series,Scheduled,S,3833,NL Stadium
 ,5533,NL 4/5 Winner,day,N,2026-10-03T07:33:00Z,849830,,4615,NL #1 Seed,2026-10-03,NL Division Series,Scheduled,S,3833,NL Stadium
 ,5532,NL 3/6 Winner,day,N,2026-10-04T07:33:00Z,849823,,4616,NL #2 Seed,2026-10-04,NL Division Series,Scheduled,S,3833,NL Stadium
 ,5533,NL 4/5 Winner,day,N,2026-10-04T07:33:00Z,849825,,4615,NL #1 Seed,2026-10-04,NL Division Series,Scheduled,S,3833,NL Stadium
+,5529,AL 4/5 Winner,day,N,2026-10-05T07:33:00Z,849839,,139,Tampa Bay Rays,2026-10-05,AL Division Series,Scheduled,S,12,Tropicana Field
 ,5528,AL 3/6 Winner,day,N,2026-10-05T07:33:00Z,849834,,4613,AL #2 Seed,2026-10-05,AL Division Series,Scheduled,S,3832,AL Stadium
-,5529,AL 4/5 Winner,day,N,2026-10-05T07:33:00Z,849839,,4612,AL East Champ,2026-10-05,AL Division Series,Scheduled,S,3832,AL Stadium
 ,4616,NL #2 Seed,day,N,2026-10-06T07:33:00Z,849819,,5532,NL 3/6 Winner,2026-10-06,NL Division Series,Scheduled,S,3833,NL Stadium
 ,4615,NL #1 Seed,day,N,2026-10-06T07:33:00Z,849826,,5533,NL 4/5 Winner,2026-10-06,NL Division Series,Scheduled,S,3833,NL Stadium
+,139,Tampa Bay Rays,day,N,2026-10-07T07:33:00Z,849838,,5529,AL 4/5 Winner,2026-10-07,AL Division Series,Scheduled,S,3832,AL Stadium
 ,4613,AL #2 Seed,day,N,2026-10-07T07:33:00Z,849833,,5528,AL 3/6 Winner,2026-10-07,AL Division Series,Scheduled,S,3832,AL Stadium
-,4612,AL East Champ,day,N,2026-10-07T07:33:00Z,849838,,5529,AL 4/5 Winner,2026-10-07,AL Division Series,Scheduled,S,3832,AL Stadium
 ,4616,NL #2 Seed,day,N,2026-10-07T07:33:00Z,849822,,5532,NL 3/6 Winner,2026-10-07,NL Division Series,Scheduled,S,3833,NL Stadium
 ,4615,NL #1 Seed,day,N,2026-10-07T07:33:00Z,849827,,5533,NL 4/5 Winner,2026-10-07,NL Division Series,Scheduled,S,3833,NL Stadium
+,139,Tampa Bay Rays,day,N,2026-10-08T07:33:00Z,849837,,5529,AL 4/5 Winner,2026-10-08,AL Division Series,Scheduled,S,3832,AL Stadium
 ,4613,AL #2 Seed,day,N,2026-10-08T07:33:00Z,849832,,5528,AL 3/6 Winner,2026-10-08,AL Division Series,Scheduled,S,3832,AL Stadium
-,4612,AL East Champ,day,N,2026-10-08T07:33:00Z,849837,,5529,AL 4/5 Winner,2026-10-08,AL Division Series,Scheduled,S,3832,AL Stadium
 ,5532,NL 3/6 Winner,day,N,2026-10-09T07:33:00Z,849821,,4616,NL #2 Seed,2026-10-09,NL Division Series,Scheduled,S,3833,NL Stadium
 ,5533,NL 4/5 Winner,day,N,2026-10-09T07:33:00Z,849824,,4615,NL #1 Seed,2026-10-09,NL Division Series,Scheduled,S,3833,NL Stadium
+,5529,AL 4/5 Winner,day,N,2026-10-10T07:33:00Z,849836,,139,Tampa Bay Rays,2026-10-10,AL Division Series,Scheduled,S,12,Tropicana Field
 ,5528,AL 3/6 Winner,day,N,2026-10-10T07:33:00Z,849831,,4613,AL #2 Seed,2026-10-10,AL Division Series,Scheduled,S,3832,AL Stadium
-,5529,AL 4/5 Winner,day,N,2026-10-10T07:33:00Z,849836,,4612,AL East Champ,2026-10-10,AL Division Series,Scheduled,S,3832,AL Stadium
 ,5525,NL Lower Seed,day,N,2026-10-11T07:33:00Z,849809,,5517,NL Higher Seed,2026-10-11,NL Championship Series,Scheduled,S,3833,NL Stadium
 ,5521,AL Lower Seed,day,N,2026-10-12T07:33:00Z,849820,,5513,AL Higher Seed,2026-10-12,AL Championship Series,Scheduled,S,3832,AL Stadium
 ,5525,NL Lower Seed,day,N,2026-10-12T07:33:00Z,849812,,5517,NL Higher Seed,2026-10-12,NL Championship Series,Scheduled,S,3833,NL Stadium
