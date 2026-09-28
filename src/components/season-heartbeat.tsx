@@ -30,10 +30,13 @@ function monthStarts(games: TeamGameMargin[]): { index: number; label: string }[
   });
 }
 
-export function SeasonHeartbeat({ games }: { games: TeamGameMargin[] }) {
+// minGames: viewBox幅の下限となる試合数（シーズンの想定試合数を渡す）。
+// SVGはwidth:100%＋縦横比維持で描くため、序盤の少試合ではviewBox幅が極端に狭くなり縦に巨大化する
+// （bleague-data実測: 2試合で高さ7,247px）。下限を持たせると序盤は左から埋まる形になり、終盤の見た目は変わらない
+export function SeasonHeartbeat({ games, minGames = 0 }: { games: TeamGameMargin[]; minGames?: number }) {
   const [selected, setSelected] = useState<number | null>(null);
   if (games.length === 0) return null;
-  const width = games.length * (BAR_W + GAP);
+  const width = Math.max(games.length, minGames) * (BAR_W + GAP);
   const height = TOP + HALF * 2;
   const sel = selected !== null ? games[selected] : null;
 
