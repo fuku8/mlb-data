@@ -204,7 +204,7 @@ True,R,1997-01-15,29,Dazmon,Daz Cameron,"6' 0""",Cameron,2020-09-09,R,663662,LF,
 True,L,1999-07-17,27,Noah,Noah Cameron,"6' 3""",Cameron,2025-04-30,L,702070,P,1,65,Noah,220
 True,R,2003-07-05,23,Junior,Junior Caminero,"6' 1""",Caminero,2023-09-23,R,691406,3B,5,13,Junior,220
 True,S,1997-09-20,29,Gustavo,Gustavo Campero,"5' 6""",Campero,2024-09-15,R,672569,OF,O,51,Gustavo,183
-True,R,1998-09-29,27,Luis,Luis Campusano,"5' 10""",Campusano,2020-09-04,R,669134,C,2,12,Luis,232
+True,R,1998-09-29,28,Luis,Luis Campusano,"5' 10""",Campusano,2020-09-04,R,669134,C,2,12,Luis,232
 True,S,1993-11-24,32,Jeimer,Jeimer Candelario,"6' 1""",Candelario,2016-07-03,R,600869,3B,5,46,Jeimer,222
 True,R,1996-05-11,30,Griffin,Griffin Canning,"6' 2""",Canning,2019-04-30,R,656288,P,1,17,Griffin,180
 True,R,2000-07-19,26,Jonathan,Jonathan Cannon,"6' 6""",Cannon,2024-04-17,R,686563,P,1,48,Jonathan,225
@@ -507,8 +507,9 @@ True,S,1994-05-26,32,Samuel,Sam Haggerty,"5' 11""",Haggerty,2019-09-04,R,664059,
 True,L,1998-09-19,28,Dayton,DL Hall,"6' 1""",Hall,2022-08-13,L,669084,P,1,37,DL,209
 True,L,2002-05-26,24,Peter,Petey Halpin,"5' 11""",Halpin,2025-09-20,R,690984,CF,8,0,Petey,200
 True,R,2000-02-18,26,Seth,Seth Halvorsen,"6' 2""",Halvorsen,2024-08-30,R,678020,P,1,56,Seth,243
-True,L,1997-09-29,28,David,David Hamilton,"5' 10""",Hamilton,2023-06-21,R,666152,3B,5,6,David,192
+True,L,1997-09-29,29,David,David Hamilton,"5' 10""",Hamilton,2023-06-21,R,666152,3B,5,6,David,192
 True,R,1995-06-16,31,Ian,Ian Hamilton,"6' 1""",Hamilton,2018-08-31,R,641656,P,1,71,Ian,200
+True,R,2001-08-07,25,Aubrey,Chase Hampton,"6' 2""",Hampton,,R,694633,P,1,,Chase,225
 True,R,1999-05-31,27,Emerson,Emerson Hancock,"6' 4""",Hancock,2023-08-09,R,676106,P,1,26,Emerson,213
 True,R,1998-03-10,28,Maverick,Maverick Handley,"5' 9""",Handley,2025-04-29,R,668974,C,2,90,Maverick,210
 True,R,1998-05-29,28,Brenan,Brenan Hanifee,"6' 5""",Hanifee,2023-09-21,R,669724,P,1,75,Brenan,215
@@ -769,7 +770,7 @@ True,L,2002-12-27,23,Joseph,Joe Mack,"6' 0""",Mack,2026-05-04,R,691788,C,2,80,Jo
 True,L,2000-12-30,25,Adam,Adam Macko,"6' 0""",Macko,2026-05-18,L,671936,P,1,71,Adam,170
 True,R,2000-02-21,26,Tyler,Ty Madden,"6' 3""",Madden,2024-08-26,R,680744,P,1,36,Ty,215
 True,R,1997-03-05,29,Nicklaus,Nick Madrigal,"5' 7""",Madrigal,2020-07-31,R,663611,3B,5,20,Nick,175
-True,R,1994-09-29,31,Tyler,Tyler Mahle,"6' 3""",Mahle,2017-08-27,R,641816,P,1,54,Tyler,212
+True,R,1994-09-29,32,Tyler,Tyler Mahle,"6' 3""",Mahle,2017-08-27,R,641816,P,1,54,Tyler,212
 True,R,1991-02-06,35,Luke,Luke Maile,"6' 3""",Maile,2015-09-01,R,571912,C,2,18,Luke,225
 True,R,2000-01-12,26,Benjamin,Ben Malgeri,"6' 1""",Malgeri,2026-06-23,R,701162,RF,9,53,Ben,215
 True,R,1992-02-01,34,Sean,Sean Manaea,"6' 5""",Manaea,2016-04-29,L,640455,P,1,59,Sean,245
