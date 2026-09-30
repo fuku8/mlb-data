@@ -2429,10 +2429,10 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 3,144,Atlanta Braves,day,N,2026-09-27T19:10:00Z,823814,5,146,Miami Marlins,2026-09-27,Regular Season,Final,F,4169,loanDepot park
 4,138,St. Louis Cardinals,day,N,2026-09-27T19:10:00Z,823731,6,158,Milwaukee Brewers,2026-09-27,Regular Season,Final,F,32,American Family Field
 ,110,Baltimore Orioles,day,N,2026-09-27T17:05:00Z,823490,,147,New York Yankees,2026-09-27,Regular Season,Cancelled,C,3313,Yankee Stadium
-,143,Philadelphia Phillies,day,N,2026-09-29T18:00:00Z,849845,,144,Atlanta Braves,2026-09-29,NL Wild Card Series,Scheduled,S,4705,Truist Park
-,145,Chicago White Sox,day,N,2026-09-29T21:00:00Z,849849,,117,Houston Astros,2026-09-29,AL Wild Card Series,Scheduled,S,2392,Daikin Park
-,111,Boston Red Sox,night,N,2026-09-30T00:00:00Z,849851,,147,New York Yankees,2026-09-29,AL Wild Card Series,Scheduled,S,3313,Yankee Stadium
-,112,Chicago Cubs,night,N,2026-09-30T02:00:00Z,849843,,135,San Diego Padres,2026-09-29,NL Wild Card Series,Scheduled,S,2680,Petco Park
+3,143,Philadelphia Phillies,day,N,2026-09-29T18:00:00Z,849845,5,144,Atlanta Braves,2026-09-29,NL Wild Card Series,Final,F,4705,Truist Park
+6,145,Chicago White Sox,day,N,2026-09-29T21:00:00Z,849849,3,117,Houston Astros,2026-09-29,AL Wild Card Series,Final,F,2392,Daikin Park
+0,111,Boston Red Sox,night,N,2026-09-30T00:00:00Z,849851,9,147,New York Yankees,2026-09-29,AL Wild Card Series,Final,F,3313,Yankee Stadium
+0,112,Chicago Cubs,night,N,2026-09-30T02:00:00Z,849843,8,135,San Diego Padres,2026-09-29,NL Wild Card Series,Final,F,2680,Petco Park
 ,143,Philadelphia Phillies,day,N,2026-09-30T18:00:00Z,849841,,144,Atlanta Braves,2026-09-30,NL Wild Card Series,Scheduled,S,4705,Truist Park
 ,145,Chicago White Sox,day,N,2026-09-30T21:00:00Z,849846,,117,Houston Astros,2026-09-30,AL Wild Card Series,Scheduled,S,2392,Daikin Park
 ,111,Boston Red Sox,night,N,2026-10-01T00:00:00Z,849848,,147,New York Yankees,2026-09-30,AL Wild Card Series,Scheduled,S,3313,Yankee Stadium
@@ -2441,14 +2441,14 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 ,145,Chicago White Sox,day,N,2026-10-01T21:00:00Z,849850,,117,Houston Astros,2026-10-01,AL Wild Card Series,Scheduled,S,2392,Daikin Park
 ,111,Boston Red Sox,night,N,2026-10-02T00:00:00Z,849847,,147,New York Yankees,2026-10-01,AL Wild Card Series,Scheduled,S,3313,Yankee Stadium
 ,112,Chicago Cubs,night,N,2026-10-02T02:00:00Z,849840,,135,San Diego Padres,2026-10-01,NL Wild Card Series,Scheduled,S,2680,Petco Park
-,5528,HOU/CWS,day,N,2026-10-03T07:33:00Z,849829,,114,Cleveland Guardians,2026-10-03,AL Division Series,Scheduled,S,5,Progressive Field
-,5529,NYY/BOS,day,N,2026-10-03T07:33:00Z,849835,,139,Tampa Bay Rays,2026-10-03,AL Division Series,Scheduled,S,12,Tropicana Field
+,5528,HOU/CWS,day,N,2026-10-03T17:00:00Z,849829,,114,Cleveland Guardians,2026-10-03,AL Division Series,Scheduled,S,5,Progressive Field
+,5529,NYY/BOS,night,N,2026-10-03T22:30:00Z,849835,,139,Tampa Bay Rays,2026-10-03,AL Division Series,Scheduled,S,12,Tropicana Field
 ,5533,SD/CHC,day,N,2026-10-03T08:33:00Z,849830,,158,Milwaukee Brewers,2026-10-03,NL Division Series,Scheduled,S,32,American Family Field
 ,5532,ATL/PHI,day,N,2026-10-03T10:33:00Z,849828,,119,Los Angeles Dodgers,2026-10-03,NL Division Series,Scheduled,S,22,UNIQLO Field at Dodger Stadium
-,5533,SD/CHC,day,N,2026-10-04T08:33:00Z,849825,,158,Milwaukee Brewers,2026-10-04,NL Division Series,Scheduled,S,32,American Family Field
-,5532,ATL/PHI,day,N,2026-10-04T10:33:00Z,849823,,119,Los Angeles Dodgers,2026-10-04,NL Division Series,Scheduled,S,22,UNIQLO Field at Dodger Stadium
-,5528,HOU/CWS,day,N,2026-10-05T07:33:00Z,849834,,114,Cleveland Guardians,2026-10-05,AL Division Series,Scheduled,S,5,Progressive Field
-,5529,NYY/BOS,day,N,2026-10-05T07:33:00Z,849839,,139,Tampa Bay Rays,2026-10-05,AL Division Series,Scheduled,S,12,Tropicana Field
+,5533,SD/CHC,day,N,2026-10-04T20:00:00Z,849825,,158,Milwaukee Brewers,2026-10-04,NL Division Series,Scheduled,S,32,American Family Field
+,5532,ATL/PHI,day,N,2026-10-05T00:00:00Z,849823,,119,Los Angeles Dodgers,2026-10-04,NL Division Series,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+,5528,HOU/CWS,day,N,2026-10-05T21:00:00Z,849834,,114,Cleveland Guardians,2026-10-05,AL Division Series,Scheduled,S,5,Progressive Field
+,5529,NYY/BOS,night,N,2026-10-06T00:00:00Z,849839,,139,Tampa Bay Rays,2026-10-05,AL Division Series,Scheduled,S,12,Tropicana Field
 ,119,Los Angeles Dodgers,day,N,2026-10-06T07:33:00Z,849819,,5532,ATL/PHI,2026-10-06,NL Division Series,Scheduled,S,3833,NL Stadium
 ,158,Milwaukee Brewers,day,N,2026-10-06T07:33:00Z,849826,,5533,SD/CHC,2026-10-06,NL Division Series,Scheduled,S,3833,NL Stadium
 ,114,Cleveland Guardians,day,N,2026-10-07T07:33:00Z,849833,,5528,HOU/CWS,2026-10-07,AL Division Series,Scheduled,S,3832,AL Stadium
