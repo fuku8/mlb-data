@@ -2,7 +2,7 @@ active,bat_side,birth_date,current_age,first_name,full_name,height,last_name,mlb
 True,L,1999-06-01,27,Andrew,Andrew Abbott,"6' 0""",Abbott,2023-06-05,L,671096,P,1,41,Andrew,192
 True,R,2001-08-18,25,McLean,Mick Abel,"6' 5""",Abel,2025-05-18,R,690953,P,1,20,Mick,190
 True,L,2002-05-05,24,Philip,Philip Abner,"6' 1""",Abner,2025-09-19,L,691769,P,1,,Philip,230
-True,L,2000-10-03,25,Paul,CJ Abrams,"6' 0""",Abrams,2022-04-08,R,682928,SS,6,5,CJ,191
+True,L,2000-10-03,26,Paul,CJ Abrams,"6' 0""",Abrams,2022-04-08,R,682928,SS,6,5,CJ,191
 True,R,1997-04-22,29,Bryan,Bryan Abreu,"6' 1""",Abreu,2019-07-31,R,650556,P,1,52,Bryan,230
 True,L,1999-06-24,27,Wilyer,Wilyer Abreu,"5' 10""",Abreu,2023-08-22,L,677800,RF,9,52,Wilyer,215
 True,R,2002-10-29,23,Maximo,Maximo Acosta,"5' 11""",Acosta,2025-08-18,R,691185,SS,6,24,Maximo,187
@@ -306,7 +306,7 @@ True,R,2001-06-21,25,David,David Davalillo,"6' 1""",Davalillo,,R,699314,P,1,72,D
 True,L,2002-07-05,24,Chanteyon,Bo Davidson,"6' 1""",Davidson,2026-09-21,R,815589,RF,9,94,Bo,225
 True,R,1998-11-21,27,Nicholas,Nick Davila,"6' 3""",Davila,2026-05-03,R,689546,P,1,82,Nick,230
 True,R,1999-09-21,27,Henry,Henry Davis,"5' 11""",Davis,2023-06-19,R,680779,C,2,32,Henry,225
-True,R,1998-10-03,27,Tyler,Tyler Davis,"6' 2""",Davis,2026-04-25,R,699823,P,1,63,Tyler,210
+True,R,1998-10-03,28,Tyler,Tyler Davis,"6' 2""",Davis,2026-04-25,R,699823,P,1,63,Tyler,210
 True,R,1999-09-23,27,Duncan,Duncan Davitt,"6' 3""",Davitt,2026-04-10,R,701474,P,1,76,Duncan,235
 True,R,1996-12-06,29,Justin,Justin Dean,"5' 8""",Dean,2025-08-08,R,681909,CF,8,1,Justin,185
 True,L,1988-06-19,38,Jacob,Jacob deGrom,"6' 4""",deGrom,2014-05-15,R,594798,P,1,48,Jacob,180
@@ -1291,7 +1291,7 @@ True,R,1996-02-24,30,Michael,Michael Stefanic,"5' 9""",Stefanic,2022-07-03,R,683
 True,R,1996-08-16,30,Tyler,Tyler Stephenson,"6' 3""",Stephenson,2020-07-27,R,663886,C,2,37,Tyler,225
 True,R,1996-08-29,30,Justin,Justin Sterner,"6' 1""",Sterner,2024-05-31,R,686993,P,1,60,Justin,215
 True,R,1999-02-03,27,Chad,Chad Stevens,"6' 3""",Stevens,2025-07-03,R,677060,2B,4,39,Chad,218
-True,L,1991-10-03,34,Brock,Brock Stewart,"6' 3""",Stewart,2016-06-29,R,592779,P,1,41,Brock,220
+True,L,1991-10-03,35,Brock,Brock Stewart,"6' 3""",Stewart,2016-06-29,R,592779,P,1,41,Brock,220
 True,R,2003-12-07,22,Sal,Sal Stewart,"6' 1""",Stewart,2025-09-01,R,701398,1B,3,27,Sal,224
 True,L,1989-11-21,36,Robert,Robert Stock,"6' 1""",Stock,2018-06-24,R,476594,P,1,89,Robert,260
 True,R,1992-11-15,33,Trevor,Trevor Story,"6' 1""",Story,2016-04-04,R,596115,SS,6,10,Trevor,209
@@ -1344,7 +1344,7 @@ True,R,1993-09-30,33,Trent,Trent Thornton,"6' 0""",Thornton,2019-03-31,R,663423,
 True,L,2002-01-17,24,Zachary,Zac Thornton,"6' 3""",Thornton,2026-05-20,L,804267,P,1,49,Zac,170
 True,R,2001-06-08,25,Janzen,Blade Tidwell,"6' 3""",Tidwell,2025-05-04,R,694918,P,1,46,Blade,244
 True,L,2002-08-18,24,Tariq,Ricky Tiedemann,"6' 4""",Tiedemann,2026-08-15,L,694357,P,1,33,Ricky,220
-True,S,1998-08-16,28,Michael,Michael Toglia,"6' 5""",Toglia,2022-08-30,L,669911,1B,3,48,Michael,226
+True,S,1998-08-16,28,Michael,Michael Toglia,"6' 5""",Toglia,2022-08-30,L,669911,1B,3,,Michael,226
 True,R,1998-01-27,28,Tyler,Tyler Tolbert,"5' 10""",Tolbert,2025-03-31,R,686475,SS,6,2,Tyler,185
 True,L,2002-11-01,23,Payton,Payton Tolle,"6' 6""",Tolle,2025-08-29,L,801139,P,1,70,Payton,250
 True,L,1999-06-03,27,Erik,Erik Tolman,"6' 2""",Tolman,2026-08-22,L,680899,P,1,73,Erik,193
