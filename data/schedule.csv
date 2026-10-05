@@ -2442,8 +2442,8 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 3,144,Atlanta Braves,day,N,2026-10-03T20:00:00Z,849828,5,119,Los Angeles Dodgers,2026-10-03,NL Division Series,Final,F,22,UNIQLO Field at Dodger Stadium
 0,147,New York Yankees,night,N,2026-10-03T22:30:00Z,849835,1,139,Tampa Bay Rays,2026-10-03,AL Division Series,Final,F,12,Tropicana Field
 2,135,San Diego Padres,night,N,2026-10-04T00:30:00Z,849830,3,158,Milwaukee Brewers,2026-10-03,NL Division Series,Final,F,32,American Family Field
-,135,San Diego Padres,day,N,2026-10-04T20:00:00Z,849825,,158,Milwaukee Brewers,2026-10-04,NL Division Series,Scheduled,S,32,American Family Field
-,144,Atlanta Braves,day,N,2026-10-05T00:00:00Z,849823,,119,Los Angeles Dodgers,2026-10-04,NL Division Series,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+3,135,San Diego Padres,day,N,2026-10-04T20:00:00Z,849825,4,158,Milwaukee Brewers,2026-10-04,NL Division Series,Final,F,32,American Family Field
+3,144,Atlanta Braves,day,N,2026-10-05T00:00:00Z,849823,2,119,Los Angeles Dodgers,2026-10-04,NL Division Series,Final,F,22,UNIQLO Field at Dodger Stadium
 ,145,Chicago White Sox,day,N,2026-10-05T21:00:00Z,849834,,114,Cleveland Guardians,2026-10-05,AL Division Series,Scheduled,S,5,Progressive Field
 ,147,New York Yankees,night,N,2026-10-06T00:00:00Z,849839,,139,Tampa Bay Rays,2026-10-05,AL Division Series,Scheduled,S,12,Tropicana Field
 ,119,Los Angeles Dodgers,night,N,2026-10-06T22:00:00Z,849819,,144,Atlanta Braves,2026-10-06,NL Division Series,Scheduled,S,4705,Truist Park
