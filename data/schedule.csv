@@ -2457,7 +2457,7 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 1,119,Los Angeles Dodgers,night,N,2026-10-12T00:00:00Z,849809,2,158,Milwaukee Brewers,2026-10-11,NL Championship Series,Final,F,32,American Family Field
 4,119,Los Angeles Dodgers,day,N,2026-10-12T21:00:00Z,849812,7,158,Milwaukee Brewers,2026-10-12,NL Championship Series,Final,F,32,American Family Field
 7,114,Cleveland Guardians,night,N,2026-10-13T00:00:00Z,849820,3,139,Tampa Bay Rays,2026-10-12,AL Championship Series,Final,F,12,Tropicana Field
-,114,Cleveland Guardians,night,N,2026-10-14T00:00:00Z,849813,,139,Tampa Bay Rays,2026-10-13,AL Championship Series,Scheduled,S,12,Tropicana Field
+1,114,Cleveland Guardians,night,N,2026-10-14T00:00:00Z,849813,3,139,Tampa Bay Rays,2026-10-13,AL Championship Series,Final,F,12,Tropicana Field
 ,158,Milwaukee Brewers,day,N,2026-10-15T00:00:00Z,849811,,119,Los Angeles Dodgers,2026-10-14,NL Championship Series,Scheduled,S,22,UNIQLO Field at Dodger Stadium
 ,139,Tampa Bay Rays,night,N,2026-10-15T22:00:00Z,849818,,114,Cleveland Guardians,2026-10-15,AL Championship Series,Scheduled,S,5,Progressive Field
 ,158,Milwaukee Brewers,night,N,2026-10-16T01:00:00Z,849810,,119,Los Angeles Dodgers,2026-10-15,NL Championship Series,Scheduled,S,22,UNIQLO Field at Dodger Stadium
