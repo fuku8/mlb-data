@@ -2459,19 +2459,16 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 7,114,Cleveland Guardians,night,N,2026-10-13T00:00:00Z,849820,3,139,Tampa Bay Rays,2026-10-12,AL Championship Series,Final,F,12,Tropicana Field
 1,114,Cleveland Guardians,night,N,2026-10-14T00:00:00Z,849813,3,139,Tampa Bay Rays,2026-10-13,AL Championship Series,Final,F,12,Tropicana Field
 6,158,Milwaukee Brewers,day,N,2026-10-15T00:00:00Z,849811,2,119,Los Angeles Dodgers,2026-10-14,NL Championship Series,Final,F,22,UNIQLO Field at Dodger Stadium
-,139,Tampa Bay Rays,day,N,2026-10-15T17:00:00Z,849818,,114,Cleveland Guardians,2026-10-15,AL Championship Series,Scheduled,S,5,Progressive Field
-,158,Milwaukee Brewers,day,N,2026-10-16T00:00:00Z,849810,,119,Los Angeles Dodgers,2026-10-15,NL Championship Series,Scheduled,S,22,UNIQLO Field at Dodger Stadium
-,139,Tampa Bay Rays,night,N,2026-10-16T22:00:00Z,849817,,114,Cleveland Guardians,2026-10-16,AL Championship Series,Scheduled,S,5,Progressive Field
-,158,Milwaukee Brewers,night,N,2026-10-17T01:00:00Z,849808,,119,Los Angeles Dodgers,2026-10-16,NL Championship Series,Scheduled,S,22,UNIQLO Field at Dodger Stadium
+2,139,Tampa Bay Rays,day,N,2026-10-15T17:00:00Z,849818,3,114,Cleveland Guardians,2026-10-15,AL Championship Series,Final,F,5,Progressive Field
+6,158,Milwaukee Brewers,day,N,2026-10-16T00:00:00Z,849810,4,119,Los Angeles Dodgers,2026-10-15,NL Championship Series,Final,F,22,UNIQLO Field at Dodger Stadium
+,139,Tampa Bay Rays,night,N,2026-10-17T00:00:00Z,849817,,114,Cleveland Guardians,2026-10-16,AL Championship Series,Scheduled,S,5,Progressive Field
 ,139,Tampa Bay Rays,night,N,2026-10-18T00:00:00Z,849816,,114,Cleveland Guardians,2026-10-17,AL Championship Series,Scheduled,S,5,Progressive Field
-,119,Los Angeles Dodgers,night,N,2026-10-19T00:00:00Z,849806,,158,Milwaukee Brewers,2026-10-18,NL Championship Series,Scheduled,S,32,American Family Field
-,114,Cleveland Guardians,day,N,2026-10-19T21:00:00Z,849815,,139,Tampa Bay Rays,2026-10-19,AL Championship Series,Scheduled,S,12,Tropicana Field
-,119,Los Angeles Dodgers,night,N,2026-10-20T00:00:00Z,849807,,158,Milwaukee Brewers,2026-10-19,NL Championship Series,Scheduled,S,32,American Family Field
+,114,Cleveland Guardians,night,N,2026-10-20T00:00:00Z,849815,,139,Tampa Bay Rays,2026-10-19,AL Championship Series,Scheduled,S,12,Tropicana Field
 ,114,Cleveland Guardians,night,N,2026-10-21T00:00:00Z,849814,,139,Tampa Bay Rays,2026-10-20,AL Championship Series,Scheduled,S,12,Tropicana Field
-,21,AL Champion,day,N,2026-10-23T07:33:00Z,849805,,31,NL Champion,2026-10-23,World Series,Scheduled,S,401,TBD
-,21,AL Champion,day,N,2026-10-24T07:33:00Z,849802,,31,NL Champion,2026-10-24,World Series,Scheduled,S,401,TBD
-,31,NL Champion,day,N,2026-10-26T07:33:00Z,849804,,21,AL Champion,2026-10-26,World Series,Scheduled,S,401,TBD
-,31,NL Champion,day,N,2026-10-27T07:33:00Z,849803,,21,AL Champion,2026-10-27,World Series,Scheduled,S,401,TBD
-,31,NL Champion,day,N,2026-10-28T07:33:00Z,849799,,21,AL Champion,2026-10-28,World Series,Scheduled,S,401,TBD
-,21,AL Champion,day,N,2026-10-30T07:33:00Z,849801,,31,NL Champion,2026-10-30,World Series,Scheduled,S,401,TBD
-,21,AL Champion,day,N,2026-10-31T07:33:00Z,849800,,31,NL Champion,2026-10-31,World Series,Scheduled,S,401,TBD
+,21,AL Champion,day,N,2026-10-23T08:33:00Z,849805,,158,Milwaukee Brewers,2026-10-23,World Series,Scheduled,S,32,American Family Field
+,21,AL Champion,day,N,2026-10-24T08:33:00Z,849802,,158,Milwaukee Brewers,2026-10-24,World Series,Scheduled,S,32,American Family Field
+,158,Milwaukee Brewers,day,N,2026-10-26T07:33:00Z,849804,,21,AL Champion,2026-10-26,World Series,Scheduled,S,401,TBD
+,158,Milwaukee Brewers,day,N,2026-10-27T07:33:00Z,849803,,21,AL Champion,2026-10-27,World Series,Scheduled,S,401,TBD
+,158,Milwaukee Brewers,day,N,2026-10-28T07:33:00Z,849799,,21,AL Champion,2026-10-28,World Series,Scheduled,S,401,TBD
+,21,AL Champion,day,N,2026-10-30T08:33:00Z,849801,,158,Milwaukee Brewers,2026-10-30,World Series,Scheduled,S,32,American Family Field
+,21,AL Champion,day,N,2026-10-31T08:33:00Z,849800,,158,Milwaukee Brewers,2026-10-31,World Series,Scheduled,S,32,American Family Field
