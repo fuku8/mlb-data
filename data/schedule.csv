@@ -2462,7 +2462,7 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 2,139,Tampa Bay Rays,day,N,2026-10-15T17:00:00Z,849818,3,114,Cleveland Guardians,2026-10-15,AL Championship Series,Final,F,5,Progressive Field
 6,158,Milwaukee Brewers,day,N,2026-10-16T00:00:00Z,849810,4,119,Los Angeles Dodgers,2026-10-15,NL Championship Series,Final,F,22,UNIQLO Field at Dodger Stadium
 7,139,Tampa Bay Rays,night,N,2026-10-18T00:08:00Z,849816,3,114,Cleveland Guardians,2026-10-17,AL Championship Series,Final,F,5,Progressive Field
-,139,Tampa Bay Rays,night,N,2026-10-18T21:08:00Z,849817,,114,Cleveland Guardians,2026-10-18,AL Championship Series,Scheduled,S,5,Progressive Field
+3,139,Tampa Bay Rays,night,N,2026-10-18T21:08:00Z,849817,1,114,Cleveland Guardians,2026-10-18,AL Championship Series,Final,F,5,Progressive Field
 ,114,Cleveland Guardians,night,N,2026-10-20T00:08:00Z,849815,,139,Tampa Bay Rays,2026-10-19,AL Championship Series,Scheduled,S,12,Tropicana Field
 ,114,Cleveland Guardians,night,N,2026-10-21T00:08:00Z,849814,,139,Tampa Bay Rays,2026-10-20,AL Championship Series,Scheduled,S,12,Tropicana Field
 ,21,TB/CLE,night,N,2026-10-24T00:00:00Z,849805,,158,Milwaukee Brewers,2026-10-23,World Series,Scheduled,S,32,American Family Field
