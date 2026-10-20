@@ -135,7 +135,7 @@ True,R,1995-05-31,31,Shane,Shane Bieber,"6' 3""",Bieber,2018-05-31,R,669456,P,1,
 True,R,1998-06-12,28,Hunter,Hunter Bigge,"6' 0""",Bigge,2024-07-09,R,685801,P,1,,Hunter,215
 True,R,1995-12-04,30,Jacob,Jake Bird,"6' 3""",Bird,2022-06-16,R,656234,P,1,59,Jake,215
 True,R,1994-06-28,32,Spencer,Spencer Bivens,"6' 4""",Bivens,2024-06-16,R,702352,P,1,76,Spencer,220
-True,R,1990-10-20,35,Tyson,Ty Blach,"6' 1""",Blach,2016-09-05,L,621389,P,1,,Ty,215
+True,R,1990-10-20,36,Tyson,Ty Blach,"6' 1""",Blach,2016-09-05,L,621389,P,1,,Ty,215
 True,R,1999-12-10,26,Mason,Mason Black,"6' 3""",Black,2024-05-06,R,696131,P,1,47,Mason,228
 True,L,2000-07-26,26,Tyler,Tyler Black,"6' 0""",Black,2024-04-30,R,672012,DH,10,7,Tyler,208
 True,R,1993-12-04,32,Paul,Paul Blackburn,"6' 1""",Blackburn,2017-07-01,R,621112,P,1,58,Paul,196
@@ -368,7 +368,7 @@ True,R,1994-04-08,32,Zachary,Zach Eflin,"6' 6""",Eflin,2016-06-14,R,621107,P,1,2
 True,L,1998-01-19,28,Brandon,Brandon Eisert,"6' 2""",Eisert,2024-06-17,L,685126,P,1,14,Brandon,210
 True,R,2002-02-07,24,Joshua,Josh Ekness,"6' 4""",Ekness,2026-05-03,R,694795,P,1,95,Josh,225
 True,R,1999-05-19,27,Bryce,Bryce Elder,"6' 2""",Elder,2022-04-12,R,693821,P,1,55,Bryce,220
-True,L,2004-10-20,21,Bryson,Bryce Eldridge,"6' 7""",Eldridge,2025-09-15,R,805811,DH,10,8,Bryce,251
+True,L,2004-10-20,22,Bryson,Bryce Eldridge,"6' 7""",Eldridge,2025-09-15,R,805811,DH,10,8,Bryce,251
 True,L,1992-06-04,34,Kent,Kent Emanuel,"6' 4""",Emanuel,2021-04-24,L,592288,P,1,67,Kent,225
 True,L,2005-07-20,21,Colt,Colt Emerson,"6' 0""",Emerson,2026-05-17,R,806068,SS,6,4,Colt,195
 True,R,1997-10-22,28,Jerar,Jerar Encarnacion,"6' 4""",Encarnacion,2022-06-19,R,666464,RF,9,19,Jerar,265
@@ -1268,7 +1268,7 @@ True,R,1997-09-26,29,Chase,Chase Solesky,"6' 3""",Solesky,2026-05-18,R,686678,P,
 True,L,2000-08-14,26,Drew,Drew Sommers,"6' 3""",Sommers,2025-08-22,L,805427,P,1,51,Drew,250
 True,L,1996-08-29,30,Sung-Mun,Sung-Mun Song,"6' 0""",Song,2026-04-26,R,823550,2B,4,24,Sung-Mun,194
 True,R,1999-03-24,27,George,George Soriano,"6' 2""",Soriano,2023-04-16,R,666277,P,1,65,George,210
-True,R,1998-10-20,27,José,José Soriano,"6' 3""",Soriano,2023-06-03,R,667755,P,1,40,José,220
+True,R,1998-10-20,28,José,José Soriano,"6' 3""",Soriano,2023-06-03,R,667755,P,1,40,José,220
 True,R,1997-08-04,29,Michael,Michael Soroka,"6' 5""",Soroka,2018-05-01,R,647336,P,1,34,Michael,250
 True,R,1996-03-06,30,Edmundo,Edmundo Sosa,"5' 11""",Sosa,2018-09-23,R,624641,LF,7,33,Edmundo,210
 True,R,2000-01-25,26,Lenyn,Lenyn Sosa,"5' 11""",Sosa,2022-06-23,R,672820,2B,4,50,Lenyn,210
@@ -1449,7 +1449,7 @@ True,R,1997-12-05,28,Hayden,Hayden Wesneski,"6' 3""",Wesneski,2022-09-06,R,66971
 True,R,2000-08-27,26,Cameron,Cameron Weston,"6' 2""",Weston,2026-05-28,R,687721,P,1,74,Cameron,215
 True,L,2002-09-10,24,Jonathan,JJ Wetherholt,"5' 9""",Wetherholt,2026-03-26,R,802139,2B,4,26,JJ,190
 True,L,1990-05-30,36,Zachary,Zack Wheeler,"6' 4""",Wheeler,2013-06-18,R,554430,P,1,45,Zack,195
-True,L,2000-10-20,25,Carson,Carson Whisenhunt,"6' 3""",Whisenhunt,2025-07-28,L,687931,P,1,88,Carson,225
+True,L,2000-10-20,26,Carson,Carson Whisenhunt,"6' 3""",Whisenhunt,2025-07-28,L,687931,P,1,88,Carson,225
 True,R,1998-09-28,28,Shay,Shay Whitcomb,"6' 0""",Whitcomb,2024-08-17,R,694376,3B,5,13,Shay,202
 True,R,1994-06-26,32,Elijah,Eli White,"6' 2""",White,2020-09-01,R,642201,CF,8,38,Eli,195
 True,R,2000-11-24,25,Joshua,Josh White,"6' 1""",White,2026-05-31,R,687985,P,1,59,Josh,205
