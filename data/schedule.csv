@@ -2468,6 +2468,4 @@ away_score,away_team_id,away_team_name,day_night,double_header,game_date,game_pk
 4,139,Tampa Bay Rays,night,N,2026-10-25T00:00:00Z,849802,5,158,Milwaukee Brewers,2026-10-24,World Series,Final,F,32,American Family Field
 10,158,Milwaukee Brewers,night,N,2026-10-27T00:00:00Z,849804,1,139,Tampa Bay Rays,2026-10-26,World Series,Final,F,12,Tropicana Field
 3,158,Milwaukee Brewers,night,N,2026-10-28T00:00:00Z,849803,4,139,Tampa Bay Rays,2026-10-27,World Series,Final,F,12,Tropicana Field
-,158,Milwaukee Brewers,night,N,2026-10-29T00:00:00Z,849799,,139,Tampa Bay Rays,2026-10-28,World Series,Scheduled,S,12,Tropicana Field
-,139,Tampa Bay Rays,night,N,2026-10-31T00:00:00Z,849801,,158,Milwaukee Brewers,2026-10-30,World Series,Scheduled,S,32,American Family Field
-,139,Tampa Bay Rays,night,N,2026-11-01T00:00:00Z,849800,,158,Milwaukee Brewers,2026-10-31,World Series,Scheduled,S,32,American Family Field
+4,158,Milwaukee Brewers,night,N,2026-10-29T00:00:00Z,849799,1,139,Tampa Bay Rays,2026-10-28,World Series,Final,F,12,Tropicana Field
